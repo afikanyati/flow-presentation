@@ -73,4 +73,16 @@ const Text = styled.span`
     cursor     : pointer;
     display    : inline-block;
     white-space: pre;
+    transition        : all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition   : all 0.2s;
+    -ms-transition    : all 0.2s;
+
+    &:hover {
+        color: ${props => props.theme.red};
+        transition        : all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition   : all 0.2s;
+        -ms-transition    : all 0.2s;
+    }
 `;

@@ -241,7 +241,7 @@ export default class Viewport extends React.Component {
     handleScroll = (e) => {
         this.preventDefault(e);
 
-        if (this.state.scroll == 15) {
+        if (this.state.scroll == 30) {
             let scrollDirection = this.getScrollDirection(e);
             let history         = this.state.assets[this.state.currentAsset].asset.history,
             trailingWord        = this.state.assets[this.state.currentAsset].asset.trailingWord,
