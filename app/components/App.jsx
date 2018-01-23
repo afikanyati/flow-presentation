@@ -5,24 +5,25 @@
  *  written by Afika Nyati.
  */
 
-// Libs
-import React                from 'react';
-import firebase             from 'firebase';
-import config               from '../../firebase_config.json';
-import getMuiTheme          from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider';
-import uuid                 from 'uuid';
-import initReactFastclick   from 'react-fastclick';
+// Libararies
+import React                    from 'react';
+import firebase                 from 'firebase';
+import config                   from '../../firebase_config.json';
+import getMuiTheme              from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
+import uuid                     from 'uuid';
+import initReactFastclick       from 'react-fastclick';
 
-// Initializing to enable Touch Tap events. It is global
-// Used by Material UI
-initReactFastclick();
+// Components
+import Viewport from './viewport/Viewport';
+import FontTypes from '../constants/FontTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);
 
-// Components
-
+// Initializing to enable Touch Tap events. It is global
+// Used by Material UI
+initReactFastclick();
 
 /**
  * Root of App.
@@ -30,30 +31,36 @@ firebase.initializeApp(config);
  * The majority of the web application's logic and state variables are housed in this
  * component. It is the topmost component in the App tree.
  */
-export default class App extends React.Component {
-    state = {
-
-    };
-
+export default class Root extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            fontSize: 20,
+            fontFamily: FontTypes.AdobeGaramond,
+            fixationWidth: 4,
+            backgroundColor: "white", // use constants
+            hand: "right",
+            trackingSpeed: ""
+
+
+        };
     }
 
     componentWillMount() {
-        console.log("-----App");
+        console.log("-----Root");
 
     }
 
     render() {
         return(
-            <div className="hello">
-
-            </div>
+            <Viewport
+                fontSize={this.state.fontSize}
+                fontFamily={this.state.fontFamily}/>
         );
     }
 
     componentDidMount() {
-        console.log("++++++App");
+        console.log("++++++Root");
         window.addEventListener("resize", this.rerender);
     }
 
@@ -63,4 +70,11 @@ export default class App extends React.Component {
 
     // ========== Methods ===========
 
-} //END App
+    /**
+     * Function attached to a listener connected to window element
+     * Rerenders entire app when visitor adjusts browser size
+     */
+   rerender = () => {
+       this.setState({});
+   }
+}

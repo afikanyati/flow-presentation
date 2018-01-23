@@ -1,19 +1,35 @@
 // Libs
-import React    from 'react';
-import ReactDOM from 'react-dom';
-import App      from './components/App.jsx';
+import React                            from 'react';
+import ReactDOM                         from 'react-dom';
+import App                              from './components/App.jsx';
+import { ThemeProvider }  from 'styled-components';
 
-// Stylesheets
+// Styles
+import './global-styles.js';
 import './assets/stylesheets/style.css';
-import './assets/stylesheets/spinkit.css';
 
 
 /**
  * RenderDOM connects the root JSX logic (App.jsx) to the root HTML id, and
  * imports render
- * @param  {[JSX File]} ( <App /> ) App.jsx file that hanldes 'if auth'
- * @return {[type]}   [description]
+ * @param  {[JSX File]} <App/> Root of the application
  */
+
+const theme = {
+    red: '#d3224f',
+    purple: '#65266d',
+    blue: '#b5d2ec',
+    green: '#69c4a8',
+    yellow: '#f1ddac',
+    white: '#ffffff',
+    lightGray: '#f2f2f2',
+    darkGray: '#b3b3b3',
+    black: '#000000',
+    textColor: 'rgba(35,31,32, 0.87)'
+}
+
 ReactDOM.render((
-    <App />
+    <ThemeProvider theme={theme}>
+        <App />
+    </ThemeProvider>
 ), document.getElementById('root'));
