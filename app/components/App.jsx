@@ -35,14 +35,12 @@ export default class Root extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fontSize: 20,
-            fontFamily: FontTypes.AdobeGaramond,
-            fixationWidth: 4,
-            backgroundColor: "white", // use constants
-            hand: "right",
-            trackingSpeed: ""
-
-
+            fontSize      : 20,
+            fontFamily    : FontTypes.AdobeGaramond,
+            fixationWidth : 4, // if they change the fixationWidth, rerender viewport
+            trackingSpeed : 0,
+            mode          : "white", // use constants
+            hand          : "right"
         };
     }
 
@@ -54,8 +52,12 @@ export default class Root extends React.Component {
     render() {
         return(
             <Viewport
-                fontSize={this.state.fontSize}
-                fontFamily={this.state.fontFamily}/>
+                fontSize      ={this.state.fontSize}
+                fontFamily    ={this.state.fontFamily}
+                fixationWidth ={this.state.fixationWidth}
+                trackingSpeed ={this.state.trackingSpeed}
+                mode          ={this.state.mode}
+                hand          ={this.state.hand} />
         );
     }
 

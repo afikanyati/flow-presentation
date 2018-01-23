@@ -32,6 +32,35 @@ injectGlobal`
     button {
     	border: none;
     }
+    /* CSS Stylesheet for Flow */
+
+    .periphery-enter {
+      opacity: 0.5;
+    }
+
+    .periphery-enter.pheriphery-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-in;
+    }
+
+    .periphery-leave {
+      opacity: 0.5;
+    }
+
+    .periphery-leave.pheriphery-leave-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
+
+    .fixation-enter {
+      opacity: 0.7;
+    }
+
+    .fixation-enter.fixation-enter-active {
+      opacity: 1;
+      transition: opacity 200ms ease-in;
+    }
+
     /* Adobe Garamond */
     @font-face {
     font-family: 'AdobeGaramond';

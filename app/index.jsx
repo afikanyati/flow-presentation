@@ -6,8 +6,6 @@ import { ThemeProvider }  from 'styled-components';
 
 // Styles
 import './global-styles.js';
-import './assets/stylesheets/style.css';
-
 
 /**
  * RenderDOM connects the root JSX logic (App.jsx) to the root HTML id, and
