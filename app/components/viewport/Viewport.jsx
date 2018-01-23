@@ -44,7 +44,7 @@ export default class Viewport extends React.Component {
                               transitionName         ="periphery"
                               transitionEnterTimeout ={300}
                               transitionLeaveTimeout ={200}>
-                            {this.state.history.slice(Math.max(0, this.state.history.length - 120), this.state.history.length).map((word, index, arr) => {
+                            {this.state.history.slice(Math.max(0, this.state.history.length - 120)).map((word, index, arr) => {
                                 return (
                                         <Word
                                             key        ={index}
@@ -249,7 +249,7 @@ export default class Viewport extends React.Component {
             future              = this.state.assets[this.state.currentAsset].asset.future;
             let sliceDistance   = this.props.fixationWidth - 1;
 
-            if (scrollDirection == ScrollDirectionTypes.Up) {
+            if (scrollDirection == ScrollDirectionTypes.UP) {
                 if (this.props.fixationWidth > 1) {
                     future         = fixationWindow.concat(future);
                     fixationWindow = history.slice(history.length - sliceDistance + 1).concat(trailingWord);
@@ -260,7 +260,7 @@ export default class Viewport extends React.Component {
                     fixationWindow = history.slice(history.length - 1, history.length);
                     history        = history.slice(0, history.length - 1);
                 }
-            } else if (scrollDirection == ScrollDirectionTypes.Down) {
+            } else if (scrollDirection == ScrollDirectionTypes.DOWN) {
                 if (this.props.fixationWidth > 1) {
                     history        = history.concat(trailingWord).concat(fixationWindow.slice(0, fixationWindow.length - 1));
                     trailingWord   = fixationWindow.slice(-1);
@@ -292,6 +292,8 @@ export default class Viewport extends React.Component {
         this.setState({
             scroll: this.state.scroll + 1
         });
+
+        console.log(JSON.stringify(this.state.history.slice(Math.max(0, this.state.history.length - 120))));
     }
 
     preventDefault = (e) => {
@@ -312,9 +314,9 @@ export default class Viewport extends React.Component {
         }
 
         if (delta < 0) {
-            return ScrollDirectionTypes.Down;
+            return ScrollDirectionTypes.DOWN;
         } else if (delta > 0){
-            return ScrollDirectionTypes.Up;
+            return ScrollDirectionTypes.UP;
         }
     }
 

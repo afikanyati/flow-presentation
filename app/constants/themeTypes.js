@@ -4,7 +4,7 @@
  */
 
 export default {
-    White: "up",
-    Cream: "down",
-    Night: "night"
+    WHITE: "up",
+    CREAM: "down",
+    NIGHT: "night"
 };

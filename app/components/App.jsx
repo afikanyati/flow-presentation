@@ -15,9 +15,9 @@ import uuid                     from 'uuid';
 import initReactFastclick       from 'react-fastclick';
 
 // Components
-import Viewport from './viewport/Viewport';
-import FontTypes from '../constants/FontTypes';
-import modeTypes from '../constants/themeTypes';
+import Viewport                 from './viewport/Viewport';
+import FontTypes                from '../constants/FontTypes';
+import ThemeTypes               from '../constants/themeTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -37,10 +37,10 @@ export default class Root extends React.Component {
         super(props);
         this.state = {
             fontSize      : 20,
-            fontFamily    : FontTypes.AdobeGaramond,
+            fontFamily    : FontTypes.ADOBE_GARAMOND,
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
             trackingSpeed : 0,
-            theme         : themeTypes.White,
+            theme         : ThemeTypes.WHITE,
             hand          : "right"
         };
     }

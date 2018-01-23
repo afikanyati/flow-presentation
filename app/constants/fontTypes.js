@@ -4,19 +4,19 @@
  */
 
 export default {
-    AdobeGaramond: {
+    ADOBE_GARAMOND: {
         regular: "'AdobeGaramond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
         italic: "'AdobeGaramondItalic', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif"
     },
-    Palantino: {
+    PALANTINO: {
         regular: "'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif",
         italic: "'PalatinoItalic', 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif"
     },
-    Averta: {
+    AVERTA: {
         regular: "'Averta', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
         italic: "'AvertaItalic', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
     },
-    Avenir: {
+    AVENIR: {
         regular: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
         italic: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
     }

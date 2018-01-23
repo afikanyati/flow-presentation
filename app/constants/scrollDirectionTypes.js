@@ -4,6 +4,6 @@
  */
 
 export default {
-    Up: "up",
-    Down: "down"
+    UP: "up",
+    DOWN: "down"
 };
