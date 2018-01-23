@@ -38,7 +38,7 @@ injectGlobal`
       opacity: 0.5;
     }
 
-    .periphery-enter.pheriphery-enter-active {
+    .periphery-enter.periphery-enter-active {
       opacity: 1;
       transition: opacity 300ms ease-in;
     }
@@ -47,7 +47,7 @@ injectGlobal`
       opacity: 0.5;
     }
 
-    .periphery-leave.pheriphery-leave-active {
+    .periphery-leave.periphery-leave-active {
       opacity: 0;
       transition: opacity 200ms ease-in;
     }

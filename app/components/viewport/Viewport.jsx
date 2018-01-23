@@ -18,13 +18,13 @@ export default class Viewport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scroll        : 0,
-            currentAsset  : 0,
-            history       : [],
-            trailingWord  : [],
-            fixationWindow: ["I","have", "found", "myself"],
-            future        :["thinking","a","lot","about","death","lately.","I","know,","what","a","morbid","topic","for","a","young","adult","at","his","physical","peak","with","a","potentially","prosperous","career","and","life","ahead","of","him","to","preoccupy","his","waking","thoughts","with.","“Why","are","you","thinking","about","death?","You","still","have","life","ahead","of","you.","You","go","to","MIT,","you","have","a","loving","family,","you’re","good-looking,","you’re","most","likely","going","to","be","rich!","You","live","the","life","of","the","one","percent.”","Don’t","get","me","wrong,","I","acknowledge","and","appreciate","my","privileged","position,","but","a","lot","of","people","seem","to","be","missing","the","point.","Moreover,","the","more","time","I’ve","devoted","to","pondering","said","point,","the","more","I’ve","become","disillusioned","and","disheartened","by","the","civilization","into","which","I","was","born,","and","as","this","think","piece","unfolds,","I","hope","at","a","minimum","to","help","you","understand","my","grievances,","if","not","to","persuade","you","towards","similar","outlooks.","I","am","I","suicidal?","No.","On","the","contrary,","I","love","life,","and","it’s","this","interminable","love","that","gave","rise","to","my","fear","of","death","and","ignited","the","onset","of","existential","thoughts","that","become","the","basis","for","what","I","will","share","in","this","think","piece."],
-            assets        : []
+            scroll         : 0,
+            currentAsset   : 0,
+            history        : [],
+            trailingWord   : [],
+            fixationWindow : ["I","have", "found", "myself"],
+            future         :["thinking","a","lot","about","death","lately.","I","know,","what","a","morbid","topic","for","a","young","adult","at","his","physical","peak","with","a","potentially","prosperous","career","and","life","ahead","of","him","to","preoccupy","his","waking","thoughts","with.","“Why","are","you","thinking","about","death?","You","still","have","life","ahead","of","you.","You","go","to","MIT,","you","have","a","loving","family,","you’re","good-looking,","you’re","most","likely","going","to","be","rich!","You","live","the","life","of","the","one","percent.”","Don’t","get","me","wrong,","I","acknowledge","and","appreciate","my","privileged","position,","but","a","lot","of","people","seem","to","be","missing","the","point.","Moreover,","the","more","time","I’ve","devoted","to","pondering","said","point,","the","more","I’ve","become","disillusioned","and","disheartened","by","the","civilization","into","which","I","was","born,","and","as","this","think","piece","unfolds,","I","hope","at","a","minimum","to","help","you","understand","my","grievances,","if","not","to","persuade","you","towards","similar","outlooks.","I","am","I","suicidal?","No.","On","the","contrary,","I","love","life,","and","it’s","this","interminable","love","that","gave","rise","to","my","fear","of","death","and","ignited","the","onset","of","existential","thoughts","that","become","the","basis","for","what","I","will","share","in","this","think","piece."],
+            assets         : []
                 }
             }
 
@@ -44,7 +44,7 @@ export default class Viewport extends React.Component {
                               transitionName         ="periphery"
                               transitionEnterTimeout ={300}
                               transitionLeaveTimeout ={200}>
-                            {this.state.history.slice(Math.max(0, this.state.history.length - 120)).map((word, index, arr) => {
+                            {this.state.history.map((word, index, arr) => {
                                 return (
                                         <Word
                                             key        ={index}
@@ -110,7 +110,7 @@ export default class Viewport extends React.Component {
                     <Future
                         fontSize   ={this.props.fontSize}
                         fontFamily ={this.props.fontFamily}>
-                        {this.state.future.slice(0, Math.min(96, this.state.future.length)).map((word, index, arr) => {
+                        {this.state.future.map((word, index, arr) => {
                             return (
                                 <Word
                                     key        ={index + this.state.history.length + this.state.trailingWord.length + this.state.fixationWindow.length}
@@ -292,8 +292,6 @@ export default class Viewport extends React.Component {
         this.setState({
             scroll: this.state.scroll + 1
         });
-
-        console.log(JSON.stringify(this.state.history.slice(Math.max(0, this.state.history.length - 120))));
     }
 
     preventDefault = (e) => {
@@ -517,7 +515,7 @@ const TrailingWord = styled.p`
     font-family       : ${props => props.fontFamily.regular || serif};
     font-size         : ${props => 2.5*props.fontSize + 'px' || '40px'};
     line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
-    opacity           : 0.7;
+    opacity           : 0.5;
     margin            : 0;
     margin-right      : ${props => props.fontSize/2 + 'px' || '8px'};
     transition        : all 0.3s;
