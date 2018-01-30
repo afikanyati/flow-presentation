@@ -1,8 +1,7 @@
 // Libs
-import React            from 'react';
-import firebase         from 'firebase';
-import PropTypes        from 'prop-types';
-import styled           from 'styled-components';
+import React        from 'react';
+import PropTypes    from 'prop-types';
+import styled       from 'styled-components';
 
 /**
  * The Word component is a component used to
@@ -12,8 +11,9 @@ export default class Word extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value   : "",
+            text   : "",
             index   : -1,
+            paragraph: -1,
             messages: {}
         }
     }
@@ -28,8 +28,8 @@ export default class Word extends React.Component {
                 italic     ={this.props.italic}
                 bold       ={this.props.bold}
                 fontFamily ={this.props.fontFamily}
-                onClick    ={this.props.skipToWord.bind({}, this.state.value.slice(0, -1), this.state.index)}>
-                {this.state.value}
+                onClick    ={this.props.skipToWord.bind({}, this.state.text.slice(0, -1), this.state.paragraph, this.state.index)}>
+                {this.state.text}
             </Text>
         );
     }
@@ -38,8 +38,9 @@ export default class Word extends React.Component {
         // console.log("+++++Word");
 
         this.setState({
-            value   : this.props.value,
+            text   : this.props.text,
             index   : this.props.index,
+            paragraph: this.props.paragraph,
             messages: this.props.messages
         });
     }
@@ -54,13 +55,14 @@ export default class Word extends React.Component {
 // ============= PropTypes ==============
 
 Word.propTypes = {
-    value     : PropTypes.string.isRequired,
-    index     : PropTypes.number.isRequired,
-    messages  : PropTypes.object,
-    italic    : PropTypes.bool,
-    bold      : PropTypes.bool,
-    skipToWord: PropTypes.func.isRequired,
-    fontFamily: PropTypes.object.isRequired
+    paragraph          : PropTypes.number.isRequired,
+    text               : PropTypes.string.isRequired,
+    index              : PropTypes.number.isRequired,
+    messages           : PropTypes.object,
+    italic             : PropTypes.bool,
+    bold               : PropTypes.bool,
+    skipToWord         : PropTypes.func.isRequired,
+    fontFamily         : PropTypes.object.isRequired
 };
 
 // ============= Styled Components ==============

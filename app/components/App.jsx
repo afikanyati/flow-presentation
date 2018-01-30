@@ -16,7 +16,7 @@ import initReactFastclick       from 'react-fastclick';
 
 // Components
 import Viewport                 from './viewport/Viewport';
-import FontTypes                from '../constants/FontTypes';
+import FontTypes                from '../constants/fontTypes';
 import ThemeTypes               from '../constants/themeTypes';
 
 // Initialize Firebase

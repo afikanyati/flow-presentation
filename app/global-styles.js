@@ -32,22 +32,41 @@ injectGlobal`
     button {
     	border: none;
     }
+
     /* CSS Stylesheet for Flow */
 
-    .periphery-enter {
+    .paragraph-enter {
       opacity: 0.5;
     }
 
-    .periphery-enter.periphery-enter-active {
+    .paragraph-enter.paragraph-enter-active {
       opacity: 1;
       transition: opacity 300ms ease-in;
     }
 
-    .periphery-leave {
+    .paragraph-leave {
       opacity: 0.5;
     }
 
-    .periphery-leave.periphery-leave-active {
+    .paragraph-leave.paragraph-leave-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
+
+    .word-enter {
+      opacity: 0.5;
+    }
+
+    .word-enter.word-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-in;
+    }
+
+    .word-leave {
+      opacity: 0.5;
+    }
+
+    .word-leave.word-leave-active {
       opacity: 0;
       transition: opacity 200ms ease-in;
     }
