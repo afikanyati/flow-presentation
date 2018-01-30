@@ -90,11 +90,10 @@ export default class Viewport extends React.Component {
             },
         ];
 
-        assets[this.state.assetCurrentIndex].fixationWindow = assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
-        assets[this.state.assetCurrentIndex].future         = assets[this.state.assetCurrentIndex].future.slice(this.props.fixationWidth);
-
         this.setState({
             assets        : assets
+        }, () => {
+            this.loadAsset(this.state.assetCurrentIndex);
         });
     }
 
@@ -238,17 +237,15 @@ export default class Viewport extends React.Component {
 
     handleKeys = (e) => {
 
-        // 37 = Left, 38 = Up, 39 = Right, 40 = Down
         let keys = {
-            37: true,
-            38: true,
-            39: true,
-            40: true
+            37: true,   // Left
+            38: true,   // Up
+            39: true,   // Right
+            40: true    // Down
         };
 
         if (keys[e.keyCode]) {
             this.preventDefault(e);
-            let history, trailingWord, fixationWindow, future;
 
             // Up or Left
             if (e.keyCode == 37 || e.keyCode == 38) {
@@ -319,7 +316,7 @@ export default class Viewport extends React.Component {
                     trailingWord   = fixationWindow.slice(-1);
                     fixationWindow = future.slice(0, sliceDistance);
                     future         = future.slice(sliceDistance);
-                } else if (future.length == 0)  {
+                } else {
                     history        = history.concat(trailingWord).concat(fixationWindow);
                     trailingWord   = [];
                     fixationWindow = [];
@@ -386,19 +383,12 @@ export default class Viewport extends React.Component {
 
     skipToWord = (word, paragraphIndex, wordIndex) => {
         let wordParagraph    = this.state.assets[paragraphIndex];
+        let assets           = this.state.assets;
 
         let history          = wordParagraph.history,
         trailingWord         = wordParagraph.trailingWord,
         fixationWindow       = wordParagraph.fixationWindow,
         future               = wordParagraph.future;
-
-        let historyLength    = history.length,
-        trailingWordLength   = trailingWord.length,
-        fixationWindowLength = fixationWindow.length,
-        futureLength         = future.length;
-
-        let sliceDistance    = this.props.fixationWidth - 1;
-        let assets           = this.state.assets;
 
         // reset current paragraph is skipping to a new one
         if (paragraphIndex > this.state.assetCurrentIndex) {
@@ -417,59 +407,11 @@ export default class Viewport extends React.Component {
             assets[this.state.assetCurrentIndex].fixationWindow = [];
         }
 
-        if (this.props.fixationWidth > 1) {
-            // determine which section of viewport word is in
-            if (wordIndex < historyLength) {
-                // History Word
-
-                let position   = history.indexOf(word); // where position is local to array and index is global
-                future         = history.slice(position).concat(trailingWord, fixationWindow, future); // proxy future to re-establish fixationWindow
-                history        = history.slice(0, position);
-                trailingWord   = [];
-                fixationWindow = future.slice(0, this.props.fixationWidth);
-                future         = future.slice(this.props.fixationWidth);
-            } else if (wordIndex == historyLength) {
-                // Trailing Word
-                fixationWindow = trailingWord.concat(fixationWindow);
-                trailingWord   = [];
-            } else if (wordIndex > historyLength && wordIndex < historyLength + trailingWordLength + fixationWindowLength) {
-                // Fixation Window
-                let position   = fixationWindow.indexOf(word); // where position is local to array and index is global
-                history        = history.concat(trailingWord,fixationWindow.slice(0, position));
-                trailingWord   = [];
-                future         = fixationWindow.slice(position).concat(future); // proxy future to re-establish fixationWindow
-                fixationWindow = future.slice(0, this.props.fixationWidth);
-                future         = future.slice(this.props.fixationWidth);
-            } else if (wordIndex >= historyLength + trailingWordLength + fixationWindowLength) {
-                // Future Word
-                let position   = future.indexOf(word); // where position is local to array and index is global
-                history        = history.concat(trailingWord,fixationWindow, future.slice(0, position));
-                trailingWord   = [];
-                fixationWindow = future.slice(position, position + this.props.fixationWidth);
-                future         = future.slice(position + this.props.fixationWidth);
-            }
-        } else {
-            // determine which section of viewport word is in
-            if (wordIndex < historyLength) {
-                // History Word
-                let position   = history.indexOf(word); // where position is local to array and index is global
-                future         = history.slice(position).concat(fixationWindow, future); // proxy future to re-establish fixationWindow
-                history        = history.slice(0, position);
-                fixationWindow = future.slice(0, this.props.fixationWidth);
-                future         = future.slice(this.props.fixationWidth);
-
-            } else if (wordIndex >= historyLength && wordIndex < historyLength + fixationWindowLength) {
-                // Trailing Word or Fixation Window
-                // Do nothing
-                return;
-            } else if (wordIndex >= historyLength + fixationWindowLength) {
-                // Future Word
-                let position   = future.indexOf(word); // where position is local to array and index is global
-                history        = history.concat(fixationWindow, future.slice(0, position));
-                fixationWindow = [future[position]];
-                future         = future.slice(position + 1);
-            }
-        }
+        let words = history.concat(trailingWord, fixationWindow, future);
+        history = words.slice(0, wordIndex);
+        trailingWord   = [];
+        fixationWindow = words.slice(wordIndex, wordIndex + this.props.fixationWidth);
+        future = words.slice(wordIndex + this.props.fixationWidth);
 
         assets[paragraphIndex].history        = history;
         assets[paragraphIndex].trailingWord   = trailingWord;
@@ -483,9 +425,14 @@ export default class Viewport extends React.Component {
     }
 
     loadAsset = (index) => {
+        let assets                   = this.state.assets;
+        assets[index].fixationWindow = assets[index].future.slice(0, this.props.fixationWidth);
+        assets[index].future         = assets[index].future.slice(this.props.fixationWidth);
+
         this.setState({
-            scroll         : 0,
-            assetCurrentIndex   : index
+            scroll            : 0,
+            assets            : assets,
+            assetCurrentIndex : index
         });
     }
 }
