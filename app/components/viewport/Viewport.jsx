@@ -6,6 +6,7 @@ import { CSSTransitionGroup }   from 'react-transition-group';
 
 // Components
 import ScrollDirectionTypes     from '../../constants/scrollDirectionTypes';
+import FeatureMenu              from './FeatureMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
 
@@ -215,6 +216,8 @@ export default class Viewport extends React.Component {
                         );
                 })}
                 </FutureContainer>
+                <FeatureMenu
+                    />
             </Container>
         );
     }
@@ -262,7 +265,7 @@ export default class Viewport extends React.Component {
     handleScroll = (e) => {
         this.preventDefault(e);
 
-        if (this.state.scroll == 10) {
+        if (this.state.scroll == 15) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
         }
@@ -443,7 +446,7 @@ Viewport.propTypes = {
     fontSize     : PropTypes.number.isRequired,
     fontFamily   : PropTypes.object.isRequired,
     fixationWidth: PropTypes.number.isRequired,
-    theme         : PropTypes.string.isRequired,
+    skin         : PropTypes.string.isRequired,
     hand         : PropTypes.string.isRequired,
     trackingSpeed: PropTypes.number.isRequired
 };
@@ -496,8 +499,8 @@ const HistoryContainer = styled.section`
         width         : 100%;
         content       : "";
         background    : linear-gradient(to bottom,
-         rgba(255,255,255, 1) 0%,
-         rgba(255,255,255, 0) 50%
+         rgba(255,255,255, 1) 20%,
+         rgba(255,255,255, 0) 70%
         );
         pointer-events: none; /* so the text is still selectable */
     }
@@ -567,7 +570,7 @@ const FutureContainer = styled.section`
         width         : 100%;
         content       : "";
         background    : linear-gradient(to top,
-         rgba(255,255,255, 1) 20%,
+         rgba(255,255,255, 1) 40%,
          rgba(255,255,255, 0) 80%
         );
         pointer-events: none; /* so the text is still selectable */

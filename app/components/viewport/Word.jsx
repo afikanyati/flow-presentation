@@ -81,7 +81,7 @@ const Text = styled.span`
     -ms-transition    : all 0.2s;
 
     &:hover {
-        color: ${props => props.theme.red};
+        color: ${props => props.theme.purple};
         transition        : all 0.2s;
         -webkit-transition: all 0.2s;
         -moz-transition   : all 0.2s;

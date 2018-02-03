@@ -17,7 +17,7 @@ import initReactFastclick       from 'react-fastclick';
 // Components
 import Viewport                 from './viewport/Viewport';
 import FontTypes                from '../constants/fontTypes';
-import ThemeTypes               from '../constants/themeTypes';
+import SkinTypes               from '../constants/skinTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -40,7 +40,7 @@ export default class Root extends React.Component {
             fontFamily    : FontTypes.ADOBE_GARAMOND,
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
             trackingSpeed : 0,
-            theme         : ThemeTypes.WHITE,
+            skin         : SkinTypes.WHITE,
             hand          : "right"
         };
     }
@@ -57,8 +57,8 @@ export default class Root extends React.Component {
                 fontFamily    ={this.state.fontFamily}
                 fixationWidth ={this.state.fixationWidth}
                 trackingSpeed ={this.state.trackingSpeed}
-                theme         ={this.state.theme}
-                hand          ={this.state.hand} />
+                hand          ={this.state.hand}
+                skin          ={this.state.skin}/>
         );
     }
 

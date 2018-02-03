@@ -20,8 +20,9 @@ const theme = {
     green: '#69c4a8',
     yellow: '#f1ddac',
     white: '#ffffff',
-    lightGray: '#f2f2f2',
-    darkGray: '#b3b3b3',
+    lightGray: '#f0f0f0',
+    midGray: '#e0e1e0',
+    darkGray: '#252625',
     black: '#000000',
     textColor: 'rgba(35,31,32, 0.87)'
 }
