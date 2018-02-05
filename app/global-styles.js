@@ -10,6 +10,7 @@ injectGlobal`
 
     body {
         color: rgba(0,0,0,0.87);
+        font-family: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
     }
 
     a, a:visited, a:hover {
@@ -299,4 +300,33 @@ injectGlobal`
     src: url(assets/fonts/Palantino/Palantino-Italic.ttf);
     font-weight: 400;
     }
+
+    .react-hint {
+        width: 150px;
+        margin-left: 15px;
+    	padding: 5px;
+    	position: absolute;
+    	z-index: 9999;
+    	cursor: default;
+    	animation: .5s fadeIn;
+    }
+
+    .react-hint__content {
+        display: inline-block;
+    	padding: 10px;
+    	border-radius: 5px;
+    	background: #000;
+    	color: #fff;
+    }
+
+    @keyframes fadeIn {
+    	from {
+    		opacity: 0;
+    	}
+
+    	to {
+    		opacity: 1;
+    	}
+    }
+
 `

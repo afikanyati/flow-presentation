@@ -12,7 +12,8 @@ const PATHS = {
     app: path.join(__dirname, 'app'),
     build: path.join(__dirname, 'build'),
     images: path.join(__dirname, 'app/assets/images'),
-    fonts: path.join(__dirname, 'app/assets/fonts')
+    fonts: path.join(__dirname, 'app/assets/fonts'),
+    node: path.join(__dirname, 'node_modules')
 };
 
 process.env.BABEL_ENV = TARGET;
