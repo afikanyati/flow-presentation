@@ -4,6 +4,7 @@ import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
 // Components
+import HandTypes               from '../../constants/handTypes';
 import Play        from '../../assets/images/icons/play.svg';
 import Pause        from '../../assets/images/icons/pause.svg';
 
@@ -61,8 +62,8 @@ CruiseControlButton.propTypes = {
 const ControlButton = styled.div`
     position: fixed;
     bottom: 30px;
-    left: ${props => props.hand == "left" ? "60px" : "auto"};
-    right: ${props => props.hand == "right" ? "0px" : "auto"};
+    left: ${props => props.hand == HandTypes.LEFT ? "60px" : "auto"};
+    right: ${props => props.hand == HandTypes.RIGHT ? "0px" : "auto"};
     transform: translateX(-50%);
     width: 60px;
     height: 60px;

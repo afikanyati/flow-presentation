@@ -5,6 +5,7 @@ import styled                   from 'styled-components';
 import ReactHintFactory         from 'react-hint';
 
 // Components
+import HandTypes               from '../../constants/handTypes';
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
 import BookmarkWhite            from '../../assets/images/icons/bookmark-white.svg';
@@ -200,7 +201,7 @@ export default class FeatureMenu extends React.Component {
     calcTranslate = (value, index) => {
         let translateInfo = {};
         let numItems = Object.keys(this.state.features).length;
-        let handMultiplier = this.props.hand == "left" ? 1 : -1;
+        let handMultiplier = this.props.hand == HandTypes.LEFT ? 1 : -1;
 
         let sweepDeg = 180,
             increment = sweepDeg/(numItems - 1),
@@ -282,8 +283,8 @@ const Menu = styled.div`
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    left: ${props => props.hand == "left" ? "30px" : "auto"};
-    right: ${props => props.hand == "right" ? "30px" : "auto"};
+    left: ${props => props.hand == HandTypes.LEFT ? "30px" : "auto"};
+    right: ${props => props.hand == HandTypes.RIGHT ? "30px" : "auto"};
     width: 60px;
     height: 60px;
     z-index: 1000;

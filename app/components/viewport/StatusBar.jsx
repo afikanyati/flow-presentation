@@ -4,6 +4,7 @@ import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
 // Components
+import HandTypes               from '../../constants/handTypes';
 import DefinitionsPurple        from '../../assets/images/icons/definitions-purple.svg';
 import DefinitionsGray         from '../../assets/images/icons/definitions-gray.svg';
 import RapidScrollPurple     from '../../assets/images/icons/rapid-scroll-purple.svg';
@@ -75,8 +76,8 @@ StatusBar.propTypes = {
 const StatusBarContainer = styled.div`
     position: fixed;
     top: 15px;
-    left: ${props => props.hand == "left" ? "15px" : "auto"};
-    right: ${props => props.hand == "right" ? "15px" : "auto"};
+    left: ${props => props.hand == HandTypes.LEFT ? "15px" : "auto"};
+    right: ${props => props.hand == HandTypes.RIGHT ? "15px" : "auto"};
 `;
 
 const StatusIcon = styled.div`

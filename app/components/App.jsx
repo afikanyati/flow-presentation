@@ -18,6 +18,7 @@ import initReactFastclick       from 'react-fastclick';
 import Viewport                 from './viewport/Viewport';
 import FontTypes                from '../constants/fontTypes';
 import SkinTypes               from '../constants/skinTypes';
+import HandTypes               from '../constants/handTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -41,8 +42,8 @@ export default class Root extends React.Component {
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
             trackingSpeed : 12,
             skin         : SkinTypes.WHITE,
-            hand          : "left",
-            readingSpeed: 220,
+            hand          : HandTypes.LEFT,
+            readingSpeed: 220, //WPM
             trailingWordIsActive: false
         };
     }
