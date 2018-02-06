@@ -9,6 +9,8 @@ import ScrollDirectionTypes     from '../../constants/scrollDirectionTypes';
 import FeatureMenu              from './FeatureMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
+import StatusBar                from './StatusBar';
+import CruiseControlButton      from './CruiseControlButton';
 
 /**
  * The Viewport component is a component used to
@@ -20,14 +22,18 @@ export default class Viewport extends React.Component {
         this.state = {
             scroll            : 0,
             assetCurrentIndex : 0,
-            assets            : []
+            assets            : [],
+            definitionsAreActive: false,
+            highlightIsActive: false,
+            rapidScrollIsActive: false,
+            cruiseControlIsActive: false
         }
     }
 
     componentWillMount() {
         console.log("-----Viewport");
 
-        let para = ""
+        let para = "";
         console.log(JSON.stringify(para.split(" ")));
 
         // Get thought assets
@@ -38,7 +44,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["I","have", "found", "myself","thinking","a","lot","about","death","lately.","I","know,","what","a","morbid","topic","for","a","young","adult","at","his","physical","peak","with","a","potentially","prosperous","career","and","life","ahead","of","him","to","preoccupy","his","waking","thoughts","with.","“Why","are","you","thinking","about","death?","You","still","have","life","ahead","of","you.","You","go","to","MIT,","you","have","a","loving","family,","you’re","good-looking,","you’re","most","likely","going","to","be","rich!","You","live","the","life","of","the","one","percent.”","Don’t","get","me","wrong,","I","acknowledge","and","appreciate","my","privileged","position,","but","a","lot","of","people","seem","to","be","missing","the","point.","Moreover,","the","more","time","I’ve","devoted","to","pondering","said","point,","the","more","I’ve","become","disillusioned","and","disheartened","by","the","civilization","into","which","I","was","born,","and","as","this","think","piece","unfolds,","I","hope","at","a","minimum","to","help","you","understand","my","grievances,","if","not","to","persuade","you","towards","similar","outlooks.","I","am","I","suicidal?","No.","On","the","contrary,","I","love","life,","and","it’s","this","interminable","love","that","gave","rise","to","my","fear","of","death","and","ignited","the","onset","of","existential","thoughts","that","become","the","basis","for","what","I","will","share","in","this","think","piece."],
+                future:["We","keep","claiming","that","technology","will","transform","education.","We","said","it","when","computers","hit","the","market","in","a","real","way","in","the","1980s.","We","said","it","when","artificial","intelligence","began","reaching","Siri","levels.","And","we’re","saying","it","now,","when","spatial","computing","is","taking","its","strongest","steps","forward","since","we","began","seriously","working","on","it","in","the","80s.","But","while","those","early","technologies","have","certainly","impacted","schooling,","they","haven’t","transformed","it","the","way","we","hoped","they","might."],
                 index: 0
             },
             {
@@ -46,7 +52,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["Be", "warned,", "this","think","piece","is","incomplete,","it’s","overoptimistic","about","human","nature,","and","is","likely","fraught","with","many","inaccuracies,","technical","inconsistencies,","and","assumptions","about","how","the","world","works.","But","nonetheless,","I’ve","felt","the","urge","to","translate","the","mental","dialogue","I’ve","had","since","I","left","high","school","into","a","physical","record,","if","not","for","the","purpose","of","starting","a","conversation,","then","for","therapeutic","exercise","inherent","in","the","process.","“But","what","is","this","think","piece","about?”","I’ve","had","trouble","articulating","this","to","my","peers","recently,","but","if","I","had","to","give","a","one-line","summary,","it","would","best","be","summarized","as","an","attempt","at","constructing","a","model","of","physical","reality","and","a","proposal","for","steering","humanity","towards","some","best-case","utopian","future.","This","is","a","bold","and","somewhat","arrogant","undertaking;","this","I","understand.","But","barring","billionaire","Elon","Musk,","I","see","few","denizens","of","our","planet","actively","attempting","to","deter","humanity","from","precipitating","its","imminent","self-inflicted","extinction.","I","just","want","to","make","my","contribution","using","the","means","I","currently","have — my","knowledge","of","the","current","and","prospective","technological","landscape","and","my","voice.","But","before","getting","to","the","heart","of","the","matter,","I’m","going","to","dial","back","a","bit","and","give","you","some","context","on","human","civilization","and","present","how","our","history","and","biological","evolution","has","lead","to","our","present-day","society.","We","often","overlook","these","details","or","classify","them","as","fixed","conditions,","but","I","want","to","convince","you","otherwise."],
+                future:["Take","computers.","Many","schools","now","require","all","assignments","to","be","typed","instead","of","handwritten — they’re","easier","on","the","eyes,","after","all,","and","no","more","demerit","points","for","sloppy","cursive.","But","the","vision","of","30","students","sitting","in","a","class","for","eight","hours","a","day","in","front","of","a","computer","learning","lessons","from","programs","never","materialized.","Whether","that’s","a","positive","or","a","negative","can","be","debated","ad","nauseum,","but","the","fact","is","that","adoption","was","hampered","by","cost.","Most","schools","have","a","single","computer","lab","where","students","take","turns","studying","computers","specifically — they","aren’t","using","data","modeling","in","their","stats","class,","or","testing","components","for","chemistry.","Computers","have","been","relegated","to","something","you","learn","about","rather","than","something","you","learn","from,","and","there","are","a","lot","of","opportunities","we’ve","missed","because","of","that."],
                 index: 1
             },
             {
@@ -54,7 +60,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["We","live","on","a","tiny","rock","in","a","vast","universe.","So","vast","that","it’s","immensity","at","times","is","inconceivably","hard","to","comprehend.","Few","people","barring","the","late","astrophysicist","Carl","Sagan","have","been","able","to","articulate","this","so","adeptly.","For","the","sake","of","refreshing","your","memory","and","re-igniting","your","childhood","wonder,","here’s","an","excerpt","from","Sagan’s","book","‘Pale","Blue","Dot’","voiced","over","a","pretty","curation","of","photographs","and","video","of","Earth-related","subjects:"],
+                future:["The","failure","to","launch","artificial","intelligence","in","education","is","directly","linked","to","the","failure","to","adopt","widespread","computers.","A","virtual","tutor","can’t","help","students","figure","out","their","unique","learning","style","if","seventy","five","students","are","all","sharing","time","on","one","computer.","These","technologies","are","finding","traction","in","alternative","education","and","tutoring,","however,","where","assessment","tests","help","students","learn","about","their","own","learning","styles.","There’s","much","further","for","AI","to","go,","of","course,","and","hopefully","in","the","future","we’ll","see","it","being","used","even","more."],
                 index: 2
             },
             {
@@ -70,7 +76,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["While","it’s","“fun”","to","reflect","on","the","sheer","magnitude","of","the","universe","(of","universes","and","other","possible","higher-dimensional","spaces),","for","the","sake","of","staying","on","topic","let’s","bound","the","scope","of","our","discussion","to","the","three-dimensional","spacetime","continuum,","i.e.","the","three-dimensional","matter","existing","through","the","passage","of","time,","and","focus","on","the","scale","of","interest — the","human","scale."],
+                future:["So","now","we","begin","to","wonder","how","virtual","and","augmented","reality","will","fare","when","up","against","the","same","legislative","hurdles","that","have","hampered","past","technologies.","Virtual","reality","has","been","getting","a","lot","of","well-deserved","ink","for","its","potential","to","transform","education,","but","the","infrastructure","necessary","to","bring","in","a","program","that","every","kid","can","engage","with","is","a","stopper","even","more","significant","than","it","was","with","computers.","After","all,","VR","not","only","requires","a","computer","for","each","student — it","requires","a","top","of","the","line","computer.","Given","that","most","schools","are","still","running","computers","that","are","ten","years","old","or","more,","that’s","a","hurdle."],
                 index: 4
             },
             {
@@ -78,7 +84,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["As","far","as","physical","science","is","concerned,","the","universe","began","13.8","billion","years","ago","with","the","Big","Bang,","which","triggered","the","expansion","of","the","universe.", "However,","we’re","not","really","concerned","much","with","the","time","period","between","the","Big","Bang","and","the","formation","of","the","stars,","galaxies,","and","planets;","we’re","more","concerned","with","the","time","period","beginning","from","the","dawn","of","the","modern","homo","sapien","to","present","day","human","civilization.","Nature","has","had","billions","of","years","to","refine","the","human","species","through","a","phenomenon","know","as","survival","of","the","fittest,","which","essentially","favors","organisms","that","best","adapt","to","their","environment.","If","one","were","to","anthropomorphize","nature","into","a","designer,","survival","of","the","fittest","would","essentially","be","nature","iterating","on","its","ideas,","refining","those","prototypes","that","best","achieve","it’s","objective","function","and","abandoning","those","that","don’t.","For","those","not","familiar","with","the","concept","of","an","objective","function,","here’s","a","brief","description:"],
+                future:["But","there","are","some","people","doing","amazing","things","with","VR","and","education.","We’re","not","going","to","waste","much","time","on","Google","Expeditions,","because","you’re","probably","all","familiar","with","them,","but","if","you","aren’t,","in","a","nutshell:","Google","lets","students","explore","the","world","using","cell","phones","and","a","piece","of","cardboard.","It’s","great","because","it","doesn’t","need","an","expensive","computer,","but","it","still","requires","a","lot","of","funding","from","Google","to","make","it","happen.","They","rent","out","the","phones,","provide","the","cardboards","for","free,","and","even","give","training","for","teachers","on","how","to","lead","the","expedition.","It’s","a","fun","learning","tool,","but","likely","to","be","used","by","teachers","the","way","they","used","to","use","crappy","British","documentaries — give","the","teacher","a","break","from","the","classroom,","let","the","students","have","some","fun,","and","then","get","back","to","the","real","learning."],
                 index: 5
             },
             {
@@ -86,8 +92,40 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["For","nature","this","goal","is","survival.","So","in","essence,","one","can","envision","the","process","of","evolution","as","nature","exploring","and","creating","organisms","from","an","unbounded","option","space,","but","using","the","survival","measure","of","an","organism","as","an","optimization","instrument","to","heuristically","traverse","this","infinite","option","space","with","the","aim","of","converging","onto","some","optimal","design","that","fully","maximizes","its","desired","objective","function.","I","bring","this","point","up","to","highlight","the","fact","that","such","a","goal","might","take","forever","to","achieve,","especially","through","a","partially","stochastic","(randomized)","process","such","as","evolution.","As","a","result,","we","have","reason","to","believe","the","homo","sapien","in","its","current","form","is","in","no","way","an","optimal","design.","Furthermore,","as","a","consequence","of","the","emergence","of","consciousness,","humans","have","developed","their","own","set","of","desires","that","weren’t","initially","factored","into","the","original","objective","function","set","by","nature — desires","such","as","love,","esteem,","and","self-actualization.","For","this","reason,","humans","today","are","the","product","of","an","objective","function","that","by","our","present","standards","is","underspecified.","Indeed,","an","objective","function","built","on","survival","is","not","suitable","for","satisfying","the","needs","of","a","21st","century","human.","This","is","a","problem;","we","need","to","reconcile","our","objective","function","with","our","higher-level","needs."],
+                future:["We’ve","seen","VR","take","off","as","a","form","of","job","training,","the","advantage","there","being","the","budgets","necessary","to","pull","it","off.","But","the","boost","up","that","students","get","from","learning","first-hand","is","incredibly","important","in","schools,","too.","A","lot","of","students","learn","better","by","doing","than","listening,","and","virtual","reality","gives","them","the","opportunity","to","learn","hands","on","in","a","way","that","classic","education","simply","can’t.","Training","is","becoming","huge","in","industry,","and","hopefully","as","that","matures","it","will","trickle","down","to","high","school","level","students","as","well","(right","now","we’re","mostly","seeing","it","in","college","and","on","the","job).","Of","course,","hands-on","training","in","school","is","about","more","than","just","learning","how","to","do","a","job.","It","also","means","letting","them","explore","how","physics","works","instead","of","just","telling","them,","or","watching","a","famous","battle","to","learn","history."],
                 index: 6
+            },
+            {
+                type: "paragraph",
+                history: [],
+                trailingWord: [],
+                fixationWindow: [],
+                future:["If","virtual","reality","is","being","hampered","by","cost,","augmented","reality","might","have","a","leg-up","on","its","more","resource","intensive","cousin.","With","AR,","teachers","can","get","started","with","nothing","but","a","cell","phone.","Granted,","one","phone","for","an","entire","classroom","isn’t","an","ideal","scenario — so","AR","is","pressing","forward","using","other","avenues."],
+                index: 7
+            },
+            {
+                type: "paragraph",
+                history: [],
+                trailingWord: [],
+                fixationWindow: [],
+                future:["Take","the","augmented","reality","sandbox,","which","is","being","used","around","the","world","to","help","students","learn","about","topography","and","geography.","All","it","requires","is","a","projector,","a","single","computer,","and","a","few","sensors.","With","that","students","can","leap","into","a","fully","responsive","experience","that","reacts","to","their","input.","Following","that","line","has","the","potential","to","get","a","whole","classroom","involved","in","AR","with","realistic","resource","requirements."],
+                index: 8
+            },
+            {
+                type: "paragraph",
+                history: [],
+                trailingWord: [],
+                fixationWindow: [],
+                future:["Of","course,","we’re","also","entering","the","age","of","ARKit","and","ARCore,","which","means","that","in","a","few","years,","every","cell","phone","will","have","the","ability","to","be","used","as","an","educational","tool.","While","lots","of","students","don’t","have","their","own","phones,","buying","cheap","mobile","devices","for","a","whole","classroom","is","a","lot","easier","than","buying","computers","for","a","whole","classroom.","And","even","in","these","early","days,","we’re","seeing","exciting","concepts","like","the","Atom","Visualizer,","which","lets","you","place","models","of","atomic","structures","around","the","room","and","then","examine","them","in","3","dimensions."],
+                index: 9
+            },
+            {
+                type: "paragraph",
+                history: [],
+                trailingWord: [],
+                fixationWindow: [],
+                future:["How","soon","we’re","likely","to","see","this","take","off","remains","the","key","question.","While","the","technology","is","here,","the","point","at","which","it","becomes","cheap","enough","for","mass","adoption","is","still","at","least","a","few","years","away.","AR","will","probably","beat","its","cousin","to","the","finish","line,","but","VR","may","take","the","final","prize","of","being","the","first","technology","to","truly","change","education.","Only","time","will","tell","for","sure."],
+                index: 10
             },
         ];
 
@@ -100,7 +138,14 @@ export default class Viewport extends React.Component {
 
     render() {
         return (
-            <Container id="viewport">
+            <Container
+                id="viewport"
+                onClick={this.toggleRapidScroll}>
+                <StatusBar
+                    definitionsAreActive={this.state.definitionsAreActive}
+                    highlightIsActive={this.state.highlightIsActive}
+                    rapidScrollIsActive={this.state.rapidScrollIsActive}
+                />
                 <HistoryContainer
                     fontSize={this.props.fontSize}>
                     {[this.state.assets[this.state.assetCurrentIndex]].map((asset) => {
@@ -216,8 +261,10 @@ export default class Viewport extends React.Component {
                         );
                 })}
                 </FutureContainer>
-                <FeatureMenu
-                    />
+                <FeatureMenu />
+                <CruiseControlButton
+                    cruiseControlIsActive={this.state.cruiseControlIsActive}
+                    toggleCruiseControl={this.toggleCruiseControl}/>
             </Container>
         );
     }
@@ -265,7 +312,10 @@ export default class Viewport extends React.Component {
     handleScroll = (e) => {
         this.preventDefault(e);
 
-        if (this.state.scroll == 15) {
+        if (!this.state.rapidScrollIsActive && this.state.scroll == this.props.trackingSpeed) {
+            let direction = this.getScrollDirection(e);
+            this.updateViewport(direction);
+        } else if (this.state.rapidScrollIsActive && this.state.scroll == 0.5 * this.props.trackingSpeed) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
         }
@@ -384,7 +434,9 @@ export default class Viewport extends React.Component {
         }
     }
 
-    skipToWord = (word, paragraphIndex, wordIndex) => {
+    skipToWord = (word, paragraphIndex, wordIndex, e) => {
+        e.stopPropagation();
+
         let wordParagraph    = this.state.assets[paragraphIndex];
         let assets           = this.state.assets;
 
@@ -438,6 +490,21 @@ export default class Viewport extends React.Component {
             assetCurrentIndex : index
         });
     }
+
+    toggleRapidScroll = () => {
+
+        this.setState({
+            rapidScrollIsActive: !this.state.rapidScrollIsActive
+        });
+    }
+
+    toggleCruiseControl = (e) => {
+        e.stopPropagation();
+
+        this.setState({
+            cruiseControlIsActive: !this.state.cruiseControlIsActive
+        });
+    }
 }
 
 // ============= PropTypes ==============
@@ -469,6 +536,7 @@ const Container = styled.div`
 	-moz-align-items      : center;
 	align-items           : center;
     overflow              : hidden;
+    cursor: ${props => props.rapidScrollIsActive ? props.customCursor : "auto"};
 `;
 
 const HistoryContainer = styled.section`

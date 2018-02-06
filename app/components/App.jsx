@@ -39,7 +39,7 @@ export default class Root extends React.Component {
             fontSize      : 20,
             fontFamily    : FontTypes.ADOBE_GARAMOND,
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
-            trackingSpeed : 0,
+            trackingSpeed : 12,
             skin         : SkinTypes.WHITE,
             hand          : "right"
         };

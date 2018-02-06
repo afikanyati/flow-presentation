@@ -150,7 +150,6 @@ export default class FeatureMenu extends React.Component {
                             this.state.features[this.state.activeFeature].color}
                     onClick={this.toggleMenu}>
                     <ToggleIcon
-                        offset={this.state.activeFeature == null}
                         icon={
                             this.state.activeFeature == null ?
                                 this.state.menuIsOpen ?
@@ -190,7 +189,8 @@ export default class FeatureMenu extends React.Component {
 
     // ========== Methods ===========
 
-    toggleMenu = () => {
+    toggleMenu = (e) => {
+        e.stopPropagation();
         this.setState({
             menuIsOpen: !this.state.menuIsOpen
         });
@@ -252,7 +252,9 @@ export default class FeatureMenu extends React.Component {
         );
     }
 
-    activateFeature = (feature) => {
+    activateFeature = (feature, e) => {
+        e.stopPropagation();
+
         let features = this.state.features;
         features[feature].isActive = true;
         this.setState({
@@ -278,6 +280,8 @@ const Menu = styled.div`
     top: 50%;
     transform: translateY(-50%);
     left: 30px;
+    width: 60px;
+    height: 60px;
     z-index: 1000;
     border-radius: 30px;
 
@@ -309,10 +313,6 @@ const MenuItem = styled.li`
     transition: transform, opacity;
     transition-duration: 0.3s, 0.3s;
     transition-timing-function: ${props => props.menuIsOpen ? "cubic-bezier(0.35, 0.03, 0.47, 1.59)" : "cubic-bezier(0.35, -0.59, 0.47, 0.97)"};
-
-    &:hover {
-
-    }
 
     @media (max-width: 480px) and (max-height: 480px) {
         width: 30px;
@@ -427,8 +427,6 @@ const MenuToggle = styled.button`
 
 const ToggleIcon = styled.div`
     position: relative;
-    top: ${props => props.offset ? "4px" : "0px"};
-    right: ${props => props.offset ? "1px" : "0px"};
     width: 60px;
     height: 60px;
     background-image: ${props => props.icon};
