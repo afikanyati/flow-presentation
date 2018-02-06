@@ -25,6 +25,7 @@ export default class CruiseControlButton extends React.Component {
     render() {
         return (
             <ControlButton
+                hand={this.props.hand}
                 onClick={this.props.toggleCruiseControl}>
                 <ControlButtonIcon
                     icon={
@@ -51,15 +52,17 @@ export default class CruiseControlButton extends React.Component {
 
 CruiseControlButton.propTypes = {
     cruiseControlIsActive: PropTypes.bool.isRequired,
-    toggleCruiseControl: PropTypes.func.isRequired
+    toggleCruiseControl: PropTypes.func.isRequired,
+    hand              : PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
 
 const ControlButton = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 30px;
-    left: 50%;
+    left: ${props => props.hand == "left" ? "60px" : "auto"};
+    right: ${props => props.hand == "right" ? "0px" : "auto"};
     transform: translateX(-50%);
     width: 60px;
     height: 60px;

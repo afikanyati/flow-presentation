@@ -68,7 +68,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["What","a","humbling","truth","indeed,","and","to","add","fuel","to","the","fire,","recent","theories","in","Physics","posit","that","our","universe","could","be","one","of","many","universes","present","within","an","enormous","landscape","of","possible","universes — a","universe","within","a","strictly","increasing","set","of","universes","if","you","will.","Furthermore,","while","we","live","in","universe","governed","by","the","spacetime","continuum,","a","universe","composed","of","three-dimensional","matter","that","exists","through","the","passage","of","time,","in","some","circles","it","is","believed","that","there","could","be","as","many","as","ten","dimensions;","however","as","far","as","we","know,","we","are","eternally","trapped","to","live","within","three","of","these","theorized","dimensions."],
+                future:["So","now","we","begin","to","wonder","how","virtual","and","augmented","reality","will","fare","when","up","against","the","same","legislative","hurdles","that","have","hampered","past","technologies.","Virtual","reality","has","been","getting","a","lot","of","well-deserved","ink","for","its","potential","to","transform","education,","but","the","infrastructure","necessary","to","bring","in","a","program","that","every","kid","can","engage","with","is","a","stopper","even","more","significant","than","it","was","with","computers.","After","all,","VR","not","only","requires","a","computer","for","each","student — it","requires","a","top","of","the","line","computer.","Given","that","most","schools","are","still","running","computers","that","are","ten","years","old","or","more,","that’s","a","hurdle."],
                 index: 3
             },
             {
@@ -76,7 +76,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["So","now","we","begin","to","wonder","how","virtual","and","augmented","reality","will","fare","when","up","against","the","same","legislative","hurdles","that","have","hampered","past","technologies.","Virtual","reality","has","been","getting","a","lot","of","well-deserved","ink","for","its","potential","to","transform","education,","but","the","infrastructure","necessary","to","bring","in","a","program","that","every","kid","can","engage","with","is","a","stopper","even","more","significant","than","it","was","with","computers.","After","all,","VR","not","only","requires","a","computer","for","each","student — it","requires","a","top","of","the","line","computer.","Given","that","most","schools","are","still","running","computers","that","are","ten","years","old","or","more,","that’s","a","hurdle."],
+                future:["But","there","are","some","people","doing","amazing","things","with","VR","and","education.","We’re","not","going","to","waste","much","time","on","Google","Expeditions,","because","you’re","probably","all","familiar","with","them,","but","if","you","aren’t,","in","a","nutshell:","Google","lets","students","explore","the","world","using","cell","phones","and","a","piece","of","cardboard.","It’s","great","because","it","doesn’t","need","an","expensive","computer,","but","it","still","requires","a","lot","of","funding","from","Google","to","make","it","happen.","They","rent","out","the","phones,","provide","the","cardboards","for","free,","and","even","give","training","for","teachers","on","how","to","lead","the","expedition.","It’s","a","fun","learning","tool,","but","likely","to","be","used","by","teachers","the","way","they","used","to","use","crappy","British","documentaries — give","the","teacher","a","break","from","the","classroom,","let","the","students","have","some","fun,","and","then","get","back","to","the","real","learning."],
                 index: 4
             },
             {
@@ -84,7 +84,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["But","there","are","some","people","doing","amazing","things","with","VR","and","education.","We’re","not","going","to","waste","much","time","on","Google","Expeditions,","because","you’re","probably","all","familiar","with","them,","but","if","you","aren’t,","in","a","nutshell:","Google","lets","students","explore","the","world","using","cell","phones","and","a","piece","of","cardboard.","It’s","great","because","it","doesn’t","need","an","expensive","computer,","but","it","still","requires","a","lot","of","funding","from","Google","to","make","it","happen.","They","rent","out","the","phones,","provide","the","cardboards","for","free,","and","even","give","training","for","teachers","on","how","to","lead","the","expedition.","It’s","a","fun","learning","tool,","but","likely","to","be","used","by","teachers","the","way","they","used","to","use","crappy","British","documentaries — give","the","teacher","a","break","from","the","classroom,","let","the","students","have","some","fun,","and","then","get","back","to","the","real","learning."],
+                future:["We’ve","seen","VR","take","off","as","a","form","of","job","training,","the","advantage","there","being","the","budgets","necessary","to","pull","it","off.","But","the","boost","up","that","students","get","from","learning","first-hand","is","incredibly","important","in","schools,","too.","A","lot","of","students","learn","better","by","doing","than","listening,","and","virtual","reality","gives","them","the","opportunity","to","learn","hands","on","in","a","way","that","classic","education","simply","can’t.","Training","is","becoming","huge","in","industry,","and","hopefully","as","that","matures","it","will","trickle","down","to","high","school","level","students","as","well","(right","now","we’re","mostly","seeing","it","in","college","and","on","the","job).","Of","course,","hands-on","training","in","school","is","about","more","than","just","learning","how","to","do","a","job.","It","also","means","letting","them","explore","how","physics","works","instead","of","just","telling","them,","or","watching","a","famous","battle","to","learn","history."],
                 index: 5
             },
             {
@@ -92,7 +92,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["We’ve","seen","VR","take","off","as","a","form","of","job","training,","the","advantage","there","being","the","budgets","necessary","to","pull","it","off.","But","the","boost","up","that","students","get","from","learning","first-hand","is","incredibly","important","in","schools,","too.","A","lot","of","students","learn","better","by","doing","than","listening,","and","virtual","reality","gives","them","the","opportunity","to","learn","hands","on","in","a","way","that","classic","education","simply","can’t.","Training","is","becoming","huge","in","industry,","and","hopefully","as","that","matures","it","will","trickle","down","to","high","school","level","students","as","well","(right","now","we’re","mostly","seeing","it","in","college","and","on","the","job).","Of","course,","hands-on","training","in","school","is","about","more","than","just","learning","how","to","do","a","job.","It","also","means","letting","them","explore","how","physics","works","instead","of","just","telling","them,","or","watching","a","famous","battle","to","learn","history."],
+                future:["If","virtual","reality","is","being","hampered","by","cost,","augmented","reality","might","have","a","leg-up","on","its","more","resource","intensive","cousin.","With","AR,","teachers","can","get","started","with","nothing","but","a","cell","phone.","Granted,","one","phone","for","an","entire","classroom","isn’t","an","ideal","scenario — so","AR","is","pressing","forward","using","other","avenues."],
                 index: 6
             },
             {
@@ -100,7 +100,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["If","virtual","reality","is","being","hampered","by","cost,","augmented","reality","might","have","a","leg-up","on","its","more","resource","intensive","cousin.","With","AR,","teachers","can","get","started","with","nothing","but","a","cell","phone.","Granted,","one","phone","for","an","entire","classroom","isn’t","an","ideal","scenario — so","AR","is","pressing","forward","using","other","avenues."],
+                future:["Take","the","augmented","reality","sandbox,","which","is","being","used","around","the","world","to","help","students","learn","about","topography","and","geography.","All","it","requires","is","a","projector,","a","single","computer,","and","a","few","sensors.","With","that","students","can","leap","into","a","fully","responsive","experience","that","reacts","to","their","input.","Following","that","line","has","the","potential","to","get","a","whole","classroom","involved","in","AR","with","realistic","resource","requirements."],
                 index: 7
             },
             {
@@ -108,7 +108,7 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["Take","the","augmented","reality","sandbox,","which","is","being","used","around","the","world","to","help","students","learn","about","topography","and","geography.","All","it","requires","is","a","projector,","a","single","computer,","and","a","few","sensors.","With","that","students","can","leap","into","a","fully","responsive","experience","that","reacts","to","their","input.","Following","that","line","has","the","potential","to","get","a","whole","classroom","involved","in","AR","with","realistic","resource","requirements."],
+                future:["Of","course,","we’re","also","entering","the","age","of","ARKit","and","ARCore,","which","means","that","in","a","few","years,","every","cell","phone","will","have","the","ability","to","be","used","as","an","educational","tool.","While","lots","of","students","don’t","have","their","own","phones,","buying","cheap","mobile","devices","for","a","whole","classroom","is","a","lot","easier","than","buying","computers","for","a","whole","classroom.","And","even","in","these","early","days,","we’re","seeing","exciting","concepts","like","the","Atom","Visualizer,","which","lets","you","place","models","of","atomic","structures","around","the","room","and","then","examine","them","in","3","dimensions."],
                 index: 8
             },
             {
@@ -116,16 +116,8 @@ export default class Viewport extends React.Component {
                 history: [],
                 trailingWord: [],
                 fixationWindow: [],
-                future:["Of","course,","we’re","also","entering","the","age","of","ARKit","and","ARCore,","which","means","that","in","a","few","years,","every","cell","phone","will","have","the","ability","to","be","used","as","an","educational","tool.","While","lots","of","students","don’t","have","their","own","phones,","buying","cheap","mobile","devices","for","a","whole","classroom","is","a","lot","easier","than","buying","computers","for","a","whole","classroom.","And","even","in","these","early","days,","we’re","seeing","exciting","concepts","like","the","Atom","Visualizer,","which","lets","you","place","models","of","atomic","structures","around","the","room","and","then","examine","them","in","3","dimensions."],
-                index: 9
-            },
-            {
-                type: "paragraph",
-                history: [],
-                trailingWord: [],
-                fixationWindow: [],
                 future:["How","soon","we’re","likely","to","see","this","take","off","remains","the","key","question.","While","the","technology","is","here,","the","point","at","which","it","becomes","cheap","enough","for","mass","adoption","is","still","at","least","a","few","years","away.","AR","will","probably","beat","its","cousin","to","the","finish","line,","but","VR","may","take","the","final","prize","of","being","the","first","technology","to","truly","change","education.","Only","time","will","tell","for","sure."],
-                index: 10
+                index: 9
             },
         ];
 
@@ -140,8 +132,9 @@ export default class Viewport extends React.Component {
         return (
             <Container
                 id="viewport"
-                onClick={this.toggleRapidScroll}>
+                onClick={this.handleClick}>
                 <StatusBar
+                    hand                  ={this.props.hand}
                     definitionsAreActive={this.state.definitionsAreActive}
                     highlightIsActive={this.state.highlightIsActive}
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
@@ -261,10 +254,12 @@ export default class Viewport extends React.Component {
                         );
                 })}
                 </FutureContainer>
-                <FeatureMenu />
+                <FeatureMenu
+                    hand                  ={this.props.hand} />
                 <CruiseControlButton
-                    cruiseControlIsActive={this.state.cruiseControlIsActive}
-                    toggleCruiseControl={this.toggleCruiseControl}/>
+                    hand                  ={this.props.hand}
+                    cruiseControlIsActive ={this.state.cruiseControlIsActive}
+                    toggleCruiseControl   ={this.toggleCruiseControl}/>
             </Container>
         );
     }
@@ -306,6 +301,9 @@ export default class Viewport extends React.Component {
             }
 
             return false;
+        } else if (e.keyCode == 32) {
+            this.preventDefault(e);
+            this.toggleCruiseControl(e);
         }
     }
 
@@ -315,7 +313,7 @@ export default class Viewport extends React.Component {
         if (!this.state.rapidScrollIsActive && this.state.scroll == this.props.trackingSpeed) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
-        } else if (this.state.rapidScrollIsActive && this.state.scroll == 0.5 * this.props.trackingSpeed) {
+        } else if (this.state.rapidScrollIsActive && this.state.scroll == 0.25 * this.props.trackingSpeed) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
         }
@@ -330,18 +328,31 @@ export default class Viewport extends React.Component {
         trailingWord        = this.state.assets[this.state.assetCurrentIndex].trailingWord,
         fixationWindow      = this.state.assets[this.state.assetCurrentIndex].fixationWindow,
         future              = this.state.assets[this.state.assetCurrentIndex].future;
-        let sliceDistance   = this.props.fixationWidth - 1;
+        let sliceDistance   = this.props.trailingWordIsActive ? this.props.fixationWidth - 1 : this.props.fixationWidth;
+
+        if (direction == ScrollDirectionTypes.UP
+            && history.length == 0
+            && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
+            && this.state.assetCurrentIndex > 0) {
+            // We have hit beginning of current asset
+            // Load previous one
+            this.loadAsset(this.state.assetCurrentIndex - 1);
+
+            // No need to update Viewport again
+            return;
+        }
 
         if (direction == ScrollDirectionTypes.UP) {
-            if (this.props.fixationWidth > 1) {
+            if (this.props.fixationWidth > 1 && this.props.trailingWordIsActive) {
                 if (history.length - sliceDistance > 0) {
-                    // Read from bottom to top to understand logic
+                    // == Read from bottom to top to understand logic ==
                     future         = fixationWindow.concat(future);
                     fixationWindow = history.slice(history.length - sliceDistance + 1).concat(trailingWord);
                     trailingWord   = history.slice(history.length - sliceDistance, history.length - sliceDistance + 1);
                     history        = history.slice(0, history.length - sliceDistance);
                 } else {
                     // Edge Case that causes wrong fixation window
+                    // Occurs when theres less history than fixation window
                     future         = history.concat(trailingWord, fixationWindow, future); // proxy future to re-establish fixationWindow
                     history        = [];
                     trailingWord   = [];
@@ -351,19 +362,19 @@ export default class Viewport extends React.Component {
             } else {
                 if (history.length - sliceDistance > 0) {
                     future         = fixationWindow.concat(future);
-                    fixationWindow = history.slice(history.length - 1, history.length);
-                    history        = history.slice(0, history.length - 1);
+                    fixationWindow = history.slice(history.length - this.props.fixationWidth, history.length);
+                    history        = history.slice(0, history.length - this.props.fixationWidth);
                 } else {
                     // Edge Case that causes wrong fixation window
                     future         = history.concat(fixationWindow, future); // proxy future to re-establish fixationWindow
                     history        = [];
-                    fixationWindow = future.slice(0, 1);
-                    future         = future.slice(1);
+                    fixationWindow = future.slice(0, this.props.fixationWidth);
+                    future         = future.slice(this.props.fixationWidth);
                 }
             }
         } else {
             // Scroll Direction Down
-            if (this.props.fixationWidth > 1) {
+            if (this.props.fixationWidth > 1 && this.props.trailingWordIsActive) {
                 if (future.length > 0) {
                     history        = history.concat(trailingWord).concat(fixationWindow.slice(0, fixationWindow.length - 1));
                     trailingWord   = fixationWindow.slice(-1);
@@ -373,11 +384,12 @@ export default class Viewport extends React.Component {
                     history        = history.concat(trailingWord).concat(fixationWindow);
                     trailingWord   = [];
                     fixationWindow = [];
+                    // Future is already = []
                 }
             } else {
                 history        = history.concat(fixationWindow);
-                fixationWindow = future.slice(0, 1);
-                future         = future.slice(1, future.length);
+                fixationWindow = future.slice(0, this.props.fixationWidth);
+                future         = future.slice(this.props.fixationWidth, future.length);
             }
         }
 
@@ -392,20 +404,13 @@ export default class Viewport extends React.Component {
             scroll        : 0
         }, () => {
             if (direction == ScrollDirectionTypes.DOWN
-                && trailingWord.length == 0
+                && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
                 && fixationWindow.length == 0
                 && future.length == 0
                 && this.state.assetCurrentIndex + 1 < this.state.assets.length) {
                 // We have hit end of current asset
                 // Load next one
                 this.loadAsset(this.state.assetCurrentIndex + 1);
-            } else if (direction = ScrollDirectionTypes.UP
-                        && history.length == 0
-                        && trailingWord.length == 0
-                        && this.state.assetCurrentIndex > 0) {
-                // We have hit beginning of current asset
-                // Load previous one
-                this.loadAsset(this.state.assetCurrentIndex - 1);
             }
         });
     }
@@ -480,15 +485,43 @@ export default class Viewport extends React.Component {
     }
 
     loadAsset = (index) => {
+        let direction = index >= this.state.assetCurrentIndex ? ScrollDirectionTypes.DOWN : ScrollDirectionTypes.UP;
         let assets                   = this.state.assets;
-        assets[index].fixationWindow = assets[index].future.slice(0, this.props.fixationWidth);
-        assets[index].future         = assets[index].future.slice(this.props.fixationWidth);
+
+        if (direction == ScrollDirectionTypes.DOWN) {
+            // Place first words of next asset into fixation window
+            assets[index].fixationWindow = assets[index].future.slice(0, this.props.fixationWidth);
+            assets[index].future         = assets[index].future.slice(this.props.fixationWidth);
+        } else {
+            // === Read from bottom to top to understand logic ===
+            //
+            // Reset last current asset to have all words in future
+            assets[index + 1].future = assets[index + 1].history.concat(assets[index + 1].trailingWord, assets[index + 1].fixationWindow, assets[index + 1].future);
+            assets[index + 1].fixationWindow = [];
+            assets[index + 1].trailingWord = [];
+            assets[index + 1].history = [];
+
+            // Place last words of last asset into fixation window
+            assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth + 1);
+            assets[index].trailingWord = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth, assets[index].history.length - this.props.fixationWidth + 1);
+            assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
+        }
 
         this.setState({
             scroll            : 0,
             assets            : assets,
             assetCurrentIndex : index
+        }, () => {
+            return;
         });
+    }
+
+    handleClick = (e) => {
+        if (this.state.cruiseControlIsActive) {
+            this.toggleCruiseControl(e);
+        } else {
+            this.toggleRapidScroll();
+        }
     }
 
     toggleRapidScroll = () => {
@@ -510,12 +543,14 @@ export default class Viewport extends React.Component {
 // ============= PropTypes ==============
 
 Viewport.propTypes = {
-    fontSize     : PropTypes.number.isRequired,
-    fontFamily   : PropTypes.object.isRequired,
-    fixationWidth: PropTypes.number.isRequired,
-    skin         : PropTypes.string.isRequired,
-    hand         : PropTypes.string.isRequired,
-    trackingSpeed: PropTypes.number.isRequired
+    fontSize          : PropTypes.number.isRequired,
+    fontFamily        : PropTypes.object.isRequired,
+    fixationWidth     : PropTypes.number.isRequired,
+    skin              : PropTypes.string.isRequired,
+    hand              : PropTypes.string.isRequired,
+    trackingSpeed     : PropTypes.number.isRequired,
+    readingSpeed      : PropTypes.number.isRequired,
+    trailingWordIsActive: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============

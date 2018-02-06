@@ -26,7 +26,8 @@ export default class StatusBar extends React.Component {
 
     render() {
         return (
-            <StatusBarContainer>
+            <StatusBarContainer
+                hand={this.props.hand}>
                 <StatusIcon
                     title={`Definitions ${this.props.definitionsAreActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.definitionsAreActive ?
@@ -65,7 +66,8 @@ export default class StatusBar extends React.Component {
 StatusBar.propTypes = {
     definitionsAreActive   : PropTypes.bool.isRequired,
     highlightIsActive      : PropTypes.bool.isRequired,
-    rapidScrollIsActive : PropTypes.bool.isRequired
+    rapidScrollIsActive : PropTypes.bool.isRequired,
+    hand              : PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -73,7 +75,8 @@ StatusBar.propTypes = {
 const StatusBarContainer = styled.div`
     position: fixed;
     top: 15px;
-    left: 15px;
+    left: ${props => props.hand == "left" ? "15px" : "auto"};
+    right: ${props => props.hand == "right" ? "15px" : "auto"};
 `;
 
 const StatusIcon = styled.div`

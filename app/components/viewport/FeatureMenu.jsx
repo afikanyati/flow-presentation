@@ -133,6 +133,7 @@ export default class FeatureMenu extends React.Component {
     render() {
         return (
             <Menu
+                hand={this.props.hand}
                 menuIsOpen={this.state.menuIsOpen}>
                 <ReactHint
                 key={"tooltip"}
@@ -199,6 +200,7 @@ export default class FeatureMenu extends React.Component {
     calcTranslate = (value, index) => {
         let translateInfo = {};
         let numItems = Object.keys(this.state.features).length;
+        let handMultiplier = this.props.hand == "left" ? 1 : -1;
 
         let sweepDeg = 180,
             increment = sweepDeg/(numItems - 1),
@@ -232,7 +234,7 @@ export default class FeatureMenu extends React.Component {
                 }
                 translateInfo["inactiveTransitionDelay"] = `${nMinus1InitialDelay}s`;
                 translateInfo["activeTransitionDelay"] = `${initialDelay}s`;
-                translateInfo["transition"] = `translate(${Math.floor(spreadRadius * Math.sin(Math.PI/180*angle))}px, ${-Math.floor(spreadRadius * Math.cos(Math.PI/180*angle))}px)`;
+                translateInfo["transition"] = `translate(${handMultiplier * Math.floor(spreadRadius * Math.sin(Math.PI/180*angle))}px, ${-Math.floor(spreadRadius * Math.cos(Math.PI/180*angle))}px)`;
         }
         let features = this.state.features;
         features[value].cssTranslate = translateInfo;
@@ -267,6 +269,7 @@ export default class FeatureMenu extends React.Component {
 // ============= PropTypes ==============
 
 FeatureMenu.propTypes = {
+    hand              : PropTypes.string.isRequired
 };
 
 // ============= React Hint ==============
@@ -279,7 +282,8 @@ const Menu = styled.div`
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    left: 30px;
+    left: ${props => props.hand == "left" ? "30px" : "auto"};
+    right: ${props => props.hand == "right" ? "30px" : "auto"};
     width: 60px;
     height: 60px;
     z-index: 1000;

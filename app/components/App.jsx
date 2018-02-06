@@ -41,7 +41,9 @@ export default class Root extends React.Component {
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
             trackingSpeed : 12,
             skin         : SkinTypes.WHITE,
-            hand          : "right"
+            hand          : "left",
+            readingSpeed: 220,
+            trailingWordIsActive: false
         };
     }
 
@@ -53,12 +55,14 @@ export default class Root extends React.Component {
     render() {
         return(
             <Viewport
-                fontSize      ={this.state.fontSize}
-                fontFamily    ={this.state.fontFamily}
-                fixationWidth ={this.state.fixationWidth}
-                trackingSpeed ={this.state.trackingSpeed}
-                hand          ={this.state.hand}
-                skin          ={this.state.skin}/>
+                fontSize           ={this.state.fontSize}
+                fontFamily         ={this.state.fontFamily}
+                fixationWidth      ={this.state.fixationWidth}
+                trackingSpeed      ={this.state.trackingSpeed}
+                hand               ={this.state.hand}
+                skin               ={this.state.skin}
+                readingSpeed       ={this.state.readingSpeed}
+                trailingWordIsActive ={this.state.trailingWordIsActive}/>
         );
     }
 
