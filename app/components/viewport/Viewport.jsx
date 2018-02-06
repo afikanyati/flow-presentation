@@ -11,6 +11,7 @@ import Paragraph                from './Paragraph';
 import Word                     from './Word';
 import StatusBar                from './StatusBar';
 import CruiseControlButton      from './CruiseControlButton';
+import SkinTypes               from '../../constants/skinTypes';
 
 /**
  * The Viewport component is a component used to
@@ -132,6 +133,7 @@ export default class Viewport extends React.Component {
         return (
             <Container
                 id="viewport"
+                skin={this.props.skin}
                 onClick={this.handleClick}>
                 <StatusBar
                     hand                  ={this.props.hand}
@@ -140,6 +142,7 @@ export default class Viewport extends React.Component {
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
                 />
                 <HistoryContainer
+                    skin={this.props.skin}
                     fontSize={this.props.fontSize}>
                     {[this.state.assets[this.state.assetCurrentIndex]].map((asset) => {
                       return (
@@ -224,6 +227,7 @@ export default class Viewport extends React.Component {
                     }
                 </FixationWindowContainer>
                 <FutureContainer
+                    skin={this.props.skin}
                     fontSize={this.props.fontSize}>
                     {[this.state.assets[this.state.assetCurrentIndex]].map((asset) => {
                         return (
@@ -572,6 +576,22 @@ const Container = styled.div`
 	align-items           : center;
     overflow              : hidden;
     cursor: ${props => props.rapidScrollIsActive ? props.customCursor : "auto"};
+    color: ${props => props.skin == SkinTypes.WHITE ?
+                "rgba(0,0,0,0.87)"
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#5f3e24"
+                    :
+                        "#bebebe"
+            };
+    background: ${props => props.skin == SkinTypes.WHITE ?
+                "#ffffff"
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        "#171717"
+            };
 `;
 
 const HistoryContainer = styled.section`
@@ -601,10 +621,14 @@ const HistoryContainer = styled.section`
         height        : 100%;
         width         : 100%;
         content       : "";
-        background    : linear-gradient(to bottom,
-         rgba(255,255,255, 1) 20%,
-         rgba(255,255,255, 0) 70%
-        );
+        background: ${props => props.skin == SkinTypes.WHITE ?
+                    "linear-gradient(to bottom,rgba(255,255,255, 1) 20%,rgba(255,255,255, 0) 70%)"
+                :
+                    props.skin == SkinTypes.CREAM ?
+                            "linear-gradient(to bottom,rgba(249,243,233, 1) 20%,rgba(249,243,233, 0) 70%)"
+                        :
+                            "linear-gradient(to bottom,rgba(23,23,23, 1) 20%, rgba(23,23,23, 0) 70%)"
+                };
         pointer-events: none; /* so the text is still selectable */
     }
 `;
@@ -672,10 +696,14 @@ const FutureContainer = styled.section`
         height        : 100%;
         width         : 100%;
         content       : "";
-        background    : linear-gradient(to top,
-         rgba(255,255,255, 1) 40%,
-         rgba(255,255,255, 0) 80%
-        );
+        background: ${props => props.skin == SkinTypes.WHITE ?
+                    "linear-gradient(to top, rgba(255,255,255, 1) 40%, rgba(255,255,255, 0) 80%)"
+                :
+                    props.skin == SkinTypes.CREAM ?
+                            "linear-gradient(to top, rgba(249,243,233, 1) 40%, rgba(249,243,233, 0) 80%)"
+                        :
+                            "linear-gradient(to top, rgba(23,23,23, 1) 40%, rgba(23,23,23, 0) 80%)"
+                };
         pointer-events: none; /* so the text is still selectable */
     }
 `;

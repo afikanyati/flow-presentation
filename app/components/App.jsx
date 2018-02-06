@@ -50,6 +50,17 @@ export default class Root extends React.Component {
     componentWillMount() {
         console.log("-----Root");
 
+        // Automatically make skin to be night if later than 8
+        let boundaryHour = 20, // 8PM
+            minInHour = 60,
+            offset = new Date().getTimezoneOffset()/ minInHour,
+            hour = new Date().getUTCHours();
+
+        if (hour - offset >= boundaryHour) {
+            this.setState({
+                skin: SkinTypes.NIGHT
+            });
+        }
     }
 
     render() {

@@ -9,7 +9,6 @@ injectGlobal`
     }
 
     body {
-        color: rgba(0,0,0,0.87);
         font-family: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
     }
 
