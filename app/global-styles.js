@@ -302,7 +302,6 @@ injectGlobal`
 
     .react-hint {
         width: 150px;
-        margin-left: 15px;
     	padding: 5px;
     	position: absolute;
     	z-index: 9999;

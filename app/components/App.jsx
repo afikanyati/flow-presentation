@@ -42,22 +42,26 @@ export default class Root extends React.Component {
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
             trackingSpeed : 12,
             skin         : SkinTypes.WHITE,
-            hand          : HandTypes.LEFT,
+            hand          : HandTypes.RIGHT,
             readingSpeed: 220, //WPM
             trailingWordIsActive: false
         };
     }
 
     componentWillMount() {
-        console.log("-----Root");
+        // console.log("-----Root");
 
         // Automatically make skin to be night if later than 8
-        let boundaryHour = 20, // 8PM
+        let lowerBoundaryHour = 20, // 8PM
+            upperBoundaryHour = 7, // 7am
             minInHour = 60,
-            offset = new Date().getTimezoneOffset()/ minInHour,
+            offset = new Date().getTimezoneOffset()/minInHour,
             hour = new Date().getUTCHours();
 
-        if (hour - offset >= boundaryHour) {
+        console.log(hour - offset);
+
+        if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
+            console.log("hello");
             this.setState({
                 skin: SkinTypes.NIGHT
             });
@@ -79,7 +83,7 @@ export default class Root extends React.Component {
     }
 
     componentDidMount() {
-        console.log("++++++Root");
+        // console.log("++++++Root");
         window.addEventListener("resize", this.rerender);
     }
 

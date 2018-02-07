@@ -32,7 +32,7 @@ export default class Viewport extends React.Component {
     }
 
     componentWillMount() {
-        console.log("-----Viewport");
+        // console.log("-----Viewport");
 
         let para = "";
         console.log(JSON.stringify(para.split(" ")));
@@ -269,7 +269,7 @@ export default class Viewport extends React.Component {
     }
 
     componentDidMount() {
-        console.log("+++++Viewport");
+        // console.log("+++++Viewport");
         window.addEventListener('DOMMouseScroll', this.handleScroll, false);
         window.onwheel      = this.handleScroll; // modern standard
         window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE

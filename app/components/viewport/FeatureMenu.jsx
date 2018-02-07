@@ -139,7 +139,7 @@ export default class FeatureMenu extends React.Component {
                 <ReactHint
                 key={"tooltip"}
                 persist
-                position="right"
+                position={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
                 attribute="data-custom"
                 events={{hover: true}}
                 onRenderContent={this.renderTooltip} />
@@ -172,8 +172,8 @@ export default class FeatureMenu extends React.Component {
                               isActive={feature.isActive}
                               onClick={this.activateFeature.bind({}, feature.name)}
                               data-custom
-            				data-custom-at="right"
-            				data-description={feature.description}>
+                              data-custom-at={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
+                              data-description={feature.description}>
                               <MenuItemLink>
                                   <img src={feature.icon.inactive} />
                               </MenuItemLink>
