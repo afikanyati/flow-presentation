@@ -506,9 +506,14 @@ export default class Viewport extends React.Component {
             assets[index + 1].history = [];
 
             // Place last words of last asset into fixation window
-            assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth + 1);
-            assets[index].trailingWord = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth, assets[index].history.length - this.props.fixationWidth + 1);
-            assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
+            if (this.props.trailingWordIsActive) {
+                assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth + 1);
+                assets[index].trailingWord = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth, assets[index].history.length - this.props.fixationWidth + 1);
+                assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
+            } else {
+                assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth);
+                assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
+            }
         }
 
         this.setState({
