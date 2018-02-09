@@ -31,28 +31,30 @@ export default class Paragraph extends React.Component {
                           transitionName         ={"word"}
                           transitionEnterTimeout ={300}
                           transitionLeaveTimeout ={200}>
-                          {this.props.asset.history.map((word, index) => {
+                          {this.props.asset.history.map((word) => {
                               return (
                                   <Word
-                                      key        ={`parent=[type='${this.props.asset.type}', index='${this.props.asset.index}'], this=[type='word', index='${index}']`}
-                                      index      ={index}
+                                      key        ={`parent=[type='${this.props.asset.type}', index='${this.props.asset.index}'], this=[type='word', index='${word.index}']`}
                                       paragraph  ={this.props.asset.index}
-                                      text      ={`${word} `}
+                                      word      ={word}
+                                      inFixationWindow={false}
                                       fontFamily ={this.props.fontFamily}
-                                      skipToWord ={this.props.skipToWord}/>
+                                      skipToWord ={this.props.skipToWord}
+                                      toggleWordHighlight={this.props.toggleWordHighlight}/>
                                   );
                               })}
                     </CSSTransitionGroup>
                 :
-                    this.props.asset.future.map((word, index) => {
+                    this.props.asset.future.map((word) => {
                         return (
                             <Word
-                                key        ={`parent=[type='${this.props.asset.type}', index='${this.props.asset.index}'], this=[type='word', index='${index + this.props.asset.history.length + this.props.asset.trailingWord.length + this.props.asset.fixationWindow.length}']`}
-                                index      ={index + this.props.asset.history.length + this.props.asset.trailingWord.length + this.props.asset.fixationWindow.length}
+                                key        ={`parent =[type ='${this.props.asset.type}', index ='${this.props.asset.index}'], this =[type ='word', index ='${word.index}']`}
                                 paragraph  ={this.props.asset.index}
-                                text      ={`${word} `}
+                                word       ={word}
+                                inFixationWindow={false}
                                 fontFamily ={this.props.fontFamily}
-                                skipToWord ={this.props.skipToWord}/>
+                                skipToWord ={this.props.skipToWord}
+                                toggleWordHighlight={this.props.toggleWordHighlight}/>
                             );
                         })
                 }
@@ -74,13 +76,14 @@ export default class Paragraph extends React.Component {
 // ============= PropTypes ==============
 
 Paragraph.propTypes = {
-    type        : PropTypes.string.isRequired,
-    asset       : PropTypes.object.isRequired,
-    skipToWord  : PropTypes.func.isRequired,
-    fontSize    : PropTypes.number.isRequired,
-    fontFamily  : PropTypes.object.isRequired,
-    bottomMargin: PropTypes.bool.isRequired,
-    topMargin   : PropTypes.bool.isRequired
+    type               : PropTypes.string.isRequired,
+    asset              : PropTypes.object.isRequired,
+    skipToWord         : PropTypes.func.isRequired,
+    fontSize           : PropTypes.number.isRequired,
+    fontFamily         : PropTypes.object.isRequired,
+    bottomMargin       : PropTypes.bool.isRequired,
+    topMargin          : PropTypes.bool.isRequired,
+    toggleWordHighlight: PropTypes.func.isRequired
 };
 
 // ============= Styled Components ==============

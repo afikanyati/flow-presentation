@@ -71,6 +71,24 @@ injectGlobal`
       transition: opacity 200ms ease-in;
     }
 
+    .bookmark-enter {
+      opacity: 0.5;
+    }
+
+    .bookmark-enter.bookmark-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-in;
+    }
+
+    .bookmark-leave {
+      opacity: 0.5;
+    }
+
+    .bookmark-leave.bookmark-leave-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
+
     .fixation-enter {
       opacity: 0.7;
     }

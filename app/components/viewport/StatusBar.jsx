@@ -78,6 +78,7 @@ const StatusBarContainer = styled.div`
     top: 15px;
     left: ${props => props.hand == HandTypes.RIGHT ? "15px" : "auto"};
     right: ${props => props.hand == HandTypes.LEFT ? "15px" : "auto"};
+    z-index: 5;
 `;
 
 const StatusIcon = styled.div`

@@ -40,11 +40,11 @@ export default class Root extends React.Component {
             fontSize      : 20,
             fontFamily    : FontTypes.ADOBE_GARAMOND,
             fixationWidth : 4, // if they change the fixationWidth, rerender viewport
-            trackingSpeed : 12,
+            trackingSpeed : 16,
             skin         : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
             readingSpeed: 220, //WPM
-            trailingWordIsActive: false
+            trailingWordIsActive: false // Cannot be active if fixationWidth !> 1
         };
     }
 
@@ -52,20 +52,18 @@ export default class Root extends React.Component {
         // console.log("-----Root");
 
         // Automatically make skin to be night if later than 8
-        let lowerBoundaryHour = 20, // 8PM
-            upperBoundaryHour = 7, // 7am
-            minInHour = 60,
-            offset = new Date().getTimezoneOffset()/minInHour,
-            hour = new Date().getUTCHours();
-
-        console.log(hour - offset);
-
-        if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
-            console.log("hello");
-            this.setState({
-                skin: SkinTypes.NIGHT
-            });
-        }
+        // let lowerBoundaryHour = 20, // 8PM
+        //     upperBoundaryHour = 7, // 7am
+        //     minInHour = 60,
+        //     offset = new Date().getTimezoneOffset()/minInHour,
+        //     hour = new Date().getUTCHours();
+        //
+        // if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
+        //     console.log("hello");
+        //     this.setState({
+        //         skin: SkinTypes.NIGHT
+        //     });
+        // }
     }
 
     render() {

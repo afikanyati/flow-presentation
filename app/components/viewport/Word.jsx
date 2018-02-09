@@ -3,6 +3,10 @@ import React        from 'react';
 import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
+import BookmarkFilled  from '../../assets/images/icons/bookmark-red-fill.svg';
+import AttachmentFilled  from '../../assets/images/icons/attachment-purple.svg';
+import { CSSTransitionGroup }   from 'react-transition-group';
+
 /**
  * The Word component is a component used to
  */
@@ -10,12 +14,6 @@ export default class Word extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            text   : "",
-            index   : -1,
-            paragraph: -1,
-            messages: {}
-        }
     }
 
     componentWillMount() {
@@ -24,50 +22,68 @@ export default class Word extends React.Component {
 
     render() {
         return (
-            <Text
-                italic     ={this.props.italic}
-                bold       ={this.props.bold}
-                fontFamily ={this.props.fontFamily}
-                onClick    ={this.props.skipToWord.bind({}, this.state.text.slice(0, -1), this.state.paragraph, this.state.index)}>
-                {this.state.text}
-            </Text>
+            <TextContainer
+                hasBookmark={this.props.word.hasBookmark}
+                hasAttachment={Object.keys(this.props.word.attachment).length != 0}
+                inFixationWindow={this.props.inFixationWindow}>
+                <AttachmentIcon
+                    src={AttachmentFilled}
+                    hasAttachment={Object.keys(this.props.word.attachment).length != 0}
+                    inFixationWindow={this.props.inFixationWindow} />
+                <Text
+                    italic        ={this.props.italic}
+                    bold          ={this.props.bold}
+                    isHighlighted ={this.props.word.isHighlighted}
+                    hasBookmark={this.props.word.hasBookmark}
+                    inFixationWindow={this.props.inFixationWindow}
+                    fontFamily    ={this.props.fontFamily}
+                    onClick       ={this.props.skipToWord.bind({}, this.props.word.text, this.props.paragraph, this.props.word.index)}>
+                    {`${this.props.word.text} `}
+                </Text>
+                <BookmarkIcon
+                    src={BookmarkFilled}
+                    hasBookmark={this.props.word.hasBookmark}
+                    inFixationWindow={this.props.inFixationWindow} />
+            </TextContainer>
         );
     }
 
     componentDidMount() {
         // console.log("+++++Word");
-
-        this.setState({
-            text   : this.props.text,
-            index   : this.props.index,
-            paragraph: this.props.paragraph,
-            messages: this.props.messages
-        });
     }
 
     // ========== Methods ===========
 
-    /*
-
-     */
 }
 
 // ============= PropTypes ==============
 
 Word.propTypes = {
     paragraph          : PropTypes.number.isRequired,
-    text               : PropTypes.string.isRequired,
-    index              : PropTypes.number.isRequired,
-    messages           : PropTypes.object,
+    word               : PropTypes.object.isRequired,
     italic             : PropTypes.bool,
     bold               : PropTypes.bool,
     skipToWord         : PropTypes.func.isRequired,
-    fontFamily         : PropTypes.object.isRequired
+    fontFamily         : PropTypes.object.isRequired,
+    toggleWordHighlight: PropTypes.func.isRequired,
+    inFixationWindow: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============
 
+const TextContainer = styled.span`
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0;
+    margin-top: ${props => props.hasBookmark && !props.hasAttachment && props.inFixationWindow ? "50px" : "0px"};
+    padding: 0;
+`;
+
 const Text = styled.span`
+    background-color: ${props => props.isHighlighted ? props.theme.green : "transparent"};
+    border-bottom-width: ${props => props.hasBookmark && !props.inFixationWindow ? "2px" : "0px"};
+    border-bottom-color: ${props => props.theme.red};
+    border-bottom-style: solid;
     font-family: ${props => props.italic ? props.fontFamily.italic : props.fontFamily.regular};
     font-style : ${props => props.italic ? 'italic'                : 'normal'};
     font-weight: ${props => props.bold ? 700                       : 400};
@@ -82,6 +98,43 @@ const Text = styled.span`
 
     &:hover {
         color: ${props => props.theme.purple};
+        transition        : all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition   : all 0.2s;
+        -ms-transition    : all 0.2s;
+    }
+`;
+
+const BookmarkIcon = styled.img`
+    display: ${props => props.hasBookmark && props.inFixationWindow ? "static" : "none"};
+    position: relative;
+    left: -8px;
+    top: 5px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    animation: .2s fadeIn;
+`;
+
+const AttachmentIcon = styled.img`
+    display: ${props => props.hasAttachment && props.inFixationWindow ? "static" : "none"};
+    position: relative;
+    left: -8px;
+    bottom: 5px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    opacity: 0.3;
+    cursor: pointer;
+    animation: .2s fadeIn;
+    transition        : all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition   : all 0.2s;
+    -ms-transition    : all 0.2s;
+
+    &:hover {
+        opacity: 1;
         transition        : all 0.2s;
         -webkit-transition: all 0.2s;
         -moz-transition   : all 0.2s;

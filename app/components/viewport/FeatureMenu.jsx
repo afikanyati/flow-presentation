@@ -6,6 +6,7 @@ import ReactHintFactory         from 'react-hint';
 
 // Components
 import HandTypes               from '../../constants/handTypes';
+import FeatureTypes               from '../../constants/featureTypes';
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
 import BookmarkWhite            from '../../assets/images/icons/bookmark-white.svg';
@@ -43,7 +44,7 @@ export default class FeatureMenu extends React.Component {
             activeFeature: null,
             features: {
                 bookmark: {
-                    name: "bookmark",
+                    name: FeatureTypes.BOOKMARK,
                     icon: {
                         inactive: BookmarkColor,
                         active: BookmarkWhite
@@ -63,7 +64,7 @@ export default class FeatureMenu extends React.Component {
                     ]
                 },
                 attachment: {
-                    name: "attachment",
+                    name: FeatureTypes.ATTACHMENT,
                     icon: {
                         inactive: AttachmentColor,
                         active: AttachmentWhite
@@ -78,7 +79,7 @@ export default class FeatureMenu extends React.Component {
                     }
                 },
                 definitions: {
-                    name: "definitions",
+                    name: FeatureTypes.DEFINITIONS,
                     icon: {
                         inactive: DefinitionsColor,
                         active: DefinitionsWhite
@@ -93,7 +94,7 @@ export default class FeatureMenu extends React.Component {
                     }
                 },
                 highlight: {
-                    name: "highlight",
+                    name: FeatureTypes.HIGHLIGHT,
                     icon: {
                         inactive: HighlightColor,
                         active: HighlightWhite
@@ -108,7 +109,7 @@ export default class FeatureMenu extends React.Component {
                     }
                 },
                 map: {
-                    name: "map",
+                    name: FeatureTypes.MAP,
                     icon: {
                         inactive: MapColor,
                         active: MapWhite
@@ -264,13 +265,30 @@ export default class FeatureMenu extends React.Component {
             activeFeature: feature,
             features: features
         });
+
+        switch (feature) {
+            case FeatureTypes.BOOKMARK:
+                this.props.toggleWordBookmark();
+                break;
+            case FeatureTypes.ATTACHMENT:
+                break;
+            case FeatureTypes.DEFINITIONS:
+                break;
+            case FeatureTypes.HIGHLIGHT:
+                this.props.toggleHighlight();
+                break;
+            case FeatureTypes.MAP:
+                break;
+        }
     }
 }
 
 // ============= PropTypes ==============
 
 FeatureMenu.propTypes = {
-    hand              : PropTypes.string.isRequired
+    hand              : PropTypes.string.isRequired,
+    toggleHighlight: PropTypes.func.isRequired,
+    toggleWordBookmark: PropTypes.func.isRequired
 };
 
 // ============= React Hint ==============
