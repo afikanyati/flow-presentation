@@ -12207,7 +12207,9 @@ export default class Viewport extends React.Component {
         });
     }
 
-    toggleWordBookmark = () => {
+    toggleWordBookmark = (e) => {
+        e.stopPropagation();
+        
         let assets = this.state.assets;
         let wordParagraph = assets[this.state.assetCurrentIndex];
 

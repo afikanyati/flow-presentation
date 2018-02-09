@@ -5,23 +5,24 @@ import styled                   from 'styled-components';
 import ReactHintFactory         from 'react-hint';
 
 // Components
-import HandTypes               from '../../constants/handTypes';
-import FeatureTypes               from '../../constants/featureTypes';
+import BackButton               from './BackButton';
+import HandTypes                from '../../constants/handTypes';
+import FeatureTypes             from '../../constants/featureTypes';
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
 import BookmarkWhite            from '../../assets/images/icons/bookmark-white.svg';
 import BookmarkColor            from '../../assets/images/icons/bookmark-red.svg';
-import AttachmentWhite            from '../../assets/images/icons/attachment-white.svg';
-import AttachmentColor            from '../../assets/images/icons/attachment-purple.svg';
-import DefinitionsWhite            from '../../assets/images/icons/definitions-white.svg';
-import DefinitionsColor            from '../../assets/images/icons/definitions-blue.svg';
-import HighlightWhite            from '../../assets/images/icons/highlight-white.svg';
-import HighlightColor            from '../../assets/images/icons/highlight-green.svg';
-import MapWhite            from '../../assets/images/icons/map-white.svg';
-import MapColor            from '../../assets/images/icons/map-yellow.svg';
-import PlusColor            from '../../assets/images/icons/plus-red.svg';
-import MinusColor            from '../../assets/images/icons/minus-red.svg';
-import CancelWhite            from '../../assets/images/icons/cancel-white.svg';
+import AttachmentWhite          from '../../assets/images/icons/attachment-white.svg';
+import AttachmentColor          from '../../assets/images/icons/attachment-purple.svg';
+import DefinitionsWhite         from '../../assets/images/icons/definitions-white.svg';
+import DefinitionsColor         from '../../assets/images/icons/definitions-blue.svg';
+import HighlightWhite           from '../../assets/images/icons/highlight-white.svg';
+import HighlightColor           from '../../assets/images/icons/highlight-green.svg';
+import MapWhite                 from '../../assets/images/icons/map-white.svg';
+import MapColor                 from '../../assets/images/icons/map-yellow.svg';
+import PlusColor                from '../../assets/images/icons/plus-red.svg';
+import MinusColor               from '../../assets/images/icons/minus-red.svg';
+import CancelWhite              from '../../assets/images/icons/cancel-white.svg';
 
 /**
  * The FeatureMenu component is a component used to
@@ -78,21 +79,6 @@ export default class FeatureMenu extends React.Component {
                         transition: ""
                     }
                 },
-                definitions: {
-                    name: FeatureTypes.DEFINITIONS,
-                    icon: {
-                        inactive: DefinitionsColor,
-                        active: DefinitionsWhite
-                    },
-                    description: "Enable Definitions",
-                    color: "blue",
-                    isActive: false,
-                    cssTranslate: {
-                        inactiveTransitionDelay: 0,
-                        activeTransitionDelay: 0,
-                        transition: ""
-                    }
-                },
                 highlight: {
                     name: FeatureTypes.HIGHLIGHT,
                     icon: {
@@ -101,21 +87,6 @@ export default class FeatureMenu extends React.Component {
                     },
                     description: "Highlight Phrase",
                     color: "green",
-                    isActive: false,
-                    cssTranslate: {
-                        inactiveTransitionDelay: 0,
-                        activeTransitionDelay: 0,
-                        transition: ""
-                    }
-                },
-                map: {
-                    name: FeatureTypes.MAP,
-                    icon: {
-                        inactive: MapColor,
-                        active: MapWhite
-                    },
-                    description: "Open Thought Map",
-                    color: "yellow",
                     isActive: false,
                     cssTranslate: {
                         inactiveTransitionDelay: 0,
@@ -151,7 +122,10 @@ export default class FeatureMenu extends React.Component {
                             "lightGray"
                         :
                             this.state.features[this.state.activeFeature].color}
-                    onClick={this.toggleMenu}>
+                    onClick={this.state.activeFeature == FeatureTypes.BOOKMARK ?
+                                    this.props.toggleWordBookmark
+                                :
+                                    this.toggleMenu}>
                     <ToggleIcon
                         icon={
                             this.state.activeFeature == null ?
@@ -182,6 +156,9 @@ export default class FeatureMenu extends React.Component {
                       );
                   })}
                 </MenuItemContainer>
+                <BackButton
+                    activeFeature={this.state.activeFeature}
+                    backFunction={this.deactivateFeature}/>
             </Menu>
         );
     }
@@ -208,7 +185,7 @@ export default class FeatureMenu extends React.Component {
             increment = sweepDeg/(numItems - 1),
             angle = increment,
             spreadRadius = 120,
-            delayIncrement = 0.03,
+            delayIncrement = 0.08,
             initialDelay = delayIncrement,
             nMinus1InitialDelay = (numItems - 2) * delayIncrement,
             finalDelay = (numItems - 1) * delayIncrement;
@@ -263,21 +240,34 @@ export default class FeatureMenu extends React.Component {
         features[feature].isActive = true;
         this.setState({
             activeFeature: feature,
-            features: features
+            features: features,
+            menuIsOpen: !this.state.menuIsOpen
         });
 
         switch (feature) {
             case FeatureTypes.BOOKMARK:
-                this.props.toggleWordBookmark();
-                break;
-            case FeatureTypes.ATTACHMENT:
-                break;
-            case FeatureTypes.DEFINITIONS:
                 break;
             case FeatureTypes.HIGHLIGHT:
                 this.props.toggleHighlight();
                 break;
-            case FeatureTypes.MAP:
+            case FeatureTypes.ATTACHMENT:
+                break;
+        }
+    }
+
+    deactivateFeature = (feature, e) => {
+        e.stopPropagation();
+        this.setState({
+            activeFeature: null
+        });
+
+        switch (feature) {
+            case FeatureTypes.BOOKMARK:
+                break;
+            case FeatureTypes.HIGHLIGHT:
+                this.props.toggleHighlight();
+                break;
+            case FeatureTypes.ATTACHMENT:
                 break;
         }
     }
@@ -307,6 +297,7 @@ const Menu = styled.div`
     height: 60px;
     z-index: 1000;
     border-radius: 30px;
+    transition: top 0.2s;
 
     @media (max-width: 480px) and (max-height: 480px) {
         width: 30px;

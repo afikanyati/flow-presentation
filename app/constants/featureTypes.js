@@ -6,7 +6,5 @@
 export default {
     BOOKMARK: "bookmark",
     ATTACHMENT: "attachment",
-    DEFINITIONS: "definitions",
-    HIGHLIGHT: "highlight",
-    MAP: "map"
+    HIGHLIGHT: "highlight"
 };
