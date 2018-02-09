@@ -35,6 +35,7 @@ export default class Word extends React.Component {
                     bold          ={this.props.bold}
                     isHighlighted ={this.props.word.isHighlighted}
                     hasBookmark={this.props.word.hasBookmark}
+                    hasAttachment={Object.keys(this.props.word.attachment).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
                     onClick       ={this.props.skipToWord.bind({}, this.props.word.text, this.props.paragraph, this.props.word.index)}>
@@ -81,9 +82,21 @@ const TextContainer = styled.span`
 
 const Text = styled.span`
     background-color: ${props => props.isHighlighted ? props.theme.green : "transparent"};
-    border-bottom-width: ${props => props.hasBookmark && !props.inFixationWindow ? "2px" : "0px"};
-    border-bottom-color: ${props => props.theme.red};
+    border-bottom-width: ${props =>  !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "2px" : "0px"};
+    border-bottom-color: transparent;
     border-bottom-style: solid;
+    border-image: ${props => props.hasBookmark && props.hasAttachment ?
+            "linear-gradient(to right, #d3224f 0%, #65266d 100%)"
+        :
+            props.hasBookmark ?
+                    "linear-gradient(to right, #d3224f 0%, #d3224f 100%)"
+                :
+                    props.hasAttachment ?
+                        "linear-gradient(to right, #65266d 0%, #65266d 100%)"
+                    :
+                        "none 100% 1 0 stretch"
+    };
+    border-image-slice: 1;
     font-family: ${props => props.italic ? props.fontFamily.italic : props.fontFamily.regular};
     font-style : ${props => props.italic ? 'italic'                : 'normal'};
     font-weight: ${props => props.bold ? 700                       : 400};

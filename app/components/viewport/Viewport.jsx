@@ -12135,7 +12135,7 @@ export default class Viewport extends React.Component {
 
     toggleCruiseControl = (e) => {
         e.stopPropagation();
-
+        console.log("Cruise Control Toggled");
         this.setState({
             cruiseControlIsActive: !this.state.cruiseControlIsActive
         });
@@ -12231,7 +12231,7 @@ export default class Viewport extends React.Component {
 
     toggleMap = (e) => {
         e.stopPropagation();
-        alert("Map Toggled");
+        console.log("Map Toggled");
     }
 }
 
