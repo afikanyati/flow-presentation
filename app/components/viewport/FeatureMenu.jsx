@@ -14,15 +14,8 @@ import BookmarkWhite            from '../../assets/images/icons/bookmark-white.s
 import BookmarkColor            from '../../assets/images/icons/bookmark-red.svg';
 import AttachmentWhite          from '../../assets/images/icons/attachment-white.svg';
 import AttachmentColor          from '../../assets/images/icons/attachment-purple.svg';
-import DefinitionsWhite         from '../../assets/images/icons/definitions-white.svg';
-import DefinitionsColor         from '../../assets/images/icons/definitions-blue.svg';
 import HighlightWhite           from '../../assets/images/icons/highlight-white.svg';
 import HighlightColor           from '../../assets/images/icons/highlight-green.svg';
-import MapWhite                 from '../../assets/images/icons/map-white.svg';
-import MapColor                 from '../../assets/images/icons/map-yellow.svg';
-import PlusColor                from '../../assets/images/icons/plus-red.svg';
-import MinusColor               from '../../assets/images/icons/minus-red.svg';
-import CancelWhite              from '../../assets/images/icons/cancel-white.svg';
 
 /**
  * The FeatureMenu component is a component used to
@@ -57,12 +50,7 @@ export default class FeatureMenu extends React.Component {
                         inactiveTransitionDelay: 0,
                         activeTransitionDelay: 0,
                         transition: ""
-                    },
-                    functions: [
-                        {
-                            icon: PlusColor
-                        }
-                    ]
+                    }
                 },
                 attachment: {
                     name: FeatureTypes.ATTACHMENT,

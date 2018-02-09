@@ -11,7 +11,8 @@ import Paragraph                from './Paragraph';
 import Word                     from './Word';
 import StatusBar                from './StatusBar';
 import CruiseControlButton      from './CruiseControlButton';
-import SkinTypes               from '../../constants/skinTypes';
+import MapButton                from './MapButton';
+import SkinTypes                from '../../constants/skinTypes';
 
 /**
  * The Viewport component is a component used to
@@ -24,7 +25,6 @@ export default class Viewport extends React.Component {
             scroll            : 0,
             assetCurrentIndex : 0,
             assets            : [],
-            definitionsAreActive: false,
             highlightIsActive: false,
             rapidScrollIsActive: false,
             cruiseControlIsActive: false
@@ -11591,8 +11591,6 @@ export default class Viewport extends React.Component {
                 onClick={this.handleClick}>
                 <StatusBar
                     hand                  ={this.props.hand}
-                    definitionsAreActive={this.state.definitionsAreActive}
-                    highlightIsActive={this.state.highlightIsActive}
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
                 />
                 <HistoryContainer
@@ -11726,6 +11724,9 @@ export default class Viewport extends React.Component {
                     hand                  ={this.props.hand}
                     cruiseControlIsActive ={this.state.cruiseControlIsActive}
                     toggleCruiseControl   ={this.toggleCruiseControl}/>
+                <MapButton
+                    hand={this.props.hand}
+                    toggleMap={this.toggleMap} />
             </Container>
         );
     }
@@ -11824,8 +11825,8 @@ export default class Viewport extends React.Component {
                     if (this.state.highlightIsActive) {
                         let start, end;
                         if (assets[this.state.assetCurrentIndex].history[this.state.assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                            start = assets[this.state.assetCurrentIndex].history[this.state.assets[this.state.assetCurrentIndex].history.length - sliceDistance].index + 1;
-                            end = assets[this.state.assetCurrentIndex].trailingWord[0].index + 1;
+                            start = assets[this.state.assetCurrentIndex].history[this.state.assets[this.state.assetCurrentIndex].history.length - sliceDistance].index;
+                            end = assets[this.state.assetCurrentIndex].trailingWord[0].index;
                         } else {
                             start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
                             end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
@@ -11846,9 +11847,9 @@ export default class Viewport extends React.Component {
                     if (this.state.highlightIsActive) {
                         let start, end;
 
-                        if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
+                        if (assets[this.state.assetCurrentIndex].history.length > 0 && assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
                             start = 0;
-                            end = assets[this.state.assetCurrentIndex].trailingWord[0].index + 1;
+                            end = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].history.length;
                         } else {
                             let diff = assets[this.state.assetCurrentIndex].history.length;
                             start = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - diff].index;
@@ -11916,8 +11917,8 @@ export default class Viewport extends React.Component {
                     if (this.state.highlightIsActive) {
                         let start, end;
 
-                        start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                        start = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].fixationWindow[0].index;
+                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index;
 
                         assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
                     }
@@ -11930,8 +11931,8 @@ export default class Viewport extends React.Component {
                     if (this.state.highlightIsActive) {
                         let start, end;
 
-                        start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                        start = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].fixationWindow[0].index;
+                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index;
 
                         assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
                     }
@@ -12059,7 +12060,7 @@ export default class Viewport extends React.Component {
             // Same Asset
             let currentAssetWords = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].trailingWord, assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future);
             let start = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? assets[this.state.assetCurrentIndex].history.length: wordIndex;
-            let end = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? wordIndex: assets[this.state.assetCurrentIndex].history.length;
+            let end = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? wordIndex : assets[this.state.assetCurrentIndex].history.length;
             assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
         }
 
@@ -12209,7 +12210,7 @@ export default class Viewport extends React.Component {
 
     toggleWordBookmark = (e) => {
         e.stopPropagation();
-        
+
         let assets = this.state.assets;
         let wordParagraph = assets[this.state.assetCurrentIndex];
 
@@ -12226,6 +12227,11 @@ export default class Viewport extends React.Component {
         }, () => {
             return;
         });
+    }
+
+    toggleMap = (e) => {
+        e.stopPropagation();
+        alert("Map Toggled");
     }
 }
 
@@ -12350,7 +12356,7 @@ const FixationWindow = styled.p`
     margin            : 0;
     border-left-width: ${props => props.highlightIsActive ? "5px" : "0px"};
     border-left-color: ${props => props.theme.green};
-    border-left-style: dashed;
+    border-left-style: solid;
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
     transition        : all 0.3s;
     -webkit-transition: all 0.3s;

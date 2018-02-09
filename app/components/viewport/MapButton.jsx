@@ -4,14 +4,14 @@ import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
 // Components
-import HandTypes    from '../../constants/handTypes';
-import Play         from '../../assets/images/icons/play.svg';
-import Pause        from '../../assets/images/icons/pause.svg';
+import HandTypes               from '../../constants/handTypes';
+import MapWhite                from '../../assets/images/icons/map-white.svg';
+import MapColor                from '../../assets/images/icons/map-yellow.svg';
 
 /**
- * The CruiseControlButton component is a component used to
+ * The MapButton component is a component used to
  */
-export default class CruiseControlButton extends React.Component {
+export default class MapButton extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,26 +20,22 @@ export default class CruiseControlButton extends React.Component {
     }
 
     componentWillMount() {
-        // console.log("-----CruiseControlButton");
+        // console.log("-----MapButton");
     }
 
     render() {
         return (
-            <ControlButton
+            <MapButtonContainer
                 hand={this.props.hand}
-                onClick={this.props.toggleCruiseControl}>
-                <ControlButtonIcon
-                    icon={
-                        this.props.cruiseControlIsActive ?
-                            `url(${Pause})`
-                        :
-                            `url(${Play})`}/>
-            </ControlButton>
+                onClick={this.props.toggleMap}>
+                <MapButtonIcon
+                    icon={`url(${MapWhite})`}/>
+            </MapButtonContainer>
         );
     }
 
     componentDidMount() {
-        // console.log("+++++CruiseControlButton");
+        // console.log("+++++MapButton");
     }
 
     // ========== Methods ===========
@@ -51,17 +47,16 @@ export default class CruiseControlButton extends React.Component {
 
 // ============= PropTypes ==============
 
-CruiseControlButton.propTypes = {
-    cruiseControlIsActive: PropTypes.bool.isRequired,
-    toggleCruiseControl: PropTypes.func.isRequired,
-    hand              : PropTypes.string.isRequired
+MapButton.propTypes = {
+    toggleMap: PropTypes.func.isRequired,
+    hand: PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
 
-const ControlButton = styled.div`
+const MapButtonContainer = styled.div`
     position: fixed;
-    bottom: 30px;
+    top: 30px;
     left: ${props => props.hand == HandTypes.LEFT ? "30px" : "auto"};
     right: ${props => props.hand == HandTypes.RIGHT ? "30px" : "auto"};
     width: 60px;
@@ -69,7 +64,7 @@ const ControlButton = styled.div`
     border-radius: 30px;
     background: ${props => props.theme.lightGray};
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-    transition: box-shadow 0.15s;
+    transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
 
     @media (max-width: 480px) and (max-height: 480px) {
         width: 30px;
@@ -82,7 +77,7 @@ const ControlButton = styled.div`
     }
 `;
 
-const ControlButtonIcon = styled.button`
+const MapButtonIcon = styled.button`
     cursor: pointer;
     display: block;
     width: 100%;

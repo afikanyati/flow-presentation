@@ -4,7 +4,6 @@ import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
 // Components
-import HandTypes               from '../../constants/handTypes';
 import FeatureTypes             from '../../constants/featureTypes';
 import BackRed        from '../../assets/images/icons/back-red.svg';
 import BackPurple        from '../../assets/images/icons/back-purple.svg';
@@ -27,18 +26,18 @@ export default class BackButton extends React.Component {
 
     render() {
         return (
-            <ControlButton
+            <BackButtonContainer
                 onClick={this.props.backFunction.bind({}, this.props.activeFeature)}
-                active={this.props.activeFeature != null}
-                icon={this.props.activeFeature == FeatureTypes.BOOKMARK ?
+                active={this.props.activeFeature != null}>
+                <BackButtonIcon
+                    icon={this.props.activeFeature == FeatureTypes.BOOKMARK ?
                         `url(${BackRed})`
                     :
                         this.props.activeFeature == FeatureTypes.HIGHLIGHT ?
                             `url(${BackGreen})`
                         :
-                            `url(${BackPurple})`}>
-                <ControlButtonIcon/>
-            </ControlButton>
+                            `url(${BackPurple})`}/>
+            </BackButtonContainer>
         );
     }
 
@@ -62,7 +61,7 @@ BackButton.propTypes = {
 
 // ============= Styled Components ==============
 
-const ControlButton = styled.div`
+const BackButtonContainer = styled.div`
     visibility: : ${props => props.active ? "visible" : "hidden"};
     opacity: ${props => props.active ? 1 : 0};
     position: relative;
@@ -71,10 +70,6 @@ const ControlButton = styled.div`
     height: 60px;
     border-radius: 30px;
     background: ${props => props.theme.black};
-    background-image: ${props => props.icon};
-    background-position: 50%;
-    background-size: 35px 35px;
-    background-repeat: no-repeat;
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
 
@@ -89,7 +84,7 @@ const ControlButton = styled.div`
     }
 `;
 
-const ControlButtonIcon = styled.button`
+const BackButtonIcon = styled.button`
     cursor: pointer;
     display: block;
     width: 100%;

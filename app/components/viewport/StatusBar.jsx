@@ -30,19 +30,7 @@ export default class StatusBar extends React.Component {
             <StatusBarContainer
                 hand={this.props.hand}>
                 <StatusIcon
-                    title={`Definitions ${this.props.definitionsAreActive ? "Activated" : "Deactivated"}`}
-                    icon={this.props.definitionsAreActive ?
-                            `url(${DefinitionsPurple})`
-                        :
-                            `url(${DefinitionsGray})`}/>
-                <StatusIcon
-                    title={`Highlighting ${this.props.definitionsAreActive ? "Activated" : "Deactivated"}`}
-                    icon={this.props.highlightIsActive ?
-                            `url(${HighlightPurple})`
-                        :
-                            `url(${HighlightGray})`}/>
-                <StatusIcon
-                    title={`Rapid Scroll ${this.props.definitionsAreActive ? "Activated" : "Deactivated"}`}
+                    title={`Rapid Scroll ${this.props.rapidScrollIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.rapidScrollIsActive ?
                             `url(${RapidScrollPurple})`
                         :
@@ -65,8 +53,6 @@ export default class StatusBar extends React.Component {
 // ============= PropTypes ==============
 
 StatusBar.propTypes = {
-    definitionsAreActive   : PropTypes.bool.isRequired,
-    highlightIsActive      : PropTypes.bool.isRequired,
     rapidScrollIsActive : PropTypes.bool.isRequired,
     hand              : PropTypes.string.isRequired
 };
