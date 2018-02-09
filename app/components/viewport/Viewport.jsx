@@ -11631,8 +11631,9 @@ export default class Viewport extends React.Component {
                 </HistoryContainer>
                 <FixationWindowContainer
                     fontSize={this.props.fontSize}>
-                    {this.props.fixationWidth > 1 && [this.state.assets[this.state.assetCurrentIndex]].length > 0?
+                    {this.props.fixationWidth > 1 ?
                         <TrailingWord
+                            highlightIsActive={this.state.highlightIsActive}
                             skin={this.props.skin}
                             fontSize   ={this.props.fontSize}
                             fontFamily ={this.props.fontFamily}>
@@ -11658,32 +11659,30 @@ export default class Viewport extends React.Component {
                     :
                         null
                     }
-                    {[this.state.assets[this.state.assetCurrentIndex]].length > 0 ?
-                        <FixationWindow
-                            fontSize={this.props.fontSize}
-                            fontFamily={this.props.fontFamily}>
-                            <CSSTransitionGroup
-                                  transitionName         ="fixation"
-                                  transitionEnterTimeout ={200}
-                                  transitionLeave        ={false}>
-                                {this.state.assets[this.state.assetCurrentIndex].fixationWindow.map((word, index) => {
-                                    return (
-                                        <Word
-                                            key        ={`parent=[type='paragraph', index='${this.state.assetCurrentIndex}'], this=[type='word', index='${word.index}']`}
-                                            paragraph  ={this.state.assetCurrentIndex}
-                                            word       ={word}
-                                            inFixationWindow={true}
-                                            fontFamily ={this.props.fontFamily}
-                                            skipToWord ={this.skipToWord}
-                                            toggleWordHighlight={this.toggleWordHighlight}
-                                        />
-                                    );
-                                })}
-                            </CSSTransitionGroup>
-                        </FixationWindow>
-                        :
-                            null
-                    }
+                    <FixationWindow
+                        highlightIsActive={this.state.highlightIsActive}
+                        trailingWordPresent={this.props.fixationWidth > 1 && this.state.assets[this.state.assetCurrentIndex].trailingWord.length > 0}
+                        fontSize={this.props.fontSize}
+                        fontFamily={this.props.fontFamily}>
+                        <CSSTransitionGroup
+                              transitionName         ="fixation"
+                              transitionEnterTimeout ={200}
+                              transitionLeave        ={false}>
+                            {this.state.assets[this.state.assetCurrentIndex].fixationWindow.map((word, index) => {
+                                return (
+                                    <Word
+                                        key        ={`parent=[type='paragraph', index='${this.state.assetCurrentIndex}'], this=[type='word', index='${word.index}']`}
+                                        paragraph  ={this.state.assetCurrentIndex}
+                                        word       ={word}
+                                        inFixationWindow={true}
+                                        fontFamily ={this.props.fontFamily}
+                                        skipToWord ={this.skipToWord}
+                                        toggleWordHighlight={this.toggleWordHighlight}
+                                    />
+                                );
+                            })}
+                        </CSSTransitionGroup>
+                    </FixationWindow>
                 </FixationWindowContainer>
                 <FutureContainer
                     skin={this.props.skin}
@@ -12347,6 +12346,10 @@ const FixationWindow = styled.p`
     font-size         : ${props => 2.5*props.fontSize + 'px' || '40px'};
     line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
     margin            : 0;
+    border-left-width: ${props => props.highlightIsActive ? "5px" : "0px"};
+    border-left-color: ${props => props.theme.green};
+    border-left-style: dashed;
+    padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
     transition        : all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition   : all 0.3s;

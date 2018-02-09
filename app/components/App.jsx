@@ -44,7 +44,7 @@ export default class Root extends React.Component {
             skin         : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
             readingSpeed: 220, //WPM
-            trailingWordIsActive: false // Cannot be active if fixationWidth !> 1
+            trailingWordIsActive: true // Cannot be active if fixationWidth !> 1
         };
     }
 
