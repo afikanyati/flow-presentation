@@ -82,7 +82,7 @@ const TextContainer = styled.span`
 
 const Text = styled.span`
     background-color: ${props => props.isHighlighted ? props.theme.green : "transparent"};
-    border-bottom-width: ${props =>  !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "2px" : "0px"};
+    border-bottom-width: ${props =>  !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "4px" : "0px"};
     border-bottom-color: transparent;
     border-bottom-style: solid;
     border-image: ${props => props.hasBookmark && props.hasAttachment ?

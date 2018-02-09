@@ -56,7 +56,8 @@ MapButton.propTypes = {
 
 const MapButtonContainer = styled.div`
     position: fixed;
-    top: 30px;
+    bottom: 26.5%;
+    transform: translateY(26.5%);
     left: ${props => props.hand == HandTypes.LEFT ? "30px" : "auto"};
     right: ${props => props.hand == HandTypes.RIGHT ? "30px" : "auto"};
     width: 60px;

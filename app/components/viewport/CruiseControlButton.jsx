@@ -61,7 +61,7 @@ CruiseControlButton.propTypes = {
 
 const ControlButton = styled.div`
     position: fixed;
-    bottom: 30px;
+    bottom: 3%;
     left: ${props => props.hand == HandTypes.LEFT ? "30px" : "auto"};
     right: ${props => props.hand == HandTypes.RIGHT ? "30px" : "auto"};
     width: 60px;
