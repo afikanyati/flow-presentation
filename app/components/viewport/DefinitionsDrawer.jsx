@@ -122,7 +122,7 @@ DefinitionsDrawer.propTypes = {
 const DefinitionsContainer = styled.section`
     position: absolute;
     left: 0;
-    top: ${props => props.open ? "65vh" : props.positionClosed};
+    bottom: 0;
     width: 100vw;
     padding: 20px 110px;
     padding-top: 50px;
@@ -131,6 +131,7 @@ const DefinitionsContainer = styled.section`
     box-shadow: 0px -10px 20px 1px rgba(0,0,0,.15);
     z-index: 5;
     transition: all 0.2s ease-in-out;
+    transform: ${props => props.open ? "translateY(0%)" : "translateY(calc(100% - 3vh - 30px))"};
 `;
 
 const DefinitionsStub = styled.div`
