@@ -8,6 +8,8 @@ import ReactHintFactory         from 'react-hint';
 import BackButton               from './BackButton';
 import HandTypes                from '../../constants/handTypes';
 import FeatureTypes             from '../../constants/featureTypes';
+import AttachmentTypes             from '../../constants/attachmentSelectionTypes';
+
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
 import BookmarkWhite            from '../../assets/images/icons/bookmark-white.svg';
@@ -16,6 +18,11 @@ import AttachmentWhite          from '../../assets/images/icons/attachment-white
 import AttachmentColor          from '../../assets/images/icons/attachment-purple.svg';
 import HighlightWhite           from '../../assets/images/icons/highlight-white.svg';
 import HighlightColor           from '../../assets/images/icons/highlight-green.svg';
+import WriteIcon                from '../../assets/images/icons/write-purple.svg';
+import ImageIcon                from '../../assets/images/icons/picture-purple.svg';
+import RecordIcon               from '../../assets/images/icons/microphone-purple.svg';
+import DrawIcon                 from '../../assets/images/icons/draw-purple.svg';
+import BackPurple               from '../../assets/images/icons/back-purple.svg';
 
 /**
  * The FeatureMenu component is a component used to
@@ -40,8 +47,8 @@ export default class FeatureMenu extends React.Component {
                 bookmark: {
                     name: FeatureTypes.BOOKMARK,
                     icon: {
-                        inactive: BookmarkColor,
-                        active: BookmarkWhite
+                        color: BookmarkColor,
+                        white: BookmarkWhite
                     },
                     description: "Bookmark Location",
                     color: "red",
@@ -55,8 +62,8 @@ export default class FeatureMenu extends React.Component {
                 attachment: {
                     name: FeatureTypes.ATTACHMENT,
                     icon: {
-                        inactive: AttachmentColor,
-                        active: AttachmentWhite
+                        color: AttachmentColor,
+                        white: AttachmentWhite
                     },
                     description: "Create Attachment",
                     color: "purple",
@@ -65,13 +72,75 @@ export default class FeatureMenu extends React.Component {
                         inactiveTransitionDelay: 0,
                         activeTransitionDelay: 0,
                         transition: ""
+                    },
+                    operations: {
+                        write: {
+                                name: AttachmentTypes.WRITE,
+                                icon: {color: WriteIcon},
+                                description: "Write a note",
+                                color: "lightGray",
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.performWriteOperation
+                            },
+                        image: {
+                                name: AttachmentTypes.IMAGE,
+                                icon: {color: ImageIcon},
+                                description: "Attach an image",
+                                color: "lightGray",
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.performImageOperation
+                            },
+                        record: {
+                                name: AttachmentTypes.RECORD,
+                                icon: {color: RecordIcon},
+                                description: "Record a voicenote",
+                                color: "lightGray",
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.performRecordOperation
+                            },
+                        draw: {
+                                name: AttachmentTypes.DRAW,
+                                icon: {color: DrawIcon},
+                                description: "Draw a picture",
+                                color: "lightGray",
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.performDrawOperation
+                            },
+                        cancel: {
+                                name: "back",
+                                icon: {color: BackPurple},
+                                description: "Back",
+                                color: "black",
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.deactivateFeature.bind({}, FeatureTypes.ATTACHMENT)
+                            }
                     }
                 },
                 highlight: {
                     name: FeatureTypes.HIGHLIGHT,
                     icon: {
-                        inactive: HighlightColor,
-                        active: HighlightWhite
+                        color: HighlightColor,
+                        white: HighlightWhite
                     },
                     description: "Highlight Phrase",
                     color: "green",
@@ -89,6 +158,7 @@ export default class FeatureMenu extends React.Component {
     componentWillMount() {
         //console.log("-----FeatureMenu");
         Object.keys(this.state.features).forEach(this.calcTranslate);
+        Object.keys(this.state.features.attachment.operations).forEach(this.calcTranslate);
     }
 
     render() {
@@ -122,28 +192,27 @@ export default class FeatureMenu extends React.Component {
                                 :
                                     `url(${FlowIconWhite})`
                             :
-                                `url(${this.state.features[this.state.activeFeature].icon.active})`} />
+                                `url(${this.state.features[this.state.activeFeature].icon.white})`} />
                 </MenuToggle>
-                <MenuItemContainer>
-                    {Object.values(this.state.features).map((feature, index) => {
+                <MenuItems>
+                    {Object.values(this.state.activeFeature == FeatureTypes.ATTACHMENT ? this.state.features.attachment.operations : this.state.features).map((feature, index) => {
                       return (
-                          <MenuItem
+                          <OuterMenuItem
                               key={index}
                               cssTranslate={feature.cssTranslate}
-                              color={feature.color}
                               menuIsOpen={this.state.menuIsOpen}
-                              isActive={feature.isActive}
-                              onClick={this.activateFeature.bind({}, feature.name)}
+                              onClick={this.state.activeFeature != FeatureTypes.ATTACHMENT ? this.activateFeature.bind({}, feature.name) : feature.func}
                               data-custom
                               data-custom-at={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
                               data-description={feature.description}>
-                              <MenuItemLink>
-                                  <img src={feature.icon.inactive} />
-                              </MenuItemLink>
-                          </MenuItem>
+                              <InnerMenuItem
+                                  activeFeature={this.state.activeFeature}
+                                  color={feature.color}
+                                  icon={`url(${feature.icon.color})`} />
+                          </OuterMenuItem>
                       );
                   })}
-                </MenuItemContainer>
+              </MenuItems>
                 <BackButton
                     activeFeature={this.state.activeFeature}
                     backFunction={this.deactivateFeature}/>
@@ -164,9 +233,10 @@ export default class FeatureMenu extends React.Component {
         });
     }
 
-    calcTranslate = (value, index) => {
+    calcTranslate = (value, index, arr) => {
+
         let translateInfo = {};
-        let numItems = Object.keys(this.state.features).length;
+        let numItems = arr.length;
         let handMultiplier = this.props.hand == HandTypes.LEFT ? 1 : -1;
 
         let sweepDeg = 180,
@@ -203,12 +273,19 @@ export default class FeatureMenu extends React.Component {
                 translateInfo["activeTransitionDelay"] = `${initialDelay}s`;
                 translateInfo["transition"] = `translate(${handMultiplier * Math.floor(spreadRadius * Math.sin(Math.PI/180*angle))}px, ${-Math.floor(spreadRadius * Math.cos(Math.PI/180*angle))}px)`;
         }
+
         let features = this.state.features;
-        features[value].cssTranslate = translateInfo;
+
+        if (arr.length == 3) {
+            features[value].cssTranslate = translateInfo;
+        } else {
+            features.attachment.operations[value].cssTranslate = translateInfo;
+        }
 
         this.setState({
             features: features
         });
+
     }
 
     renderTooltip = (target, content) => {
@@ -226,11 +303,6 @@ export default class FeatureMenu extends React.Component {
 
         let features = this.state.features;
         features[feature].isActive = true;
-        this.setState({
-            activeFeature: feature,
-            features: features,
-            menuIsOpen: !this.state.menuIsOpen
-        });
 
         switch (feature) {
             case FeatureTypes.BOOKMARK:
@@ -240,6 +312,29 @@ export default class FeatureMenu extends React.Component {
                 break;
             case FeatureTypes.ATTACHMENT:
                 break;
+        }
+
+        if (feature == FeatureTypes.ATTACHMENT) {
+            this.setState({
+                activeFeature: feature,
+                features: features,
+                menuIsOpen : !this.state.menuIsOpen
+            }, () => {
+                this.setState({
+                    menuIsOpen : !this.state.menuIsOpen
+                });
+            });
+        } else {
+            this.setState({
+                menuIsOpen : !this.state.menuIsOpen
+            }, () => {
+                setTimeout(() => {
+                    this.setState({
+                        activeFeature: feature,
+                        features: features
+                    });
+                }, 240);
+            });
         }
     }
 
@@ -264,9 +359,13 @@ export default class FeatureMenu extends React.Component {
 // ============= PropTypes ==============
 
 FeatureMenu.propTypes = {
-    hand              : PropTypes.string.isRequired,
-    toggleHighlight: PropTypes.func.isRequired,
-    toggleWordBookmark: PropTypes.func.isRequired
+    hand                  : PropTypes.string.isRequired,
+    toggleHighlight       : PropTypes.func.isRequired,
+    toggleWordBookmark    : PropTypes.func.isRequired,
+    performWriteOperation : PropTypes.func.isRequired,
+    performImageOperation : PropTypes.func.isRequired,
+    performRecordOperation: PropTypes.func.isRequired,
+    performDrawOperation  : PropTypes.func.isRequired
 };
 
 // ============= React Hint ==============
@@ -294,7 +393,7 @@ const Menu = styled.div`
     }
 `;
 
-const MenuItemContainer = styled.ul`
+const MenuItems = styled.ul`
     display: block;
     list-style: none;
     position: absolute;
@@ -303,7 +402,7 @@ const MenuItemContainer = styled.ul`
     padding: 0;
 `;
 
-const MenuItem = styled.li`
+const OuterMenuItem = styled.li`
     display: block;
     position: absolute;
     top: 0;
@@ -367,23 +466,24 @@ const MenuItem = styled.li`
     }
 `;
 
-const MenuItemLink = styled.button`
+const InnerMenuItem = styled.button`
     display: block;
-    width: 100%;
-    height: 100%;
-    background: ${props => props.isActive ? props.theme[props.color] : props.theme.lightGray};
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT ? props.theme[props.color] :  props.theme.lightGray};
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s;
+    background-image: ${props => props.icon};
+    background-position: 50%;
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
 
     @media (max-width: 480px) and (max-height: 480px) {
         border-radius: 15px;
-    }
-
-    & img {
-        width: 35px;
-        max-width: 100%;
     }
 
     &:hover {
@@ -407,14 +507,6 @@ const MenuToggle = styled.button`
     cursor: pointer;
     border: none;
     appearance: none;
-
-    & img {
-        position: relative;
-        top: 4px;
-        right: 1px;
-        width: 35px;
-        max-width: 100%;
-    }
 
     &:hover {
         box-shadow: 0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12);

@@ -6,7 +6,6 @@ import styled       from 'styled-components';
 // Components
 import FeatureTypes             from '../../constants/featureTypes';
 import BackRed        from '../../assets/images/icons/back-red.svg';
-import BackPurple        from '../../assets/images/icons/back-purple.svg';
 import BackGreen        from '../../assets/images/icons/back-green.svg';
 
 /**
@@ -28,7 +27,7 @@ export default class BackButton extends React.Component {
         return (
             <BackButtonContainer
                 onClick={this.props.backFunction.bind({}, this.props.activeFeature)}
-                active={this.props.activeFeature != null}>
+                active={this.props.activeFeature != null && this.props.activeFeature != FeatureTypes.ATTACHMENT}>
                 <BackButtonIcon
                     icon={this.props.activeFeature == FeatureTypes.BOOKMARK ?
                         `url(${BackRed})`
@@ -36,7 +35,7 @@ export default class BackButton extends React.Component {
                         this.props.activeFeature == FeatureTypes.HIGHLIGHT ?
                             `url(${BackGreen})`
                         :
-                            `url(${BackPurple})`}/>
+                            "none"}/>
             </BackButtonContainer>
         );
     }

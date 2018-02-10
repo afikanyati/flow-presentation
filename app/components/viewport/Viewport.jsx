@@ -11719,7 +11719,11 @@ export default class Viewport extends React.Component {
                 <FeatureMenu
                     hand                  ={this.props.hand}
                     toggleHighlight={this.toggleHighlight}
-                    toggleWordBookmark={this.toggleWordBookmark} />
+                    toggleWordBookmark={this.toggleWordBookmark}
+                    performWriteOperation={this.performWriteOperation}
+                    performImageOperation={this.performImageOperation}
+                    performRecordOperation={this.performRecordOperation}
+                    performDrawOperation={this.performDrawOperation} />
                 <CruiseControlButton
                     hand                  ={this.props.hand}
                     cruiseControlIsActive ={this.state.cruiseControlIsActive}
@@ -12232,6 +12236,26 @@ export default class Viewport extends React.Component {
     toggleMap = (e) => {
         e.stopPropagation();
         console.log("Map Toggled");
+    }
+
+    performWriteOperation = (e) => {
+        e.stopPropagation();
+        console.log("performWriteAttachment");
+    }
+
+    performImageOperation = (e) => {
+        e.stopPropagation();
+        console.log("performImageAttachment ");
+    }
+
+    performRecordOperation = (e) => {
+        e.stopPropagation();
+        console.log("performRecordAttachment");
+    }
+
+    performDrawOperation = (e) => {
+        e.stopPropagation();
+        console.log("performDrawAttachment");
     }
 }
 
