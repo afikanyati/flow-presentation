@@ -1,6 +1,6 @@
 /**
  * Used by the Viewport component as a list of permissible enum
- * values that represent the selection types for the Attachment feature.
+ * values that represent the types of Attachment feature operations.
  */
 
 export default {

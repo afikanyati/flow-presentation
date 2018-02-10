@@ -8,7 +8,7 @@ import ReactHintFactory         from 'react-hint';
 import BackButton               from './BackButton';
 import HandTypes                from '../../constants/handTypes';
 import FeatureTypes             from '../../constants/featureTypes';
-import AttachmentTypes             from '../../constants/attachmentSelectionTypes';
+import AttachmentTypes             from '../../constants/attachmentOperationTypes';
 
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
@@ -77,7 +77,7 @@ export default class FeatureMenu extends React.Component {
                         write: {
                                 name: AttachmentTypes.WRITE,
                                 icon: {color: WriteIcon},
-                                description: "Write a note",
+                                description: "Write Note",
                                 color: "lightGray",
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
@@ -89,7 +89,7 @@ export default class FeatureMenu extends React.Component {
                         image: {
                                 name: AttachmentTypes.IMAGE,
                                 icon: {color: ImageIcon},
-                                description: "Attach an image",
+                                description: "Attach Image",
                                 color: "lightGray",
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
@@ -101,7 +101,7 @@ export default class FeatureMenu extends React.Component {
                         record: {
                                 name: AttachmentTypes.RECORD,
                                 icon: {color: RecordIcon},
-                                description: "Record a voicenote",
+                                description: "Record Voicenote",
                                 color: "lightGray",
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
@@ -113,7 +113,7 @@ export default class FeatureMenu extends React.Component {
                         draw: {
                                 name: AttachmentTypes.DRAW,
                                 icon: {color: DrawIcon},
-                                description: "Draw a picture",
+                                description: "Draw Sketch",
                                 color: "lightGray",
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
@@ -132,7 +132,7 @@ export default class FeatureMenu extends React.Component {
                                     activeTransitionDelay: 0,
                                     transition: ""
                                 },
-                                func: this.deactivateFeature.bind({}, FeatureTypes.ATTACHMENT)
+                                func: this.handleAttachmentBack
                             }
                     }
                 },
@@ -354,6 +354,13 @@ export default class FeatureMenu extends React.Component {
                 break;
         }
     }
+
+    handleAttachmentBack = (e) => {
+        this.deactivateFeature(FeatureTypes.ATTACHMENT, e);
+        this.setState({
+            menuIsOpen : !this.state.menuIsOpen
+        });
+    }
 }
 
 // ============= PropTypes ==============
@@ -537,7 +544,6 @@ const Tooltip = styled.h2`
     border-radius: 18px;
     color: ${props => props.theme.white};
     font-size: 12px;
-    font-family: "Avenir";
     font-weight: 200;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.4), 0 2px 10px 0 rgba(0,0,0,.12);
     transition: all 0.15s;

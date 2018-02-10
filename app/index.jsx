@@ -14,14 +14,24 @@ import './global-styles.js';
  */
 
 const theme = {
+    lightRed: '#ea5fa2',
     red: '#d3224f',
+    darkRed: '#7f1631',
+    lightPurple: '#935999',
     purple: '#65266d',
+    darkPurple: '#3d1143',
+    lightBlue: '#dff2fc',
     blue: '#b5d2ec',
+    darkBlue: '#7192a4',
+    lightGreen: '#aadcd6',
     green: '#69c4a8',
+    darkGreen: '#33725b',
+    lightYellow: '#fff7d3',
     yellow: '#f1ddac',
+    darkYellow: '#9f8d65',
     white: '#ffffff',
     lightGray: '#f0f0f0',
-    midGray: '#e0e1e0',
+    gray: '#e0e1e0',
     darkGray: '#252625',
     black: '#000000',
     textColor: 'rgba(35,31,32, 0.87)'

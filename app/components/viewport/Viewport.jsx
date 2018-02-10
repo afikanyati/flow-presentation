@@ -6,13 +6,15 @@ import { CSSTransitionGroup }   from 'react-transition-group';
 
 // Components
 import ScrollDirectionTypes     from '../../constants/scrollDirectionTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import FeatureMenu              from './FeatureMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
 import StatusBar                from './StatusBar';
 import CruiseControlButton      from './CruiseControlButton';
 import MapButton                from './MapButton';
-import SkinTypes                from '../../constants/skinTypes';
+import DefinitionsDrawer         from './DefinitionsDrawer';
+
 
 /**
  * The Viewport component is a component used to
@@ -22,6 +24,7 @@ export default class Viewport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            title: "Virtual Reality and Augmented Reality in Education",
             scroll            : 0,
             assetCurrentIndex : 0,
             assets            : [],
@@ -11593,6 +11596,7 @@ export default class Viewport extends React.Component {
                     hand                  ={this.props.hand}
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
                 />
+                <TitleBar>{this.state.title}</TitleBar>
                 <HistoryContainer
                     skin={this.props.skin}
                     fontSize={this.props.fontSize}>
@@ -11716,6 +11720,7 @@ export default class Viewport extends React.Component {
                         );
                 })}
                 </FutureContainer>
+                <DefinitionsDrawer />
                 <FeatureMenu
                     hand                  ={this.props.hand}
                     toggleHighlight={this.toggleHighlight}
@@ -12433,3 +12438,14 @@ const FutureContainer = styled.section`
         pointer-events: none; /* so the text is still selectable */
     }
 `;
+
+const TitleBar = styled.h3`
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: ${props => props.theme.gray};
+    z-index: 5;
+    font-weight: 200;
+    font-size: 0.9em;
+`

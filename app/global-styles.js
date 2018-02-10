@@ -9,7 +9,7 @@ injectGlobal`
     }
 
     body {
-        font-family: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+        font-family: 'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
     a, a:visited, a:hover {
