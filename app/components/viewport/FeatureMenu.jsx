@@ -168,7 +168,6 @@ export default class FeatureMenu extends React.Component {
                 menuIsOpen={this.state.menuIsOpen}>
                 <ReactHint
                 key={"tooltip"}
-                persist
                 position={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
                 attribute="data-custom"
                 events={{hover: true}}
