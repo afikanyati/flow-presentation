@@ -20,16 +20,14 @@ export default class DefinitionsDrawer extends React.Component {
     }
 
     componentWillMount() {
-        // console.log("-----DefinitionsShelf");
+        // console.log("-----DefinitionsDrawer");
     }
 
     render() {
-        let top = 0.97 * window.innerHeight - 30;
         return (
             <DefinitionsContainer
                 open={this.state.open}
-                fontFamily={FontTypes.ADOBE_GARAMOND}
-                positionClosed={`${top}px`}>
+                fontFamily={FontTypes.ADOBE_GARAMOND}>
                 <DefinitionsStub
                 icon={`url(${DefinitionsWhite})`}
                 onClick={this.toggleDrawer}/>
@@ -98,7 +96,7 @@ export default class DefinitionsDrawer extends React.Component {
     }
 
     componentDidMount() {
-        // console.log("+++++DefinitionsShelf");
+        // console.log("+++++DefinitionsDrawer");
     }
 
     // ========== Methods ===========
@@ -114,7 +112,7 @@ export default class DefinitionsDrawer extends React.Component {
 // ============= PropTypes ==============
 
 DefinitionsDrawer.propTypes = {
-
+    fixationWords: PropTypes.array.isRequired
 };
 
 // ============= Styled Components ==============

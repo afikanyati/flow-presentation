@@ -10,11 +10,11 @@ import SkinTypes                from '../../constants/skinTypes';
 import FeatureMenu              from './FeatureMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
-import StatusBar                from './StatusBar';
+import FunctionBar              from './FunctionBar';
 import CruiseControlButton      from './CruiseControlButton';
 import MapButton                from './MapButton';
-import DefinitionsDrawer         from './DefinitionsDrawer';
-
+import DefinitionsDrawer        from './DefinitionsDrawer';
+import CompletionBar            from './CompletionBar';
 
 /**
  * The Viewport component is a component used to
@@ -11157,7 +11157,7 @@ export default class Viewport extends React.Component {
                             "attachment": {
 
                             }
-                          },
+                        },
                           {
                             "index": 36,
                             "text": "away.",
@@ -11587,15 +11587,18 @@ export default class Viewport extends React.Component {
     }
 
     render() {
+        let progress = this.getProgress();
         return (
             <Container
                 id="viewport"
                 skin={this.props.skin}
                 onClick={this.handleClick}>
-                <StatusBar
+                <FunctionBar
                     hand                  ={this.props.hand}
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
                 />
+                <CompletionBar
+                    progress={progress}/>
                 <TitleBar>{this.state.title}</TitleBar>
                 <HistoryContainer
                     skin={this.props.skin}
@@ -11720,7 +11723,11 @@ export default class Viewport extends React.Component {
                         );
                 })}
                 </FutureContainer>
-                <DefinitionsDrawer />
+                <DefinitionsDrawer
+                    fixationWords={this.state.assets[this.state.assetCurrentIndex].trailingWord.length > 0 ?
+                                        this.state.assets[this.state.assetCurrentIndex].trailingWord.concat(this.state.assets[this.state.assetCurrentIndex].fixationWindow)
+                                    :
+                                        this.state.assets[this.state.assetCurrentIndex].fixationWindow}/>
                 <FeatureMenu
                     hand                  ={this.props.hand}
                     toggleHighlight={this.toggleHighlight}
@@ -12142,14 +12149,6 @@ export default class Viewport extends React.Component {
         });
     }
 
-    toggleCruiseControl = (e) => {
-        e.stopPropagation();
-        console.log("Cruise Control Toggled");
-        this.setState({
-            cruiseControlIsActive: !this.state.cruiseControlIsActive
-        });
-    }
-
     toggleWordHighlight = (paragraphIndex, start, end) => {
 
         let history    = [],
@@ -12238,29 +12237,54 @@ export default class Viewport extends React.Component {
         });
     }
 
+    toggleCruiseControl = (e) => {
+        e.stopPropagation();
+        alert("Still To Implement: Will start/stop movement of words.");
+        this.setState({
+            cruiseControlIsActive: !this.state.cruiseControlIsActive
+        });
+    }
+
     toggleMap = (e) => {
         e.stopPropagation();
-        console.log("Map Toggled");
+        alert("Still To Implement: Will display a global map of text document.");
     }
 
     performWriteOperation = (e) => {
         e.stopPropagation();
-        console.log("performWriteAttachment");
+        alert("Still To Implement: Will open writing interface to attach text note.");
     }
 
     performImageOperation = (e) => {
         e.stopPropagation();
-        console.log("performImageAttachment ");
+        alert("Still To Implement: Will open up dialog to select image to attach.");
     }
 
     performRecordOperation = (e) => {
         e.stopPropagation();
-        console.log("performRecordAttachment");
+        alert("Still To Implement: Will open up interface to record voicenote to attach.");
     }
 
     performDrawOperation = (e) => {
         e.stopPropagation();
-        console.log("performDrawAttachment");
+        alert("Still To Implement: Will open up interface to draw a sketch to attach.");
+    }
+
+    getProgress = (total, asset) => {
+        let completed = this.state.assets[this.state.assetCurrentIndex].history.length +
+                            this.state.assets[this.state.assetCurrentIndex].trailingWord.length +
+                            this.state.assets[this.state.assetCurrentIndex].fixationWindow.length +
+                            this.state.assets.slice(0, this.state.assetCurrentIndex).reduce((total, asset) => {
+                                return total + (asset.history.length + asset.trailingWord.length + asset.fixationWindow.length + asset.future.length);
+                            }, 0);
+
+        let totalWords = this.state.assets.reduce((total, asset) => {
+            return total + (asset.history.length + asset.trailingWord.length + asset.fixationWindow.length + asset.future.length);
+        }, 0);
+
+        let progress = completed/totalWords * 100;
+
+        return progress;
     }
 }
 
@@ -12441,8 +12465,9 @@ const FutureContainer = styled.section`
 
 const TitleBar = styled.h3`
     position: fixed;
-    top: 10px;
+    top: 0px;
     left: 50%;
+    margin: 15px 0px;
     transform: translateX(-50%);
     color: ${props => props.theme.gray};
     z-index: 5;

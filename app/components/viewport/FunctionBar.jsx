@@ -15,27 +15,27 @@ import HighlightGray           from '../../assets/images/icons/highlight-gray.sv
 /**
  * The StatusBar component is a component used to
  */
-export default class StatusBar extends React.Component {
+export default class FunctionBar extends React.Component {
 
     constructor(props) {
         super(props);
     }
 
     componentWillMount() {
-        // console.log("-----StatusBar");
+        // console.log("-----FunctionBar");
     }
 
     render() {
         return (
-            <StatusBarContainer
+            <FunctionBarContainer
                 hand={this.props.hand}>
-                <StatusIcon
+                <FunctionIcon
                     title={`Rapid Scroll ${this.props.rapidScrollIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.rapidScrollIsActive ?
                             `url(${RapidScrollPurple})`
                         :
                             `url(${RapidScrollGray})`}/>
-            </StatusBarContainer>
+            </FunctionBarContainer>
         );
     }
 
@@ -52,22 +52,22 @@ export default class StatusBar extends React.Component {
 
 // ============= PropTypes ==============
 
-StatusBar.propTypes = {
+FunctionBar.propTypes = {
     rapidScrollIsActive : PropTypes.bool.isRequired,
     hand              : PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
 
-const StatusBarContainer = styled.div`
+const FunctionBarContainer = styled.div`
     position: fixed;
-    top: 15px;
-    left: ${props => props.hand == HandTypes.RIGHT ? "15px" : "auto"};
-    right: ${props => props.hand == HandTypes.LEFT ? "15px" : "auto"};
+    top: 5px;
+    left: ${props => props.hand == HandTypes.RIGHT ? "10px" : "auto"};
+    right: ${props => props.hand == HandTypes.LEFT ? "10px" : "auto"};
     z-index: 5;
 `;
 
-const StatusIcon = styled.div`
+const FunctionIcon = styled.div`
     position: relative;
     display: inline-block;
     width: 30px;
