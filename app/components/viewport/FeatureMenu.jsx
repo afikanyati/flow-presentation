@@ -182,7 +182,10 @@ export default class FeatureMenu extends React.Component {
                     onClick={this.state.activeFeature == FeatureTypes.BOOKMARK ?
                                     this.props.toggleWordBookmark
                                 :
-                                    this.toggleMenu}>
+                                    this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                        this.handleNullClick
+                                    :
+                                        this.toggleMenu}>
                     <ToggleIcon
                         icon={
                             this.state.activeFeature == null ?
@@ -359,6 +362,10 @@ export default class FeatureMenu extends React.Component {
         this.setState({
             menuIsOpen : !this.state.menuIsOpen
         });
+    }
+
+    handleNullClick = (e) => {
+        e.stopPropagation();
     }
 }
 
