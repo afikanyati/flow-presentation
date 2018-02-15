@@ -30,7 +30,9 @@ export default class Viewport extends React.Component {
             assets            : [],
             highlightIsActive: false,
             rapidScrollIsActive: false,
-            cruiseControlIsActive: false
+            cruiseControlIsActive: false,
+            cruiseControlHaltIsActive: false,
+            timePerFixation: 0 // In milliseconds
         }
     }
 
@@ -11596,6 +11598,7 @@ export default class Viewport extends React.Component {
                 <FunctionBar
                     hand                  ={this.props.hand}
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
+                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                 />
                 <CompletionBar
                     progress={progress}/>
@@ -11644,7 +11647,7 @@ export default class Viewport extends React.Component {
                             fontFamily ={this.props.fontFamily}>
                             <CSSTransitionGroup
                                   transitionName         ="fixation"
-                                  transitionEnterTimeout ={200}
+                                  transitionEnterTimeout ={400}
                                   transitionLeave        ={false}>
                                 {this.state.assets[this.state.assetCurrentIndex].trailingWord.map((word) => {
                                     return (
@@ -11671,7 +11674,7 @@ export default class Viewport extends React.Component {
                         fontFamily={this.props.fontFamily}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
-                              transitionEnterTimeout ={200}
+                              transitionEnterTimeout ={400}
                               transitionLeave        ={false}>
                             {this.state.assets[this.state.assetCurrentIndex].fixationWindow.map((word, index) => {
                                 return (
@@ -11754,6 +11757,37 @@ export default class Viewport extends React.Component {
         window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE
         window.ontouchmove  = this.handleScroll; // mobile
         document.onkeydown  = this.handleKeys;
+        window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
+        window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
+
+        // === Set timePerFixation ===
+        //
+        // We model the number of fixations as displacement
+        // We want to determine the fixations/s (velocity)
+        // We use the following equation of motion: x_f = x_0 + v_0*t + 0.5*a*t^2
+
+        let secondsInMinute = 60;
+        let milliSecondFactor = 1000;
+        let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
+        let timePerFixation = milliSecondFactor * secondsInMinute/numFixations; // measured in ms
+        this.setState({
+            timePerFixation: timePerFixation
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.readingSpeed) {
+            let secondsInMinute = 60;
+            let milliSecondFactor = 1000;
+            let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
+            let timePerFixation = milliSecondFactor * secondsInMinute/numFixations; // measured in ms
+            this.setState({
+                timePerFixation: timePerFixation
+            }, () => {
+                clearInterval(this.cruiseControl);
+                this.moveText();
+            });
+        }
     }
 
     componentWillUnmount() {
@@ -11761,6 +11795,38 @@ export default class Viewport extends React.Component {
     }
 
     // ========== Methods ===========
+
+    handleClick = (e) => {
+        if (!this.state.cruiseControlIsActive) {
+            this.toggleRapidScroll();
+        }
+    }
+
+    handleCruiseMouseDown = (e) => {
+        let acceleration = -50;
+
+        // === Modify timePerFixation ===
+        //
+        // We want to apply deceleration to timePerFixation
+        // We use the following equation of motion: v_f = v_0 + a*t
+        if (this.state.cruiseControlIsActive) {
+            clearInterval(this.cruiseControl);
+            this.setState({
+                cruiseControlHaltIsActive: true
+            });
+        }
+    }
+
+    handleCruiseMouseUp = (e) => {
+        let acceleration = 5;
+        if (this.state.cruiseControlIsActive) {
+            this.moveText();
+            this.setState({
+                cruiseControlHaltIsActive: false
+            });
+        }
+
+    }
 
     handleKeys = (e) => {
 
@@ -11791,13 +11857,21 @@ export default class Viewport extends React.Component {
 
     handleScroll = (e) => {
         this.preventDefault(e);
+        let rapidScrollFactor = 0.25;
 
-        if (!this.state.rapidScrollIsActive && this.state.scroll == this.props.trackingSpeed) {
+        if (!this.state.rapidScrollIsActive &&
+            this.state.scroll == this.props.trackingSpeed &&
+            !this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
-        } else if (this.state.rapidScrollIsActive && this.state.scroll == 0.25 * this.props.trackingSpeed) {
+        } else if (this.state.rapidScrollIsActive &&
+                    this.state.scroll == rapidScrollFactor * this.props.trackingSpeed &&
+                    !this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
+        } else if (this.state.cruiseControlIsActive) {
+            let direction = this.getScrollDirection(e);
+            this.props.modifyReadingSpeed(direction);
         }
 
         this.setState({
@@ -12134,14 +12208,6 @@ export default class Viewport extends React.Component {
         });
     }
 
-    handleClick = (e) => {
-        if (this.state.cruiseControlIsActive) {
-            this.toggleCruiseControl(e);
-        } else {
-            this.toggleRapidScroll();
-        }
-    }
-
     toggleRapidScroll = () => {
 
         this.setState({
@@ -12239,10 +12305,25 @@ export default class Viewport extends React.Component {
 
     toggleCruiseControl = (e) => {
         e.stopPropagation();
-        alert("Still To Implement: Will start/stop movement of words.");
+        if (!this.state.cruiseControlIsActive) {
+            this.moveText();
+        } else {
+            clearInterval(this.cruiseControl);
+        }
+
         this.setState({
             cruiseControlIsActive: !this.state.cruiseControlIsActive
         });
+    }
+
+    moveText = () => {
+        // Apply first transition
+        // Avoid waiting for timePerFixation to elapse
+        this.updateViewport(ScrollDirectionTypes.DOWN);
+        console.log(this.state.timePerFixation);
+        this.cruiseControl = setInterval(() => {
+            this.updateViewport(ScrollDirectionTypes.DOWN);
+        }, this.state.timePerFixation);
     }
 
     toggleMap = (e) => {
@@ -12285,6 +12366,10 @@ export default class Viewport extends React.Component {
         let progress = completed/totalWords * 100;
 
         return progress;
+    }
+
+    decreaseReadingSpeed = () => {
+
     }
 }
 

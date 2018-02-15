@@ -5,12 +5,10 @@ import styled       from 'styled-components';
 
 // Components
 import HandTypes               from '../../constants/handTypes';
-import DefinitionsPurple        from '../../assets/images/icons/definitions-purple.svg';
-import DefinitionsGray         from '../../assets/images/icons/definitions-gray.svg';
 import RapidScrollPurple     from '../../assets/images/icons/rapid-scroll-purple.svg';
 import RapidScrollGray      from '../../assets/images/icons/rapid-scroll-gray.svg';
-import HighlightPurple          from '../../assets/images/icons/highlight-purple.svg';
-import HighlightGray           from '../../assets/images/icons/highlight-gray.svg';
+import PausePurple          from '../../assets/images/icons/pause-purple.svg';
+import PauseGray           from '../../assets/images/icons/pause-gray.svg';
 
 /**
  * The StatusBar component is a component used to
@@ -35,6 +33,12 @@ export default class FunctionBar extends React.Component {
                             `url(${RapidScrollPurple})`
                         :
                             `url(${RapidScrollGray})`}/>
+                <FunctionIcon
+                    title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
+                    icon={this.props.cruiseControlHaltIsActive ?
+                            `url(${PausePurple})`
+                        :
+                            `url(${PauseGray})`}/>
             </FunctionBarContainer>
         );
     }
@@ -54,6 +58,7 @@ export default class FunctionBar extends React.Component {
 
 FunctionBar.propTypes = {
     rapidScrollIsActive : PropTypes.bool.isRequired,
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired,
     hand              : PropTypes.string.isRequired
 };
 

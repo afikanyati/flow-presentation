@@ -19,6 +19,7 @@ import Viewport                 from './viewport/Viewport';
 import FontTypes                from '../constants/fontTypes';
 import SkinTypes               from '../constants/skinTypes';
 import HandTypes               from '../constants/handTypes';
+import ScrollDirectionTypes from '../constants/scrollDirectionTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -43,7 +44,7 @@ export default class Root extends React.Component {
             trackingSpeed : 16,
             skin         : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
-            readingSpeed: 220, //WPM
+            readingSpeed: 600, //WPM --> Method to save reading speed if edited
             trailingWordIsActive: false // Cannot be active if fixationWidth !> 1
         };
     }
@@ -52,31 +53,32 @@ export default class Root extends React.Component {
         // console.log("-----Root");
 
         // Automatically make skin to be night if later than 8
-        // let lowerBoundaryHour = 20, // 8PM
-        //     upperBoundaryHour = 7, // 7am
-        //     minInHour = 60,
-        //     offset = new Date().getTimezoneOffset()/minInHour,
-        //     hour = new Date().getUTCHours();
-        //
-        // if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
-        //     console.log("hello");
-        //     this.setState({
-        //         skin: SkinTypes.NIGHT
-        //     });
-        // }
+        let lowerBoundaryHour = 20, // 8PM
+            upperBoundaryHour = 7, // 7am
+            minInHour = 60,
+            offset = new Date().getTimezoneOffset()/minInHour,
+            hour = new Date().getUTCHours();
+
+        if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
+            console.log("hello");
+            this.setState({
+                skin: SkinTypes.NIGHT
+            });
+        }
     }
 
     render() {
         return(
             <Viewport
-                fontSize           ={this.state.fontSize}
-                fontFamily         ={this.state.fontFamily}
-                fixationWidth      ={this.state.fixationWidth}
-                trackingSpeed      ={this.state.trackingSpeed}
-                hand               ={this.state.hand}
-                skin               ={this.state.skin}
-                readingSpeed       ={this.state.readingSpeed}
-                trailingWordIsActive ={this.state.trailingWordIsActive}/>
+                fontSize             ={this.state.fontSize}
+                fontFamily           ={this.state.fontFamily}
+                fixationWidth        ={this.state.fixationWidth}
+                trackingSpeed        ={this.state.trackingSpeed}
+                hand                 ={this.state.hand}
+                skin                 ={this.state.skin}
+                readingSpeed         ={this.state.readingSpeed}
+                trailingWordIsActive ={this.state.trailingWordIsActive}
+                modifyReadingSpeed   ={this.modifyReadingSpeed}/>
         );
     }
 
@@ -97,5 +99,15 @@ export default class Root extends React.Component {
      */
    rerender = () => {
        this.setState({});
+   }
+
+   modifyReadingSpeed = (direction) => {
+       let delta = direction == ScrollDirectionTypes.UP ? -1 : 1;
+       let readingSpeed = this.state.readingSpeed + delta;
+       this.setState({
+           readingSpeed: readingSpeed
+       }, () => {
+           console.log(this.state.readingSpeed);
+       });
    }
 }

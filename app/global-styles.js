@@ -10,6 +10,7 @@ injectGlobal`
 
     body {
         font-family: 'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        margin: 0;
     }
 
     a, a:visited, a:hover {
@@ -90,12 +91,12 @@ injectGlobal`
     }
 
     .fixation-enter {
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .fixation-enter.fixation-enter-active {
       opacity: 1;
-      transition: opacity 200ms ease-in;
+      transition: opacity 400ms ease-in;
     }
 
     /* Adobe Garamond */

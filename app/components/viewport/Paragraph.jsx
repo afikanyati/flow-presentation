@@ -29,7 +29,7 @@ export default class Paragraph extends React.Component {
                 {this.props.type == "history" ?
                     <CSSTransitionGroup
                           transitionName         ={"word"}
-                          transitionEnterTimeout ={300}
+                          transitionEnterTimeout ={400}
                           transitionLeaveTimeout ={200}>
                           {this.props.asset.history.map((word) => {
                               return (

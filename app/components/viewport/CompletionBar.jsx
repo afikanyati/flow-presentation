@@ -33,7 +33,6 @@ export default class CompletionBar extends React.Component {
 
     componentDidMount() {
         // console.log("+++++CompletionBar");
-        console.log(this.props.progress);
     }
 
     // ========== Methods ===========
@@ -67,8 +66,9 @@ const Meter = styled.div`
 const Indicator = styled.div`
     margin: 0;
     padding: 0;
-    background: ${props => props.theme.lightBlue};
+    background: ${props => props.theme.blue};
     width: ${props => props.progress};
     height: 6px;
     border-radius: 3px;
+    transition: width 0.1s;
 `;
