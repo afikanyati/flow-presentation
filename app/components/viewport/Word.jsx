@@ -32,6 +32,7 @@ export default class Word extends React.Component {
                     hasAttachment={Object.keys(this.props.word.attachment).length != 0}
                     inFixationWindow={this.props.inFixationWindow} />
                 <Text
+                    skin={this.props.skin}
                     italic        ={this.props.italic}
                     bold          ={this.props.bold}
                     isHighlighted ={this.props.word.isHighlighted}
@@ -115,10 +116,7 @@ const Text = styled.span`
         color: ${props => props.skin == SkinTypes.WHITE ?
                     props.theme.purple
                 :
-                    props.skin == SkinTypes.CREAM ?
-                            props.theme.purple
-                        :
-                            props.theme.lightPurple
+                    props.theme.lightPurple
                 };
         transition        : all 0.2s;
         -webkit-transition: all 0.2s;
