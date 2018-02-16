@@ -44,7 +44,7 @@ export default class Root extends React.Component {
             trackingSpeed : 16,
             skin         : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
-            readingSpeed: 600, //WPM --> Method to save reading speed if edited
+            readingSpeed: 350, //WPM --> Method to save reading speed if edited
             trailingWordIsActive: false // Cannot be active if fixationWidth !> 1
         };
     }
@@ -106,8 +106,6 @@ export default class Root extends React.Component {
        let readingSpeed = this.state.readingSpeed + delta;
        this.setState({
            readingSpeed: readingSpeed
-       }, () => {
-           console.log(this.state.readingSpeed);
        });
    }
 }

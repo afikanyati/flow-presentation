@@ -11592,15 +11592,18 @@ export default class Viewport extends React.Component {
         let progress = this.getProgress();
         return (
             <Container
-                id="viewport"
+                innerRef={ele => {this.viewport = ele}}
                 skin={this.props.skin}
                 onClick={this.handleClick}>
                 <FunctionBar
                     hand                  ={this.props.hand}
+                    skin={this.props.skin}
+                    readingSpeed={this.props.readingSpeed}
                     rapidScrollIsActive={this.state.rapidScrollIsActive}
                     cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                 />
                 <CompletionBar
+                    skin={this.props.skin}
                     progress={progress}/>
                 <TitleBar>{this.state.title}</TitleBar>
                 <HistoryContainer
@@ -11618,6 +11621,7 @@ export default class Viewport extends React.Component {
                               bottomMargin  ={false}
                               topMargin     ={false}
                               toggleWordHighlight={this.toggleWordHighlight}
+                              skin={this.props.skin}
                               />
                       );
                   })}
@@ -11633,6 +11637,7 @@ export default class Viewport extends React.Component {
                             bottomMargin ={true}
                             topMargin    ={true}
                             toggleWordHighlight={this.toggleWordHighlight}
+                            skin={this.props.skin}
                             />
                     );
                 })}
@@ -11659,6 +11664,7 @@ export default class Viewport extends React.Component {
                                             fontFamily ={this.props.fontFamily}
                                             skipToWord ={this.skipToWord}
                                             toggleWordHighlight={this.toggleWordHighlight}
+                                            skin={this.props.skin}
                                             />
                                     );
                                 })}
@@ -11686,6 +11692,7 @@ export default class Viewport extends React.Component {
                                         fontFamily ={this.props.fontFamily}
                                         skipToWord ={this.skipToWord}
                                         toggleWordHighlight={this.toggleWordHighlight}
+                                        skin={this.props.skin}
                                     />
                                 );
                             })}
@@ -11707,6 +11714,7 @@ export default class Viewport extends React.Component {
                                 bottomMargin ={true}
                                 topMargin    ={false}
                                 toggleWordHighlight={this.toggleWordHighlight}
+                                skin={this.props.skin}
                                 />
                         );
                     })}
@@ -11722,17 +11730,20 @@ export default class Viewport extends React.Component {
                                 bottomMargin        ={true}
                                 topMargin           ={true}
                                 toggleWordHighlight ={this.toggleWordHighlight}
+                                skin={this.props.skin}
                                 />
                         );
                 })}
                 </FutureContainer>
                 <DefinitionsDrawer
+                    skin={this.props.skin}
                     fixationWords={this.state.assets[this.state.assetCurrentIndex].trailingWord.length > 0 ?
                                         this.state.assets[this.state.assetCurrentIndex].trailingWord.concat(this.state.assets[this.state.assetCurrentIndex].fixationWindow)
                                     :
                                         this.state.assets[this.state.assetCurrentIndex].fixationWindow}/>
                 <FeatureMenu
                     hand                  ={this.props.hand}
+                    skin={this.props.skin}
                     toggleHighlight={this.toggleHighlight}
                     toggleWordBookmark={this.toggleWordBookmark}
                     performWriteOperation={this.performWriteOperation}
@@ -11741,10 +11752,12 @@ export default class Viewport extends React.Component {
                     performDrawOperation={this.performDrawOperation} />
                 <CruiseControlButton
                     hand                  ={this.props.hand}
+                    skin={this.props.skin}
                     cruiseControlIsActive ={this.state.cruiseControlIsActive}
                     toggleCruiseControl   ={this.toggleCruiseControl}/>
                 <MapButton
                     hand={this.props.hand}
+                    skin={this.props.skin}
                     toggleMap={this.toggleMap} />
             </Container>
         );
@@ -11757,8 +11770,8 @@ export default class Viewport extends React.Component {
         window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE
         window.ontouchmove  = this.handleScroll; // mobile
         document.onkeydown  = this.handleKeys;
-        window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
-        window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
+        this.viewport.addEventListener('mousedown', this.handleCruiseMouseDown, false);
+        this.viewport.addEventListener('mouseup', this.handleCruiseMouseUp, false);
 
         // === Set timePerFixation ===
         //
@@ -11776,7 +11789,7 @@ export default class Viewport extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.readingSpeed) {
+        if (nextProps.readingSpeed != this.props.readingSpeed) {
             let secondsInMinute = 60;
             let milliSecondFactor = 1000;
             let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
@@ -11784,8 +11797,10 @@ export default class Viewport extends React.Component {
             this.setState({
                 timePerFixation: timePerFixation
             }, () => {
-                clearInterval(this.cruiseControl);
-                this.moveText();
+                this.isScrolling = setTimeout(() => {
+                    clearInterval(this.cruiseControl);
+                    this.moveText();
+                }, 200);
             });
         }
     }
@@ -11803,13 +11818,9 @@ export default class Viewport extends React.Component {
     }
 
     handleCruiseMouseDown = (e) => {
-        let acceleration = -50;
-
-        // === Modify timePerFixation ===
-        //
-        // We want to apply deceleration to timePerFixation
-        // We use the following equation of motion: v_f = v_0 + a*t
-        if (this.state.cruiseControlIsActive) {
+        e.stopPropagation();
+        if (this.state.cruiseControlIsActive &&
+            e.target.offsetParent.id != "cruiseControlButton") {
             clearInterval(this.cruiseControl);
             this.setState({
                 cruiseControlHaltIsActive: true
@@ -11818,14 +11829,13 @@ export default class Viewport extends React.Component {
     }
 
     handleCruiseMouseUp = (e) => {
-        let acceleration = 5;
-        if (this.state.cruiseControlIsActive) {
+        e.stopPropagation();
+        if (this.state.cruiseControlIsActive && e.target.offsetParent.id != "cruiseControlButton") {
             this.moveText();
             this.setState({
                 cruiseControlHaltIsActive: false
             });
         }
-
     }
 
     handleKeys = (e) => {
@@ -11842,10 +11852,21 @@ export default class Viewport extends React.Component {
 
             // Up or Left
             if (e.keyCode == 37 || e.keyCode == 38) {
-                this.updateViewport(ScrollDirectionTypes.UP);
+                if (this.state.cruiseControlIsActive) {
+                    window.clearTimeout(this.isScrolling);
+                    this.props.modifyReadingSpeed(ScrollDirectionTypes.DOWN);
+                } else {
+                    this.updateViewport(ScrollDirectionTypes.UP);
+                }
+
             // Down or Right
             } else if (e.keyCode == 39 || e.keyCode == 40) {
-                this.updateViewport(ScrollDirectionTypes.DOWN);
+                if (this.state.cruiseControlIsActive) {
+                    window.clearTimeout(this.isScrolling);
+                    this.props.modifyReadingSpeed(ScrollDirectionTypes.UP);
+                } else {
+                    this.updateViewport(ScrollDirectionTypes.DOWN);
+                }
             }
 
             return false;
@@ -11871,6 +11892,7 @@ export default class Viewport extends React.Component {
             this.updateViewport(direction);
         } else if (this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
+            window.clearTimeout(this.isScrolling);
             this.props.modifyReadingSpeed(direction);
         }
 
@@ -12319,8 +12341,6 @@ export default class Viewport extends React.Component {
     moveText = () => {
         // Apply first transition
         // Avoid waiting for timePerFixation to elapse
-        this.updateViewport(ScrollDirectionTypes.DOWN);
-        console.log(this.state.timePerFixation);
         this.cruiseControl = setInterval(() => {
             this.updateViewport(ScrollDirectionTypes.DOWN);
         }, this.state.timePerFixation);

@@ -40,7 +40,8 @@ export default class Paragraph extends React.Component {
                                       inFixationWindow={false}
                                       fontFamily ={this.props.fontFamily}
                                       skipToWord ={this.props.skipToWord}
-                                      toggleWordHighlight={this.props.toggleWordHighlight}/>
+                                      toggleWordHighlight={this.props.toggleWordHighlight}
+                                      skin={this.props.skin}/>
                                   );
                               })}
                     </CSSTransitionGroup>
@@ -54,7 +55,8 @@ export default class Paragraph extends React.Component {
                                 inFixationWindow={false}
                                 fontFamily ={this.props.fontFamily}
                                 skipToWord ={this.props.skipToWord}
-                                toggleWordHighlight={this.props.toggleWordHighlight}/>
+                                toggleWordHighlight={this.props.toggleWordHighlight}
+                                skin={this.props.skin}/>
                             );
                         })
                 }
@@ -83,7 +85,8 @@ Paragraph.propTypes = {
     fontFamily         : PropTypes.object.isRequired,
     bottomMargin       : PropTypes.bool.isRequired,
     topMargin          : PropTypes.bool.isRequired,
-    toggleWordHighlight: PropTypes.func.isRequired
+    toggleWordHighlight: PropTypes.func.isRequired,
+    skin               : PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============

@@ -5,6 +5,7 @@ import styled       from 'styled-components';
 
 // Components
 import HandTypes    from '../../constants/handTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import Play         from '../../assets/images/icons/play.svg';
 import Pause        from '../../assets/images/icons/pause-white.svg';
 
@@ -24,7 +25,9 @@ export default class CruiseControlButton extends React.Component {
     render() {
         return (
             <ControlButton
+                id="cruiseControl"
                 hand={this.props.hand}
+                skin={this.props.skin}
                 active={this.props.cruiseControlIsActive}
                 onClick={this.props.toggleCruiseControl}>
                 <ControlButtonIcon
@@ -53,7 +56,8 @@ export default class CruiseControlButton extends React.Component {
 CruiseControlButton.propTypes = {
     cruiseControlIsActive: PropTypes.bool.isRequired,
     toggleCruiseControl  : PropTypes.func.isRequired,
-    hand                 : PropTypes.string.isRequired
+    hand                 : PropTypes.string.isRequired,
+    skin: PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -66,7 +70,22 @@ const ControlButton = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background: ${props => props.active ? props.theme.purple : props.theme.lightGray};
+    background: ${props => props.active ?
+            props.skin == SkinTypes.WHITE ?
+                        props.theme.purple
+                    :
+                        props.skin == SkinTypes.CREAM ?
+                                "#f9f3e9"
+                            :
+                                props.theme.lightPurple
+        :
+            props.skin == SkinTypes.WHITE ?
+                        props.theme.lightGray
+                    :
+                        props.skin == SkinTypes.CREAM ?
+                                "#f9f3e9"
+                            :
+                                props.theme.darkGray};
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s, background 0.15s;
     z-index: 10;

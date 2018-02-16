@@ -5,6 +5,7 @@ import styled       from 'styled-components';
 
 // Components
 import FontTypes                from '../../constants/fontTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import DefinitionsWhite         from '../../assets/images/icons/definitions-white.svg';
 
 /**
@@ -27,10 +28,11 @@ export default class DefinitionsDrawer extends React.Component {
         return (
             <DefinitionsContainer
                 open={this.state.open}
+                skin={this.props.skin}
                 fontFamily={FontTypes.ADOBE_GARAMOND}>
                 <DefinitionsStub
-                icon={`url(${DefinitionsWhite})`}
-                onClick={this.toggleDrawer}/>
+                    icon={`url(${DefinitionsWhite})`}
+                    onClick={this.toggleDrawer}/>
                 <Definition>
                     <Term>
                         most
@@ -112,7 +114,8 @@ export default class DefinitionsDrawer extends React.Component {
 // ============= PropTypes ==============
 
 DefinitionsDrawer.propTypes = {
-    fixationWords: PropTypes.array.isRequired
+    fixationWords: PropTypes.array.isRequired,
+    skin: PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -125,7 +128,14 @@ const DefinitionsContainer = styled.section`
     padding: 20px 110px;
     padding-top: 50px;
     font-family: ${props => props.fontFamily.regular};
-    background: ${props => props.theme.white};
+    background: ${props => props.skin == SkinTypes.WHITE ?
+                "#ffffff"
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        "#171717"
+            };
     box-shadow: 0px -10px 20px 1px rgba(0,0,0,.15);
     z-index: 5;
     transition: all 0.2s ease-in-out;
@@ -140,7 +150,14 @@ const DefinitionsStub = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background-color: ${props => props.theme.lightGray};
+    background-color: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.lightGray
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        props.theme.darkGray
+            };
     background-image: ${props => props.icon};
     background-position: 50%;
     background-size: 35px 35px;
@@ -154,7 +171,14 @@ const DefinitionsStub = styled.div`
     -ms-transition    : all 0.3s;
 
     &:hover {
-        background-color: ${props => props.theme.lightBlue};
+        background-color: ${props => props.skin == SkinTypes.WHITE ?
+                    props.theme.lightBlue
+                :
+                    props.skin == SkinTypes.CREAM ?
+                            "#f9f3e9"
+                        :
+                            props.theme.darkBlue
+                };
     }
 `;
 

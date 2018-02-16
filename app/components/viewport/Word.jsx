@@ -3,6 +3,7 @@ import React        from 'react';
 import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
+import SkinTypes                from '../../constants/skinTypes';
 import BookmarkFilled  from '../../assets/images/icons/bookmark-red-fill.svg';
 import AttachmentFilled  from '../../assets/images/icons/attachment-purple.svg';
 import { CSSTransitionGroup }   from 'react-transition-group';
@@ -67,7 +68,8 @@ Word.propTypes = {
     skipToWord         : PropTypes.func.isRequired,
     fontFamily         : PropTypes.object.isRequired,
     toggleWordHighlight: PropTypes.func.isRequired,
-    inFixationWindow: PropTypes.bool.isRequired
+    inFixationWindow   : PropTypes.bool.isRequired,
+    skin               : PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -110,7 +112,14 @@ const Text = styled.span`
     -ms-transition    : all 0.2s;
 
     &:hover {
-        color: ${props => props.theme.purple};
+        color: ${props => props.skin == SkinTypes.WHITE ?
+                    props.theme.purple
+                :
+                    props.skin == SkinTypes.CREAM ?
+                            "#f9f3e9"
+                        :
+                            props.theme.lightPurple
+                };
         transition        : all 0.2s;
         -webkit-transition: all 0.2s;
         -moz-transition   : all 0.2s;

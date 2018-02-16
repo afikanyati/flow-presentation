@@ -5,10 +5,17 @@ import styled       from 'styled-components';
 
 // Components
 import HandTypes               from '../../constants/handTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import RapidScrollPurple     from '../../assets/images/icons/rapid-scroll-purple.svg';
+import RapidScrollLightPurple     from '../../assets/images/icons/rapid-scroll-lightpurple.svg';
 import RapidScrollGray      from '../../assets/images/icons/rapid-scroll-gray.svg';
+import RapidScrollDarkGray      from '../../assets/images/icons/rapid-scroll-darkgray.svg';
 import PausePurple          from '../../assets/images/icons/pause-purple.svg';
+import PauseLightPurple          from '../../assets/images/icons/pause-lightpurple.svg';
 import PauseGray           from '../../assets/images/icons/pause-gray.svg';
+import PauseDarkGray           from '../../assets/images/icons/pause-darkgray.svg';
+import SpeedPurple          from '../../assets/images/icons/speed-purple.svg';
+import SpeedLightPurple          from '../../assets/images/icons/speed-lightpurple.svg';
 
 /**
  * The StatusBar component is a component used to
@@ -27,18 +34,56 @@ export default class FunctionBar extends React.Component {
         return (
             <FunctionBarContainer
                 hand={this.props.hand}>
+                <FunctionSystem>
+                    <FunctionIcon
+                        title={`Words per Minute`}
+                        icon={this.props.skin == SkinTypes.WHITE ?
+                                    `url(${SpeedPurple})`
+                                :
+                                    this.props.skin == SkinTypes.CREAM ?
+                                            `url(${SpeedPurple})`
+                                        :
+                                            `url(${SpeedLightPurple})`}/>
+                    <FunctionText skin={this.props.skin}>
+                        {this.props.readingSpeed}
+                    </FunctionText>
+                </FunctionSystem>
                 <FunctionIcon
                     title={`Rapid Scroll ${this.props.rapidScrollIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.rapidScrollIsActive ?
-                            `url(${RapidScrollPurple})`
+                            this.props.skin == SkinTypes.WHITE ?
+                                        `url(${RapidScrollPurple})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${RapidScrollPurple})`
+                                            :
+                                                `url(${RapidScrollLightPurple})`
                         :
-                            `url(${RapidScrollGray})`}/>
+                            this.props.skin == SkinTypes.WHITE ?
+                                        `url(${RapidScrollGray})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${RapidScrollGray})`
+                                            :
+                                                `url(${RapidScrollDarkGray})`}/>
                 <FunctionIcon
                     title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.cruiseControlHaltIsActive ?
-                            `url(${PausePurple})`
+                            this.props.skin == SkinTypes.WHITE ?
+                                        `url(${PausePurple})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${PausePurple})`
+                                            :
+                                                `url(${PausePurple})`
                         :
-                            `url(${PauseGray})`}/>
+                            this.props.skin == SkinTypes.WHITE ?
+                                        `url(${PauseGray})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${PauseGray})`
+                                            :
+                                                `url(${PauseDarkGray})`}/>
             </FunctionBarContainer>
         );
     }
@@ -59,7 +104,9 @@ export default class FunctionBar extends React.Component {
 FunctionBar.propTypes = {
     rapidScrollIsActive : PropTypes.bool.isRequired,
     cruiseControlHaltIsActive: PropTypes.bool.isRequired,
-    hand              : PropTypes.string.isRequired
+    hand              : PropTypes.string.isRequired,
+    readingSpeed: PropTypes.number.isRequired,
+    skin: PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -82,4 +129,29 @@ const FunctionIcon = styled.div`
     background-size: 20px 20px;
     background-repeat: no-repeat;
     transition: all 0.2s;
+`;
+
+const FunctionSystem = styled.div`
+    display: inline-flex;
+    position: relative;
+    height: 40px;
+    align-items: center;
+    margin-right: 20px;
+`;
+
+const FunctionText = styled.h3`
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-size: 0.9em;
+    margin: 0;
+    color: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.darkPurple
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#5f3e24"
+                    :
+                        props.theme.gray
+            };
+    font-weight: 400;
 `;

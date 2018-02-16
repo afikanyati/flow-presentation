@@ -5,6 +5,7 @@ import styled       from 'styled-components';
 
 // Components
 import HandTypes               from '../../constants/handTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import MapWhite                from '../../assets/images/icons/map-white.svg';
 import MapColor                from '../../assets/images/icons/map-yellow.svg';
 
@@ -25,8 +26,10 @@ export default class CompletionBar extends React.Component {
 
     render() {
         return (
-            <Meter>
-                <Indicator progress={`${this.props.progress}%`} />
+            <Meter skin={this.props.skin}>
+                <Indicator
+                    skin={this.props.skin}
+                    progress={`${this.props.progress}%`} />
             </Meter>
         );
     }
@@ -45,7 +48,8 @@ export default class CompletionBar extends React.Component {
 // ============= PropTypes ==============
 
 CompletionBar.propTypes = {
-    progress: PropTypes.number.isRequired
+    progress: PropTypes.number.isRequired,
+    skin: PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -59,14 +63,28 @@ const Meter = styled.div`
     height: 6px;
     border-radius: 3px;
     margin: 0;
-    background: ${props => props.theme.lightGray};
+    background: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.lightGray
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#5f3e24"
+                    :
+                        props.theme.darkGray
+            };
     z-index: 5;
 `;
 
 const Indicator = styled.div`
     margin: 0;
     padding: 0;
-    background: ${props => props.theme.blue};
+    background: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.blue
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#5f3e24"
+                    :
+                        props.theme.darkBlue
+            };
     width: ${props => props.progress};
     height: 6px;
     border-radius: 3px;

@@ -5,6 +5,7 @@ import styled       from 'styled-components';
 
 // Components
 import HandTypes               from '../../constants/handTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import MapWhite                from '../../assets/images/icons/map-white.svg';
 import MapColor                from '../../assets/images/icons/map-yellow.svg';
 
@@ -26,6 +27,7 @@ export default class MapButton extends React.Component {
     render() {
         return (
             <MapButtonContainer
+                skin={this.props.skin}
                 hand={this.props.hand}
                 onClick={this.props.toggleMap}>
                 <MapButtonIcon
@@ -49,7 +51,8 @@ export default class MapButton extends React.Component {
 
 MapButton.propTypes = {
     toggleMap: PropTypes.func.isRequired,
-    hand: PropTypes.string.isRequired
+    hand: PropTypes.string.isRequired,
+    skin               : PropTypes.string.isRequired
 };
 
 // ============= Styled Components ==============
@@ -62,7 +65,14 @@ const MapButtonContainer = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background: ${props => props.theme.lightGray};
+    background: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.lightGray
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        props.theme.darkGray
+            };
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
     z-index: 10;

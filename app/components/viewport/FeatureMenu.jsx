@@ -7,6 +7,7 @@ import ReactHintFactory         from 'react-hint';
 // Components
 import BackButton               from './BackButton';
 import HandTypes                from '../../constants/handTypes';
+import SkinTypes                from '../../constants/skinTypes';
 import FeatureTypes             from '../../constants/featureTypes';
 import AttachmentTypes             from '../../constants/attachmentOperationTypes';
 
@@ -51,7 +52,7 @@ export default class FeatureMenu extends React.Component {
                         white: BookmarkWhite
                     },
                     description: "Bookmark Location",
-                    color: "red",
+                    color: {white: "red", cream: "red", night: "red"},
                     isActive: false,
                     cssTranslate: {
                         inactiveTransitionDelay: 0,
@@ -66,7 +67,7 @@ export default class FeatureMenu extends React.Component {
                         white: AttachmentWhite
                     },
                     description: "Create Attachment",
-                    color: "purple",
+                    color: {white: "purple", cream: "purple", night: "purple"},
                     isActive: false,
                     cssTranslate: {
                         inactiveTransitionDelay: 0,
@@ -78,7 +79,7 @@ export default class FeatureMenu extends React.Component {
                                 name: AttachmentTypes.WRITE,
                                 icon: {color: WriteIcon},
                                 description: "Write Note",
-                                color: "lightGray",
+                                color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -90,7 +91,7 @@ export default class FeatureMenu extends React.Component {
                                 name: AttachmentTypes.IMAGE,
                                 icon: {color: ImageIcon},
                                 description: "Attach Image",
-                                color: "lightGray",
+                                color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -102,7 +103,7 @@ export default class FeatureMenu extends React.Component {
                                 name: AttachmentTypes.RECORD,
                                 icon: {color: RecordIcon},
                                 description: "Record Voicenote",
-                                color: "lightGray",
+                                color:{white: "lightGray", cream: "lightGray", night: "darkGray"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -114,7 +115,7 @@ export default class FeatureMenu extends React.Component {
                                 name: AttachmentTypes.DRAW,
                                 icon: {color: DrawIcon},
                                 description: "Draw Sketch",
-                                color: "lightGray",
+                                color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -126,7 +127,7 @@ export default class FeatureMenu extends React.Component {
                                 name: "back",
                                 icon: {color: BackPurple},
                                 description: "Back",
-                                color: "black",
+                                color: {white: "black", cream: "black", night: "black"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -143,7 +144,7 @@ export default class FeatureMenu extends React.Component {
                         white: HighlightWhite
                     },
                     description: "Highlight Phrase",
-                    color: "green",
+                    color: {white: "green", cream: "green", night: "green"},
                     isActive: false,
                     cssTranslate: {
                         inactiveTransitionDelay: 0,
@@ -176,7 +177,7 @@ export default class FeatureMenu extends React.Component {
                     menuIsOpen={this.state.menuIsOpen}
                     color={
                         this.state.activeFeature == null ?
-                            "lightGray"
+                            {white: "lightGray", cream: "lightGray", night: "darkGray"}
                         :
                             this.state.features[this.state.activeFeature].color}
                     onClick={this.state.activeFeature == FeatureTypes.BOOKMARK ?
@@ -378,7 +379,8 @@ FeatureMenu.propTypes = {
     performWriteOperation : PropTypes.func.isRequired,
     performImageOperation : PropTypes.func.isRequired,
     performRecordOperation: PropTypes.func.isRequired,
-    performDrawOperation  : PropTypes.func.isRequired
+    performDrawOperation  : PropTypes.func.isRequired,
+    skin               : PropTypes.string.isRequired
 };
 
 // ============= React Hint ==============
@@ -485,7 +487,22 @@ const InnerMenuItem = styled.button`
     padding: 0;
     width: 60px;
     height: 60px;
-    background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT ? props.theme[props.color] :  props.theme.lightGray};
+    background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT ?
+            props => props.skin == SkinTypes.WHITE ?
+                        props.theme[props.color.white]
+                    :
+                        props.skin == SkinTypes.CREAM ?
+                                props.theme[props.color.cream]
+                            :
+                                props.theme[props.color.night]
+        :
+            props => props.skin == SkinTypes.WHITE ?
+                        props.theme.lightGray
+                    :
+                        props.skin == SkinTypes.CREAM ?
+                                "#f9f3e9"
+                            :
+                                props.theme.darkGray};
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -512,7 +529,13 @@ const MenuToggle = styled.button`
     padding: 0;
     width: 60px;
     height: 60px;
-    background-color: ${props => props.theme[props.color]};
+    background-color: ${props => props.skin == SkinTypes.WHITE ?
+                            props.theme[props.color.white]
+                        :
+                            props.skin == SkinTypes.CREAM ?
+                                    props.theme[props.color.cream]
+                                :
+                                    props.theme[props.color.night]};
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     border-radius: 30px;
     transition: box-shadow 0.15s, background-color 0.3s;
@@ -546,9 +569,21 @@ const ToggleIcon = styled.div`
 const Tooltip = styled.h2`
     text-align: center;
     padding: 10px 15px;
-    background: ${props => props.theme.darkGray};
+    background: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.darkGray
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        props.theme.lightGray};
     border-radius: 18px;
-    color: ${props => props.theme.white};
+    color: ${props => props.skin == SkinTypes.WHITE ?
+                props.theme.white
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        props.theme.black};
     font-size: 12px;
     font-weight: 200;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.4), 0 2px 10px 0 rgba(0,0,0,.12);
