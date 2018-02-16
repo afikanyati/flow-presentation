@@ -116,7 +116,7 @@ const Text = styled.span`
                     props.theme.purple
                 :
                     props.skin == SkinTypes.CREAM ?
-                            "#f9f3e9"
+                            props.theme.purple
                         :
                             props.theme.lightPurple
                 };

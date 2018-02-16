@@ -67,7 +67,7 @@ const Meter = styled.div`
                 props.theme.lightGray
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
+                        props.theme.gray
                     :
                         props.theme.darkGray
             };
@@ -80,10 +80,7 @@ const Indicator = styled.div`
     background: ${props => props.skin == SkinTypes.WHITE ?
                 props.theme.blue
             :
-                props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
-                    :
-                        props.theme.darkBlue
+                props.theme.darkBlue
             };
     width: ${props => props.progress};
     height: 6px;

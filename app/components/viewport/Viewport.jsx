@@ -11770,8 +11770,8 @@ export default class Viewport extends React.Component {
         window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE
         window.ontouchmove  = this.handleScroll; // mobile
         document.onkeydown  = this.handleKeys;
-        this.viewport.addEventListener('mousedown', this.handleCruiseMouseDown, false);
-        this.viewport.addEventListener('mouseup', this.handleCruiseMouseUp, false);
+        window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
+        window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
 
         // === Set timePerFixation ===
         //
@@ -11807,6 +11807,9 @@ export default class Viewport extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+        window.removeEventListener('mousedown', this.handleCruiseMouseDown, false);
+        window.removeEventListener('mouseup', this.handleCruiseMouseUp, false);
+        clearInterval(this.cruiseControl);
     }
 
     // ========== Methods ===========

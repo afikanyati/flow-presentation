@@ -174,6 +174,7 @@ export default class FeatureMenu extends React.Component {
                 events={{hover: true}}
                 onRenderContent={this.renderTooltip} />
                 <MenuToggle
+                    skin={this.props.skin}
                     menuIsOpen={this.state.menuIsOpen}
                     color={
                         this.state.activeFeature == null ?
@@ -211,6 +212,7 @@ export default class FeatureMenu extends React.Component {
                               <InnerMenuItem
                                   activeFeature={this.state.activeFeature}
                                   color={feature.color}
+                                  skin={this.props.skin}
                                   icon={`url(${feature.icon.color})`} />
                           </OuterMenuItem>
                       );
@@ -496,13 +498,10 @@ const InnerMenuItem = styled.button`
                             :
                                 props.theme[props.color.night]
         :
-            props => props.skin == SkinTypes.WHITE ?
-                        props.theme.lightGray
+            props => props.skin == SkinTypes.NIGHT ?
+                        props.theme.darkGray
                     :
-                        props.skin == SkinTypes.CREAM ?
-                                "#f9f3e9"
-                            :
-                                props.theme.darkGray};
+                        props.theme.lightGray};
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -569,21 +568,15 @@ const ToggleIcon = styled.div`
 const Tooltip = styled.h2`
     text-align: center;
     padding: 10px 15px;
-    background: ${props => props.skin == SkinTypes.WHITE ?
-                props.theme.darkGray
+    background: ${props => props.skin == SkinTypes.NIGHT ?
+                props.theme.lightGray
             :
-                props.skin == SkinTypes.CREAM ?
-                        "#f9f3e9"
-                    :
-                        props.theme.lightGray};
+                props.theme.darkGray};
     border-radius: 18px;
-    color: ${props => props.skin == SkinTypes.WHITE ?
-                props.theme.white
+    color: ${props => props.skin == SkinTypes.NIGHT ?
+                props.theme.black
             :
-                props.skin == SkinTypes.CREAM ?
-                        "#f9f3e9"
-                    :
-                        props.theme.black};
+                props.theme.white};
     font-size: 12px;
     font-weight: 200;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.4), 0 2px 10px 0 rgba(0,0,0,.12);

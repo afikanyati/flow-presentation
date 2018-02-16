@@ -146,7 +146,7 @@ const FunctionText = styled.h3`
     font-size: 0.9em;
     margin: 0;
     color: ${props => props.skin == SkinTypes.WHITE ?
-                props.theme.darkPurple
+                props.theme.darkGray
             :
                 props.skin == SkinTypes.CREAM ?
                         "#5f3e24"

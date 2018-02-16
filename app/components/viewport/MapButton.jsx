@@ -65,13 +65,10 @@ const MapButtonContainer = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background: ${props => props.skin == SkinTypes.WHITE ?
-                props.theme.lightGray
+    background: ${props => props.skin == SkinTypes.NIGHT ?
+                props.theme.darkGray
             :
-                props.skin == SkinTypes.CREAM ?
-                        "#f9f3e9"
-                    :
-                        props.theme.darkGray
+                props.theme.lightGray
             };
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;

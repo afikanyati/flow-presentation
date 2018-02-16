@@ -31,6 +31,7 @@ export default class DefinitionsDrawer extends React.Component {
                 skin={this.props.skin}
                 fontFamily={FontTypes.ADOBE_GARAMOND}>
                 <DefinitionsStub
+                    skin={this.props.skin}
                     icon={`url(${DefinitionsWhite})`}
                     onClick={this.toggleDrawer}/>
                 <Definition>
@@ -150,13 +151,11 @@ const DefinitionsStub = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background-color: ${props => props.skin == SkinTypes.WHITE ?
-                props.theme.lightGray
+    background-color: ${props => props.skin == SkinTypes.NIGHT ?
+                props.theme.darkGray
             :
-                props.skin == SkinTypes.CREAM ?
-                        "#f9f3e9"
-                    :
-                        props.theme.darkGray
+                props.theme.lightGray
+
             };
     background-image: ${props => props.icon};
     background-position: 50%;
@@ -174,10 +173,7 @@ const DefinitionsStub = styled.div`
         background-color: ${props => props.skin == SkinTypes.WHITE ?
                     props.theme.lightBlue
                 :
-                    props.skin == SkinTypes.CREAM ?
-                            "#f9f3e9"
-                        :
-                            props.theme.darkBlue
+                    props.theme.darkBlue
                 };
     }
 `;

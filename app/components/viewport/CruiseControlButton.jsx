@@ -74,18 +74,12 @@ const ControlButton = styled.div`
             props.skin == SkinTypes.WHITE ?
                         props.theme.purple
                     :
-                        props.skin == SkinTypes.CREAM ?
-                                "#f9f3e9"
-                            :
-                                props.theme.lightPurple
+                        props.theme.lightPurple
         :
-            props.skin == SkinTypes.WHITE ?
-                        props.theme.lightGray
+            props.skin == SkinTypes.NIGHT ?
+                        props.theme.darkGray
                     :
-                        props.skin == SkinTypes.CREAM ?
-                                "#f9f3e9"
-                            :
-                                props.theme.darkGray};
+                        props.theme.lightGray};
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s, background 0.15s;
     z-index: 10;
