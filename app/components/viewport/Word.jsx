@@ -1,11 +1,13 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
+import React                    from 'react';
+import PropTypes                from 'prop-types';
+import styled                   from 'styled-components';
 
+// Components
+import FontTypes                from '../../constants/fontTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import BookmarkFilled  from '../../assets/images/icons/bookmark-red-fill.svg';
-import AttachmentFilled  from '../../assets/images/icons/attachment-purple.svg';
+import BookmarkFilled           from '../../assets/images/icons/bookmark-red-fill.svg';
+import AttachmentFilled         from '../../assets/images/icons/attachment-purple.svg';
 import { CSSTransitionGroup }   from 'react-transition-group';
 
 /**
@@ -102,7 +104,14 @@ const Text = styled.span`
     border-image-slice: 1;
     font-family: ${props => props.italic ? props.fontFamily.italic : props.fontFamily.regular};
     font-style : ${props => props.italic ? 'italic'                : 'normal'};
-    font-weight: ${props => props.bold ? 700                       : 400};
+    font-weight: ${props => props.bold ?
+            700
+        :
+            props.fontFamily == FontTypes.AVERTA || props.fontFamily == FontTypes.AVENIR ?
+                300
+            :
+                400
+    };
     margin     : 0;
     cursor     : pointer;
     display    : inline-block;
