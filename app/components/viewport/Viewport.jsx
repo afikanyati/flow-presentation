@@ -11883,14 +11883,17 @@ export default class Viewport extends React.Component {
         this.preventDefault(e);
         let rapidScrollFactor = 0.25;
 
-        if (!this.state.rapidScrollIsActive &&
-            this.state.scroll == this.props.trackingSpeed &&
-            !this.state.cruiseControlIsActive) {
+        if (!this.state.rapidScrollIsActive
+            && this.state.scroll > this.props.trackingSpeed
+            && !this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
-        } else if (this.state.rapidScrollIsActive &&
-                    this.state.scroll == rapidScrollFactor * this.props.trackingSpeed &&
-                    !this.state.cruiseControlIsActive) {
+            this.setState({
+                scroll: 0
+            });
+        } else if (this.state.rapidScrollIsActive
+                    && this.state.scroll > rapidScrollFactor * this.props.trackingSpeed
+                    && !this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
         } else if (this.state.cruiseControlIsActive) {
@@ -11912,13 +11915,13 @@ export default class Viewport extends React.Component {
             future = assets[this.state.assetCurrentIndex].future;
         let sliceDistance   = this.props.trailingWordIsActive ? this.props.fixationWidth - 1 : this.props.fixationWidth;
 
-        // We have hit beginning of current asset
-        // Load previous one
+
         if (direction == ScrollDirectionTypes.UP
             && assets[this.state.assetCurrentIndex].history.length == 0
             && (this.props.trailingWordIsActive && assets[this.state.assetCurrentIndex].trailingWord.length == 0 || !this.props.trailingWordIsActive)
             && this.state.assetCurrentIndex > 0) {
-
+            // We have hit beginning of current asset
+            // Load previous one
             if (this.state.highlightIsActive) {
                 let start, end;
                 start = 0;
@@ -11932,6 +11935,13 @@ export default class Viewport extends React.Component {
             }
 
             this.loadAsset(this.state.assetCurrentIndex - 1);
+        } else if (direction == ScrollDirectionTypes.UP
+            && assets[this.state.assetCurrentIndex].history.length == 0
+            && (this.props.trailingWordIsActive && assets[this.state.assetCurrentIndex].trailingWord.length == 0 || !this.props.trailingWordIsActive)
+            && this.state.assetCurrentIndex == 0) {
+            // We have hit beginning of document
+            // Exit function
+            return;
         }
 
         if (direction == ScrollDirectionTypes.UP) {
@@ -12080,8 +12090,7 @@ export default class Viewport extends React.Component {
         assets[this.state.assetCurrentIndex].future         = future;
 
         this.setState({
-            assets        : assets,
-            scroll        : 0
+            assets        : assets
         }, () => {
             if (direction == ScrollDirectionTypes.DOWN
                 && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
@@ -12091,6 +12100,24 @@ export default class Viewport extends React.Component {
                 // We have hit end of current asset
                 // Load next one
                 this.loadAsset(this.state.assetCurrentIndex + 1);
+            } else if (direction == ScrollDirectionTypes.DOWN
+                && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
+                && fixationWindow.length == 0
+                && future.length == 0
+                && this.state.assetCurrentIndex + 1 == this.state.assets.length
+                && this.state.cruiseControlIsActive) {
+                // We have hit end of document
+                // and Cruise Control is active
+                // We deactivate it
+                this.toggleCruiseControl();
+            } else if (direction == ScrollDirectionTypes.DOWN
+                && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
+                && fixationWindow.length == 0
+                && future.length == 0
+                && this.state.assetCurrentIndex + 1 == this.state.assets.length) {
+                    // We have hit end of document
+                    // Cruise Control is not Active
+                    return;
             }
         });
     }
@@ -12329,7 +12356,8 @@ export default class Viewport extends React.Component {
     }
 
     toggleCruiseControl = (e) => {
-        e.stopPropagation();
+        if (e) e.stopPropagation();
+
         if (!this.state.cruiseControlIsActive) {
             this.moveText();
         } else {
@@ -12389,10 +12417,6 @@ export default class Viewport extends React.Component {
         let progress = completed/totalWords * 100;
 
         return progress;
-    }
-
-    decreaseReadingSpeed = () => {
-
     }
 }
 
