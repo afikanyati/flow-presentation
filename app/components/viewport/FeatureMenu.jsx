@@ -247,7 +247,7 @@ export default class FeatureMenu extends React.Component {
         let sweepDeg = 180,
             increment = sweepDeg/(numItems - 1),
             angle = increment,
-            spreadRadius = 120,
+            spreadRadius = 100,
             delayIncrement = 0.08,
             initialDelay = delayIncrement,
             nMinus1InitialDelay = (numItems - 2) * delayIncrement,

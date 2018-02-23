@@ -39,12 +39,12 @@ export default class Root extends React.Component {
         super(props);
         this.state = {
             fontSize      : 20,
-            fontFamily    : FontTypes.ADOBE_GARAMOND,
-            fixationWidth : 4, // if they change the fixationWidth, rerender viewport
-            trackingSpeed : 16,
+            fontFamily    : FontTypes.PALANTINO,
+            fixationWidth : 3, // if they change the fixationWidth, rerender viewport
+            trackingSpeed : 12,
             skin         : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
-            readingSpeed: 350, //WPM --> Method to save reading speed if edited
+            readingSpeed: 300, //WPM --> Method to save reading speed if edited
             trailingWordIsActive: false // Cannot be active if fixationWidth !> 1
         };
     }
