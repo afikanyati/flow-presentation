@@ -29,7 +29,6 @@ export default class Viewport extends React.Component {
             assetCurrentIndex : 0,
             assets            : [],
             highlightIsActive: false,
-            rapidScrollIsActive: false,
             cruiseControlIsActive: false,
             cruiseControlHaltIsActive: false,
             timePerFixation: 0 // In milliseconds
@@ -11599,7 +11598,6 @@ export default class Viewport extends React.Component {
                     hand                  ={this.props.hand}
                     skin={this.props.skin}
                     readingSpeed={this.props.readingSpeed}
-                    rapidScrollIsActive={this.state.rapidScrollIsActive}
                     cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                 />
                 <CompletionBar
@@ -11815,9 +11813,7 @@ export default class Viewport extends React.Component {
     // ========== Methods ===========
 
     handleClick = (e) => {
-        if (!this.state.cruiseControlIsActive) {
-            this.toggleRapidScroll();
-        }
+        
     }
 
     handleCruiseMouseDown = (e) => {
@@ -11881,21 +11877,14 @@ export default class Viewport extends React.Component {
 
     handleScroll = (e) => {
         this.preventDefault(e);
-        let rapidScrollFactor = 0.25;
 
-        if (!this.state.rapidScrollIsActive
-            && this.state.scroll > this.props.trackingSpeed
+        if (this.state.scroll > this.props.trackingSpeed
             && !this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
             this.setState({
                 scroll: 0
             });
-        } else if (this.state.rapidScrollIsActive
-                    && this.state.scroll > rapidScrollFactor * this.props.trackingSpeed
-                    && !this.state.cruiseControlIsActive) {
-            let direction = this.getScrollDirection(e);
-            this.updateViewport(direction);
         } else if (this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             window.clearTimeout(this.isScrolling);
@@ -12260,13 +12249,6 @@ export default class Viewport extends React.Component {
         });
     }
 
-    toggleRapidScroll = () => {
-
-        this.setState({
-            rapidScrollIsActive: !this.state.rapidScrollIsActive
-        });
-    }
-
     toggleWordHighlight = (paragraphIndex, start, end) => {
 
         let history    = [],
@@ -12451,7 +12433,7 @@ const Container = styled.div`
 	-moz-align-items      : center;
 	align-items           : center;
     overflow              : hidden;
-    cursor: ${props => props.rapidScrollIsActive ? props.customCursor : "auto"};
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor : "auto"};
     color: ${props => props.skin == SkinTypes.WHITE ?
                 "rgba(0,0,0,0.87)"
             :

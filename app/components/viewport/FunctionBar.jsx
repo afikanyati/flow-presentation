@@ -6,10 +6,6 @@ import styled       from 'styled-components';
 // Components
 import HandTypes               from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import RapidScrollPurple     from '../../assets/images/icons/rapid-scroll-purple.svg';
-import RapidScrollLightPurple     from '../../assets/images/icons/rapid-scroll-lightpurple.svg';
-import RapidScrollGray      from '../../assets/images/icons/rapid-scroll-gray.svg';
-import RapidScrollDarkGray      from '../../assets/images/icons/rapid-scroll-darkgray.svg';
 import PausePurple          from '../../assets/images/icons/pause-purple.svg';
 import PauseLightPurple          from '../../assets/images/icons/pause-lightpurple.svg';
 import PauseGray           from '../../assets/images/icons/pause-gray.svg';
@@ -49,24 +45,6 @@ export default class FunctionBar extends React.Component {
                     </FunctionText>
                 </FunctionSystem>
                 <FunctionIcon
-                    title={`Rapid Scroll ${this.props.rapidScrollIsActive ? "Activated" : "Deactivated"}`}
-                    icon={this.props.rapidScrollIsActive ?
-                            this.props.skin == SkinTypes.WHITE ?
-                                        `url(${RapidScrollPurple})`
-                                    :
-                                        this.props.skin == SkinTypes.CREAM ?
-                                                `url(${RapidScrollPurple})`
-                                            :
-                                                `url(${RapidScrollLightPurple})`
-                        :
-                            this.props.skin == SkinTypes.WHITE ?
-                                        `url(${RapidScrollGray})`
-                                    :
-                                        this.props.skin == SkinTypes.CREAM ?
-                                                `url(${RapidScrollGray})`
-                                            :
-                                                `url(${RapidScrollDarkGray})`}/>
-                <FunctionIcon
                     title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.cruiseControlHaltIsActive ?
                             this.props.skin == SkinTypes.WHITE ?
@@ -102,7 +80,6 @@ export default class FunctionBar extends React.Component {
 // ============= PropTypes ==============
 
 FunctionBar.propTypes = {
-    rapidScrollIsActive : PropTypes.bool.isRequired,
     cruiseControlHaltIsActive: PropTypes.bool.isRequired,
     hand              : PropTypes.string.isRequired,
     readingSpeed: PropTypes.number.isRequired,
