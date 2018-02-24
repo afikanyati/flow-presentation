@@ -11725,6 +11725,8 @@ export default class Viewport extends React.Component {
         document.onkeydown  = this.handleKeys;
         window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
         window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
+        // Web App Visibility
+        document.addEventListener('visibilitychange', this.handleWindowFocusState);
 
         // === Set timePerFixation ===
         //
@@ -12205,6 +12207,17 @@ export default class Viewport extends React.Component {
         let progress = completed/totalWords * 100;
 
         return progress;
+    }
+
+    handleWindowFocusState = (e) => {
+        console.log();
+        if (!document.hidden && this.state.cruiseControlIsActive) {
+            // Stop cruise control if leave web app tab
+            this.moveText();
+        } else if (document.hidden && this.state.cruiseControlIsActive) {
+            // Resume cruise control if return to web app tab
+            clearInterval(this.cruiseControl);
+        }
     }
 }
 
