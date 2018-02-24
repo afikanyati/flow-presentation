@@ -185,6 +185,11 @@ export default class FeatureMenu extends React.Component {
                             {white: "lightGray", cream: "lightGray", night: "darkGray"}
                         :
                             this.state.features[this.state.activeFeature].color}
+                    cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                            PauseLightPurple
+                        :
+                            PausePurple}
                     onClick={this.state.activeFeature == FeatureTypes.BOOKMARK ?
                                     this.props.toggleWordBookmark
                                 :
@@ -217,7 +222,12 @@ export default class FeatureMenu extends React.Component {
                                   activeFeature={this.state.activeFeature}
                                   color={feature.color}
                                   skin={this.props.skin}
-                                  icon={`url(${feature.icon.color})`} />
+                                  icon={`url(${feature.icon.color})`}
+                                  cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                                  customCursor={this.props.skin == SkinTypes.NIGHT ?
+                                          PauseLightPurple
+                                      :
+                                          PausePurple} />
                           </OuterMenuItem>
                       );
                   })}
@@ -388,7 +398,8 @@ FeatureMenu.propTypes = {
     performImageOperation : PropTypes.func.isRequired,
     performRecordOperation: PropTypes.func.isRequired,
     performDrawOperation  : PropTypes.func.isRequired,
-    skin                  : PropTypes.string.isRequired
+    skin                  : PropTypes.string.isRequired,
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired
 };
 
 // ============= React Hint ==============
@@ -509,7 +520,7 @@ const InnerMenuItem = styled.button`
                     :
                         props.theme.lightGray};
     border-radius: 30px;
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     transition: box-shadow 0.15s;
     background-image: ${props => props.icon};
@@ -545,7 +556,7 @@ const MenuToggle = styled.button`
     border-radius: 30px;
     transition: box-shadow 0.15s, background-color 0.3s;
     /* reset some browser defaults */
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     border: none;
     appearance: none;
 
@@ -596,4 +607,7 @@ const highlight = {
     blue: HighlightBlue,
     green: HighlightGreen,
     yellow: HighlightYellow
-}
+};
+
+const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
+const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

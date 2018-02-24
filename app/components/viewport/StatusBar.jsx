@@ -154,4 +154,5 @@ const FunctionText = styled.h3`
                         props.theme.gray
             };
     font-weight: 400;
+    user-select: none;
 `;

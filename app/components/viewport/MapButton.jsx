@@ -31,7 +31,12 @@ export default class MapButton extends React.Component {
                 hand={this.props.hand}
                 onClick={this.props.toggleMap}>
                 <MapButtonIcon
-                    icon={`url(${MapWhite})`}/>
+                    icon={`url(${MapWhite})`}
+                    cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                            PauseLightPurple
+                        :
+                            PausePurple}/>
             </MapButtonContainer>
         );
     }
@@ -52,7 +57,8 @@ export default class MapButton extends React.Component {
 MapButton.propTypes = {
     toggleMap: PropTypes.func.isRequired,
     hand: PropTypes.string.isRequired,
-    skin               : PropTypes.string.isRequired
+    skin               : PropTypes.string.isRequired,
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============
@@ -86,7 +92,7 @@ const MapButtonContainer = styled.div`
 `;
 
 const MapButtonIcon = styled.button`
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     display: block;
     width: 100%;
     height: 100%;
@@ -102,3 +108,6 @@ const MapButtonIcon = styled.button`
         border-radius: 15px;
     }
 `;
+
+const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
+const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

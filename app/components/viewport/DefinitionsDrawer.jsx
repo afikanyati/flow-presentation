@@ -33,6 +33,11 @@ export default class DefinitionsDrawer extends React.Component {
                 <DefinitionsStub
                     skin={this.props.skin}
                     icon={`url(${DefinitionsWhite})`}
+                    cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                            PauseLightPurple
+                        :
+                            PausePurple}
                     onClick={this.toggleDrawer}/>
                 <Definition>
                     <Term>
@@ -45,7 +50,12 @@ export default class DefinitionsDrawer extends React.Component {
                     <Description>
                         1. superlative of many, much.
                     </Description>
-                    <More>
+                    <More
+                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                        customCursor={this.props.skin == SkinTypes.NIGHT ?
+                                PauseLightPurple
+                            :
+                                PausePurple}>
                         more
                     </More>
                 </Definition>
@@ -60,7 +70,12 @@ export default class DefinitionsDrawer extends React.Component {
                     <Description>
                         1. an act or instance of leaving a place; a departure.
                     </Description>
-                    <More>
+                    <More
+                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                        customCursor={this.props.skin == SkinTypes.NIGHT ?
+                                PauseLightPurple
+                            :
+                                PausePurple}>
                         more
                     </More>
                 </Definition>
@@ -75,7 +90,12 @@ export default class DefinitionsDrawer extends React.Component {
                     <Description>
                         1. such as well might happen or be true; probable.
                     </Description>
-                    <More>
+                    <More
+                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                        customCursor={this.props.skin == SkinTypes.NIGHT ?
+                                PauseLightPurple
+                            :
+                                PausePurple}>
                         more
                     </More>
                 </Definition>
@@ -90,7 +110,12 @@ export default class DefinitionsDrawer extends React.Component {
                     <Description>
                         1.expressing motion in the direction of (a particular location).
                     </Description>
-                    <More>
+                    <More
+                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                        customCursor={this.props.skin == SkinTypes.NIGHT ?
+                                PauseLightPurple
+                            :
+                                PausePurple}>
                         more
                     </More>
                 </Definition>
@@ -116,7 +141,8 @@ export default class DefinitionsDrawer extends React.Component {
 
 DefinitionsDrawer.propTypes = {
     fixationWords: PropTypes.array.isRequired,
-    skin: PropTypes.string.isRequired
+    skin: PropTypes.string.isRequired,
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============
@@ -163,18 +189,23 @@ const DefinitionsStub = styled.div`
     background-repeat: no-repeat;
     transition: background-image 0.3s;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.20);
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     transition        : all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition   : all 0.3s;
     -ms-transition    : all 0.3s;
 
     &:hover {
-        background-color: ${props => props.skin == SkinTypes.WHITE ?
-                    props.theme.lightBlue
-                :
-                    props.theme.darkBlue
-                };
+        background-color: ${props => !props.cruiseControlHaltIsActive ?
+                props => props.skin == SkinTypes.WHITE ?
+                        props.theme.lightBlue
+                    :
+                        props.theme.darkBlue
+            :
+                props => props.skin == SkinTypes.NIGHT ?
+                            props.theme.darkGray
+                        :
+                            props.theme.lightGray};
     }
 `;
 
@@ -212,7 +243,7 @@ const More = styled.h5`
     font-weight: 400;
     color: ${props => props.theme.blue};
     margin: 0;
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     transition        : all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition   : all 0.3s;
@@ -222,3 +253,6 @@ const More = styled.h5`
         color: ${props => props.theme.darkBlue};
     }
 `;
+
+const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
+const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

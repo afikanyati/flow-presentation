@@ -10,7 +10,7 @@ import SkinTypes                from '../../constants/skinTypes';
 import FeatureMenu              from './FeatureMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
-import FunctionBar              from './FunctionBar';
+import StatusBar              from './StatusBar';
 import CruiseControlButton      from './CruiseControlButton';
 import MapButton                from './MapButton';
 import DefinitionsDrawer        from './DefinitionsDrawer';
@@ -11537,7 +11537,7 @@ export default class Viewport extends React.Component {
         //     for (let text in words) {
         //         let word = {};
         //         word.index = x;
-        //         word.text = words[text].text.text;
+        //         word.text = words[text].text;
         //         word.definition = {};
         //         word.isHighlighted = false;
         //         word.hasBookmark = false;
@@ -11563,8 +11563,13 @@ export default class Viewport extends React.Component {
             <Container
                 innerRef={ele => {this.viewport = ele}}
                 skin={this.props.skin}
+                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                customCursor={this.props.skin == SkinTypes.NIGHT ?
+                        PauseLightPurple
+                    :
+                        PausePurple}
                 onClick={this.handleClick}>
-                <FunctionBar
+                <StatusBar
                     hand                  ={this.props.hand}
                     skin={this.props.skin}
                     readingSpeed={this.props.readingSpeed}
@@ -11590,6 +11595,7 @@ export default class Viewport extends React.Component {
                               highlightColor={this.props.highlightColor}
                               skin={this.props.skin}
                               showAnnotations={this.props.showAnnotations}
+                              cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                               />
                       );
                   })}
@@ -11605,6 +11611,7 @@ export default class Viewport extends React.Component {
                             highlightColor={this.props.highlightColor}
                             skin={this.props.skin}
                             showAnnotations={this.props.showAnnotations}
+                            cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                             />
                     );
                 })}
@@ -11632,6 +11639,7 @@ export default class Viewport extends React.Component {
                                         skin={this.props.skin}
                                         highlightColor={this.props.highlightColor}
                                         showAnnotations={this.props.showAnnotations}
+                                        cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                                     />
                                 );
                             })}
@@ -11653,6 +11661,7 @@ export default class Viewport extends React.Component {
                                 highlightColor={this.props.highlightColor}
                                 skin={this.props.skin}
                                 showAnnotations={this.props.showAnnotations}
+                                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                                 />
                         );
                     })}
@@ -11668,13 +11677,16 @@ export default class Viewport extends React.Component {
                                 highlightColor={this.props.highlightColor}
                                 skin={this.props.skin}
                                 showAnnotations={this.props.showAnnotations}
+                                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                                 />
                         );
                 })}
                 </FutureContainer>
                 <DefinitionsDrawer
                     skin={this.props.skin}
-                    fixationWords={this.state.assets[this.state.assetCurrentIndex].fixationWindow}/>
+                    fixationWords={this.state.assets[this.state.assetCurrentIndex].fixationWindow}
+                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                />
                 <FeatureMenu
                     hand                  ={this.props.hand}
                     skin={this.props.skin}
@@ -11684,16 +11696,22 @@ export default class Viewport extends React.Component {
                     performWriteOperation={this.performWriteOperation}
                     performImageOperation={this.performImageOperation}
                     performRecordOperation={this.performRecordOperation}
-                    performDrawOperation={this.performDrawOperation} />
+                    performDrawOperation={this.performDrawOperation}
+                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                />
                 <CruiseControlButton
                     hand                  ={this.props.hand}
                     skin={this.props.skin}
                     cruiseControlIsActive ={this.state.cruiseControlIsActive}
-                    toggleCruiseControl   ={this.toggleCruiseControl}/>
+                    toggleCruiseControl   ={this.toggleCruiseControl}
+                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                />
                 <MapButton
                     hand={this.props.hand}
                     skin={this.props.skin}
-                    toggleMap={this.toggleMap} />
+                    toggleMap={this.toggleMap}
+                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                />
             </Container>
         );
     }
@@ -11765,6 +11783,7 @@ export default class Viewport extends React.Component {
     }
 
     handleCruiseMouseUp = (e) => {
+        // NOTE: If user clicks and mouse up outside of viewport, get error
         e.stopPropagation();
         if (this.state.cruiseControlIsActive && e.target.offsetParent.id != "cruiseControlButton") {
             this.moveText();
@@ -12357,4 +12376,8 @@ const TitleBar = styled.h3`
     z-index: 5;
     font-weight: 200;
     font-size: 0.9em;
-`
+    user-select: none;
+`;
+
+const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
+const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

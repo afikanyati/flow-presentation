@@ -35,7 +35,12 @@ export default class Word extends React.Component {
                     src={AttachmentFilled}
                     hasAttachment={Object.keys(this.props.word.attachment).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
-                    showAnnotations={this.props.showAnnotations} />
+                    showAnnotations={this.props.showAnnotations}
+                    cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                            PauseLightPurple
+                        :
+                            PausePurple} />
                 <Text
                     skin={this.props.skin}
                     italic        ={this.props.italic}
@@ -47,6 +52,11 @@ export default class Word extends React.Component {
                     fontFamily    ={this.props.fontFamily}
                     highlightColor={this.props.highlightColor}
                     showAnnotations={this.props.showAnnotations}
+                    cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                            PauseLightPurple
+                        :
+                            PausePurple}
                     onClick       ={this.props.skipToWord.bind({}, this.props.word.text, this.props.paragraph, this.props.word.index)}>
                     {`${this.props.word.text} `}
                 </Text>
@@ -54,7 +64,12 @@ export default class Word extends React.Component {
                     src={BookmarkFilled}
                     hasBookmark={this.props.word.hasBookmark}
                     inFixationWindow={this.props.inFixationWindow}
-                    showAnnotations={this.props.showAnnotations} />
+                    showAnnotations={this.props.showAnnotations}
+                    cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                            PauseLightPurple
+                        :
+                            PausePurple} />
             </TextContainer>
         );
     }
@@ -79,7 +94,8 @@ Word.propTypes = {
     inFixationWindow   : PropTypes.bool.isRequired,
     highlightColor     : PropTypes.string.isRequired,
     skin               : PropTypes.string.isRequired,
-    showAnnotations: PropTypes.bool.isRequired
+    showAnnotations: PropTypes.bool.isRequired,
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============
@@ -124,20 +140,23 @@ const Text = styled.span`
     };
     color: ${props => props.showAnnotations && props.isHighlighted && props.skin == SkinTypes.NIGHT ? props.theme.white : "inherit"};
     margin     : 0;
-    cursor     : pointer;
+    cursor     : ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     display    : inline-block;
     white-space: pre;
+    user-select: none;
     transition        : all 0.2s;
     -webkit-transition: all 0.2s;
     -moz-transition   : all 0.2s;
     -ms-transition    : all 0.2s;
 
     &:hover {
-        color: ${props => props.skin == SkinTypes.WHITE ?
-                    props.theme.purple
+        color: ${props => !props.cruiseControlHaltIsActive ?
+                    props.skin == SkinTypes.WHITE ?
+                            props.theme.purple
+                        :
+                            props.theme.lightPurple
                 :
-                    props.theme.lightPurple
-                };
+                    "inherit"};
         transition        : all 0.2s;
         -webkit-transition: all 0.2s;
         -moz-transition   : all 0.2s;
@@ -153,7 +172,7 @@ const BookmarkIcon = styled.img`
     height: 50px;
     margin: 0;
     padding: 0;
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     animation: .2s fadeIn;
 `;
 
@@ -166,7 +185,7 @@ const AttachmentIcon = styled.img`
     margin: 0;
     padding: 0;
     opacity: 0.3;
-    cursor: pointer;
+    cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     animation: .2s fadeIn;
     transition        : all 0.2s;
     -webkit-transition: all 0.2s;
@@ -181,3 +200,6 @@ const AttachmentIcon = styled.img`
         -ms-transition    : all 0.2s;
     }
 `;
+
+const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
+const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";
