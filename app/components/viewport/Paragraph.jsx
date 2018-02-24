@@ -23,9 +23,7 @@ export default class Paragraph extends React.Component {
     render() {
         return (
             <ParagraphContainer
-                fontSize     ={this.props.fontSize}
-                marginTop    ={this.props.topMargin}
-                marginBottom ={this.props.bottomMargin}>
+                fontSize     ={this.props.fontSize}>
                 {this.props.type == "history" ?
                     <CSSTransitionGroup
                           transitionName         ={"word"}
@@ -40,8 +38,9 @@ export default class Paragraph extends React.Component {
                                       inFixationWindow={false}
                                       fontFamily ={this.props.fontFamily}
                                       skipToWord ={this.props.skipToWord}
-                                      toggleWordHighlight={this.props.toggleWordHighlight}
-                                      skin={this.props.skin}/>
+                                      skin={this.props.skin}
+                                      highlightColor={this.props.highlightColor}
+                                  />
                                   );
                               })}
                     </CSSTransitionGroup>
@@ -55,8 +54,9 @@ export default class Paragraph extends React.Component {
                                 inFixationWindow={false}
                                 fontFamily ={this.props.fontFamily}
                                 skipToWord ={this.props.skipToWord}
-                                toggleWordHighlight={this.props.toggleWordHighlight}
-                                skin={this.props.skin}/>
+                                skin={this.props.skin}
+                                highlightColor={this.props.highlightColor}
+                            />
                             );
                         })
                 }
@@ -83,9 +83,7 @@ Paragraph.propTypes = {
     skipToWord         : PropTypes.func.isRequired,
     fontSize           : PropTypes.number.isRequired,
     fontFamily         : PropTypes.object.isRequired,
-    bottomMargin       : PropTypes.bool.isRequired,
-    topMargin          : PropTypes.bool.isRequired,
-    toggleWordHighlight: PropTypes.func.isRequired,
+    highlightColor     : PropTypes.string.isRequired,
     skin               : PropTypes.string.isRequired
 };
 
@@ -94,9 +92,7 @@ Paragraph.propTypes = {
 const ParagraphContainer = styled.p`
     width             : 100%;
     line-height       : 1.5em;
-    margin            : 29px 0;
-    margin-top        : ${props => props.marginTop ? null : 0};
-    margin-bottom     : ${props => props.marginBottom ? null : 0};
+    margin            : 0;
     max-width         : ${props => 30*props.fontSize + 'px'};
     font-size         : ${props => props.fontSize + 'px' || '16px'};
     line-height       : ${props => 1.5*props.fontSize + 'px' || '40px'};

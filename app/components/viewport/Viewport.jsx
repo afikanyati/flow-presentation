@@ -11586,9 +11586,7 @@ export default class Viewport extends React.Component {
                               fontSize      ={this.props.fontSize}
                               fontFamily    ={this.props.fontFamily}
                               skipToWord    ={this.skipToWord}
-                              bottomMargin  ={false}
-                              topMargin     ={false}
-                              toggleWordHighlight={this.toggleWordHighlight}
+                              highlightColor={this.props.highlightColor}
                               skin={this.props.skin}
                               />
                       );
@@ -11602,9 +11600,7 @@ export default class Viewport extends React.Component {
                             fontSize     ={this.props.fontSize}
                             fontFamily   ={this.props.fontFamily}
                             skipToWord   ={this.skipToWord}
-                            bottomMargin ={true}
-                            topMargin    ={true}
-                            toggleWordHighlight={this.toggleWordHighlight}
+                            highlightColor={this.props.highlightColor}
                             skin={this.props.skin}
                             />
                     );
@@ -11614,6 +11610,7 @@ export default class Viewport extends React.Component {
                     fontSize={this.props.fontSize}>
                     <FixationWindow
                         highlightIsActive={this.state.highlightIsActive}
+                        highlightColor={this.props.highlightColor}
                         fontSize={this.props.fontSize}
                         fontFamily={this.props.fontFamily}>
                         <CSSTransitionGroup
@@ -11629,8 +11626,8 @@ export default class Viewport extends React.Component {
                                         inFixationWindow={true}
                                         fontFamily ={this.props.fontFamily}
                                         skipToWord ={this.skipToWord}
-                                        toggleWordHighlight={this.toggleWordHighlight}
                                         skin={this.props.skin}
+                                        highlightColor={this.props.highlightColor}
                                     />
                                 );
                             })}
@@ -11649,9 +11646,7 @@ export default class Viewport extends React.Component {
                                 fontSize     ={this.props.fontSize}
                                 fontFamily   ={this.props.fontFamily}
                                 skipToWord   ={this.skipToWord}
-                                bottomMargin ={true}
-                                topMargin    ={false}
-                                toggleWordHighlight={this.toggleWordHighlight}
+                                highlightColor={this.props.highlightColor}
                                 skin={this.props.skin}
                                 />
                         );
@@ -11665,9 +11660,7 @@ export default class Viewport extends React.Component {
                                 fontSize            ={this.props.fontSize}
                                 fontFamily          ={this.props.fontFamily}
                                 skipToWord          ={this.skipToWord}
-                                bottomMargin        ={true}
-                                topMargin           ={true}
-                                toggleWordHighlight ={this.toggleWordHighlight}
+                                highlightColor={this.props.highlightColor}
                                 skin={this.props.skin}
                                 />
                         );
@@ -11681,6 +11674,7 @@ export default class Viewport extends React.Component {
                     skin={this.props.skin}
                     toggleHighlight={this.toggleHighlight}
                     toggleWordBookmark={this.toggleWordBookmark}
+                    highlightColor={this.props.highlightColor}
                     performWriteOperation={this.performWriteOperation}
                     performImageOperation={this.performImageOperation}
                     performRecordOperation={this.performRecordOperation}
@@ -12308,7 +12302,7 @@ const FixationWindow = styled.p`
     line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
     margin            : 0;
     border-left-width: ${props => props.highlightIsActive ? "5px" : "0px"};
-    border-left-color: ${props => props.theme.green};
+    border-left-color: ${props => props.theme[props.highlightColor]};
     border-left-style: solid;
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
     transition        : all 0.3s;

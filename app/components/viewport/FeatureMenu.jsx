@@ -9,7 +9,7 @@ import BackButton               from './BackButton';
 import HandTypes                from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
 import FeatureTypes             from '../../constants/featureTypes';
-import AttachmentTypes             from '../../constants/attachmentOperationTypes';
+import AttachmentTypes          from '../../constants/attachmentOperationTypes';
 
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
@@ -18,7 +18,11 @@ import BookmarkColor            from '../../assets/images/icons/bookmark-red.svg
 import AttachmentWhite          from '../../assets/images/icons/attachment-white.svg';
 import AttachmentColor          from '../../assets/images/icons/attachment-purple.svg';
 import HighlightWhite           from '../../assets/images/icons/highlight-white.svg';
-import HighlightColor           from '../../assets/images/icons/highlight-green.svg';
+import HighlightRed             from '../../assets/images/icons/highlight-red.svg'
+import HighlightPurple          from '../../assets/images/icons/highlight-purple.svg'
+import HighlightBlue            from '../../assets/images/icons/highlight-blue.svg'
+import HighlightGreen           from '../../assets/images/icons/highlight-green.svg'
+import HighlightYellow          from '../../assets/images/icons/highlight-yellow.svg';
 import WriteIcon                from '../../assets/images/icons/write-purple.svg';
 import ImageIcon                from '../../assets/images/icons/picture-purple.svg';
 import RecordIcon               from '../../assets/images/icons/microphone-purple.svg';
@@ -123,7 +127,7 @@ export default class FeatureMenu extends React.Component {
                                 },
                                 func: this.props.performDrawOperation
                             },
-                        cancel: {
+                        back: {
                                 name: "back",
                                 icon: {color: BackPurple},
                                 description: "Back",
@@ -140,11 +144,11 @@ export default class FeatureMenu extends React.Component {
                 highlight: {
                     name: FeatureTypes.HIGHLIGHT,
                     icon: {
-                        color: HighlightColor,
+                        color: highlight[this.props.highlightColor],
                         white: HighlightWhite
                     },
                     description: "Highlight Phrase",
-                    color: {white: "green", cream: "green", night: "green"},
+                    color: {white: this.props.highlightColor, cream: this.props.highlightColor, night: this.props.highlightColor},
                     isActive: false,
                     cssTranslate: {
                         inactiveTransitionDelay: 0,
@@ -219,6 +223,7 @@ export default class FeatureMenu extends React.Component {
                   })}
               </MenuItems>
                 <BackButton
+                    highlightColor={this.props.highlightColor}
                     activeFeature={this.state.activeFeature}
                     backFunction={this.deactivateFeature}/>
             </Menu>
@@ -378,11 +383,12 @@ FeatureMenu.propTypes = {
     hand                  : PropTypes.string.isRequired,
     toggleHighlight       : PropTypes.func.isRequired,
     toggleWordBookmark    : PropTypes.func.isRequired,
+    highlightColor        : PropTypes.string.isRequired,
     performWriteOperation : PropTypes.func.isRequired,
     performImageOperation : PropTypes.func.isRequired,
     performRecordOperation: PropTypes.func.isRequired,
     performDrawOperation  : PropTypes.func.isRequired,
-    skin               : PropTypes.string.isRequired
+    skin                  : PropTypes.string.isRequired
 };
 
 // ============= React Hint ==============
@@ -583,3 +589,11 @@ const Tooltip = styled.h2`
     transition: all 0.15s;
     z-index: 3;
 `;
+
+const highlight = {
+    red: HighlightRed,
+    purple: HighlightPurple,
+    blue: HighlightBlue,
+    green: HighlightGreen,
+    yellow: HighlightYellow
+}

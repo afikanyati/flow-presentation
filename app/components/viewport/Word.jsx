@@ -42,6 +42,7 @@ export default class Word extends React.Component {
                     hasAttachment={Object.keys(this.props.word.attachment).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
+                    highlightColor={this.props.highlightColor}
                     onClick       ={this.props.skipToWord.bind({}, this.props.word.text, this.props.paragraph, this.props.word.index)}>
                     {`${this.props.word.text} `}
                 </Text>
@@ -70,8 +71,8 @@ Word.propTypes = {
     bold               : PropTypes.bool,
     skipToWord         : PropTypes.func.isRequired,
     fontFamily         : PropTypes.object.isRequired,
-    toggleWordHighlight: PropTypes.func.isRequired,
     inFixationWindow   : PropTypes.bool.isRequired,
+    highlightColor     : PropTypes.string.isRequired,
     skin               : PropTypes.string.isRequired
 };
 
@@ -86,7 +87,10 @@ const TextContainer = styled.span`
 `;
 
 const Text = styled.span`
-    background-color: ${props => props.isHighlighted ? props.theme.green : "transparent"};
+    background-color: ${props => props.isHighlighted ?
+            props.theme[props.highlightColor]
+        :
+            "transparent"};
     border-bottom-width: ${props =>  !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "3px" : "0px"};
     border-bottom-color: transparent;
     border-bottom-style: solid;

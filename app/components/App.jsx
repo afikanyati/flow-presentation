@@ -43,9 +43,9 @@ export default class Root extends React.Component {
             fontFamily    : FontTypes.ADOBE_GARAMOND,
             fixationWidth : 3, // if they change the fixationWidth, rerender viewport
             trackingSpeed : 12,
-            skin         : SkinTypes.WHITE,
+            skin          : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
-            readingSpeed: 300, //WPM --> Method to save reading speed if edited
+            readingSpeed  : 300, //WPM --> Method to save reading speed if edited
             highlightColor: HighlightTypes.GREEN
         };
     }
@@ -78,6 +78,7 @@ export default class Root extends React.Component {
                 hand                 ={this.state.hand}
                 skin                 ={this.state.skin}
                 readingSpeed         ={this.state.readingSpeed}
+                highlightColor       ={this.state.highlightColor}
                 modifyReadingSpeed   ={this.modifyReadingSpeed}/>
         );
     }

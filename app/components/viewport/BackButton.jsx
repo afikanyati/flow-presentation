@@ -1,12 +1,15 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
+import React            from 'react';
+import PropTypes        from 'prop-types';
+import styled           from 'styled-components';
 
 // Components
-import FeatureTypes             from '../../constants/featureTypes';
-import BackRed        from '../../assets/images/icons/back-red.svg';
+import FeatureTypes     from '../../constants/featureTypes';
+import BackRed          from '../../assets/images/icons/back-red.svg';
+import BackPurple       from '../../assets/images/icons/back-purple.svg'
+import BackBlue         from '../../assets/images/icons/back-blue.svg'
 import BackGreen        from '../../assets/images/icons/back-green.svg';
+import BackYellow       from '../../assets/images/icons/back-yellow.svg'
 
 /**
  * The BackButton component is a component used to
@@ -33,7 +36,7 @@ export default class BackButton extends React.Component {
                         `url(${BackRed})`
                     :
                         this.props.activeFeature == FeatureTypes.HIGHLIGHT ?
-                            `url(${BackGreen})`
+                            `url(${highlight[this.props.highlightColor]})`
                         :
                             "none"}/>
             </BackButtonContainer>
@@ -54,6 +57,7 @@ export default class BackButton extends React.Component {
 // ============= PropTypes ==============
 
 BackButton.propTypes = {
+    highlightColor: PropTypes.string.isRequired,
     activeFeature: PropTypes.string,
     backFunction: PropTypes.func
 };
@@ -100,3 +104,11 @@ const BackButtonIcon = styled.button`
         border-radius: 15px;
     }
 `;
+
+const highlight = {
+    red: BackRed,
+    purple: BackPurple,
+    blue: BackBlue,
+    green: BackGreen,
+    yellow: BackYellow
+}
