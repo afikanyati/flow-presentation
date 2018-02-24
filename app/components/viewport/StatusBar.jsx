@@ -51,21 +51,21 @@ export default class FunctionBar extends React.Component {
                 <FunctionIcon
                     title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
                     icon={this.props.showAnnotations ?
-                            this.props.skin == SkinTypes.WHITE ?
+                        this.props.skin == SkinTypes.WHITE ?
+                            `url(${NoAnnotationsPurple})`
+                        :
+                            this.props.skin == SkinTypes.CREAM ?
+                                    `url(${NoAnnotationsPurple})`
+                                :
+                                    `url(${NoAnnotationsLightPurple})`
+                    :
+                        this.props.skin == SkinTypes.WHITE ?
+                                `url(${NoAnnotationsGray})`
+                            :
+                                this.props.skin == SkinTypes.CREAM ?
                                         `url(${NoAnnotationsGray})`
                                     :
-                                        this.props.skin == SkinTypes.CREAM ?
-                                                `url(${NoAnnotationsGray})`
-                                            :
-                                                `url(${NoAnnotationsDarkGray})`
-                        :
-                            this.props.skin == SkinTypes.WHITE ?
-                                        `url(${NoAnnotationsPurple})`
-                                    :
-                                        this.props.skin == SkinTypes.CREAM ?
-                                                `url(${NoAnnotationsPurple})`
-                                            :
-                                                `url(${NoAnnotationsLightPurple})`}/>
+                                        `url(${NoAnnotationsDarkGray})`}/>
                 <FunctionIcon
                     title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.cruiseControlHaltIsActive ?
