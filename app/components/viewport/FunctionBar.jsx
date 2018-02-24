@@ -1,20 +1,24 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
+import React                    from 'react';
+import PropTypes                from 'prop-types';
+import styled                   from 'styled-components';
 
 // Components
-import HandTypes               from '../../constants/handTypes';
+import HandTypes                from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import PausePurple          from '../../assets/images/icons/pause-purple.svg';
-import PauseLightPurple          from '../../assets/images/icons/pause-lightpurple.svg';
-import PauseGray           from '../../assets/images/icons/pause-gray.svg';
-import PauseDarkGray           from '../../assets/images/icons/pause-darkgray.svg';
-import SpeedPurple          from '../../assets/images/icons/speed-purple.svg';
-import SpeedLightPurple          from '../../assets/images/icons/speed-lightpurple.svg';
+import PausePurple              from '../../assets/images/icons/pause-purple.svg';
+import PauseLightPurple         from '../../assets/images/icons/pause-lightpurple.svg';
+import PauseGray                from '../../assets/images/icons/pause-gray.svg';
+import PauseDarkGray            from '../../assets/images/icons/pause-darkgray.svg';
+import NoAnnotationsPurple      from '../../assets/images/icons/no-annotations-purple.svg';
+import NoAnnotationsLightPurple from '../../assets/images/icons/no-annotations-lightpurple.svg';
+import NoAnnotationsGray        from '../../assets/images/icons/no-annotations-gray.svg';
+import NoAnnotationsDarkGray    from '../../assets/images/icons/no-annotations-darkgray.svg';
+import SpeedPurple              from '../../assets/images/icons/speed-purple.svg';
+import SpeedLightPurple         from '../../assets/images/icons/speed-lightpurple.svg';
 
 /**
- * The StatusBar component is a component used to
+ * The FunctionBar component is a component used to
  */
 export default class FunctionBar extends React.Component {
 
@@ -45,6 +49,24 @@ export default class FunctionBar extends React.Component {
                     </FunctionText>
                 </FunctionSystem>
                 <FunctionIcon
+                    title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
+                    icon={this.props.showAnnotations ?
+                            this.props.skin == SkinTypes.WHITE ?
+                                        `url(${NoAnnotationsGray})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${NoAnnotationsGray})`
+                                            :
+                                                `url(${NoAnnotationsDarkGray})`
+                        :
+                            this.props.skin == SkinTypes.WHITE ?
+                                        `url(${NoAnnotationsPurple})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${NoAnnotationsPurple})`
+                                            :
+                                                `url(${NoAnnotationsLightPurple})`}/>
+                <FunctionIcon
                     title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.cruiseControlHaltIsActive ?
                             this.props.skin == SkinTypes.WHITE ?
@@ -53,7 +75,7 @@ export default class FunctionBar extends React.Component {
                                         this.props.skin == SkinTypes.CREAM ?
                                                 `url(${PausePurple})`
                                             :
-                                                `url(${PausePurple})`
+                                                `url(${PauseLightPurple})`
                         :
                             this.props.skin == SkinTypes.WHITE ?
                                         `url(${PauseGray})`
@@ -83,7 +105,8 @@ FunctionBar.propTypes = {
     cruiseControlHaltIsActive: PropTypes.bool.isRequired,
     hand              : PropTypes.string.isRequired,
     readingSpeed: PropTypes.number.isRequired,
-    skin: PropTypes.string.isRequired
+    skin: PropTypes.string.isRequired,
+    showAnnotations: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============

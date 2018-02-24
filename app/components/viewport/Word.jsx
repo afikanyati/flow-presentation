@@ -28,11 +28,14 @@ export default class Word extends React.Component {
             <TextContainer
                 hasBookmark={this.props.word.hasBookmark}
                 hasAttachment={Object.keys(this.props.word.attachment).length != 0}
-                inFixationWindow={this.props.inFixationWindow}>
+                inFixationWindow={this.props.inFixationWindow}
+                showAnnotations={this.props.showAnnotations}
+            >
                 <AttachmentIcon
                     src={AttachmentFilled}
                     hasAttachment={Object.keys(this.props.word.attachment).length != 0}
-                    inFixationWindow={this.props.inFixationWindow} />
+                    inFixationWindow={this.props.inFixationWindow}
+                    showAnnotations={this.props.showAnnotations} />
                 <Text
                     skin={this.props.skin}
                     italic        ={this.props.italic}
@@ -43,13 +46,15 @@ export default class Word extends React.Component {
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
                     highlightColor={this.props.highlightColor}
+                    showAnnotations={this.props.showAnnotations}
                     onClick       ={this.props.skipToWord.bind({}, this.props.word.text, this.props.paragraph, this.props.word.index)}>
                     {`${this.props.word.text} `}
                 </Text>
                 <BookmarkIcon
                     src={BookmarkFilled}
                     hasBookmark={this.props.word.hasBookmark}
-                    inFixationWindow={this.props.inFixationWindow} />
+                    inFixationWindow={this.props.inFixationWindow}
+                    showAnnotations={this.props.showAnnotations} />
             </TextContainer>
         );
     }
@@ -73,7 +78,8 @@ Word.propTypes = {
     fontFamily         : PropTypes.object.isRequired,
     inFixationWindow   : PropTypes.bool.isRequired,
     highlightColor     : PropTypes.string.isRequired,
-    skin               : PropTypes.string.isRequired
+    skin               : PropTypes.string.isRequired,
+    showAnnotations: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============
@@ -82,19 +88,19 @@ const TextContainer = styled.span`
     display: inline-flex;
     flex-direction: column;
     margin: 0;
-    margin-top: ${props => props.hasBookmark && !props.hasAttachment && props.inFixationWindow ? "50px" : "0px"};
+    margin-top: ${props => props.showAnnotations && props.hasBookmark && !props.hasAttachment && props.inFixationWindow ? "50px" : "0px"};
     padding: 0;
 `;
 
 const Text = styled.span`
-    background-color: ${props => props.isHighlighted ?
+    background-color: ${props => props => props.showAnnotations && props.isHighlighted ?
             props.theme[props.highlightColor]
         :
             "transparent"};
-    border-bottom-width: ${props =>  !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "3px" : "0px"};
+    border-bottom-width: ${props =>  props.showAnnotations && !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "3px" : "0px"};
     border-bottom-color: transparent;
     border-bottom-style: solid;
-    border-image: ${props => props.hasBookmark && props.hasAttachment ?
+    border-image: ${props => props.showAnnotations && props.hasBookmark && props.hasAttachment ?
             "linear-gradient(to right, #d3224f 0%, #65266d 100%)"
         :
             props.hasBookmark ?
@@ -116,6 +122,7 @@ const Text = styled.span`
             :
                 400
     };
+    color: ${props => props.showAnnotations && props.isHighlighted && props.skin == SkinTypes.NIGHT ? props.theme.white : "inherit"};
     margin     : 0;
     cursor     : pointer;
     display    : inline-block;
@@ -139,7 +146,7 @@ const Text = styled.span`
 `;
 
 const BookmarkIcon = styled.img`
-    display: ${props => props.hasBookmark && props.inFixationWindow ? "static" : "none"};
+    display: ${props => props.showAnnotations && props.hasBookmark && props.inFixationWindow ? "static" : "none"};
     position: relative;
     left: -8px;
     top: 5px;
@@ -151,7 +158,7 @@ const BookmarkIcon = styled.img`
 `;
 
 const AttachmentIcon = styled.img`
-    display: ${props => props.hasAttachment && props.inFixationWindow ? "static" : "none"};
+    display: ${props => props.showAnnotations && props.hasAttachment && props.inFixationWindow ? "static" : "none"};
     position: relative;
     left: -8px;
     bottom: 5px;

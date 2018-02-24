@@ -40,6 +40,7 @@ export default class Paragraph extends React.Component {
                                       skipToWord ={this.props.skipToWord}
                                       skin={this.props.skin}
                                       highlightColor={this.props.highlightColor}
+                                      showAnnotations={this.props.showAnnotations}
                                   />
                                   );
                               })}
@@ -56,6 +57,7 @@ export default class Paragraph extends React.Component {
                                 skipToWord ={this.props.skipToWord}
                                 skin={this.props.skin}
                                 highlightColor={this.props.highlightColor}
+                                showAnnotations={this.props.showAnnotations}
                             />
                             );
                         })
@@ -84,7 +86,8 @@ Paragraph.propTypes = {
     fontSize           : PropTypes.number.isRequired,
     fontFamily         : PropTypes.object.isRequired,
     highlightColor     : PropTypes.string.isRequired,
-    skin               : PropTypes.string.isRequired
+    skin               : PropTypes.string.isRequired,
+    showAnnotations: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============

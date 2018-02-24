@@ -4,10 +4,7 @@ import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
 
 // Components
-import HandTypes               from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import MapWhite                from '../../assets/images/icons/map-white.svg';
-import MapColor                from '../../assets/images/icons/map-yellow.svg';
 
 /**
  * The CompletionBar component is a component used to

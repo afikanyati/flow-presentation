@@ -39,14 +39,15 @@ export default class Root extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fontSize      : 20,
-            fontFamily    : FontTypes.ADOBE_GARAMOND,
-            fixationWidth : 3, // if they change the fixationWidth, rerender viewport
-            trackingSpeed : 12,
-            skin          : SkinTypes.WHITE,
-            hand          : HandTypes.RIGHT,
-            readingSpeed  : 300, //WPM --> Method to save reading speed if edited
-            highlightColor: HighlightTypes.GREEN
+            fontSize       : 20,
+            fontFamily     : FontTypes.ADOBE_GARAMOND,
+            fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
+            trackingSpeed  : 12,
+            skin           : SkinTypes.WHITE,
+            hand           : HandTypes.RIGHT,
+            readingSpeed   : 300, //WPM --> Method to save reading speed if edited
+            showAnnotations: false,
+            highlightColor : HighlightTypes.GREEN
         };
     }
 
@@ -79,6 +80,7 @@ export default class Root extends React.Component {
                 skin                 ={this.state.skin}
                 readingSpeed         ={this.state.readingSpeed}
                 highlightColor       ={this.state.highlightColor}
+                showAnnotations={this.state.showAnnotations}
                 modifyReadingSpeed   ={this.modifyReadingSpeed}/>
         );
     }

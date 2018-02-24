@@ -11569,6 +11569,7 @@ export default class Viewport extends React.Component {
                     skin={this.props.skin}
                     readingSpeed={this.props.readingSpeed}
                     cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                    showAnnotations={this.props.showAnnotations}
                 />
                 <CompletionBar
                     skin={this.props.skin}
@@ -11588,6 +11589,7 @@ export default class Viewport extends React.Component {
                               skipToWord    ={this.skipToWord}
                               highlightColor={this.props.highlightColor}
                               skin={this.props.skin}
+                              showAnnotations={this.props.showAnnotations}
                               />
                       );
                   })}
@@ -11602,6 +11604,7 @@ export default class Viewport extends React.Component {
                             skipToWord   ={this.skipToWord}
                             highlightColor={this.props.highlightColor}
                             skin={this.props.skin}
+                            showAnnotations={this.props.showAnnotations}
                             />
                     );
                 })}
@@ -11628,6 +11631,7 @@ export default class Viewport extends React.Component {
                                         skipToWord ={this.skipToWord}
                                         skin={this.props.skin}
                                         highlightColor={this.props.highlightColor}
+                                        showAnnotations={this.props.showAnnotations}
                                     />
                                 );
                             })}
@@ -11648,6 +11652,7 @@ export default class Viewport extends React.Component {
                                 skipToWord   ={this.skipToWord}
                                 highlightColor={this.props.highlightColor}
                                 skin={this.props.skin}
+                                showAnnotations={this.props.showAnnotations}
                                 />
                         );
                     })}
@@ -11662,6 +11667,7 @@ export default class Viewport extends React.Component {
                                 skipToWord          ={this.skipToWord}
                                 highlightColor={this.props.highlightColor}
                                 skin={this.props.skin}
+                                showAnnotations={this.props.showAnnotations}
                                 />
                         );
                 })}
@@ -12186,13 +12192,17 @@ export default class Viewport extends React.Component {
 // ============= PropTypes ==============
 
 Viewport.propTypes = {
-    fontSize          : PropTypes.number.isRequired,
-    fontFamily        : PropTypes.object.isRequired,
-    fixationWidth     : PropTypes.number.isRequired,
-    skin              : PropTypes.string.isRequired,
-    hand              : PropTypes.string.isRequired,
-    trackingSpeed     : PropTypes.number.isRequired,
-    readingSpeed      : PropTypes.number.isRequired
+    fontSize           : PropTypes.number.isRequired,
+    fontFamily         : PropTypes.object.isRequired,
+    fixationWidth      : PropTypes.number.isRequired,
+    trackingSpeed      : PropTypes.number.isRequired,
+    hand               : PropTypes.string.isRequired,
+    skin               : PropTypes.string.isRequired,
+    readingSpeed       : PropTypes.number.isRequired,
+    highlightColor     : PropTypes.string.isRequired,
+    showAnnotations    : PropTypes.bool.isRequired,
+    modifyReadingSpeed : PropTypes.func.isRequired
+
 };
 
 // ============= Styled Components ==============

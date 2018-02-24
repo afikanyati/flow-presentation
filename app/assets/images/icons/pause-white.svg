@@ -4,11 +4,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="80px" height="80px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
 <g>
-	<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="7" stroke-miterlimit="10" d="M23.592,13.916v52.169
-		c0,1.309,1.208,2.372,2.664,2.372c1.457,0,2.613-1.062,2.613-2.372V13.916c0-1.309-1.156-2.372-2.613-2.372
-		C24.8,11.545,23.592,12.607,23.592,13.916z"/>
-	<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="7" stroke-miterlimit="10" d="M51.131,13.916v52.169
-		c0,1.309,1.208,2.372,2.664,2.372c1.457,0,2.613-1.062,2.613-2.372V13.916c0-1.309-1.156-2.372-2.613-2.372
-		C52.339,11.545,51.131,12.607,51.131,13.916z"/>
+	<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M27.892,18.367v43.267
+		c0,1.086,1.002,1.967,2.209,1.967c1.208,0,2.167-0.881,2.167-1.967V18.367c0-1.086-0.959-1.967-2.167-1.967
+		C28.894,16.401,27.892,17.282,27.892,18.367z"/>
+	<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M47.732,18.367v43.267
+		c0,1.086,1.002,1.967,2.209,1.967c1.208,0,2.167-0.881,2.167-1.967V18.367c0-1.086-0.959-1.967-2.167-1.967
+		C48.733,16.401,47.732,17.282,47.732,18.367z"/>
 </g>
 </svg>
