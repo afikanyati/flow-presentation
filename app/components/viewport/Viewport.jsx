@@ -31,7 +31,8 @@ export default class Viewport extends React.Component {
             highlightIsActive: false,
             cruiseControlIsActive: false,
             cruiseControlHaltIsActive: false,
-            timePerFixation: 0 // In milliseconds
+            timePerFixation: 0, // In milliseconds,
+            checkAddTime: false, // checked once every fixation cycle
         }
     }
 
@@ -11728,19 +11729,8 @@ export default class Viewport extends React.Component {
         // Web App Visibility
         document.addEventListener('visibilitychange', this.handleWindowFocusState);
 
-        // === Set timePerFixation ===
-        //
-        // We model the number of fixations as displacement
-        // We want to determine the fixations/s (velocity)
-        // We use the following equation of motion: x_f = x_0 + v_0*t + 0.5*a*t^2
-
-        let secondsInMinute = 60;
-        let milliSecondFactor = 1000;
-        let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
-        let timePerFixation = milliSecondFactor * secondsInMinute/numFixations; // measured in ms
-        this.setState({
-            timePerFixation: timePerFixation
-        });
+        // Set timePerFixation
+        this.setTimePerFixation(0);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -11753,8 +11743,8 @@ export default class Viewport extends React.Component {
                 timePerFixation: timePerFixation
             }, () => {
                 this.isScrolling = setTimeout(() => {
-                    clearInterval(this.cruiseControl);
-                    this.moveText();
+                    clearTimeout(this.timer);
+                    this.moveText(new Date().getTime());
                 }, 200);
             });
         }
@@ -11764,7 +11754,7 @@ export default class Viewport extends React.Component {
         window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
         window.removeEventListener('mousedown', this.handleCruiseMouseDown, false);
         window.removeEventListener('mouseup', this.handleCruiseMouseUp, false);
-        clearInterval(this.cruiseControl);
+        clearTimeout(this.timer);
     }
 
     // ========== Methods ===========
@@ -11777,7 +11767,7 @@ export default class Viewport extends React.Component {
         e.stopPropagation();
         if (this.state.cruiseControlIsActive &&
             e.target.offsetParent.id != "cruiseControlButton") {
-            clearInterval(this.cruiseControl);
+            clearTimeout(this.timer);
             this.setState({
                 cruiseControlHaltIsActive: true
             });
@@ -11788,7 +11778,7 @@ export default class Viewport extends React.Component {
         // NOTE: If user clicks and mouse up outside of viewport, get error
         e.stopPropagation();
         if (this.state.cruiseControlIsActive && e.target.offsetParent.id != "cruiseControlButton") {
-            this.moveText();
+            this.moveText(new Date().getTime());
             this.setState({
                 cruiseControlHaltIsActive: false
             });
@@ -11947,6 +11937,8 @@ export default class Viewport extends React.Component {
                 && fixationWindow.length == 0
                 && future.length == 0
                 && this.state.assetCurrentIndex + 1 < this.state.assets.length) {
+                // End of paragraph, have pause
+                this.setTimePerFixation(this.state.timePerFixation);
                 // We have hit end of current asset
                 // Load next one
                 this.loadAsset(this.state.assetCurrentIndex + 1);
@@ -12150,22 +12142,112 @@ export default class Viewport extends React.Component {
         if (e) e.stopPropagation();
 
         if (!this.state.cruiseControlIsActive) {
-            this.moveText();
+            this.moveText(new Date().getTime());
         } else {
-            clearInterval(this.cruiseControl);
+            clearTimeout(this.timer);
         }
 
         this.setState({
             cruiseControlIsActive: !this.state.cruiseControlIsActive
         });
     }
+    /**
+     * [setTimePerFixation description]
+     * @param {[type]} addTime in milliseconds
+     */
+    setTimePerFixation = (addTime) => {
+        // We model the number of fixations as displacement
+        // We want to determine the fixations/s (velocity)
+        // We use the following equation of motion: x_f = x_0 + v_0*t + 0.5*a*t^2
 
-    moveText = () => {
+        let secondsInMinute = 60;
+        let milliSecondFactor = 1000;
+        let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
+        let timePerFixation = milliSecondFactor * secondsInMinute/numFixations + addTime; // measured in ms
+        this.setState({
+            timePerFixation: timePerFixation
+        });
+    }
+
+    /**
+     * [doTimer description]
+     * @param  {[type]} length     [description]
+     * @param  {[type]} resolution in frames/s
+     * @param  {[type]} oninstance [description]
+     * @param  {[type]} oncomplete [description]
+     */
+    doTimer = (length, resolution, oninstance, oncomplete) => {
+        let steps = (length / 100) * (resolution / 10),
+            speed = length / steps,
+            count = 0,
+            start = new Date().getTime();
+
+        let instance = () => {
+            if(count++ < steps) {
+                oninstance(steps, count);
+                let diff = (new Date().getTime() - start) - (count * speed);
+                this.timer = window.setTimeout(instance, (speed - diff));
+            } else {
+                let timestamp = new Date().getTime();
+                this.setState({
+                    checkAddTime: false
+                });
+                oncomplete();
+                this.moveText(timestamp);
+            }
+        }
+
+        this.timer = window.setTimeout(instance, speed);
+    }
+
+    checkAddTime = () => {
+        // Runs fully once per doTimer
+        // Only checks end of sentence for punctiation currently
+        if (!this.state.checkAddTime) {
+            const sentenceEndingSet = new Set([".", "?", "!", "..."]);
+            const pauseSet = new Set([",", ";", ":", "\u2014"]); // \u2014 is the em dash
+            const transitionSet = new Set(TransitionWords);
+            let addTime = 0;
+            let futureFixationWindow = this.state.assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
+
+            // Determine if need to add time
+            futureFixationWindow.forEach((word) => {
+                if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
+                    // Sentence Ending
+                    addTime += 2 * this.state.timePerFixation/this.props.fixationWidth;
+                } else if (pauseSet.has(word.text.charAt(word.text.length - 1))) {
+                    // Punctuation Pauses
+                    addTime += this.state.timePerFixation/this.props.fixationWidth;
+                } else if (transitionSet.has(word.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+                    // Propositional Integration Word Pause
+                    addTime += this.state.timePerFixation/this.props.fixationWidth;
+                }
+            });
+
+            // Set state as checked
+            this.setState({
+                checkAddTime: true
+            });
+
+            // Update FixationTime
+            this.setTimePerFixation(addTime);
+        }
+    }
+
+    /**
+     * [moveText description]
+     * @param  {[type]} timestamp time of method call
+     */
+    moveText = (timestamp) => {
         // Apply first transition
         // Avoid waiting for timePerFixation to elapse
-        this.cruiseControl = setInterval(() => {
-            this.updateViewport(ScrollDirectionTypes.DOWN);
-        }, this.state.timePerFixation);
+        let diff = new Date().getTime() - timestamp;
+        this.doTimer(
+            this.state.timePerFixation - diff,
+            20,
+            this.checkAddTime
+            ,
+            this.updateViewport.bind({}, ScrollDirectionTypes.DOWN));
     }
 
     toggleMap = (e) => {
@@ -12210,13 +12292,12 @@ export default class Viewport extends React.Component {
     }
 
     handleWindowFocusState = (e) => {
-        console.log();
         if (!document.hidden && this.state.cruiseControlIsActive) {
             // Stop cruise control if leave web app tab
-            this.moveText();
+            this.moveText(new Date().getTime());
         } else if (document.hidden && this.state.cruiseControlIsActive) {
             // Resume cruise control if return to web app tab
-            clearInterval(this.cruiseControl);
+            clearTimeout(this.timer);
         }
     }
 }
@@ -12394,3 +12475,7 @@ const TitleBar = styled.h3`
 
 const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
 const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";
+const TransitionWords = ["and", "also", "then", "moreoever", "likewise", "comparatively", "correspondingly", "similarly", "furthermore", "additionally",
+    "notably", "including", "namely", "chiefly", "indeed", "surely", "markedly", "especially", "specifically", "expressively", "surprisingly", "frequently", "significantly",
+    "hence", "suddenly", "shortly", "henceforth", "meanwhile", "presently", "occasionally", "thus", "because", "but", "unlike", "or", "yet", "while", "albeit", "besides",
+    "if", "unless", "lest", "lastly", "finally", "too"];
