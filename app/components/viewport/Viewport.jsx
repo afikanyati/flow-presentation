@@ -49,9 +49,6 @@ export default class Viewport extends React.Component {
                         "history": [
 
                         ],
-                        "trailingWord": [
-
-                        ],
                         "fixationWindow": [
 
                         ],
@@ -974,9 +971,6 @@ export default class Viewport extends React.Component {
                       {
                         "type": "paragraph",
                         "history": [
-
-                        ],
-                        "trailingWord": [
 
                         ],
                         "fixationWindow": [
@@ -2551,9 +2545,6 @@ export default class Viewport extends React.Component {
                         "history": [
 
                         ],
-                        "trailingWord": [
-
-                        ],
                         "fixationWindow": [
 
                         ],
@@ -3572,9 +3563,6 @@ export default class Viewport extends React.Component {
                       {
                         "type": "paragraph",
                         "history": [
-
-                        ],
-                        "trailingWord": [
 
                         ],
                         "fixationWindow": [
@@ -4823,9 +4811,6 @@ export default class Viewport extends React.Component {
                       {
                         "type": "paragraph",
                         "history": [
-
-                        ],
-                        "trailingWord": [
 
                         ],
                         "fixationWindow": [
@@ -6482,9 +6467,6 @@ export default class Viewport extends React.Component {
                       {
                         "type": "paragraph",
                         "history": [
-
-                        ],
-                        "trailingWord": [
 
                         ],
                         "fixationWindow": [
@@ -8179,9 +8161,6 @@ export default class Viewport extends React.Component {
                         "history": [
 
                         ],
-                        "trailingWord": [
-
-                        ],
                         "fixationWindow": [
 
                         ],
@@ -8792,9 +8771,6 @@ export default class Viewport extends React.Component {
                       {
                         "type": "paragraph",
                         "history": [
-
-                        ],
-                        "trailingWord": [
 
                         ],
                         "fixationWindow": [
@@ -9599,9 +9575,6 @@ export default class Viewport extends React.Component {
                       {
                         "type": "paragraph",
                         "history": [
-
-                        ],
-                        "trailingWord": [
 
                         ],
                         "fixationWindow": [
@@ -10720,9 +10693,6 @@ export default class Viewport extends React.Component {
                         "history": [
 
                         ],
-                        "trailingWord": [
-
-                        ],
                         "fixationWindow": [
 
                         ],
@@ -11642,38 +11612,8 @@ export default class Viewport extends React.Component {
                 </HistoryContainer>
                 <FixationWindowContainer
                     fontSize={this.props.fontSize}>
-                    {this.props.fixationWidth > 1 ?
-                        <TrailingWord
-                            highlightIsActive={this.state.highlightIsActive}
-                            skin={this.props.skin}
-                            fontSize   ={this.props.fontSize}
-                            fontFamily ={this.props.fontFamily}>
-                            <CSSTransitionGroup
-                                  transitionName         ="fixation"
-                                  transitionEnterTimeout ={400}
-                                  transitionLeave        ={false}>
-                                {this.state.assets[this.state.assetCurrentIndex].trailingWord.map((word) => {
-                                    return (
-                                        <Word
-                                            key        ={`parent =[type ='paragraph', index ='${this.state.assetCurrentIndex}'], this =[type ='word', index ='${word.index}']`}
-                                            paragraph  ={this.state.assetCurrentIndex}
-                                            word       ={word}
-                                            inFixationWindow={true}
-                                            fontFamily ={this.props.fontFamily}
-                                            skipToWord ={this.skipToWord}
-                                            toggleWordHighlight={this.toggleWordHighlight}
-                                            skin={this.props.skin}
-                                            />
-                                    );
-                                })}
-                            </CSSTransitionGroup>
-                        </TrailingWord>
-                    :
-                        null
-                    }
                     <FixationWindow
                         highlightIsActive={this.state.highlightIsActive}
-                        trailingWordPresent={this.props.fixationWidth > 1 && this.state.assets[this.state.assetCurrentIndex].trailingWord.length > 0}
                         fontSize={this.props.fontSize}
                         fontFamily={this.props.fontFamily}>
                         <CSSTransitionGroup
@@ -11735,10 +11675,7 @@ export default class Viewport extends React.Component {
                 </FutureContainer>
                 <DefinitionsDrawer
                     skin={this.props.skin}
-                    fixationWords={this.state.assets[this.state.assetCurrentIndex].trailingWord.length > 0 ?
-                                        this.state.assets[this.state.assetCurrentIndex].trailingWord.concat(this.state.assets[this.state.assetCurrentIndex].fixationWindow)
-                                    :
-                                        this.state.assets[this.state.assetCurrentIndex].fixationWindow}/>
+                    fixationWords={this.state.assets[this.state.assetCurrentIndex].fixationWindow}/>
                 <FeatureMenu
                     hand                  ={this.props.hand}
                     skin={this.props.skin}
@@ -11813,7 +11750,7 @@ export default class Viewport extends React.Component {
     // ========== Methods ===========
 
     handleClick = (e) => {
-        
+
     }
 
     handleCruiseMouseDown = (e) => {
@@ -11899,15 +11836,12 @@ export default class Viewport extends React.Component {
     updateViewport = (direction) => {
         let assets = this.state.assets;
         let history = assets[this.state.assetCurrentIndex].history,
-            trailingWord = assets[this.state.assetCurrentIndex].trailingWord,
             fixationWindow = assets[this.state.assetCurrentIndex].fixationWindow,
             future = assets[this.state.assetCurrentIndex].future;
-        let sliceDistance   = this.props.trailingWordIsActive ? this.props.fixationWidth - 1 : this.props.fixationWidth;
 
 
         if (direction == ScrollDirectionTypes.UP
             && assets[this.state.assetCurrentIndex].history.length == 0
-            && (this.props.trailingWordIsActive && assets[this.state.assetCurrentIndex].trailingWord.length == 0 || !this.props.trailingWordIsActive)
             && this.state.assetCurrentIndex > 0) {
             // We have hit beginning of current asset
             // Load previous one
@@ -11926,7 +11860,6 @@ export default class Viewport extends React.Component {
             this.loadAsset(this.state.assetCurrentIndex - 1);
         } else if (direction == ScrollDirectionTypes.UP
             && assets[this.state.assetCurrentIndex].history.length == 0
-            && (this.props.trailingWordIsActive && assets[this.state.assetCurrentIndex].trailingWord.length == 0 || !this.props.trailingWordIsActive)
             && this.state.assetCurrentIndex == 0) {
             // We have hit beginning of document
             // Exit function
@@ -11934,147 +11867,55 @@ export default class Viewport extends React.Component {
         }
 
         if (direction == ScrollDirectionTypes.UP) {
-            if (this.props.trailingWordIsActive) {
-                if (assets[this.state.assetCurrentIndex].history.length - sliceDistance > 0) {
-                    if (this.state.highlightIsActive) {
-                        let start, end;
-                        if (assets[this.state.assetCurrentIndex].history[this.state.assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                            start = assets[this.state.assetCurrentIndex].history[this.state.assets[this.state.assetCurrentIndex].history.length - sliceDistance].index;
-                            end = assets[this.state.assetCurrentIndex].trailingWord[0].index;
-                        } else {
-                            start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                            end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                        }
-
-                        assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                    }
-
-
-                    // == Read from bottom to top to understand logic ==
-                    future         = assets[this.state.assetCurrentIndex].fixationWindow.concat(assets[this.state.assetCurrentIndex].future);
-                    fixationWindow = assets[this.state.assetCurrentIndex].history.slice(assets[this.state.assetCurrentIndex].history.length - sliceDistance + 1).concat(assets[this.state.assetCurrentIndex].trailingWord);
-                    trailingWord   = assets[this.state.assetCurrentIndex].history.slice(assets[this.state.assetCurrentIndex].history.length - sliceDistance, assets[this.state.assetCurrentIndex].history.length - sliceDistance + 1);
-                    history        = assets[this.state.assetCurrentIndex].history.slice(0, assets[this.state.assetCurrentIndex].history.length - sliceDistance);
-                } else {
-                    // Edge Case that causes wrong fixation window
-                    // Occurs when theres less history than fixation window
-                    if (this.state.highlightIsActive) {
-                        let start, end;
-
-                        if (assets[this.state.assetCurrentIndex].history.length > 0 && assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                            start = 0;
-                            end = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].history.length;
-                        } else {
-                            let diff = assets[this.state.assetCurrentIndex].history.length;
-                            start = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - diff].index;
-                            end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                        }
-
-                        assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                    }
-
-                    future         = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].trailingWord, assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future); // proxy future to re-establish fixationWindow
-                    history = [];
-                    trailingWord = [];
-                    fixationWindow = future.slice(0, this.props.fixationWidth);
-                    future         = future.slice(this.props.fixationWidth);
-                }
-            } else {
-                if (assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth > 0) {
-                    if (this.state.highlightIsActive) {
-                        let start, end;
-
-                        if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                            start = assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth].index;
-                            end = assets[this.state.assetCurrentIndex].history.length;
-                        } else {
-                            start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                            end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                        }
-
-                        assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                    }
-
-
-                    future         = assets[this.state.assetCurrentIndex].fixationWindow.concat(assets[this.state.assetCurrentIndex].future);
-                    fixationWindow = assets[this.state.assetCurrentIndex].history.slice(assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth, assets[this.state.assetCurrentIndex].history.length);
-                    trailingWord = []; // Not used
-                    history        = assets[this.state.assetCurrentIndex].history.slice(0, assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth);
-                } else {
-                    // Edge Case that causes wrong fixation window
-                    if (this.state.highlightIsActive) {
-                        let start, end;
-
-                        if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                            start = 0;
-                            end = assets[this.state.assetCurrentIndex].history.length;
-                        } else {
-                            let diff = assets[this.state.assetCurrentIndex].history.length;
-                            start = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - diff].index;
-                            end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                        }
-
-                        assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                    }
-
-                    future         = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future); // proxy future to re-establish fixationWindow
-                    history       = [];
-                    trailingWord = []; // Not used
-                    fixationWindow = future.slice(0, this.props.fixationWidth);
-                    future         = future.slice(this.props.fixationWidth);
-                }
-            }
-        } else {
-            // Scroll Direction Down
-            if (this.props.trailingWordIsActive) {
-                if (assets[this.state.assetCurrentIndex].future.length > 0) {
-                    if (this.state.highlightIsActive) {
-                        let start, end;
-
-                        start = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index;
-
-                        assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                    }
-
-                    history        = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].trailingWord, assets[this.state.assetCurrentIndex].fixationWindow.slice(0, assets[this.state.assetCurrentIndex].fixationWindow.length - 1));
-                    trailingWord   = assets[this.state.assetCurrentIndex].fixationWindow.slice(-1);
-                    fixationWindow = assets[this.state.assetCurrentIndex].future.slice(0, sliceDistance);
-                    future         = assets[this.state.assetCurrentIndex].future.slice(sliceDistance);
-                } else {
-                    if (this.state.highlightIsActive) {
-                        let start, end;
-
-                        start = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index;
-
-                        assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                    }
-
-                    history        = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].trailingWord, assets[this.state.assetCurrentIndex].fixationWindow);
-                    trailingWord = [];
-                    fixationWindow = [];
-                    future = [];
-                }
-            } else {
+            if (assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth > 0) {
                 if (this.state.highlightIsActive) {
                     let start, end;
 
-                    start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                    end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                    if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
+                        start = assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth].index;
+                        end = assets[this.state.assetCurrentIndex].history.length;
+                    } else {
+                        start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
+                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                    }
 
                     assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
                 }
 
-                history        = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow);
-                trailingWord = []; // Not used
-                fixationWindow = assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
-                future         = assets[this.state.assetCurrentIndex].future.slice(this.props.fixationWidth, assets[this.state.assetCurrentIndex].future.length);
+
+                future         = assets[this.state.assetCurrentIndex].fixationWindow.concat(assets[this.state.assetCurrentIndex].future);
+                fixationWindow = assets[this.state.assetCurrentIndex].history.slice(assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth, assets[this.state.assetCurrentIndex].history.length);
+                history        = assets[this.state.assetCurrentIndex].history.slice(0, assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth);
+            } else {
+                // Edge Case that causes wrong fixation window
+                if (this.state.highlightIsActive) {
+                    let start, end;
+
+                    if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
+                        start = 0;
+                        end = assets[this.state.assetCurrentIndex].history.length;
+                    } else {
+                        let diff = assets[this.state.assetCurrentIndex].history.length;
+                        start = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - diff].index;
+                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                    }
+
+                    assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
+                }
+
+                future         = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future); // proxy future to re-establish fixationWindow
+                history       = [];
+                fixationWindow = future.slice(0, this.props.fixationWidth);
+                future         = future.slice(this.props.fixationWidth);
             }
+        } else {
+            // Scroll Direction Down
+            history        = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow);
+            fixationWindow = assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
+            future         = assets[this.state.assetCurrentIndex].future.slice(this.props.fixationWidth, assets[this.state.assetCurrentIndex].future.length);
         }
 
         assets[this.state.assetCurrentIndex].history        = history;
-        assets[this.state.assetCurrentIndex].trailingWord   = trailingWord;
         assets[this.state.assetCurrentIndex].fixationWindow = fixationWindow;
         assets[this.state.assetCurrentIndex].future         = future;
 
@@ -12082,7 +11923,6 @@ export default class Viewport extends React.Component {
             assets        : assets
         }, () => {
             if (direction == ScrollDirectionTypes.DOWN
-                && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
                 && fixationWindow.length == 0
                 && future.length == 0
                 && this.state.assetCurrentIndex + 1 < this.state.assets.length) {
@@ -12090,7 +11930,6 @@ export default class Viewport extends React.Component {
                 // Load next one
                 this.loadAsset(this.state.assetCurrentIndex + 1);
             } else if (direction == ScrollDirectionTypes.DOWN
-                && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
                 && fixationWindow.length == 0
                 && future.length == 0
                 && this.state.assetCurrentIndex + 1 == this.state.assets.length
@@ -12100,7 +11939,6 @@ export default class Viewport extends React.Component {
                 // We deactivate it
                 this.toggleCruiseControl();
             } else if (direction == ScrollDirectionTypes.DOWN
-                && (this.props.trailingWordIsActive && trailingWord.length == 0 || !this.props.trailingWordIsActive)
                 && fixationWindow.length == 0
                 && future.length == 0
                 && this.state.assetCurrentIndex + 1 == this.state.assets.length) {
@@ -12146,14 +11984,13 @@ export default class Viewport extends React.Component {
 
             // Highlight if active
             if (this.state.highlightIsActive) {
-                let start = assets[this.state.assetCurrentIndex].trailingWord.length > 0 ? assets[this.state.assetCurrentIndex].trailingWord[0].index : assets[this.state.assetCurrentIndex].fixationWindow[0].index;
+                let start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
                 let end = assets[this.state.assetCurrentIndex].future[assets[this.state.assetCurrentIndex].future.length - 1].index + 1;
                 assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
             }
 
             let currentAsset = assets[this.state.assetCurrentIndex];
-            assets[this.state.assetCurrentIndex].history = currentAsset.history.concat(currentAsset.trailingWord, currentAsset.fixationWindow, currentAsset.future);
-            assets[this.state.assetCurrentIndex].trailingWord = [];
+            assets[this.state.assetCurrentIndex].history = currentAsset.history.concat(currentAsset.fixationWindow, currentAsset.future);
             assets[this.state.assetCurrentIndex].fixationWindow = [];
             assets[this.state.assetCurrentIndex].future = [];
         } else if (paragraphIndex < this.state.assetCurrentIndex) {
@@ -12168,41 +12005,38 @@ export default class Viewport extends React.Component {
             }
 
             let currentAsset = assets[this.state.assetCurrentIndex];
-            assets[this.state.assetCurrentIndex].future = currentAsset.history.concat(currentAsset.trailingWord, currentAsset.fixationWindow, currentAsset.future);
+            assets[this.state.assetCurrentIndex].future = currentAsset.history.concat(currentAsset.fixationWindow, currentAsset.future);
             assets[this.state.assetCurrentIndex].history = [];
-            assets[this.state.assetCurrentIndex].trailingWord = [];
             assets[this.state.assetCurrentIndex].fixationWindow = [];
         }
 
         // Highlight remaining words in new asset or currentAsset
         if (this.state.highlightIsActive && paragraphIndex > this.state.assetCurrentIndex) {
             // Progression
-            let nextAssetWords = assets[paragraphIndex].history.concat(assets[paragraphIndex].trailingWord, assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
+            let nextAssetWords = assets[paragraphIndex].history.concat(assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
             let start = 0;
             let end = nextAssetWords[wordIndex].index;
             assets = this.toggleWordHighlight(paragraphIndex, start, end);
         } else if (this.state.highlightIsActive && paragraphIndex < this.state.assetCurrentIndex) {
             // Regression
-            let previousAssetWords = assets[paragraphIndex].history.concat(assets[paragraphIndex].trailingWord, assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
+            let previousAssetWords = assets[paragraphIndex].history.concat(assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
             let start = previousAssetWords[wordIndex].index;
             let end = previousAssetWords.length;
             assets = this.toggleWordHighlight(paragraphIndex, start, end);
         } else if (this.state.highlightIsActive) {
             // Same Asset
-            let currentAssetWords = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].trailingWord, assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future);
+            let currentAssetWords = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future);
             let start = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? assets[this.state.assetCurrentIndex].history.length: wordIndex;
             let end = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? wordIndex : assets[this.state.assetCurrentIndex].history.length;
             assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
         }
 
-        let words = assets[paragraphIndex].history.concat(assets[paragraphIndex].trailingWord, assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
+        let words = assets[paragraphIndex].history.concat(assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
         let history = words.slice(0, wordIndex);
-        let trailingWord   = [];
         let fixationWindow = words.slice(wordIndex, wordIndex + this.props.fixationWidth);
         let future = words.slice(wordIndex + this.props.fixationWidth);
 
         assets[paragraphIndex].history        = history;
-        assets[paragraphIndex].trailingWord   = trailingWord;
         assets[paragraphIndex].fixationWindow = fixationWindow;
         assets[paragraphIndex].future         = future;
 
@@ -12224,20 +12058,13 @@ export default class Viewport extends React.Component {
             // === Read from bottom to top to understand logic ===
             //
             // Reset last current asset to have all words in future
-            assets[index + 1].future = assets[index + 1].history.concat(assets[index + 1].trailingWord, assets[index + 1].fixationWindow, assets[index + 1].future);
+            assets[index + 1].future = assets[index + 1].history.concat(assets[index + 1].fixationWindow, assets[index + 1].future);
             assets[index + 1].fixationWindow = [];
-            assets[index + 1].trailingWord = [];
             assets[index + 1].history = [];
 
             // Place last words of last asset into fixation window
-            if (this.props.trailingWordIsActive) {
-                assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth + 1);
-                assets[index].trailingWord = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth, assets[index].history.length - this.props.fixationWidth + 1);
-                assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
-            } else {
-                assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth);
-                assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
-            }
+            assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth);
+            assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
         }
 
         this.setState({
@@ -12252,58 +12079,23 @@ export default class Viewport extends React.Component {
     toggleWordHighlight = (paragraphIndex, start, end) => {
 
         let history    = [],
-        trailingWord   = [],
         fixationWindow = [],
-        future         = [],
-        words = [],
-        lastWordIndexHistory = 0,
-        lastWordIndexTrailingWord = 0,
-        lastWordIndexFixationWindow = 0;
+        future         = [];
 
+        let lastWordIndexHistory = this.state.assets[paragraphIndex].history.length > 0 ? this.state.assets[paragraphIndex].history[this.state.assets[paragraphIndex].history.length - 1].index : 0;
+        let lastWordIndexFixationWindow = this.state.assets[paragraphIndex].fixationWindow.length > 0 ? this.state.assets[paragraphIndex].fixationWindow[this.state.assets[paragraphIndex].fixationWindow.length - 1].index : 0;
+        let words = this.state.assets[paragraphIndex].history.concat(this.state.assets[paragraphIndex].fixationWindow, this.state.assets[paragraphIndex].future);
 
-        if (this.props.trailingWordIsActive) {
-            lastWordIndexHistory = this.state.assets[paragraphIndex].history.length > 0 ? this.state.assets[paragraphIndex].history[this.state.assets[paragraphIndex].history.length - 1].index : 0;
-            lastWordIndexTrailingWord = this.state.assets[paragraphIndex].trailingWord.length > 0 ? this.state.assets[paragraphIndex].trailingWord[this.state.assets[paragraphIndex].trailingWord.length - 1].index : 0;
-            lastWordIndexFixationWindow = this.state.assets[paragraphIndex].fixationWindow.length > 0 ? this.state.assets[paragraphIndex].fixationWindow[this.state.assets[paragraphIndex].fixationWindow.length - 1].index : 0;
-
-            words = this.state.assets[paragraphIndex].history.concat(this.state.assets[paragraphIndex].trailingWord, this.state.assets[paragraphIndex].fixationWindow, this.state.assets[paragraphIndex].future);
-
-            for (let i = start; i < end; i++) {
-                words[i].isHighlighted = !words[i].isHighlighted;
-            }
-
-            history        = this.state.assets[paragraphIndex].history.length > 0 ? words.slice(0, lastWordIndexHistory + 1) : [],
-            trailingWord   = this.state.assets[paragraphIndex].trailingWord.length > 0 ? words.slice(lastWordIndexHistory + 1, lastWordIndexTrailingWord + 1) : [];
-            future         = this.state.assets[paragraphIndex].future.length > 0 ? words.slice(lastWordIndexFixationWindow + 1) : [];
-
-            if (this.state.assets[paragraphIndex].history.length == 0
-                && this.state.assets[paragraphIndex].trailingWord.length == 0) {
-                    // At beginning of asset
-                    fixationWindow = words.slice(0, lastWordIndexFixationWindow + 1);
-            } else if (this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth - 1) {
-                // Reached end of asset
-                fixationWindow = this.state.assets[paragraphIndex].trailingWord.length > 0 ? words.slice(lastWordIndexTrailingWord + 1) : words.slice(lastWordIndexHistory + 1);
-            } else {
-                // In the middle of asset
-                fixationWindow = this.state.assets[paragraphIndex].trailingWord.length > 0 ? words.slice(lastWordIndexTrailingWord + 1, lastWordIndexFixationWindow + 1) : words.slice(lastWordIndexHistory + 1, lastWordIndexFixationWindow + 1);
-            }
-
-        } else {
-            lastWordIndexHistory = this.state.assets[paragraphIndex].history.length > 0 ? this.state.assets[paragraphIndex].history[this.state.assets[paragraphIndex].history.length - 1].index : 0;
-            lastWordIndexFixationWindow = this.state.assets[paragraphIndex].fixationWindow.length > 0 ? this.state.assets[paragraphIndex].fixationWindow[this.state.assets[paragraphIndex].fixationWindow.length - 1].index : 0;
-            words = this.state.assets[paragraphIndex].history.concat(this.state.assets[paragraphIndex].fixationWindow, this.state.assets[paragraphIndex].future);
-
-            for (let i = start; i < end; i++) {
-                words[i].isHighlighted = !words[i].isHighlighted;
-            }
-
-            history        = words.slice(0, lastWordIndexHistory + 1),
-            fixationWindow = this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? words.slice(lastWordIndexHistory + 1) : words.slice(lastWordIndexHistory + 1, lastWordIndexFixationWindow + 1),
-            future         = this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? [] : words.slice(lastWordIndexFixationWindow + 1);
+        for (let i = start; i < end; i++) {
+            words[i].isHighlighted = !words[i].isHighlighted;
         }
+
+        history        = words.slice(0, lastWordIndexHistory + 1),
+        fixationWindow = this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? words.slice(lastWordIndexHistory + 1) : words.slice(lastWordIndexHistory + 1, lastWordIndexFixationWindow + 1),
+        future         = this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? [] : words.slice(lastWordIndexFixationWindow + 1);
+
         let assets = this.state.assets;
         assets[paragraphIndex].history = history;
-        assets[paragraphIndex].trailingWord = trailingWord;
         assets[paragraphIndex].fixationWindow = fixationWindow;
         assets[paragraphIndex].future = future;
 
@@ -12322,11 +12114,7 @@ export default class Viewport extends React.Component {
         let assets = this.state.assets;
         let wordParagraph = assets[this.state.assetCurrentIndex];
 
-        if (this.state.trailingWordIsActive && wordParagraph.trailingWord.length > 0) {
-            wordParagraph.trailingWord[0].hasBookmark = !wordParagraph.trailingWord[0].hasBookmark;
-        } else {
-            wordParagraph.fixationWindow[0].hasBookmark = !wordParagraph.fixationWindow[0].hasBookmark;
-        }
+        wordParagraph.fixationWindow[0].hasBookmark = !wordParagraph.fixationWindow[0].hasBookmark;
 
         assets[this.state.assetCurrentIndex] = wordParagraph;
 
@@ -12386,14 +12174,13 @@ export default class Viewport extends React.Component {
 
     getProgress = (total, asset) => {
         let completed = this.state.assets[this.state.assetCurrentIndex].history.length +
-                            this.state.assets[this.state.assetCurrentIndex].trailingWord.length +
                             this.state.assets[this.state.assetCurrentIndex].fixationWindow.length +
                             this.state.assets.slice(0, this.state.assetCurrentIndex).reduce((total, asset) => {
-                                return total + (asset.history.length + asset.trailingWord.length + asset.fixationWindow.length + asset.future.length);
+                                return total + (asset.history.length + asset.fixationWindow.length + asset.future.length);
                             }, 0);
 
         let totalWords = this.state.assets.reduce((total, asset) => {
-            return total + (asset.history.length + asset.trailingWord.length + asset.fixationWindow.length + asset.future.length);
+            return total + (asset.history.length + asset.fixationWindow.length + asset.future.length);
         }, 0);
 
         let progress = completed/totalWords * 100;
@@ -12411,8 +12198,7 @@ Viewport.propTypes = {
     skin              : PropTypes.string.isRequired,
     hand              : PropTypes.string.isRequired,
     trackingSpeed     : PropTypes.number.isRequired,
-    readingSpeed      : PropTypes.number.isRequired,
-    trailingWordIsActive: PropTypes.bool.isRequired
+    readingSpeed      : PropTypes.number.isRequired
 };
 
 // ============= Styled Components ==============
@@ -12525,26 +12311,6 @@ const FixationWindow = styled.p`
     border-left-color: ${props => props.theme.green};
     border-left-style: solid;
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
-    transition        : all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition   : all 0.3s;
-    -ms-transition    : all 0.3s;
-`;
-
-const TrailingWord = styled.p`
-    font-family       : ${props => props.fontFamily.regular || serif};
-    font-size         : ${props => 2.5*props.fontSize + 'px' || '40px'};
-    line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
-    color: ${props => props.skin == SkinTypes.WHITE ?
-                "rgba(0,0,0,0.5)"
-            :
-                props.skin == SkinTypes.CREAM ?
-                        "rgba(95, 62, 36, 0.5)"
-                    :
-                        "rgba(190, 190, 190)"
-            };
-    margin            : 0;
-    margin-right      : ${props => props.fontSize/2 + 'px' || '8px'};
     transition        : all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition   : all 0.3s;

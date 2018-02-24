@@ -17,9 +17,10 @@ import initReactFastclick       from 'react-fastclick';
 // Components
 import Viewport                 from './viewport/Viewport';
 import FontTypes                from '../constants/fontTypes';
-import SkinTypes               from '../constants/skinTypes';
-import HandTypes               from '../constants/handTypes';
-import ScrollDirectionTypes from '../constants/scrollDirectionTypes';
+import SkinTypes                from '../constants/skinTypes';
+import HandTypes                from '../constants/handTypes';
+import ScrollDirectionTypes     from '../constants/scrollDirectionTypes';
+import HighlightTypes           from '../constants/highlightTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -45,7 +46,7 @@ export default class Root extends React.Component {
             skin         : SkinTypes.WHITE,
             hand          : HandTypes.RIGHT,
             readingSpeed: 300, //WPM --> Method to save reading speed if edited
-            trailingWordIsActive: false // Cannot be active if fixationWidth !> 1
+            highlightColor: HighlightTypes.GREEN
         };
     }
 
@@ -77,7 +78,6 @@ export default class Root extends React.Component {
                 hand                 ={this.state.hand}
                 skin                 ={this.state.skin}
                 readingSpeed         ={this.state.readingSpeed}
-                trailingWordIsActive ={this.state.trailingWordIsActive}
                 modifyReadingSpeed   ={this.modifyReadingSpeed}/>
         );
     }
