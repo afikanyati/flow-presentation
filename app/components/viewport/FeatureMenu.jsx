@@ -180,6 +180,12 @@ export default class FeatureMenu extends React.Component {
                 <MenuToggle
                     skin={this.props.skin}
                     menuIsOpen={this.state.menuIsOpen}
+                    activeFeature={this.state.activeFeature}
+                    highlightIsActive={this.props.highlightIsActive}
+                    currentWordHasBookmark={this.props.fixationWindow[0] ?
+                                                this.props.fixationWindow[0].hasBookmark
+                                            :
+                                                false}
                     color={
                         this.state.activeFeature == null ?
                             {white: "lightGray", cream: "lightGray", night: "darkGray"}
@@ -194,7 +200,7 @@ export default class FeatureMenu extends React.Component {
                                     this.props.toggleWordBookmark
                                 :
                                     this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
-                                        this.handleNullClick
+                                        this.props.toggleHighlight
                                     :
                                         this.toggleMenu}>
                     <ToggleIcon
@@ -263,7 +269,7 @@ export default class FeatureMenu extends React.Component {
             increment = sweepDeg/(numItems - 1),
             angle = increment,
             spreadRadius = 100,
-            delayIncrement = 0.08,
+            delayIncrement = 0.05,
             initialDelay = delayIncrement,
             nMinus1InitialDelay = (numItems - 2) * delayIncrement,
             finalDelay = (numItems - 1) * delayIncrement;
@@ -324,15 +330,14 @@ export default class FeatureMenu extends React.Component {
         let features = this.state.features;
         features[feature].isActive = true;
 
-        switch (feature) {
-            case FeatureTypes.BOOKMARK:
-                break;
-            case FeatureTypes.HIGHLIGHT:
-                this.props.toggleHighlight();
-                break;
-            case FeatureTypes.ATTACHMENT:
-                break;
-        }
+        // switch (feature) {
+        //     case FeatureTypes.BOOKMARK:
+        //         break;
+        //     case FeatureTypes.HIGHLIGHT:
+        //         break;
+        //     case FeatureTypes.ATTACHMENT:
+        //         break;
+        // }
 
         if (feature == FeatureTypes.ATTACHMENT) {
             this.setState({
@@ -368,7 +373,7 @@ export default class FeatureMenu extends React.Component {
             case FeatureTypes.BOOKMARK:
                 break;
             case FeatureTypes.HIGHLIGHT:
-                this.props.toggleHighlight();
+                if (this.props.highlightIsActive) this.props.toggleHighlight();
                 break;
             case FeatureTypes.ATTACHMENT:
                 break;
@@ -381,10 +386,6 @@ export default class FeatureMenu extends React.Component {
             menuIsOpen : !this.state.menuIsOpen
         });
     }
-
-    handleNullClick = (e) => {
-        e.stopPropagation();
-    }
 }
 
 // ============= PropTypes ==============
@@ -394,12 +395,14 @@ FeatureMenu.propTypes = {
     toggleHighlight       : PropTypes.func.isRequired,
     toggleWordBookmark    : PropTypes.func.isRequired,
     highlightColor        : PropTypes.string.isRequired,
+    highlightIsActive     : PropTypes.bool.isRequired,
     performWriteOperation : PropTypes.func.isRequired,
     performImageOperation : PropTypes.func.isRequired,
     performRecordOperation: PropTypes.func.isRequired,
     performDrawOperation  : PropTypes.func.isRequired,
     skin                  : PropTypes.string.isRequired,
-    cruiseControlHaltIsActive: PropTypes.bool.isRequired
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired,
+    fixationWindow: PropTypes.array.isRequired
 };
 
 // ============= React Hint ==============
@@ -546,12 +549,49 @@ const MenuToggle = styled.button`
     width: 60px;
     height: 60px;
     background-color: ${props => props.skin == SkinTypes.WHITE ?
-                            props.theme[props.color.white]
+                            props.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                props.highlightIsActive ?
+                                    props.theme[props.color.white]
+                                :
+                                    props.theme.white
+                            :
+                                props.activeFeature == FeatureTypes.BOOKMARK ?
+                                    props.currentWordHasBookmark ?
+                                        props.theme[props.color.white.normal]
+                                    :
+                                        props.theme.white
+                                :
+                                    props.theme[props.color.white]
                         :
                             props.skin == SkinTypes.CREAM ?
-                                    props.theme[props.color.cream]
+                                props.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                    props.highlightIsActive ?
+                                        props.theme[props.color.cream]
+                                    :
+                                        props.theme.lightGray
                                 :
-                                    props.theme[props.color.night]};
+                                    props.activeFeature == FeatureTypes.BOOKMARK ?
+                                        props.currentWordHasBookmark ?
+                                            props.theme[props.color.cream]
+                                        :
+                                            props.theme.lightGray
+                                    :
+                                        props.theme[props.color.cream]
+                            :
+                                props.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                    props.highlightIsActive ?
+                                        props.theme[props.color.night]
+                                    :
+                                        props.theme.darkGray
+                                :
+                                    props.activeFeature == FeatureTypes.BOOKMARK ?
+                                        props.currentWordHasBookmark ?
+                                            props.theme[props.color.night]
+                                        :
+                                            props.theme.darkGray
+                                    :
+                                        props.theme[props.color.night]
+    };
     box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     border-radius: 30px;
     transition: box-shadow 0.15s, background-color 0.3s;

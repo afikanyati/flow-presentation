@@ -46,7 +46,7 @@ export default class Root extends React.Component {
             skin           : SkinTypes.WHITE,
             hand           : HandTypes.RIGHT,
             readingSpeed   : 280, //WPM --> Method to save reading speed if edited
-            showAnnotations: false,
+            showAnnotations: true,
             highlightColor : HighlightTypes.GREEN
         };
     }

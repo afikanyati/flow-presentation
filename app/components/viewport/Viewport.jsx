@@ -32,7 +32,7 @@ export default class Viewport extends React.Component {
             cruiseControlIsActive: false,
             cruiseControlHaltIsActive: false,
             timePerFixation: 0, // In milliseconds,
-            checkAddTime: false, // checked once every fixation cycle
+            checkAddDelay: false, // checked once every fixation cycle
         }
     }
 
@@ -11693,7 +11693,9 @@ export default class Viewport extends React.Component {
                     skin={this.props.skin}
                     toggleHighlight={this.toggleHighlight}
                     toggleWordBookmark={this.toggleWordBookmark}
+                    fixationWindow={this.state.assets[this.state.assetCurrentIndex].fixationWindow}
                     highlightColor={this.props.highlightColor}
+                    highlightIsActive={this.state.highlightIsActive}
                     performWriteOperation={this.performWriteOperation}
                     performImageOperation={this.performImageOperation}
                     performRecordOperation={this.performRecordOperation}
@@ -11921,6 +11923,14 @@ export default class Viewport extends React.Component {
             }
         } else {
             // Scroll Direction Down
+            if (this.state.highlightIsActive) {
+                let start, end;
+
+                start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
+                end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+
+                assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
+            }
             history        = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow);
             fixationWindow = assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
             future         = assets[this.state.assetCurrentIndex].future.slice(this.props.fixationWidth, assets[this.state.assetCurrentIndex].future.length);
@@ -12153,9 +12163,9 @@ export default class Viewport extends React.Component {
     }
     /**
      * [setTimePerFixation description]
-     * @param {[type]} addTime in milliseconds
+     * @param {[type]} addDelay in milliseconds
      */
-    setTimePerFixation = (addTime) => {
+    setTimePerFixation = (addDelay) => {
         // We model the number of fixations as displacement
         // We want to determine the fixations/s (velocity)
         // We use the following equation of motion: x_f = x_0 + v_0*t + 0.5*a*t^2
@@ -12163,7 +12173,7 @@ export default class Viewport extends React.Component {
         let secondsInMinute = 60;
         let milliSecondFactor = 1000;
         let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
-        let timePerFixation = milliSecondFactor * secondsInMinute/numFixations + addTime; // measured in ms
+        let timePerFixation = milliSecondFactor * secondsInMinute/numFixations + addDelay; // measured in ms
         this.setState({
             timePerFixation: timePerFixation
         });
@@ -12190,7 +12200,7 @@ export default class Viewport extends React.Component {
             } else {
                 let timestamp = new Date().getTime();
                 this.setState({
-                    checkAddTime: false
+                    checkAddDelay: false
                 });
                 oncomplete();
                 this.moveText(timestamp);
@@ -12200,37 +12210,37 @@ export default class Viewport extends React.Component {
         this.timer = window.setTimeout(instance, speed);
     }
 
-    checkAddTime = () => {
+    checkAddDelay = () => {
         // Runs fully once per doTimer
         // Only checks end of sentence for punctiation currently
-        if (!this.state.checkAddTime) {
+        if (!this.state.checkAddDelay) {
             const sentenceEndingSet = new Set([".", "?", "!", "..."]);
             const pauseSet = new Set([",", ";", ":", "\u2014"]); // \u2014 is the em dash
             const transitionSet = new Set(TransitionWords);
-            let addTime = 0;
+            let addDelay = 0;
             let futureFixationWindow = this.state.assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
 
             // Determine if need to add time
             futureFixationWindow.forEach((word) => {
                 if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
                     // Sentence Ending
-                    addTime += 2 * this.state.timePerFixation/this.props.fixationWidth;
+                    addDelay += 2 * this.state.timePerFixation/this.props.fixationWidth;
                 } else if (pauseSet.has(word.text.charAt(word.text.length - 1))) {
                     // Punctuation Pauses
-                    addTime += this.state.timePerFixation/this.props.fixationWidth;
+                    addDelay += this.state.timePerFixation/this.props.fixationWidth;
                 } else if (transitionSet.has(word.text.replace(/[,.?!;:]/, '').toLowerCase())) {
                     // Propositional Integration Word Pause
-                    addTime += this.state.timePerFixation/this.props.fixationWidth;
+                    addDelay += this.state.timePerFixation/this.props.fixationWidth;
                 }
             });
 
             // Set state as checked
             this.setState({
-                checkAddTime: true
+                checkAddDelay: true
             });
 
             // Update FixationTime
-            this.setTimePerFixation(addTime);
+            this.setTimePerFixation(addDelay);
         }
     }
 
@@ -12245,7 +12255,7 @@ export default class Viewport extends React.Component {
         this.doTimer(
             this.state.timePerFixation - diff,
             20,
-            this.checkAddTime
+            this.checkAddDelay
             ,
             this.updateViewport.bind({}, ScrollDirectionTypes.DOWN));
     }

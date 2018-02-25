@@ -50,7 +50,7 @@ export default class FunctionBar extends React.Component {
                 </FunctionSystem>
                 <FunctionIcon
                     title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
-                    icon={this.props.showAnnotations ?
+                    icon={!this.props.showAnnotations ?
                         this.props.skin == SkinTypes.WHITE ?
                             `url(${NoAnnotationsPurple})`
                         :
