@@ -12008,7 +12008,7 @@ export default class Viewport extends React.Component {
             // Highlight if active
             if (this.state.highlightIsActive) {
                 let start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                let end = assets[this.state.assetCurrentIndex].future[assets[this.state.assetCurrentIndex].future.length - 1].index + 1;
+                let end = assets[this.state.assetCurrentIndex].future.length > 0 ? assets[this.state.assetCurrentIndex].future[assets[this.state.assetCurrentIndex].future.length - 1].index + 1 : assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
                 assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
             }
 
