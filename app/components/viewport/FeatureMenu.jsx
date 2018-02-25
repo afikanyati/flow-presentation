@@ -553,13 +553,13 @@ const MenuToggle = styled.button`
                                 props.highlightIsActive ?
                                     props.theme[props.color.white]
                                 :
-                                    props.theme.white
+                                    props.theme.lightGray
                             :
                                 props.activeFeature == FeatureTypes.BOOKMARK ?
                                     props.currentWordHasBookmark ?
                                         props.theme[props.color.white.normal]
                                     :
-                                        props.theme.white
+                                        props.theme.lightGray
                                 :
                                     props.theme[props.color.white]
                         :
