@@ -557,7 +557,7 @@ const MenuToggle = styled.button`
                             :
                                 props.activeFeature == FeatureTypes.BOOKMARK ?
                                     props.currentWordHasBookmark ?
-                                        props.theme[props.color.white.normal]
+                                        props.theme[props.color.white]
                                     :
                                         props.theme.lightGray
                                 :

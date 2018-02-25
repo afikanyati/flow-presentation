@@ -24,10 +24,9 @@ export default class Viewport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "Virtual Reality and Augmented Reality in Education",
             scroll            : 0,
             assetCurrentIndex : 0,
-            assets            : [],
+            doc            : {},
             highlightIsActive: false,
             cruiseControlIsActive: false,
             cruiseControlHaltIsActive: false,
@@ -42,11518 +41,14558 @@ export default class Viewport extends React.Component {
         let para = "";
         console.log(JSON.stringify(para.split(" ")));
 
-        // Get thought assets
-        // Populate viewport with first asset
-        let assets = [
-                      {
-                        "type": "paragraph",
-                        "history": [
+        // Get document
+        // Populate viewport with first document asset
+        let doc = {
+                "assets":[
+                    {
+                        "type":"paragraph",
+                        "history":[
 
                         ],
-                        "fixationWindow": [
+                        "fixationWindow":[
 
                         ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "We",
-                            "definition": {
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"We",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "keep",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":1,
+                                "text":"keep",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "claiming",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                }
+                            },
+                            {
+                                "index":2,
+                                "text":"claiming",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "that",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "delay":{
 
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "technology",
-                            "definition": {
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"that",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":4,
+                                "text":"technology",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "will",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":5,
+                                "text":"will",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "transform",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":6,
+                                "text":"transform",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "education.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":7,
+                                "text":"education.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "We",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":8,
+                                "text":"We",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "said",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":9,
+                                "text":"said",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":10,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "when",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":11,
+                                "text":"when",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "computers",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":12,
+                                "text":"computers",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "hit",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":13,
+                                "text":"hit",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":14,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "market",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":15,
+                                "text":"market",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":16,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":17,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "real",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":18,
+                                "text":"real",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "way",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":19,
+                                "text":"way",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":20,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":21,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "1980s.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":22,
+                                "text":"1980s.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "We",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":23,
+                                "text":"We",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "said",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":24,
+                                "text":"said",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":25,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "when",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":26,
+                                "text":"when",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "artificial",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":27,
+                                "text":"artificial",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "intelligence",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":28,
+                                "text":"intelligence",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "began",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":29,
+                                "text":"began",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "reaching",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":30,
+                                "text":"reaching",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "Siri",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":31,
+                                "text":"Siri",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "levels.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":32,
+                                "text":"levels.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "And",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":33,
+                                "text":"And",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "we\u2019re",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":34,
+                                "text":"we’re",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "saying",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":35,
+                                "text":"saying",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":36,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "now,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":37,
+                                "text":"now,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "when",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":38,
+                                "text":"when",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "spatial",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":39,
+                                "text":"spatial",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "computing",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":40,
+                                "text":"computing",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":41,
+                                "text":"is",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "taking",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":42,
+                                "text":"taking",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "its",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":43,
+                                "text":"its",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "strongest",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":44,
+                                "text":"strongest",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "steps",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":45,
+                                "text":"steps",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "forward",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":46,
+                                "text":"forward",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "since",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":47,
+                                "text":"since",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "we",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":48,
+                                "text":"we",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "began",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":49,
+                                "text":"began",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "seriously",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":50,
+                                "text":"seriously",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "working",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":51,
+                                "text":"working",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "on",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":52,
+                                "text":"on",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":53,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":54,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":55,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "80s.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":56,
+                                "text":"80s.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "But",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":57,
+                                "text":"But",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "while",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":58,
+                                "text":"while",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "those",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":59,
+                                "text":"those",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "early",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":60,
+                                "text":"early",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "technologies",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":61,
+                                "text":"technologies",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "have",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":62,
+                                "text":"have",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "certainly",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":63,
+                                "text":"certainly",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "impacted",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":64,
+                                "text":"impacted",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "schooling,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":65,
+                                "text":"schooling,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "they",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":66,
+                                "text":"they",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "haven\u2019t",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":67,
+                                "text":"haven’t",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "transformed",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":68,
+                                "text":"transformed",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":69,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":70,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "way",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":71,
+                                "text":"way",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "we",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":72,
+                                "text":"we",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "hoped",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":73,
+                                "text":"hoped",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "they",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":74,
+                                "text":"they",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "might.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":75,
+                                "text":"might.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             }
-                          }
                         ],
-                        "index": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
-
-                        ],
-                        "fixationWindow": [
-
-                        ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "Take",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "computers.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "Many",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "schools",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "now",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "require",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "all",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "assignments",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "be",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "typed",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "instead",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "handwritten\u200a\u2014\u200athey\u2019re",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "easier",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "on",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "eyes,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "after",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "all,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "no",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "more",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "demerit",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "points",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "sloppy",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "cursive.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "But",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "vision",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "30",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "students",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "sitting",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "class",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "eight",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "hours",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "day",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "front",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "computer",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "learning",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "lessons",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "from",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "programs",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "never",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "materialized.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "Whether",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "that\u2019s",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "positive",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "or",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "negative",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "can",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "be",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "debated",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "ad",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "nauseum,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "but",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "fact",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "is",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "adoption",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "was",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "hampered",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "by",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "cost.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 76,
-                            "text": "Most",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 77,
-                            "text": "schools",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 78,
-                            "text": "have",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 79,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 80,
-                            "text": "single",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 81,
-                            "text": "computer",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 82,
-                            "text": "lab",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 83,
-                            "text": "where",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 84,
-                            "text": "students",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 85,
-                            "text": "take",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 86,
-                            "text": "turns",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 87,
-                            "text": "studying",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 88,
-                            "text": "computers",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 89,
-                            "text": "specifically\u200a\u2014\u200athey",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 90,
-                            "text": "aren\u2019t",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 91,
-                            "text": "using",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 92,
-                            "text": "data",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 93,
-                            "text": "modeling",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 94,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 95,
-                            "text": "their",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 96,
-                            "text": "stats",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 97,
-                            "text": "class,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 98,
-                            "text": "or",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 99,
-                            "text": "testing",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 100,
-                            "text": "components",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 101,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 102,
-                            "text": "chemistry.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 103,
-                            "text": "Computers",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 104,
-                            "text": "have",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 105,
-                            "text": "been",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 106,
-                            "text": "relegated",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 107,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 108,
-                            "text": "something",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 109,
-                            "text": "you",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 110,
-                            "text": "learn",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 111,
-                            "text": "about",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 112,
-                            "text": "rather",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 113,
-                            "text": "than",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 114,
-                            "text": "something",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 115,
-                            "text": "you",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 116,
-                            "text": "learn",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 117,
-                            "text": "from,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 118,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 119,
-                            "text": "there",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 120,
-                            "text": "are",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 121,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 122,
-                            "text": "lot",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 123,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 124,
-                            "text": "opportunities",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 125,
-                            "text": "we\u2019ve",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 126,
-                            "text": "missed",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 127,
-                            "text": "because",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 128,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 129,
-                            "text": "that.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          }
-                        ],
-                        "index": 1
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
+                        "index":0,
+                        "delay":15,
+                        "length":76
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
 
                         ],
-                        "fixationWindow": [
+                        "fixationWindow":[
 
                         ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "The",
-                            "definition": {
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"Take",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":1,
+                                "text":"computers.",
+                                "definition":{
 
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":2,
+                                "text":"Many",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"schools",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":4,
+                                "text":"now",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":5,
+                                "text":"require",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "failure",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":6,
+                                "text":"all",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":7,
+                                "text":"assignments",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "launch",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":8,
+                                "text":"to",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "artificial",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":9,
+                                "text":"be",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "intelligence",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":10,
+                                "text":"typed",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":11,
+                                "text":"instead",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "education",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":12,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":13,
+                                "text":"handwritten — they’re",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "directly",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":14,
+                                "text":"easier",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "linked",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":15,
+                                "text":"on",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":16,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":17,
+                                "text":"eyes,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "failure",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":18,
+                                "text":"after",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":19,
+                                "text":"all,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "adopt",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":20,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "widespread",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":21,
+                                "text":"no",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "computers.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":22,
+                                "text":"more",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "A",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":23,
+                                "text":"demerit",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":24,
+                                "text":"points",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "virtual",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":25,
+                                "text":"for",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "tutor",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":26,
+                                "text":"sloppy",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "can\u2019t",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":27,
+                                "text":"cursive.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "help",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":28,
+                                "text":"But",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":29,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "figure",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":30,
+                                "text":"vision",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "out",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":31,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "their",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":32,
+                                "text":"30",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "unique",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":33,
+                                "text":"students",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "learning",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":34,
+                                "text":"sitting",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "style",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":35,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "if",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":36,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "seventy",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":37,
+                                "text":"class",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "five",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":38,
+                                "text":"for",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":39,
+                                "text":"eight",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "are",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":40,
+                                "text":"hours",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "all",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":41,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "sharing",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":42,
+                                "text":"day",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "time",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":43,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "on",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":44,
+                                "text":"front",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "one",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":45,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "computer.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":46,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "These",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":47,
+                                "text":"computer",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "technologies",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":48,
+                                "text":"learning",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "are",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":49,
+                                "text":"lessons",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "finding",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":50,
+                                "text":"from",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "traction",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":51,
+                                "text":"programs",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":52,
+                                "text":"never",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "alternative",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":53,
+                                "text":"materialized.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "education",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":54,
+                                "text":"Whether",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "and",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":55,
+                                "text":"that’s",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "tutoring,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":56,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "however,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":57,
+                                "text":"positive",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "where",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":58,
+                                "text":"or",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "assessment",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":59,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "tests",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":60,
+                                "text":"negative",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "help",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":61,
+                                "text":"can",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":62,
+                                "text":"be",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "learn",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":63,
+                                "text":"debated",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "about",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":64,
+                                "text":"ad",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "their",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":65,
+                                "text":"nauseum,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "own",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":66,
+                                "text":"but",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "learning",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":67,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "styles.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":68,
+                                "text":"fact",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "There\u2019s",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":69,
+                                "text":"is",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "much",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":70,
+                                "text":"that",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "further",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":71,
+                                "text":"adoption",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "for",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":72,
+                                "text":"was",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "AI",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":73,
+                                "text":"hampered",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":74,
+                                "text":"by",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "go,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":75,
+                                "text":"cost.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "of",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":76,
+                                "text":"Most",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "course,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":77,
+                                "text":"schools",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "and",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":78,
+                                "text":"have",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "hopefully",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":79,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":80,
+                                "text":"single",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":81,
+                                "text":"computer",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 76,
-                            "text": "future",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":82,
+                                "text":"lab",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 77,
-                            "text": "we\u2019ll",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":83,
+                                "text":"where",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 78,
-                            "text": "see",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":84,
+                                "text":"students",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 79,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":85,
+                                "text":"take",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 80,
-                            "text": "being",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":86,
+                                "text":"turns",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 81,
-                            "text": "used",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":87,
+                                "text":"studying",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 82,
-                            "text": "even",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":88,
+                                "text":"computers",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 83,
-                            "text": "more.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":89,
+                                "text":"specifically — they",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":90,
+                                "text":"aren’t",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":91,
+                                "text":"using",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":92,
+                                "text":"data",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":93,
+                                "text":"modeling",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":94,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":95,
+                                "text":"their",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":96,
+                                "text":"stats",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":97,
+                                "text":"class,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":98,
+                                "text":"or",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":99,
+                                "text":"testing",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":100,
+                                "text":"components",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":101,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":102,
+                                "text":"chemistry.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":103,
+                                "text":"Computers",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":104,
+                                "text":"have",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":105,
+                                "text":"been",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":106,
+                                "text":"relegated",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":107,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":108,
+                                "text":"something",
+                                "definition":{
 
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":109,
+                                "text":"you",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":110,
+                                "text":"learn",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":111,
+                                "text":"about",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":112,
+                                "text":"rather",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":113,
+                                "text":"than",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":114,
+                                "text":"something",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":115,
+                                "text":"you",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":116,
+                                "text":"learn",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":117,
+                                "text":"from,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":118,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":119,
+                                "text":"there",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":120,
+                                "text":"are",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":121,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":122,
+                                "text":"lot",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":123,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":124,
+                                "text":"opportunities",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":125,
+                                "text":"we’ve",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":126,
+                                "text":"missed",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":127,
+                                "text":"because",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":128,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":129,
+                                "text":"that.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             }
-                          }
                         ],
-                        "index": 2
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
-
-                        ],
-                        "fixationWindow": [
-
-                        ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "So",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "now",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "we",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "begin",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "wonder",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "how",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "virtual",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "augmented",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "reality",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "will",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "fare",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "when",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "up",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "against",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "same",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "legislative",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "hurdles",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "have",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "hampered",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "past",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "technologies.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "Virtual",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "reality",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "has",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "been",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "getting",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "lot",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "well-deserved",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "ink",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "its",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "potential",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "transform",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "education,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "but",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "infrastructure",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "necessary",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "bring",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "program",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "every",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "kid",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "can",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "engage",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "with",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "is",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "stopper",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "even",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "more",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "significant",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "than",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "it",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "was",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "with",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "computers.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "After",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "all,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "VR",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "not",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "only",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "requires",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "computer",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 76,
-                            "text": "each",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 77,
-                            "text": "student\u200a\u2014\u200ait",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 78,
-                            "text": "requires",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 79,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 80,
-                            "text": "top",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 81,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 82,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 83,
-                            "text": "line",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 84,
-                            "text": "computer.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 85,
-                            "text": "Given",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 86,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 87,
-                            "text": "most",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 88,
-                            "text": "schools",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 89,
-                            "text": "are",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 90,
-                            "text": "still",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 91,
-                            "text": "running",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 92,
-                            "text": "computers",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 93,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 94,
-                            "text": "are",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 95,
-                            "text": "ten",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 96,
-                            "text": "years",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 97,
-                            "text": "old",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 98,
-                            "text": "or",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 99,
-                            "text": "more,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 100,
-                            "text": "that\u2019s",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 101,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 102,
-                            "text": "hurdle.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          }
-                        ],
-                        "index": 3
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
+                        "index":1,
+                        "delay":24,
+                        "length":130
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
 
                         ],
-                        "fixationWindow": [
+                        "fixationWindow":[
 
                         ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "But",
-                            "definition": {
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"The",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "there",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "are",
-                            "definition": {
+                            {
+                                "index":1,
+                                "text":"failure",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "some",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "people",
-                            "definition": {
+                            {
+                                "index":2,
+                                "text":"to",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "doing",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "amazing",
-                            "definition": {
+                            {
+                                "index":3,
+                                "text":"launch",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "things",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "with",
-                            "definition": {
+                            {
+                                "index":4,
+                                "text":"artificial",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "VR",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "and",
-                            "definition": {
+                            {
+                                "index":5,
+                                "text":"intelligence",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "education.",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "We\u2019re",
-                            "definition": {
+                            {
+                                "index":6,
+                                "text":"in",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "not",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "going",
-                            "definition": {
+                            {
+                                "index":7,
+                                "text":"education",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "waste",
-                            "definition": {
+                            {
+                                "index":8,
+                                "text":"is",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "much",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "time",
-                            "definition": {
+                            {
+                                "index":9,
+                                "text":"directly",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "on",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "Google",
-                            "definition": {
+                            {
+                                "index":10,
+                                "text":"linked",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "Expeditions,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "because",
-                            "definition": {
+                            {
+                                "index":11,
+                                "text":"to",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "you\u2019re",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "probably",
-                            "definition": {
+                            {
+                                "index":12,
+                                "text":"the",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "all",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "familiar",
-                            "definition": {
+                            {
+                                "index":13,
+                                "text":"failure",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "with",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "them,",
-                            "definition": {
+                            {
+                                "index":14,
+                                "text":"to",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "but",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "if",
-                            "definition": {
+                            {
+                                "index":15,
+                                "text":"adopt",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "you",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":16,
+                                "text":"widespread",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "aren\u2019t,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":17,
+                                "text":"computers.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "nutshell:",
-                            "definition": {
+                            {
+                                "index":18,
+                                "text":"A",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "Google",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "lets",
-                            "definition": {
+                            {
+                                "index":19,
+                                "text":"virtual",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "explore",
-                            "definition": {
+                            {
+                                "index":20,
+                                "text":"tutor",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "world",
-                            "definition": {
+                            {
+                                "index":21,
+                                "text":"can’t",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "using",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "cell",
-                            "definition": {
+                            {
+                                "index":22,
+                                "text":"help",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "phones",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "and",
-                            "definition": {
+                            {
+                                "index":23,
+                                "text":"students",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "piece",
-                            "definition": {
+                            {
+                                "index":24,
+                                "text":"figure",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "of",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":25,
+                                "text":"out",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "cardboard.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "It\u2019s",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "great",
-                            "definition": {
+                            {
+                                "index":26,
+                                "text":"their",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "because",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "it",
-                            "definition": {
+                            {
+                                "index":27,
+                                "text":"unique",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "doesn\u2019t",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "need",
-                            "definition": {
+                            {
+                                "index":28,
+                                "text":"learning",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "an",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "expensive",
-                            "definition": {
+                            {
+                                "index":29,
+                                "text":"style",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "computer,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":30,
+                                "text":"if",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "but",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "it",
-                            "definition": {
+                            {
+                                "index":31,
+                                "text":"seventy",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "still",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "requires",
-                            "definition": {
+                            {
+                                "index":32,
+                                "text":"five",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "lot",
-                            "definition": {
+                            {
+                                "index":33,
+                                "text":"students",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "of",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":34,
+                                "text":"are",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "funding",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "from",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "Google",
-                            "definition": {
+                            {
+                                "index":35,
+                                "text":"all",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "make",
-                            "definition": {
+                            {
+                                "index":36,
+                                "text":"sharing",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "happen.",
-                            "definition": {
+                            {
+                                "index":37,
+                                "text":"time",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "They",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "rent",
-                            "definition": {
+                            {
+                                "index":38,
+                                "text":"on",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "out",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 76,
-                            "text": "the",
-                            "definition": {
+                            {
+                                "index":39,
+                                "text":"one",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 77,
-                            "text": "phones,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":40,
+                                "text":"computer.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 78,
-                            "text": "provide",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 79,
-                            "text": "the",
-                            "definition": {
+                            {
+                                "index":41,
+                                "text":"These",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 80,
-                            "text": "cardboards",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 81,
-                            "text": "for",
-                            "definition": {
+                            {
+                                "index":42,
+                                "text":"technologies",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 82,
-                            "text": "free,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":43,
+                                "text":"are",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 83,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 84,
-                            "text": "even",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 85,
-                            "text": "give",
-                            "definition": {
+                            {
+                                "index":44,
+                                "text":"finding",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 86,
-                            "text": "training",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 87,
-                            "text": "for",
-                            "definition": {
+                            {
+                                "index":45,
+                                "text":"traction",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 88,
-                            "text": "teachers",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 89,
-                            "text": "on",
-                            "definition": {
+                            {
+                                "index":46,
+                                "text":"in",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 90,
-                            "text": "how",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 91,
-                            "text": "to",
-                            "definition": {
+                            {
+                                "index":47,
+                                "text":"alternative",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 92,
-                            "text": "lead",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 93,
-                            "text": "the",
-                            "definition": {
+                            {
+                                "index":48,
+                                "text":"education",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 94,
-                            "text": "expedition.",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":49,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 95,
-                            "text": "It\u2019s",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":50,
+                                "text":"tutoring,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 96,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":51,
+                                "text":"however,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 97,
-                            "text": "fun",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":52,
+                                "text":"where",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 98,
-                            "text": "learning",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 99,
-                            "text": "tool,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":53,
+                                "text":"assessment",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 100,
-                            "text": "but",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 101,
-                            "text": "likely",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 102,
-                            "text": "to",
-                            "definition": {
+                            {
+                                "index":54,
+                                "text":"tests",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 103,
-                            "text": "be",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 104,
-                            "text": "used",
-                            "definition": {
+                            {
+                                "index":55,
+                                "text":"help",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 105,
-                            "text": "by",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 106,
-                            "text": "teachers",
-                            "definition": {
+                            {
+                                "index":56,
+                                "text":"students",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 107,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 108,
-                            "text": "way",
-                            "definition": {
+                            {
+                                "index":57,
+                                "text":"learn",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 109,
-                            "text": "they",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 110,
-                            "text": "used",
-                            "definition": {
+                            {
+                                "index":58,
+                                "text":"about",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 111,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 112,
-                            "text": "use",
-                            "definition": {
+                            {
+                                "index":59,
+                                "text":"their",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 113,
-                            "text": "crappy",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":60,
+                                "text":"own",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 114,
-                            "text": "British",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":61,
+                                "text":"learning",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 115,
-                            "text": "documentaries\u200a\u2014\u200agive",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":62,
+                                "text":"styles.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 116,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":63,
+                                "text":"There’s",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 117,
-                            "text": "teacher",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":64,
+                                "text":"much",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 118,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":65,
+                                "text":"further",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 119,
-                            "text": "break",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":66,
+                                "text":"for",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 120,
-                            "text": "from",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":67,
+                                "text":"AI",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 121,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":68,
+                                "text":"to",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 122,
-                            "text": "classroom,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":69,
+                                "text":"go,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 123,
-                            "text": "let",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":70,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 124,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":71,
+                                "text":"course,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 125,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":72,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 126,
-                            "text": "have",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":73,
+                                "text":"hopefully",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 127,
-                            "text": "some",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":74,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 128,
-                            "text": "fun,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":75,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 129,
-                            "text": "and",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":76,
+                                "text":"future",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 130,
-                            "text": "then",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":77,
+                                "text":"we’ll",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 131,
-                            "text": "get",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":78,
+                                "text":"see",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 132,
-                            "text": "back",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":79,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 133,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":80,
+                                "text":"being",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 134,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":81,
+                                "text":"used",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 135,
-                            "text": "real",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":82,
+                                "text":"even",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 136,
-                            "text": "learning.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":83,
+                                "text":"more.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             }
-                          }
                         ],
-                        "index": 4
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
+                        "index":2,
+                        "delay":15,
+                        "length":84
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
 
                         ],
-                        "fixationWindow": [
+                        "fixationWindow":[
 
                         ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "We\u2019ve",
-                            "definition": {
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"So",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "seen",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "VR",
-                            "definition": {
+                            {
+                                "index":1,
+                                "text":"now",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "take",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":2,
+                                "text":"we",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "off",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "delay":{
 
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "as",
-                            "definition": {
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"begin",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "form",
-                            "definition": {
+                            {
+                                "index":4,
+                                "text":"to",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "of",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "job",
-                            "definition": {
+                            {
+                                "index":5,
+                                "text":"wonder",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "training,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "the",
-                            "definition": {
+                            {
+                                "index":6,
+                                "text":"how",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "advantage",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "there",
-                            "definition": {
+                            {
+                                "index":7,
+                                "text":"virtual",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "being",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":8,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":9,
+                                "text":"augmented",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "budgets",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "necessary",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "to",
-                            "definition": {
+                            {
+                                "index":10,
+                                "text":"reality",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "pull",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "it",
-                            "definition": {
+                            {
+                                "index":11,
+                                "text":"will",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "off.",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "But",
-                            "definition": {
+                            {
+                                "index":12,
+                                "text":"fare",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "boost",
-                            "definition": {
+                            {
+                                "index":13,
+                                "text":"when",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "up",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "that",
-                            "definition": {
+                            {
+                                "index":14,
+                                "text":"up",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "get",
-                            "definition": {
+                            {
+                                "index":15,
+                                "text":"against",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "from",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "learning",
-                            "definition": {
+                            {
+                                "index":16,
+                                "text":"the",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "first-hand",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "is",
-                            "definition": {
+                            {
+                                "index":17,
+                                "text":"same",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "incredibly",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":18,
+                                "text":"legislative",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "important",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "schools,",
-                            "definition": {
+                            {
+                                "index":19,
+                                "text":"hurdles",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "too.",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "A",
-                            "definition": {
+                            {
+                                "index":20,
+                                "text":"that",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "lot",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "of",
-                            "definition": {
+                            {
+                                "index":21,
+                                "text":"have",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "learn",
-                            "definition": {
+                            {
+                                "index":22,
+                                "text":"hampered",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "better",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "by",
-                            "definition": {
+                            {
+                                "index":23,
+                                "text":"past",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "doing",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":24,
+                                "text":"technologies.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "than",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "listening,",
-                            "definition": {
+                            {
+                                "index":25,
+                                "text":"Virtual",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "and",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "virtual",
-                            "definition": {
+                            {
+                                "index":26,
+                                "text":"reality",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "reality",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":27,
+                                "text":"has",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "gives",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "them",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "the",
-                            "definition": {
+                            {
+                                "index":28,
+                                "text":"been",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "opportunity",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "to",
-                            "definition": {
+                            {
+                                "index":29,
+                                "text":"getting",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "learn",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "hands",
-                            "definition": {
+                            {
+                                "index":30,
+                                "text":"a",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "on",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "in",
-                            "definition": {
+                            {
+                                "index":31,
+                                "text":"lot",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":32,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "way",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "that",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":33,
+                                "text":"well-deserved",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "classic",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "education",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":34,
+                                "text":"ink",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "simply",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "can\u2019t.",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":35,
+                                "text":"for",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "Training",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "becoming",
-                            "definition": {
+                            {
+                                "index":36,
+                                "text":"its",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "huge",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "in",
-                            "definition": {
+                            {
+                                "index":37,
+                                "text":"potential",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "industry,",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "and",
-                            "definition": {
+                            {
+                                "index":38,
+                                "text":"to",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "hopefully",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "as",
-                            "definition": {
+                            {
+                                "index":39,
+                                "text":"transform",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 76,
-                            "text": "that",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":40,
+                                "text":"education,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 77,
-                            "text": "matures",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":41,
+                                "text":"but",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 78,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 79,
-                            "text": "will",
-                            "definition": {
+                            {
+                                "index":42,
+                                "text":"the",
+                                "definition":{
 
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
-                            }
-                          },
-                          {
-                            "index": 80,
-                            "text": "trickle",
-                            "definition": {
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":43,
+                                "text":"infrastructure",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 81,
-                            "text": "down",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":44,
+                                "text":"necessary",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 82,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":45,
+                                "text":"to",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 83,
-                            "text": "high",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":46,
+                                "text":"bring",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 84,
-                            "text": "school",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":47,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 85,
-                            "text": "level",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":48,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 86,
-                            "text": "students",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":49,
+                                "text":"program",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 87,
-                            "text": "as",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":50,
+                                "text":"that",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 88,
-                            "text": "well",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":51,
+                                "text":"every",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 89,
-                            "text": "(right",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":52,
+                                "text":"kid",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 90,
-                            "text": "now",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":53,
+                                "text":"can",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 91,
-                            "text": "we\u2019re",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":54,
+                                "text":"engage",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 92,
-                            "text": "mostly",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":55,
+                                "text":"with",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 93,
-                            "text": "seeing",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":56,
+                                "text":"is",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 94,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":57,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 95,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":58,
+                                "text":"stopper",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 96,
-                            "text": "college",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":59,
+                                "text":"even",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 97,
-                            "text": "and",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":60,
+                                "text":"more",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 98,
-                            "text": "on",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":61,
+                                "text":"significant",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 99,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":62,
+                                "text":"than",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 100,
-                            "text": "job).",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":63,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 101,
-                            "text": "Of",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":64,
+                                "text":"was",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 102,
-                            "text": "course,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":65,
+                                "text":"with",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 103,
-                            "text": "hands-on",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":66,
+                                "text":"computers.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 104,
-                            "text": "training",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":67,
+                                "text":"After",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 105,
-                            "text": "in",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":68,
+                                "text":"all,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 106,
-                            "text": "school",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":69,
+                                "text":"VR",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 107,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":70,
+                                "text":"not",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 108,
-                            "text": "about",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":71,
+                                "text":"only",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 109,
-                            "text": "more",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":72,
+                                "text":"requires",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 110,
-                            "text": "than",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":73,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 111,
-                            "text": "just",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":74,
+                                "text":"computer",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 112,
-                            "text": "learning",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":75,
+                                "text":"for",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 113,
-                            "text": "how",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":76,
+                                "text":"each",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 114,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":77,
+                                "text":"student — it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 115,
-                            "text": "do",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":78,
+                                "text":"requires",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 116,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":79,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 117,
-                            "text": "job.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":80,
+                                "text":"top",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 118,
-                            "text": "It",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":81,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 119,
-                            "text": "also",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":82,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 120,
-                            "text": "means",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":83,
+                                "text":"line",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 121,
-                            "text": "letting",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":84,
+                                "text":"computer.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 122,
-                            "text": "them",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":85,
+                                "text":"Given",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 123,
-                            "text": "explore",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":86,
+                                "text":"that",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 124,
-                            "text": "how",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":87,
+                                "text":"most",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 125,
-                            "text": "physics",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":88,
+                                "text":"schools",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 126,
-                            "text": "works",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":89,
+                                "text":"are",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 127,
-                            "text": "instead",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":90,
+                                "text":"still",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 128,
-                            "text": "of",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":91,
+                                "text":"running",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 129,
-                            "text": "just",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":92,
+                                "text":"computers",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 130,
-                            "text": "telling",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":93,
+                                "text":"that",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 131,
-                            "text": "them,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":94,
+                                "text":"are",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 132,
-                            "text": "or",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":95,
+                                "text":"ten",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 133,
-                            "text": "watching",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":96,
+                                "text":"years",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 134,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":97,
+                                "text":"old",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 135,
-                            "text": "famous",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":98,
+                                "text":"or",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 136,
-                            "text": "battle",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":99,
+                                "text":"more,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 137,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":100,
+                                "text":"that’s",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 138,
-                            "text": "learn",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":101,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 139,
-                            "text": "history.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":102,
+                                "text":"hurdle.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             }
-                          }
                         ],
-                        "index": 5
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
+                        "index":3,
+                        "delay":14,
+                        "length":103
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
 
                         ],
-                        "fixationWindow": [
+                        "fixationWindow":[
 
                         ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "If",
-                            "definition": {
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"But",
+                                "definition":{
 
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":1,
+                                "text":"there",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "virtual",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":2,
+                                "text":"are",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "reality",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":3,
+                                "text":"some",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":4,
+                                "text":"people",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "being",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":5,
+                                "text":"doing",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "hampered",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":6,
+                                "text":"amazing",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "by",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":7,
+                                "text":"things",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "cost,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":8,
+                                "text":"with",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "augmented",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":9,
+                                "text":"VR",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "reality",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":10,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "might",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":11,
+                                "text":"education.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "have",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":12,
+                                "text":"We’re",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":13,
+                                "text":"not",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "leg-up",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":14,
+                                "text":"going",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "on",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":15,
+                                "text":"to",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "its",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":16,
+                                "text":"waste",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "more",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":17,
+                                "text":"much",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "resource",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":18,
+                                "text":"time",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "intensive",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":19,
+                                "text":"on",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "cousin.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":20,
+                                "text":"Google",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "With",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":21,
+                                "text":"Expeditions,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "AR,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":22,
+                                "text":"because",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "teachers",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":23,
+                                "text":"you’re",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "can",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":24,
+                                "text":"probably",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "get",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":25,
+                                "text":"all",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "started",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":26,
+                                "text":"familiar",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "with",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":27,
+                                "text":"with",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "nothing",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":28,
+                                "text":"them,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "but",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":29,
+                                "text":"but",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":30,
+                                "text":"if",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "cell",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":31,
+                                "text":"you",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "phone.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":32,
+                                "text":"aren’t,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "Granted,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":33,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "one",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":34,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "phone",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":35,
+                                "text":"nutshell:",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "for",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":36,
+                                "text":"Google",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "an",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":37,
+                                "text":"lets",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "entire",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":38,
+                                "text":"students",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "classroom",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":39,
+                                "text":"explore",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "isn\u2019t",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":40,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "an",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":41,
+                                "text":"world",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "ideal",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":42,
+                                "text":"using",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "scenario\u200a\u2014\u200aso",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":43,
+                                "text":"cell",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "AR",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":44,
+                                "text":"phones",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":45,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "pressing",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":46,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "forward",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":47,
+                                "text":"piece",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "using",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":48,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "other",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":49,
+                                "text":"cardboard.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "avenues.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":50,
+                                "text":"It’s",
+                                "definition":{
 
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":51,
+                                "text":"great",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":52,
+                                "text":"because",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":53,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":54,
+                                "text":"doesn’t",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":55,
+                                "text":"need",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":56,
+                                "text":"an",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":57,
+                                "text":"expensive",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":58,
+                                "text":"computer,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":59,
+                                "text":"but",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":60,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":61,
+                                "text":"still",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":62,
+                                "text":"requires",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":63,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":64,
+                                "text":"lot",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":65,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":66,
+                                "text":"funding",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":67,
+                                "text":"from",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":68,
+                                "text":"Google",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":69,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":70,
+                                "text":"make",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":71,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":72,
+                                "text":"happen.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":73,
+                                "text":"They",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":74,
+                                "text":"rent",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":75,
+                                "text":"out",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":76,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":77,
+                                "text":"phones,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":78,
+                                "text":"provide",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":79,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":80,
+                                "text":"cardboards",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":81,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":82,
+                                "text":"free,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":83,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":84,
+                                "text":"even",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":85,
+                                "text":"give",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":86,
+                                "text":"training",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":87,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":88,
+                                "text":"teachers",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":89,
+                                "text":"on",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":90,
+                                "text":"how",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":91,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":92,
+                                "text":"lead",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":93,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":94,
+                                "text":"expedition.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":95,
+                                "text":"It’s",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":96,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":97,
+                                "text":"fun",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":98,
+                                "text":"learning",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":99,
+                                "text":"tool,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":100,
+                                "text":"but",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":101,
+                                "text":"likely",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":102,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":103,
+                                "text":"be",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":104,
+                                "text":"used",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":105,
+                                "text":"by",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":106,
+                                "text":"teachers",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":107,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":108,
+                                "text":"way",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":109,
+                                "text":"they",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":110,
+                                "text":"used",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":111,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":112,
+                                "text":"use",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":113,
+                                "text":"crappy",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":114,
+                                "text":"British",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":115,
+                                "text":"documentaries — give",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":116,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":117,
+                                "text":"teacher",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":118,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":119,
+                                "text":"break",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":120,
+                                "text":"from",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":121,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":122,
+                                "text":"classroom,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":123,
+                                "text":"let",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":124,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":125,
+                                "text":"students",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":126,
+                                "text":"have",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":127,
+                                "text":"some",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":128,
+                                "text":"fun,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":129,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":130,
+                                "text":"then",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":131,
+                                "text":"get",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":132,
+                                "text":"back",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":133,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":134,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":135,
+                                "text":"real",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":136,
+                                "text":"learning.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             }
-                          }
                         ],
-                        "index": 6
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
-
-                        ],
-                        "fixationWindow": [
-
-                        ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "Take",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "augmented",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "reality",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "sandbox,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "which",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "is",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "being",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "used",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "around",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "world",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "help",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "students",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "learn",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "about",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "topography",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "geography.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "All",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "it",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "requires",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "is",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "projector,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "single",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "computer,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "few",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "sensors.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "With",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "students",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "can",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "leap",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "into",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "fully",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "responsive",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "experience",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "reacts",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "their",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "input.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "Following",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "line",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "has",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "potential",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "get",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "whole",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "classroom",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "involved",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "AR",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "with",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "realistic",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "resource",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "requirements.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          }
-                        ],
-                        "index": 7
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
-
-                        ],
-                        "fixationWindow": [
-
-                        ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "Of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "course,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "we\u2019re",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "also",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "entering",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "age",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "ARKit",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "ARCore,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "which",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "means",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "that",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "few",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "years,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "every",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "cell",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "phone",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "will",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "have",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "ability",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "to",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "be",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "used",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "as",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "an",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "educational",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "tool.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "While",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "lots",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "students",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 36,
-                            "text": "don\u2019t",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "have",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "their",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "own",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "phones,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "buying",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "cheap",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "mobile",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "devices",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "whole",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "classroom",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "is",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "lot",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "easier",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "than",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "buying",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "computers",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "for",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "a",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "whole",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "classroom.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "And",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "even",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "these",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "early",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "days,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "we\u2019re",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "seeing",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "exciting",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 69,
-                            "text": "concepts",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 70,
-                            "text": "like",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 71,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 72,
-                            "text": "Atom",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 73,
-                            "text": "Visualizer,",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 74,
-                            "text": "which",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 75,
-                            "text": "lets",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 76,
-                            "text": "you",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 77,
-                            "text": "place",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 78,
-                            "text": "models",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 79,
-                            "text": "of",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 80,
-                            "text": "atomic",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 81,
-                            "text": "structures",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 82,
-                            "text": "around",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 83,
-                            "text": "the",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 84,
-                            "text": "room",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 85,
-                            "text": "and",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 86,
-                            "text": "then",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 87,
-                            "text": "examine",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 88,
-                            "text": "them",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 89,
-                            "text": "in",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 90,
-                            "text": "3",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          },
-                          {
-                            "index": 91,
-                            "text": "dimensions.",
-                            "definition": {
-
-                            },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
-
-                            }
-                          }
-                        ],
-                        "index": 8
-                      },
-                      {
-                        "type": "paragraph",
-                        "history": [
+                        "index":4,
+                        "delay":32,
+                        "length":137
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
 
                         ],
-                        "fixationWindow": [
+                        "fixationWindow":[
 
                         ],
-                        "future": [
-                          {
-                            "index": 0,
-                            "text": "How",
-                            "definition": {
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"We’ve",
+                                "definition":{
 
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":1,
+                                "text":"seen",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 1,
-                            "text": "soon",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":2,
+                                "text":"VR",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 2,
-                            "text": "we\u2019re",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":3,
+                                "text":"take",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 3,
-                            "text": "likely",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":4,
+                                "text":"off",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 4,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":5,
+                                "text":"as",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 5,
-                            "text": "see",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":6,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 6,
-                            "text": "this",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":7,
+                                "text":"form",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 7,
-                            "text": "take",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":8,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 8,
-                            "text": "off",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":9,
+                                "text":"job",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 9,
-                            "text": "remains",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":10,
+                                "text":"training,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 10,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":11,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 11,
-                            "text": "key",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":12,
+                                "text":"advantage",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 12,
-                            "text": "question.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":13,
+                                "text":"there",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 13,
-                            "text": "While",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":14,
+                                "text":"being",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 14,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":15,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 15,
-                            "text": "technology",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":16,
+                                "text":"budgets",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 16,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":17,
+                                "text":"necessary",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 17,
-                            "text": "here,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":18,
+                                "text":"to",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 18,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":19,
+                                "text":"pull",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 19,
-                            "text": "point",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":20,
+                                "text":"it",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 20,
-                            "text": "at",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":21,
+                                "text":"off.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 21,
-                            "text": "which",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":22,
+                                "text":"But",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 22,
-                            "text": "it",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":23,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 23,
-                            "text": "becomes",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":24,
+                                "text":"boost",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 24,
-                            "text": "cheap",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":25,
+                                "text":"up",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 25,
-                            "text": "enough",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":26,
+                                "text":"that",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 26,
-                            "text": "for",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":27,
+                                "text":"students",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 27,
-                            "text": "mass",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":28,
+                                "text":"get",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 28,
-                            "text": "adoption",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":29,
+                                "text":"from",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 29,
-                            "text": "is",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":30,
+                                "text":"learning",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 30,
-                            "text": "still",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":31,
+                                "text":"first-hand",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 31,
-                            "text": "at",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":32,
+                                "text":"is",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 32,
-                            "text": "least",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":33,
+                                "text":"incredibly",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 33,
-                            "text": "a",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":34,
+                                "text":"important",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 34,
-                            "text": "few",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":35,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 35,
-                            "text": "years",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":36,
+                                "text":"schools,",
+                                "definition":{
 
-                            }
-                        },
-                          {
-                            "index": 36,
-                            "text": "away.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":37,
+                                "text":"too.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 37,
-                            "text": "AR",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":38,
+                                "text":"A",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 38,
-                            "text": "will",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":39,
+                                "text":"lot",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 39,
-                            "text": "probably",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":40,
+                                "text":"of",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 40,
-                            "text": "beat",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":41,
+                                "text":"students",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 41,
-                            "text": "its",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":42,
+                                "text":"learn",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 42,
-                            "text": "cousin",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":43,
+                                "text":"better",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 43,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":44,
+                                "text":"by",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 44,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":45,
+                                "text":"doing",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 45,
-                            "text": "finish",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":46,
+                                "text":"than",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 46,
-                            "text": "line,",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":47,
+                                "text":"listening,",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 47,
-                            "text": "but",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":48,
+                                "text":"and",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 48,
-                            "text": "VR",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":49,
+                                "text":"virtual",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 49,
-                            "text": "may",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":50,
+                                "text":"reality",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 50,
-                            "text": "take",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":51,
+                                "text":"gives",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 51,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":52,
+                                "text":"them",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 52,
-                            "text": "final",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":53,
+                                "text":"the",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 53,
-                            "text": "prize",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":54,
+                                "text":"opportunity",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 54,
-                            "text": "of",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":55,
+                                "text":"to",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 55,
-                            "text": "being",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":56,
+                                "text":"learn",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 56,
-                            "text": "the",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":57,
+                                "text":"hands",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 57,
-                            "text": "first",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":58,
+                                "text":"on",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 58,
-                            "text": "technology",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":59,
+                                "text":"in",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 59,
-                            "text": "to",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":60,
+                                "text":"a",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 60,
-                            "text": "truly",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":61,
+                                "text":"way",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 61,
-                            "text": "change",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":62,
+                                "text":"that",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 62,
-                            "text": "education.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":63,
+                                "text":"classic",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 63,
-                            "text": "Only",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":64,
+                                "text":"education",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 64,
-                            "text": "time",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":65,
+                                "text":"simply",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 65,
-                            "text": "will",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":66,
+                                "text":"can’t.",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 66,
-                            "text": "tell",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":67,
+                                "text":"Training",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 67,
-                            "text": "for",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":68,
+                                "text":"is",
+                                "definition":{
 
-                            }
-                          },
-                          {
-                            "index": 68,
-                            "text": "sure.",
-                            "definition": {
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":69,
+                                "text":"becoming",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":70,
+                                "text":"huge",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":71,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":72,
+                                "text":"industry,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":73,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":74,
+                                "text":"hopefully",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":75,
+                                "text":"as",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":76,
+                                "text":"that",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":77,
+                                "text":"matures",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":78,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":79,
+                                "text":"will",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":80,
+                                "text":"trickle",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":81,
+                                "text":"down",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":82,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":83,
+                                "text":"high",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":84,
+                                "text":"school",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":85,
+                                "text":"level",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":86,
+                                "text":"students",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":87,
+                                "text":"as",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":88,
+                                "text":"well",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":89,
+                                "text":"(right",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":90,
+                                "text":"now",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":91,
+                                "text":"we’re",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":92,
+                                "text":"mostly",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":93,
+                                "text":"seeing",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":94,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":95,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":96,
+                                "text":"college",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":97,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":98,
+                                "text":"on",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":99,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":100,
+                                "text":"job).",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":101,
+                                "text":"Of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":102,
+                                "text":"course,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":103,
+                                "text":"hands-on",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":104,
+                                "text":"training",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":105,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":106,
+                                "text":"school",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":107,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":108,
+                                "text":"about",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":109,
+                                "text":"more",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":110,
+                                "text":"than",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":111,
+                                "text":"just",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":112,
+                                "text":"learning",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
 
+                                }
                             },
-                            "isHighlighted": false,
-                            "hasBookmark": false,
-                            "attachment": {
+                            {
+                                "index":113,
+                                "text":"how",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":114,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":115,
+                                "text":"do",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":116,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":117,
+                                "text":"job.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":118,
+                                "text":"It",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":119,
+                                "text":"also",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":120,
+                                "text":"means",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":121,
+                                "text":"letting",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":122,
+                                "text":"them",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":123,
+                                "text":"explore",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":124,
+                                "text":"how",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":125,
+                                "text":"physics",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":126,
+                                "text":"works",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":127,
+                                "text":"instead",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":128,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":129,
+                                "text":"just",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":130,
+                                "text":"telling",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":131,
+                                "text":"them,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":132,
+                                "text":"or",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":133,
+                                "text":"watching",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":134,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":135,
+                                "text":"famous",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":136,
+                                "text":"battle",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":137,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":138,
+                                "text":"learn",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":139,
+                                "text":"history.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
 
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
                             }
-                          }
                         ],
-                        "index": 9
-                      }
-                    ];
+                        "index":5,
+                        "delay":24,
+                        "length":140
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
 
+                        ],
+                        "fixationWindow":[
+
+                        ],
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"If",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":1,
+                                "text":"virtual",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":2,
+                                "text":"reality",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":4,
+                                "text":"being",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":5,
+                                "text":"hampered",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":6,
+                                "text":"by",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":7,
+                                "text":"cost,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":8,
+                                "text":"augmented",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":9,
+                                "text":"reality",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":10,
+                                "text":"might",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":11,
+                                "text":"have",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":12,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":13,
+                                "text":"leg-up",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":14,
+                                "text":"on",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":15,
+                                "text":"its",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":16,
+                                "text":"more",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":17,
+                                "text":"resource",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":18,
+                                "text":"intensive",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":19,
+                                "text":"cousin.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":20,
+                                "text":"With",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":21,
+                                "text":"AR,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":22,
+                                "text":"teachers",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":23,
+                                "text":"can",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":24,
+                                "text":"get",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":25,
+                                "text":"started",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":26,
+                                "text":"with",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":27,
+                                "text":"nothing",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":28,
+                                "text":"but",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":29,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":30,
+                                "text":"cell",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":31,
+                                "text":"phone.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":32,
+                                "text":"Granted,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":33,
+                                "text":"one",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":34,
+                                "text":"phone",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":35,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":36,
+                                "text":"an",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":37,
+                                "text":"entire",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":38,
+                                "text":"classroom",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":39,
+                                "text":"isn’t",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":40,
+                                "text":"an",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":41,
+                                "text":"ideal",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":42,
+                                "text":"scenario — so",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":43,
+                                "text":"AR",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":44,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":45,
+                                "text":"pressing",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":46,
+                                "text":"forward",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":47,
+                                "text":"using",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":48,
+                                "text":"other",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":49,
+                                "text":"avenues.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            }
+                        ],
+                        "index":6,
+                        "delay":11,
+                        "length":50
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
+
+                        ],
+                        "fixationWindow":[
+
+                        ],
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"Take",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":1,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":2,
+                                "text":"augmented",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"reality",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":4,
+                                "text":"sandbox,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":5,
+                                "text":"which",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":6,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":7,
+                                "text":"being",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":8,
+                                "text":"used",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":9,
+                                "text":"around",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":10,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":11,
+                                "text":"world",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":12,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":13,
+                                "text":"help",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":14,
+                                "text":"students",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":15,
+                                "text":"learn",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":16,
+                                "text":"about",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":17,
+                                "text":"topography",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":18,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":19,
+                                "text":"geography.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":20,
+                                "text":"All",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":21,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":22,
+                                "text":"requires",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":23,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":24,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":25,
+                                "text":"projector,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":26,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":27,
+                                "text":"single",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":28,
+                                "text":"computer,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":29,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":30,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":31,
+                                "text":"few",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":32,
+                                "text":"sensors.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":33,
+                                "text":"With",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":34,
+                                "text":"that",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":35,
+                                "text":"students",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":36,
+                                "text":"can",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":37,
+                                "text":"leap",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":38,
+                                "text":"into",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":39,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":40,
+                                "text":"fully",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":41,
+                                "text":"responsive",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":42,
+                                "text":"experience",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":43,
+                                "text":"that",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":44,
+                                "text":"reacts",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":45,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":46,
+                                "text":"their",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":47,
+                                "text":"input.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":48,
+                                "text":"Following",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":49,
+                                "text":"that",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":50,
+                                "text":"line",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":51,
+                                "text":"has",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":52,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":53,
+                                "text":"potential",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":54,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":55,
+                                "text":"get",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":56,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":57,
+                                "text":"whole",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":58,
+                                "text":"classroom",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":59,
+                                "text":"involved",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":60,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":61,
+                                "text":"AR",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":62,
+                                "text":"with",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":63,
+                                "text":"realistic",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":64,
+                                "text":"resource",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":65,
+                                "text":"requirements.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            }
+                        ],
+                        "index":7,
+                        "delay":13,
+                        "length":66
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
+
+                        ],
+                        "fixationWindow":[
+
+                        ],
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"Of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":1,
+                                "text":"course,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":2,
+                                "text":"we’re",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"also",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":4,
+                                "text":"entering",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":5,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":6,
+                                "text":"age",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":7,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":8,
+                                "text":"ARKit",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":9,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":10,
+                                "text":"ARCore,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":11,
+                                "text":"which",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":12,
+                                "text":"means",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":13,
+                                "text":"that",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":14,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":15,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":16,
+                                "text":"few",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":17,
+                                "text":"years,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":18,
+                                "text":"every",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":19,
+                                "text":"cell",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":20,
+                                "text":"phone",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":21,
+                                "text":"will",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":22,
+                                "text":"have",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":23,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":24,
+                                "text":"ability",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":25,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":26,
+                                "text":"be",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":27,
+                                "text":"used",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":28,
+                                "text":"as",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":29,
+                                "text":"an",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":30,
+                                "text":"educational",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":31,
+                                "text":"tool.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":32,
+                                "text":"While",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":33,
+                                "text":"lots",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":34,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":35,
+                                "text":"students",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":36,
+                                "text":"don’t",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":37,
+                                "text":"have",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":38,
+                                "text":"their",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":39,
+                                "text":"own",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":40,
+                                "text":"phones,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":41,
+                                "text":"buying",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":42,
+                                "text":"cheap",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":43,
+                                "text":"mobile",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":44,
+                                "text":"devices",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":45,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":46,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":47,
+                                "text":"whole",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":48,
+                                "text":"classroom",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":49,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":50,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":51,
+                                "text":"lot",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":52,
+                                "text":"easier",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":53,
+                                "text":"than",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":54,
+                                "text":"buying",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":55,
+                                "text":"computers",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":56,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":57,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":58,
+                                "text":"whole",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":59,
+                                "text":"classroom.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":60,
+                                "text":"And",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":61,
+                                "text":"even",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":62,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":63,
+                                "text":"these",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":64,
+                                "text":"early",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":65,
+                                "text":"days,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":66,
+                                "text":"we’re",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":67,
+                                "text":"seeing",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":68,
+                                "text":"exciting",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":69,
+                                "text":"concepts",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":70,
+                                "text":"like",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":71,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":72,
+                                "text":"Atom",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":73,
+                                "text":"Visualizer,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":74,
+                                "text":"which",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":75,
+                                "text":"lets",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":76,
+                                "text":"you",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":77,
+                                "text":"place",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":78,
+                                "text":"models",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":79,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":80,
+                                "text":"atomic",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":81,
+                                "text":"structures",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":82,
+                                "text":"around",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":83,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":84,
+                                "text":"room",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":85,
+                                "text":"and",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":86,
+                                "text":"then",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":87,
+                                "text":"examine",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":88,
+                                "text":"them",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":89,
+                                "text":"in",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":90,
+                                "text":"3",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":91,
+                                "text":"dimensions.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            }
+                        ],
+                        "index":8,
+                        "delay":18,
+                        "length":92
+                    },
+                    {
+                        "type":"paragraph",
+                        "history":[
+
+                        ],
+                        "fixationWindow":[
+
+                        ],
+                        "future":[
+                            {
+                                "index":0,
+                                "text":"How",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":1,
+                                "text":"soon",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":2,
+                                "text":"we’re",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":3,
+                                "text":"likely",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":4,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":5,
+                                "text":"see",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":6,
+                                "text":"this",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":7,
+                                "text":"take",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":8,
+                                "text":"off",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":9,
+                                "text":"remains",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":10,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":11,
+                                "text":"key",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":12,
+                                "text":"question.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":13,
+                                "text":"While",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":14,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":15,
+                                "text":"technology",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":16,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":17,
+                                "text":"here,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":18,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":19,
+                                "text":"point",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":20,
+                                "text":"at",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":21,
+                                "text":"which",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":22,
+                                "text":"it",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":23,
+                                "text":"becomes",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":24,
+                                "text":"cheap",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":25,
+                                "text":"enough",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":26,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":27,
+                                "text":"mass",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":28,
+                                "text":"adoption",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":29,
+                                "text":"is",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":30,
+                                "text":"still",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":31,
+                                "text":"at",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":32,
+                                "text":"least",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":33,
+                                "text":"a",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":34,
+                                "text":"few",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":35,
+                                "text":"years",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":36,
+                                "text":"away.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":37,
+                                "text":"AR",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":38,
+                                "text":"will",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":39,
+                                "text":"probably",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":40,
+                                "text":"beat",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":41,
+                                "text":"its",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":42,
+                                "text":"cousin",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":43,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":44,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":45,
+                                "text":"finish",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":46,
+                                "text":"line,",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"pause",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":47,
+                                "text":"but",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"proposition",
+                                    "factor":1
+                                }
+                            },
+                            {
+                                "index":48,
+                                "text":"VR",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":49,
+                                "text":"may",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":50,
+                                "text":"take",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":51,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":52,
+                                "text":"final",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":53,
+                                "text":"prize",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":54,
+                                "text":"of",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":55,
+                                "text":"being",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":56,
+                                "text":"the",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":57,
+                                "text":"first",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":58,
+                                "text":"technology",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":59,
+                                "text":"to",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":60,
+                                "text":"truly",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":61,
+                                "text":"change",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":62,
+                                "text":"education.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            },
+                            {
+                                "index":63,
+                                "text":"Only",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":64,
+                                "text":"time",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":65,
+                                "text":"will",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":66,
+                                "text":"tell",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":67,
+                                "text":"for",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+
+                                }
+                            },
+                            {
+                                "index":68,
+                                "text":"sure.",
+                                "definition":{
+
+                                },
+                                "isHighlighted":false,
+                                "hasBookmark":false,
+                                "attachments":{
+
+                                },
+                                "delay":{
+                                    "type":"ending",
+                                    "factor":2
+                                }
+                            }
+                        ],
+                        "index":9,
+                        "delay":12,
+                        "length":69
+                    }
+                ],
+                "delay":188,
+                "title":"Virtual Reality and Augmented Reality in Education",
+                "author":"Hammer & Tusk",
+                "date":"2017-09-21T00:00:00.000Z",
+                "subtitle":"",
+                "cover":"",
+                "tags":[
+                    "Virtual Reality",
+                    "Augmented Reality",
+                    "Education",
+                    "Immersive",
+                    "VR"
+                ],
+                "genre":"Science"
+            };
+
+        // let assetDelay = 0;
+        // let sentenceEndingSet = new Set([".", "?", "!", "..."]);
+        // let pauseSet = new Set([",", ";", ":", "\u2014"]); // \u2014 is the em dash
+        // let transitionSet = new Set(TransitionWords);
+        //
         // for (let asset in assets) {
         //     let words = assets[asset].future;
         //     let refactoredWords = [];
-        //     let x = 0;
-        //     for (let text in words) {
-        //         let word = {};
-        //         word.index = x;
-        //         word.text = words[text].text;
-        //         word.definition = {};
-        //         word.isHighlighted = false;
-        //         word.hasBookmark = false;
-        //         word.attachment = {};
+        //     let paragraphDelay = 0;
+        //     for (let i in words) {
+        //         let word = words[i];
+        //         word["attachments"] = {};
+        //         word["delay"] = {};
+        //         if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
+        //             // Sentence Ending
+        //             word["delay"] = {type: "ending", factor: 2};
+        //             paragraphDelay += 2;
+        //         } else if (pauseSet.has(word.text.charAt(word.text.length - 1))) {
+        //             // Punctuation Pauses
+        //             word["delay"] = {type: "pause", factor: 1};
+        //             paragraphDelay += 1;
+        //         } else if (transitionSet.has(word.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //             // Propositional Integration Word Pause
+        //             word["delay"] = {type: "proposition", factor: 1};
+        //             paragraphDelay += 1;
+        //         }
         //         refactoredWords.push(word);
-        //         x += 1;
         //     }
         //     assets[asset].future = refactoredWords;
+        //     assets[asset]["delay"] = paragraphDelay;
+        //     assetDelay += paragraphDelay;
         // }
         //
-        // console.log(JSON.stringify(assets));
+        // let doc = {
+        //     assets: assets,
+        //     delay: assetDelay + assets.length,
+        //     title: "Virtual Reality and Augmented Reality in Education",
+        //     author: "Hammer & Tusk",
+        //     date: new Date().toISOString(),
+        //     subtitle: "",
+        //     cover: "",
+        //     tags: ["Virtual Reality", "Augmented Reality", "Education", "Immersive", "VR"],
+        //     genre: "Science"
+        // };
+        //
+
+        console.log(JSON.stringify(doc));
 
         this.setState({
-            assets        : assets
+            doc        : doc
         }, () => {
+            console.log(this.state.doc);
             this.loadAsset(this.state.assetCurrentIndex);
         });
     }
@@ -11562,7 +14601,6 @@ export default class Viewport extends React.Component {
         let progress = this.getProgress();
         return (
             <Container
-                innerRef={ele => {this.viewport = ele}}
                 skin={this.props.skin}
                 cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                 customCursor={this.props.skin == SkinTypes.NIGHT ?
@@ -11580,11 +14618,11 @@ export default class Viewport extends React.Component {
                 <CompletionBar
                     skin={this.props.skin}
                     progress={progress}/>
-                <TitleBar>{this.state.title}</TitleBar>
+                <TitleBar>{this.state.doc.title}</TitleBar>
                 <HistoryContainer
                     skin={this.props.skin}
                     fontSize={this.props.fontSize}>
-                    {[this.state.assets[this.state.assetCurrentIndex]].map((asset) => {
+                    {[this.state.doc.assets[this.state.assetCurrentIndex]].map((asset) => {
                       return (
                           <Paragraph
                               key           ={`parent =[null], this =[type ='${asset.type}-history', index ='${this.state.assetCurrentIndex}']`}
@@ -11600,7 +14638,7 @@ export default class Viewport extends React.Component {
                               />
                       );
                   })}
-                  {this.state.assets.slice(Math.max(0, this.state.assetCurrentIndex - 2), this.state.assetCurrentIndex).map((asset, index) => {
+                  {this.state.doc.assets.slice(Math.max(0, this.state.assetCurrentIndex - 2), this.state.assetCurrentIndex).map((asset, index) => {
                     return (
                         <Paragraph
                             key           ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index}']`}
@@ -11628,7 +14666,7 @@ export default class Viewport extends React.Component {
                               transitionName         ="fixation"
                               transitionEnterTimeout ={400}
                               transitionLeave        ={false}>
-                            {this.state.assets[this.state.assetCurrentIndex].fixationWindow.map((word, index) => {
+                            {this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow.map((word, index) => {
                                 return (
                                     <Word
                                         key        ={`parent=[type='paragraph', index='${this.state.assetCurrentIndex}'], this=[type='word', index='${word.index}']`}
@@ -11650,7 +14688,7 @@ export default class Viewport extends React.Component {
                 <FutureContainer
                     skin={this.props.skin}
                     fontSize={this.props.fontSize}>
-                    {[this.state.assets[this.state.assetCurrentIndex]].map((asset) => {
+                    {[this.state.doc.assets[this.state.assetCurrentIndex]].map((asset) => {
                         return (
                             <Paragraph
                                 key          ={`parent =[null], this =[type ='${asset.type}-future', index ='${this.state.assetCurrentIndex}']`}
@@ -11666,7 +14704,7 @@ export default class Viewport extends React.Component {
                                 />
                         );
                     })}
-                    {this.state.assets.slice(this.state.assetCurrentIndex + 1, Math.min(this.state.assetCurrentIndex + 3, this.state.assets.length)).map((asset, index) => {
+                    {this.state.doc.assets.slice(this.state.assetCurrentIndex + 1, Math.min(this.state.assetCurrentIndex + 3, this.state.doc.assets.length)).map((asset, index) => {
                         return (
                             <Paragraph
                                 key                 ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index}']`}
@@ -11685,7 +14723,7 @@ export default class Viewport extends React.Component {
                 </FutureContainer>
                 <DefinitionsDrawer
                     skin={this.props.skin}
-                    fixationWords={this.state.assets[this.state.assetCurrentIndex].fixationWindow}
+                    fixationWords={this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow}
                     cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                 />
                 <FeatureMenu
@@ -11693,7 +14731,7 @@ export default class Viewport extends React.Component {
                     skin={this.props.skin}
                     toggleHighlight={this.toggleHighlight}
                     toggleWordBookmark={this.toggleWordBookmark}
-                    fixationWindow={this.state.assets[this.state.assetCurrentIndex].fixationWindow}
+                    fixationWindow={this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow}
                     highlightColor={this.props.highlightColor}
                     highlightIsActive={this.state.highlightIsActive}
                     performWriteOperation={this.performWriteOperation}
@@ -11847,7 +14885,8 @@ export default class Viewport extends React.Component {
     }
 
     updateViewport = (direction) => {
-        let assets = this.state.assets;
+        let doc = this.state.doc;
+        let assets = doc.assets;
         let history = assets[this.state.assetCurrentIndex].history,
             fixationWindow = assets[this.state.assetCurrentIndex].fixationWindow,
             future = assets[this.state.assetCurrentIndex].future;
@@ -11864,9 +14903,10 @@ export default class Viewport extends React.Component {
                 end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
 
                 assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
+                doc.assets = assets;
 
                 this.setState({
-                    assets : assets
+                    doc : doc
                 });
             }
 
@@ -11940,13 +14980,15 @@ export default class Viewport extends React.Component {
         assets[this.state.assetCurrentIndex].fixationWindow = fixationWindow;
         assets[this.state.assetCurrentIndex].future         = future;
 
+        doc.assets = assets;
+
         this.setState({
-            assets        : assets
+            doc : doc
         }, () => {
             if (direction == ScrollDirectionTypes.DOWN
                 && fixationWindow.length == 0
                 && future.length == 0
-                && this.state.assetCurrentIndex + 1 < this.state.assets.length) {
+                && this.state.assetCurrentIndex + 1 < this.state.doc.assets.length) {
                 // End of paragraph, have pause
                 this.setTimePerFixation(this.state.timePerFixation);
                 // We have hit end of current asset
@@ -11955,7 +14997,7 @@ export default class Viewport extends React.Component {
             } else if (direction == ScrollDirectionTypes.DOWN
                 && fixationWindow.length == 0
                 && future.length == 0
-                && this.state.assetCurrentIndex + 1 == this.state.assets.length
+                && this.state.assetCurrentIndex + 1 == this.state.doc.assets.length
                 && this.state.cruiseControlIsActive) {
                 // We have hit end of document
                 // and Cruise Control is active
@@ -11964,7 +15006,7 @@ export default class Viewport extends React.Component {
             } else if (direction == ScrollDirectionTypes.DOWN
                 && fixationWindow.length == 0
                 && future.length == 0
-                && this.state.assetCurrentIndex + 1 == this.state.assets.length) {
+                && this.state.assetCurrentIndex + 1 == this.state.doc.assets.length) {
                     // We have hit end of document
                     // Cruise Control is not Active
                     return;
@@ -11998,7 +15040,8 @@ export default class Viewport extends React.Component {
 
     skipToWord = (word, paragraphIndex, wordIndex, e) => {
         e.stopPropagation();
-        let assets           = this.state.assets;
+        let doc = this.state.doc;
+        let assets           = doc.assets;
 
         // reset current paragraph if skipping to a new one
         if (paragraphIndex > this.state.assetCurrentIndex) {
@@ -12063,15 +15106,18 @@ export default class Viewport extends React.Component {
         assets[paragraphIndex].fixationWindow = fixationWindow;
         assets[paragraphIndex].future         = future;
 
+        doc.assets = assets;
+
         this.setState({
             assetCurrentIndex : paragraphIndex,
-            assets            : assets
+            doc            : doc
         });
     }
 
     loadAsset = (index) => {
+        let doc = this.state.doc;
+        let assets                   = doc.assets;
         let direction = index >= this.state.assetCurrentIndex ? ScrollDirectionTypes.DOWN : ScrollDirectionTypes.UP;
-        let assets                   = this.state.assets;
 
         if (direction == ScrollDirectionTypes.DOWN) {
             // Place first words of next asset into fixation window
@@ -12090,9 +15136,11 @@ export default class Viewport extends React.Component {
             assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
         }
 
+        doc.assets = assets;
+
         this.setState({
             scroll            : 0,
-            assets            : assets,
+            doc: doc,
             assetCurrentIndex : index
         }, () => {
             return;
@@ -12105,19 +15153,19 @@ export default class Viewport extends React.Component {
         fixationWindow = [],
         future         = [];
 
-        let lastWordIndexHistory = this.state.assets[paragraphIndex].history.length > 0 ? this.state.assets[paragraphIndex].history[this.state.assets[paragraphIndex].history.length - 1].index : 0;
-        let lastWordIndexFixationWindow = this.state.assets[paragraphIndex].fixationWindow.length > 0 ? this.state.assets[paragraphIndex].fixationWindow[this.state.assets[paragraphIndex].fixationWindow.length - 1].index : 0;
-        let words = this.state.assets[paragraphIndex].history.concat(this.state.assets[paragraphIndex].fixationWindow, this.state.assets[paragraphIndex].future);
+        let lastWordIndexHistory = this.state.doc.assets[paragraphIndex].history.length > 0 ? this.state.doc.assets[paragraphIndex].history[this.state.doc.assets[paragraphIndex].history.length - 1].index : 0;
+        let lastWordIndexFixationWindow = this.state.doc.assets[paragraphIndex].fixationWindow.length > 0 ? this.state.doc.assets[paragraphIndex].fixationWindow[this.state.doc.assets[paragraphIndex].fixationWindow.length - 1].index : 0;
+        let words = this.state.doc.assets[paragraphIndex].history.concat(this.state.doc.assets[paragraphIndex].fixationWindow, this.state.doc.assets[paragraphIndex].future);
 
         for (let i = start; i < end; i++) {
             words[i].isHighlighted = !words[i].isHighlighted;
         }
 
         history        = words.slice(0, lastWordIndexHistory + 1),
-        fixationWindow = this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? words.slice(lastWordIndexHistory + 1) : words.slice(lastWordIndexHistory + 1, lastWordIndexFixationWindow + 1),
-        future         = this.state.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? [] : words.slice(lastWordIndexFixationWindow + 1);
+        fixationWindow = this.state.doc.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? words.slice(lastWordIndexHistory + 1) : words.slice(lastWordIndexHistory + 1, lastWordIndexFixationWindow + 1),
+        future         = this.state.doc.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? [] : words.slice(lastWordIndexFixationWindow + 1);
 
-        let assets = this.state.assets;
+        let assets = this.state.doc.assets;
         assets[paragraphIndex].history = history;
         assets[paragraphIndex].fixationWindow = fixationWindow;
         assets[paragraphIndex].future = future;
@@ -12133,16 +15181,18 @@ export default class Viewport extends React.Component {
 
     toggleWordBookmark = (e) => {
         e.stopPropagation();
-
-        let assets = this.state.assets;
+        let doc = this.state.doc;
+        let assets = doc.assets;
         let wordParagraph = assets[this.state.assetCurrentIndex];
 
         wordParagraph.fixationWindow[0].hasBookmark = !wordParagraph.fixationWindow[0].hasBookmark;
 
         assets[this.state.assetCurrentIndex] = wordParagraph;
 
+        doc.assets = assets;
+
         this.setState({
-            assets: assets
+            doc : doc
         }, () => {
             return;
         });
@@ -12218,19 +15268,19 @@ export default class Viewport extends React.Component {
             const pauseSet = new Set([",", ";", ":", "\u2014"]); // \u2014 is the em dash
             const transitionSet = new Set(TransitionWords);
             let addDelay = 0;
-            let futureFixationWindow = this.state.assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
+            let futureFixationWindow = this.state.doc.assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
 
             // Determine if need to add time
             futureFixationWindow.forEach((word) => {
                 if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
                     // Sentence Ending
-                    addDelay += 2 * this.state.timePerFixation/this.props.fixationWidth;
+                    addDelay += 2 * this.state.timePerFixation/3;
                 } else if (pauseSet.has(word.text.charAt(word.text.length - 1))) {
                     // Punctuation Pauses
-                    addDelay += this.state.timePerFixation/this.props.fixationWidth;
+                    addDelay += this.state.timePerFixation/3;
                 } else if (transitionSet.has(word.text.replace(/[,.?!;:]/, '').toLowerCase())) {
                     // Propositional Integration Word Pause
-                    addDelay += this.state.timePerFixation/this.props.fixationWidth;
+                    addDelay += this.state.timePerFixation/3;
                 }
             });
 
@@ -12286,13 +15336,13 @@ export default class Viewport extends React.Component {
     }
 
     getProgress = (total, asset) => {
-        let completed = this.state.assets[this.state.assetCurrentIndex].history.length +
-                            this.state.assets[this.state.assetCurrentIndex].fixationWindow.length +
-                            this.state.assets.slice(0, this.state.assetCurrentIndex).reduce((total, asset) => {
+        let completed = this.state.doc.assets[this.state.assetCurrentIndex].history.length +
+                            this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow.length +
+                            this.state.doc.assets.slice(0, this.state.assetCurrentIndex).reduce((total, asset) => {
                                 return total + (asset.history.length + asset.fixationWindow.length + asset.future.length);
                             }, 0);
 
-        let totalWords = this.state.assets.reduce((total, asset) => {
+        let totalWords = this.state.doc.assets.reduce((total, asset) => {
             return total + (asset.history.length + asset.fixationWindow.length + asset.future.length);
         }, 0);
 
@@ -12488,4 +15538,4 @@ const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.
 const TransitionWords = ["and", "also", "then", "moreoever", "likewise", "comparatively", "correspondingly", "similarly", "furthermore", "additionally",
     "notably", "including", "namely", "chiefly", "indeed", "surely", "markedly", "especially", "specifically", "expressively", "surprisingly", "frequently", "significantly",
     "hence", "suddenly", "shortly", "henceforth", "meanwhile", "presently", "occasionally", "thus", "because", "but", "unlike", "or", "yet", "while", "albeit", "besides",
-    "if", "unless", "lest", "lastly", "finally", "too"];
+    "if", "unless", "lest", "lastly", "finally", "too", "although"];

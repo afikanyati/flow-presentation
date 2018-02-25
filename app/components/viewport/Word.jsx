@@ -27,13 +27,13 @@ export default class Word extends React.Component {
         return (
             <TextContainer
                 hasBookmark={this.props.word.hasBookmark}
-                hasAttachment={Object.keys(this.props.word.attachment).length != 0}
+                hasAttachment={Object.keys(this.props.word.attachments).length != 0}
                 inFixationWindow={this.props.inFixationWindow}
                 showAnnotations={this.props.showAnnotations}
             >
                 <AttachmentIcon
                     src={AttachmentFilled}
-                    hasAttachment={Object.keys(this.props.word.attachment).length != 0}
+                    hasAttachment={Object.keys(this.props.word.attachments).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     showAnnotations={this.props.showAnnotations}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
@@ -47,7 +47,7 @@ export default class Word extends React.Component {
                     bold          ={this.props.bold}
                     isHighlighted ={this.props.word.isHighlighted}
                     hasBookmark={this.props.word.hasBookmark}
-                    hasAttachment={Object.keys(this.props.word.attachment).length != 0}
+                    hasAttachment={Object.keys(this.props.word.attachments).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
                     highlightColor={this.props.highlightColor}
