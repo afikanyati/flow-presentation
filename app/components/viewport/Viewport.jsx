@@ -17618,7 +17618,7 @@ export default class Viewport extends React.Component {
             let millisecondsInMinute = 60000;
             let readMinutes = currentAsset.length/nextProps.readingSpeed;
             let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
-            let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
+            let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(3*readMinutes*numFixations));
             let timePerFixation = effectiveMillisecondsInMinute/numFixations; // measured in ms
 
             this.setState({
