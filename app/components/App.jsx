@@ -45,7 +45,7 @@ export default class Root extends React.Component {
             trackingSpeed  : 12,
             skin           : SkinTypes.WHITE,
             hand           : HandTypes.RIGHT,
-            readingSpeed   : 280, //WPM --> Method to save reading speed if edited
+            readingSpeed   : 220, //WPM --> Method to save reading speed if edited
         };
     }
 

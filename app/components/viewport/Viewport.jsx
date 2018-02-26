@@ -17683,7 +17683,7 @@ export default class Viewport extends React.Component {
             if (e.keyCode == 37 || e.keyCode == 38) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.changeReadingSpeed(ScrollDirectionTypes.DOWN);
+                    this.props.changeReadingSpeed(ScrollDirectionTypes.UP);
                 } else {
                     this.updateViewport(ScrollDirectionTypes.UP);
                 }
@@ -17692,7 +17692,7 @@ export default class Viewport extends React.Component {
             } else if (e.keyCode == 39 || e.keyCode == 40) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.changeReadingSpeed(ScrollDirectionTypes.UP);
+                    this.props.changeReadingSpeed(ScrollDirectionTypes.DOWN);
                 } else {
                     this.updateViewport(ScrollDirectionTypes.DOWN);
                 }
