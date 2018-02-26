@@ -39,7 +39,6 @@ export default class Paragraph extends React.Component {
                                       fontFamily ={this.props.fontFamily}
                                       skipToWord ={this.props.skipToWord}
                                       skin={this.props.skin}
-                                      highlightColor={this.props.highlightColor}
                                       showAnnotations={this.props.showAnnotations}
                                       cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                                   />
@@ -57,7 +56,6 @@ export default class Paragraph extends React.Component {
                                 fontFamily ={this.props.fontFamily}
                                 skipToWord ={this.props.skipToWord}
                                 skin={this.props.skin}
-                                highlightColor={this.props.highlightColor}
                                 showAnnotations={this.props.showAnnotations}
                                 cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                             />
@@ -87,7 +85,6 @@ Paragraph.propTypes = {
     skipToWord         : PropTypes.func.isRequired,
     fontSize           : PropTypes.number.isRequired,
     fontFamily         : PropTypes.object.isRequired,
-    highlightColor     : PropTypes.string.isRequired,
     skin               : PropTypes.string.isRequired,
     showAnnotations: PropTypes.bool.isRequired,
     cruiseControlHaltIsActive: PropTypes.bool.isRequired

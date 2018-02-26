@@ -10,6 +10,7 @@ import HandTypes                from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
 import FeatureTypes             from '../../constants/featureTypes';
 import AttachmentTypes          from '../../constants/attachmentOperationTypes';
+import HighlightTypes          from '../../constants/highlightColorTypes';
 
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
@@ -28,6 +29,7 @@ import ImageIcon                from '../../assets/images/icons/picture-purple.s
 import RecordIcon               from '../../assets/images/icons/microphone-purple.svg';
 import DrawIcon                 from '../../assets/images/icons/draw-purple.svg';
 import BackPurple               from '../../assets/images/icons/back-purple.svg';
+import BackWhite               from '../../assets/images/icons/back-white.svg';
 
 /**
  * The FeatureMenu component is a component used to
@@ -137,23 +139,97 @@ export default class FeatureMenu extends React.Component {
                                     activeTransitionDelay: 0,
                                     transition: ""
                                 },
-                                func: this.handleAttachmentBack
+                                func: this.handleBack.bind({}, FeatureTypes.ATTACHMENT)
                             }
                     }
                 },
                 highlight: {
                     name: FeatureTypes.HIGHLIGHT,
                     icon: {
-                        color: highlight[this.props.highlightColor],
+                        color: HighlightGreen,
                         white: HighlightWhite
                     },
                     description: "Highlight Phrase",
-                    color: {white: this.props.highlightColor, cream: this.props.highlightColor, night: this.props.highlightColor},
+                    color: {white: "green", cream: "green", night: "green"},
                     isActive: false,
                     cssTranslate: {
                         inactiveTransitionDelay: 0,
                         activeTransitionDelay: 0,
                         transition: ""
+                    },
+                    types: {
+                        yellow: {
+                            name: HighlightTypes.YELLOW,
+                            icon: {color: HighlightYellow},
+                            description: "Yellow",
+                            color: {white: HighlightTypes.YELLOW, cream: HighlightTypes.YELLOW, night: HighlightTypes.YELLOW},
+                            cssTranslate: {
+                                inactiveTransitionDelay: 0,
+                                activeTransitionDelay: 0,
+                                transition: ""
+                            },
+                            func: this.props.handleHighlight.bind({}, HighlightTypes.YELLOW)
+                        },
+                        green: {
+                                name: HighlightTypes.GREEN,
+                                icon: {color: HighlightGreen},
+                                description: "Green",
+                                color: {white: HighlightTypes.GREEN, cream: HighlightTypes.GREEN, night: HighlightTypes.GREEN},
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.handleHighlight.bind({}, HighlightTypes.GREEN)
+                            },
+                        blue: {
+                                name: HighlightTypes.BLUE,
+                                icon: {color: HighlightBlue},
+                                description: "Blue",
+                                color:{white: HighlightTypes.BLUE, cream: HighlightTypes.BLUE, night: HighlightTypes.BLUE},
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.handleHighlight.bind({}, HighlightTypes.BLUE)
+                            },
+                        purple: {
+                            name: HighlightTypes.PURPLE,
+                            icon: {color: HighlightPurple},
+                            description: "Purple",
+                            color: {white: HighlightTypes.PURPLE, cream: HighlightTypes.PURPLE, night: HighlightTypes.PURPLE},
+                            cssTranslate: {
+                                inactiveTransitionDelay: 0,
+                                activeTransitionDelay: 0,
+                                transition: ""
+                            },
+                            func: this.props.handleHighlight.bind({}, HighlightTypes.PURPLE)
+                        },
+                        red: {
+                                name: HighlightTypes.RED,
+                                icon: {color: HighlightRed},
+                                description: "Red",
+                                color: {white: HighlightTypes.RED, cream: HighlightTypes.RED, night: HighlightTypes.RED},
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.props.handleHighlight.bind({}, HighlightTypes.RED)
+                            },
+                        back: {
+                                name: "back",
+                                icon: {color: BackWhite},
+                                description: "Back",
+                                color: {white: "black", cream: "black", night: "black"},
+                                cssTranslate: {
+                                    inactiveTransitionDelay: 0,
+                                    activeTransitionDelay: 0,
+                                    transition: ""
+                                },
+                                func: this.handleBack.bind({}, FeatureTypes.HIGHLIGHT)
+                            }
                     }
                 }
             }
@@ -164,6 +240,7 @@ export default class FeatureMenu extends React.Component {
         //console.log("-----FeatureMenu");
         Object.keys(this.state.features).forEach(this.calcTranslate);
         Object.keys(this.state.features.attachment.operations).forEach(this.calcTranslate);
+        Object.keys(this.state.features.highlight.types).forEach(this.calcTranslate);
     }
 
     render() {
@@ -171,16 +248,21 @@ export default class FeatureMenu extends React.Component {
             <Menu
                 hand={this.props.hand}
                 menuIsOpen={this.state.menuIsOpen}>
-                <ReactHint
-                key={"tooltip"}
-                position={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
-                attribute="data-custom"
-                events={{hover: true}}
-                onRenderContent={this.renderTooltip} />
+                {this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
+                        null
+                    :
+                        <ReactHint
+                        key={"tooltip"}
+                        position={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
+                        attribute="data-custom"
+                        events={{hover: true}}
+                        onRenderContent={this.renderTooltip} />
+                }
                 <MenuToggle
                     skin={this.props.skin}
                     menuIsOpen={this.state.menuIsOpen}
                     activeFeature={this.state.activeFeature}
+                    highlightColor={this.props.highlightColor}
                     highlightIsActive={this.props.highlightIsActive}
                     currentWordHasBookmark={this.props.fixationWindow[0] ?
                                                 this.props.fixationWindow[0].hasBookmark
@@ -199,10 +281,7 @@ export default class FeatureMenu extends React.Component {
                     onClick={this.state.activeFeature == FeatureTypes.BOOKMARK ?
                                     this.props.toggleWordBookmark
                                 :
-                                    this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
-                                        this.props.toggleHighlight
-                                    :
-                                        this.toggleMenu}>
+                                    this.toggleMenu}>
                     <ToggleIcon
                         icon={
                             this.state.activeFeature == null ?
@@ -214,13 +293,19 @@ export default class FeatureMenu extends React.Component {
                                 `url(${this.state.features[this.state.activeFeature].icon.white})`} />
                 </MenuToggle>
                 <MenuItems>
-                    {Object.values(this.state.activeFeature == FeatureTypes.ATTACHMENT ? this.state.features.attachment.operations : this.state.features).map((feature, index) => {
+                    {Object.values(this.state.activeFeature == FeatureTypes.ATTACHMENT ?
+                                        this.state.features.attachment.operations
+                                    :
+                                        this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                            this.state.features.highlight.types
+                                        :
+                                            this.state.features).map((feature, index) => {
                       return (
                           <OuterMenuItem
                               key={index}
                               cssTranslate={feature.cssTranslate}
                               menuIsOpen={this.state.menuIsOpen}
-                              onClick={this.state.activeFeature != FeatureTypes.ATTACHMENT ? this.activateFeature.bind({}, feature.name) : feature.func}
+                              onClick={this.state.activeFeature == FeatureTypes.ATTACHMENT || this.state.activeFeature == FeatureTypes.HIGHLIGHT ? feature.func : this.activateFeature.bind({}, feature.name)}
                               data-custom
                               data-custom-at={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
                               data-description={feature.description}>
@@ -239,7 +324,6 @@ export default class FeatureMenu extends React.Component {
                   })}
               </MenuItems>
                 <BackButton
-                    highlightColor={this.props.highlightColor}
                     activeFeature={this.state.activeFeature}
                     backFunction={this.deactivateFeature}/>
             </Menu>
@@ -254,9 +338,18 @@ export default class FeatureMenu extends React.Component {
 
     toggleMenu = (e) => {
         e.stopPropagation();
-        this.setState({
-            menuIsOpen: !this.state.menuIsOpen
-        });
+
+        if (this.state.activeFeature == FeatureTypes.HIGHLIGHT) {
+            this.setState({
+                menuIsOpen: !this.state.menuIsOpen
+            }, () => {
+                this.props.deactivateHighlight();
+            });
+        } else {
+            this.setState({
+                menuIsOpen: !this.state.menuIsOpen
+            });
+        }
     }
 
     calcTranslate = (value, index, arr) => {
@@ -268,8 +361,8 @@ export default class FeatureMenu extends React.Component {
         let sweepDeg = 180,
             increment = sweepDeg/(numItems - 1),
             angle = increment,
-            spreadRadius = 100,
-            delayIncrement = 0.05,
+            spreadRadius = arr.length == 6 ? 120 : arr.length == 5 ? 100 : 80,
+            delayIncrement = arr.length == 6 ? 0.02 : arr.length == 5 ? 0.05 : 0.05,
             initialDelay = delayIncrement,
             nMinus1InitialDelay = (numItems - 2) * delayIncrement,
             finalDelay = (numItems - 1) * delayIncrement;
@@ -304,8 +397,10 @@ export default class FeatureMenu extends React.Component {
 
         if (arr.length == 3) {
             features[value].cssTranslate = translateInfo;
-        } else {
+        } else if (arr.length == 5) {
             features.attachment.operations[value].cssTranslate = translateInfo;
+        } else if (arr.length == 6) {
+            features.highlight.types[value].cssTranslate = translateInfo;
         }
 
         this.setState({
@@ -339,7 +434,7 @@ export default class FeatureMenu extends React.Component {
         //         break;
         // }
 
-        if (feature == FeatureTypes.ATTACHMENT) {
+        if (feature == FeatureTypes.ATTACHMENT || feature == FeatureTypes.HIGHLIGHT) {
             this.setState({
                 activeFeature: feature,
                 features: features,
@@ -364,7 +459,6 @@ export default class FeatureMenu extends React.Component {
     }
 
     deactivateFeature = (feature, e) => {
-        e.stopPropagation();
         this.setState({
             activeFeature: null
         });
@@ -373,17 +467,20 @@ export default class FeatureMenu extends React.Component {
             case FeatureTypes.BOOKMARK:
                 break;
             case FeatureTypes.HIGHLIGHT:
-                if (this.props.highlightIsActive) this.props.toggleHighlight();
+                this.props.deactivateHighlight();
                 break;
             case FeatureTypes.ATTACHMENT:
                 break;
         }
     }
 
-    handleAttachmentBack = (e) => {
-        this.deactivateFeature(FeatureTypes.ATTACHMENT, e);
+    handleBack = (feature, e) => {
         this.setState({
             menuIsOpen : !this.state.menuIsOpen
+        }, () => {
+            setTimeout(() => {
+                this.deactivateFeature(feature);
+            }, 300);
         });
     }
 }
@@ -392,10 +489,10 @@ export default class FeatureMenu extends React.Component {
 
 FeatureMenu.propTypes = {
     hand                  : PropTypes.string.isRequired,
-    toggleHighlight       : PropTypes.func.isRequired,
+    handleHighlight       : PropTypes.func.isRequired,
     toggleWordBookmark    : PropTypes.func.isRequired,
-    highlightColor        : PropTypes.string.isRequired,
     highlightIsActive     : PropTypes.bool.isRequired,
+    deactivateHighlight: PropTypes.func.isRequired,
     performWriteOperation : PropTypes.func.isRequired,
     performImageOperation : PropTypes.func.isRequired,
     performRecordOperation: PropTypes.func.isRequired,
@@ -501,6 +598,14 @@ const OuterMenuItem = styled.li`
         @media (max-width: 480px) and (max-height: 480px) {
         }
     }
+
+    &:nth-child(6) {
+        transition-delay: ${props => props.menuIsOpen ? props.cssTranslate.activeTransitionDelay : props.cssTranslate.inactiveTransitionDelay};
+        transform: ${props => props.menuIsOpen ? props.cssTranslate.transition : "none"};
+
+        @media (max-width: 480px) and (max-height: 480px) {
+        }
+    }
 `;
 
 const InnerMenuItem = styled.button`
@@ -509,7 +614,7 @@ const InnerMenuItem = styled.button`
     padding: 0;
     width: 60px;
     height: 60px;
-    background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT ?
+    background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT || props.activeFeature == FeatureTypes.HIGHLIGHT ?
             props => props.skin == SkinTypes.WHITE ?
                         props.theme[props.color.white]
                     :
@@ -551,7 +656,7 @@ const MenuToggle = styled.button`
     background-color: ${props => props.skin == SkinTypes.WHITE ?
                             props.activeFeature == FeatureTypes.HIGHLIGHT ?
                                 props.highlightIsActive ?
-                                    props.theme[props.color.white]
+                                    props.theme[props.highlightColor]
                                 :
                                     props.theme.lightGray
                             :
@@ -566,7 +671,7 @@ const MenuToggle = styled.button`
                             props.skin == SkinTypes.CREAM ?
                                 props.activeFeature == FeatureTypes.HIGHLIGHT ?
                                     props.highlightIsActive ?
-                                        props.theme[props.color.cream]
+                                        props.theme[props.highlightColor]
                                     :
                                         props.theme.lightGray
                                 :
@@ -580,7 +685,7 @@ const MenuToggle = styled.button`
                             :
                                 props.activeFeature == FeatureTypes.HIGHLIGHT ?
                                     props.highlightIsActive ?
-                                        props.theme[props.color.night]
+                                        props.theme[props.highlightColor]
                                     :
                                         props.theme.darkGray
                                 :

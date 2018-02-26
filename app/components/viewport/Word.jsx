@@ -45,12 +45,11 @@ export default class Word extends React.Component {
                     skin={this.props.skin}
                     italic        ={this.props.italic}
                     bold          ={this.props.bold}
-                    isHighlighted ={this.props.word.isHighlighted}
+                    highlight ={this.props.word.highlight}
                     hasBookmark={this.props.word.hasBookmark}
                     hasAttachment={Object.keys(this.props.word.attachments).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
-                    highlightColor={this.props.highlightColor}
                     showAnnotations={this.props.showAnnotations}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                     customCursor={this.props.skin == SkinTypes.NIGHT ?
@@ -92,7 +91,6 @@ Word.propTypes = {
     skipToWord         : PropTypes.func.isRequired,
     fontFamily         : PropTypes.object.isRequired,
     inFixationWindow   : PropTypes.bool.isRequired,
-    highlightColor     : PropTypes.string.isRequired,
     skin               : PropTypes.string.isRequired,
     showAnnotations: PropTypes.bool.isRequired,
     cruiseControlHaltIsActive: PropTypes.bool.isRequired
@@ -109,8 +107,8 @@ const TextContainer = styled.span`
 `;
 
 const Text = styled.span`
-    background-color: ${props => props => props.showAnnotations && props.isHighlighted ?
-            props.theme[props.highlightColor]
+    background-color: ${props => props => props.showAnnotations && props.highlight.active ?
+            props.theme[props.highlight.color]
         :
             "transparent"};
     border-bottom-width: ${props =>  props.showAnnotations && !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "3px" : "0px"};
@@ -138,7 +136,7 @@ const Text = styled.span`
             :
                 400
     };
-    color: ${props => props.showAnnotations && props.isHighlighted && props.skin == SkinTypes.NIGHT ? props.theme.white : "inherit"};
+    color: ${props => props.showAnnotations && props.highlight.active && props.skin == SkinTypes.NIGHT ? props.theme.white : "inherit"};
     margin     : 0;
     cursor     : ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     display    : inline-block;

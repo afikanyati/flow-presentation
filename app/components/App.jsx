@@ -46,8 +46,6 @@ export default class Root extends React.Component {
             skin           : SkinTypes.WHITE,
             hand           : HandTypes.RIGHT,
             readingSpeed   : 280, //WPM --> Method to save reading speed if edited
-            showAnnotations: true,
-            highlightColor : HighlightTypes.GREEN
         };
     }
 
@@ -62,7 +60,6 @@ export default class Root extends React.Component {
             hour = new Date().getUTCHours();
 
         if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
-            console.log("hello");
             this.setState({
                 skin: SkinTypes.NIGHT
             });
@@ -81,7 +78,7 @@ export default class Root extends React.Component {
                 readingSpeed         ={this.state.readingSpeed}
                 highlightColor       ={this.state.highlightColor}
                 showAnnotations={this.state.showAnnotations}
-                modifyReadingSpeed   ={this.modifyReadingSpeed}/>
+                changeReadingSpeed   ={this.changeReadingSpeed}/>
         );
     }
 
@@ -104,7 +101,7 @@ export default class Root extends React.Component {
        this.setState({});
    }
 
-   modifyReadingSpeed = (direction) => {
+   changeReadingSpeed = (direction) => {
        let delta = direction == ScrollDirectionTypes.UP ? -1 : 1;
        let readingSpeed = this.state.readingSpeed + delta;
        this.setState({

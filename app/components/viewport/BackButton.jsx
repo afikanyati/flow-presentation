@@ -30,15 +30,9 @@ export default class BackButton extends React.Component {
         return (
             <BackButtonContainer
                 onClick={this.props.backFunction.bind({}, this.props.activeFeature)}
-                active={this.props.activeFeature != null && this.props.activeFeature != FeatureTypes.ATTACHMENT}>
+                active={this.props.activeFeature == FeatureTypes.BOOKMARK}>
                 <BackButtonIcon
-                    icon={this.props.activeFeature == FeatureTypes.BOOKMARK ?
-                        `url(${BackRed})`
-                    :
-                        this.props.activeFeature == FeatureTypes.HIGHLIGHT ?
-                            `url(${highlight[this.props.highlightColor]})`
-                        :
-                            "none"}/>
+                    icon={`url(${BackRed})`}/>
             </BackButtonContainer>
         );
     }
@@ -57,7 +51,6 @@ export default class BackButton extends React.Component {
 // ============= PropTypes ==============
 
 BackButton.propTypes = {
-    highlightColor: PropTypes.string.isRequired,
     activeFeature: PropTypes.string,
     backFunction: PropTypes.func
 };
