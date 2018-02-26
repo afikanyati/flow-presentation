@@ -6,6 +6,7 @@ import styled                   from 'styled-components';
 // Components
 import FontTypes                from '../../constants/fontTypes';
 import SkinTypes                from '../../constants/skinTypes';
+import HighlightTypes           from '../../constants/highlightColorTypes';
 import BookmarkFilled           from '../../assets/images/icons/bookmark-red-fill.svg';
 import AttachmentFilled         from '../../assets/images/icons/attachment-purple.svg';
 import { CSSTransitionGroup }   from 'react-transition-group';
@@ -150,9 +151,21 @@ const Text = styled.span`
     &:hover {
         color: ${props => !props.cruiseControlHaltIsActive ?
                     props.skin == SkinTypes.WHITE ?
-                            props.theme.purple
+                            props.highlight.color == HighlightTypes.PURPLE ?
+                                props.theme.yellow
+                            :
+                                props.highlight.color == HighlightTypes.RED ?
+                                    props.theme.green
+                                :
+                                    props.theme.purple
                         :
-                            props.theme.lightPurple
+                            props.highlight.color == HighlightTypes.PURPLE ?
+                                props.theme.yellow
+                            :
+                                props.highlight.color == HighlightTypes.RED ?
+                                    props.theme.green
+                                :
+                                    props.theme.lightPurple
                 :
                     "inherit"};
         transition        : all 0.2s;
