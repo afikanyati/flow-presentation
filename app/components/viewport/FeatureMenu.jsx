@@ -332,7 +332,6 @@ export default class FeatureMenu extends React.Component {
 
     componentDidMount() {
         // console.log("+++++FeatureMenu");
-        console.log(this.state.features);
     }
 
     // ========== Methods ===========
@@ -363,7 +362,7 @@ export default class FeatureMenu extends React.Component {
             increment = sweepDeg/(numItems - 1),
             angle = increment,
             spreadRadius = arr.length == 6 ? 120 : arr.length == 5 ? 100 : 80,
-            delayIncrement = arr.length == 6 ? 0.04 : 0.05,
+            delayIncrement = arr.length == 6 ? 0.02 : 0.025,
             initialDelay = delayIncrement,
             nMinus1InitialDelay = (numItems - 2) * delayIncrement,
             finalDelay = (numItems - 1) * delayIncrement;
@@ -445,7 +444,7 @@ export default class FeatureMenu extends React.Component {
                     this.setState({
                         menuIsOpen : true
                     });
-                }, 100);
+                }, 50);
             });
         } else {
             this.setState({
@@ -456,7 +455,7 @@ export default class FeatureMenu extends React.Component {
                         activeFeature: feature,
                         features: features
                     });
-                }, 250);
+                }, 125);
             });
         }
     }
