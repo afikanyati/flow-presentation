@@ -68,7 +68,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -86,7 +87,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -104,7 +106,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -122,7 +125,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -140,7 +144,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -158,7 +163,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -176,7 +182,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -213,7 +220,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -231,7 +239,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -249,7 +258,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -267,7 +277,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -285,7 +296,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -303,7 +315,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -321,7 +334,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -339,7 +353,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -357,7 +372,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -375,7 +391,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -393,7 +410,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -411,7 +429,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -429,7 +448,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -447,7 +467,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -484,7 +505,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -502,7 +524,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -520,7 +543,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -538,7 +562,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -556,7 +581,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -574,7 +600,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -592,7 +619,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -610,7 +638,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -628,7 +657,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -684,7 +714,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -702,7 +733,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -720,7 +752,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -757,7 +790,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -775,7 +809,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -793,7 +828,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -811,7 +847,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -829,7 +866,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -847,7 +885,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -865,7 +904,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -883,7 +923,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -901,7 +942,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -919,7 +961,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -937,7 +980,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -955,7 +999,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -973,7 +1018,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -991,7 +1037,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1009,7 +1056,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1027,7 +1075,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1045,7 +1094,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1063,7 +1113,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1138,7 +1189,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1156,7 +1208,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1174,7 +1227,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1192,7 +1246,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1210,7 +1265,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1228,7 +1284,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1265,7 +1322,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1283,7 +1341,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1301,7 +1360,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1319,7 +1379,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1337,7 +1398,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1355,7 +1417,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1373,7 +1436,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1391,7 +1455,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1409,7 +1474,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1438,7 +1504,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":0,
                     "delay":15,
-                    "length":76
+                    "wordCount":76,
+                    "sentenceCount":5
                 },
                 {
                     "type":"paragraph",
@@ -1460,7 +1527,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1497,7 +1565,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1515,7 +1584,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1533,7 +1603,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1551,7 +1622,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1569,7 +1641,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1587,7 +1660,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1605,7 +1679,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1623,7 +1698,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1641,7 +1717,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1659,7 +1736,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1677,7 +1755,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1686,9 +1765,32 @@ export default class Viewport extends React.Component {
                         },
                         {
                             "index":13,
-                            "text":"handwritten — they’re",
+                            "text":"handwritten —",
                             "definition":{
 
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
+                            },
+                            "hasBookmark":false,
+                            "attachments":{
+
+                            },
+                            "delay":{
+                                "type":"pause",
+                                "factor":1
+                            }
+                        },
+                        {
+                            "index":14,
+                            "text":"they’re",
+                            "definition":{
+
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
                             },
                             "hasBookmark":false,
                             "attachments":{
@@ -1696,14 +1798,10 @@ export default class Viewport extends React.Component {
                             },
                             "delay":{
 
-                            },
-                            "highlight":{
-                                "active":false,
-                                "color":null
                             }
                         },
                         {
-                            "index":14,
+                            "index":15,
                             "text":"easier",
                             "definition":{
 
@@ -1713,7 +1811,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1721,7 +1820,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":15,
+                            "index":16,
                             "text":"on",
                             "definition":{
 
@@ -1731,7 +1830,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1739,7 +1839,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":16,
+                            "index":17,
                             "text":"the",
                             "definition":{
 
@@ -1749,7 +1849,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1757,7 +1858,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":17,
+                            "index":18,
                             "text":"eyes,",
                             "definition":{
 
@@ -1776,7 +1877,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":18,
+                            "index":19,
                             "text":"after",
                             "definition":{
 
@@ -1786,7 +1887,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1794,7 +1896,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":19,
+                            "index":20,
                             "text":"all,",
                             "definition":{
 
@@ -1813,7 +1915,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":20,
+                            "index":21,
                             "text":"and",
                             "definition":{
 
@@ -1832,7 +1934,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":21,
+                            "index":22,
                             "text":"no",
                             "definition":{
 
@@ -1842,7 +1944,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1850,7 +1953,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":22,
+                            "index":23,
                             "text":"more",
                             "definition":{
 
@@ -1860,7 +1963,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1868,7 +1972,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":23,
+                            "index":24,
                             "text":"demerit",
                             "definition":{
 
@@ -1878,7 +1982,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1886,7 +1991,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":24,
+                            "index":25,
                             "text":"points",
                             "definition":{
 
@@ -1896,7 +2001,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1904,7 +2010,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":25,
+                            "index":26,
                             "text":"for",
                             "definition":{
 
@@ -1914,7 +2020,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1922,7 +2029,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":26,
+                            "index":27,
                             "text":"sloppy",
                             "definition":{
 
@@ -1932,7 +2039,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1940,7 +2048,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":27,
+                            "index":28,
                             "text":"cursive.",
                             "definition":{
 
@@ -1959,7 +2067,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":28,
+                            "index":29,
                             "text":"But",
                             "definition":{
 
@@ -1978,7 +2086,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":29,
+                            "index":30,
                             "text":"the",
                             "definition":{
 
@@ -1988,7 +2096,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -1996,7 +2105,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":30,
+                            "index":31,
                             "text":"vision",
                             "definition":{
 
@@ -2006,7 +2115,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2014,7 +2124,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":31,
+                            "index":32,
                             "text":"of",
                             "definition":{
 
@@ -2024,7 +2134,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2032,7 +2143,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":32,
+                            "index":33,
                             "text":"30",
                             "definition":{
 
@@ -2042,7 +2153,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2050,7 +2162,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":33,
+                            "index":34,
                             "text":"students",
                             "definition":{
 
@@ -2060,7 +2172,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2068,7 +2181,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":34,
+                            "index":35,
                             "text":"sitting",
                             "definition":{
 
@@ -2078,7 +2191,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2086,7 +2200,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":35,
+                            "index":36,
                             "text":"in",
                             "definition":{
 
@@ -2096,7 +2210,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2104,7 +2219,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":36,
+                            "index":37,
                             "text":"a",
                             "definition":{
 
@@ -2114,7 +2229,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2122,7 +2238,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":37,
+                            "index":38,
                             "text":"class",
                             "definition":{
 
@@ -2132,7 +2248,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2140,7 +2257,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":38,
+                            "index":39,
                             "text":"for",
                             "definition":{
 
@@ -2150,7 +2267,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2158,7 +2276,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":39,
+                            "index":40,
                             "text":"eight",
                             "definition":{
 
@@ -2168,7 +2286,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2176,7 +2295,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":40,
+                            "index":41,
                             "text":"hours",
                             "definition":{
 
@@ -2186,7 +2305,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2194,7 +2314,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":41,
+                            "index":42,
                             "text":"a",
                             "definition":{
 
@@ -2204,7 +2324,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2212,7 +2333,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":42,
+                            "index":43,
                             "text":"day",
                             "definition":{
 
@@ -2222,7 +2343,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2230,7 +2352,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":43,
+                            "index":44,
                             "text":"in",
                             "definition":{
 
@@ -2240,7 +2362,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2248,7 +2371,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":44,
+                            "index":45,
                             "text":"front",
                             "definition":{
 
@@ -2258,7 +2381,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2266,7 +2390,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":45,
+                            "index":46,
                             "text":"of",
                             "definition":{
 
@@ -2276,7 +2400,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2284,7 +2409,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":46,
+                            "index":47,
                             "text":"a",
                             "definition":{
 
@@ -2294,7 +2419,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2302,7 +2428,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":47,
+                            "index":48,
                             "text":"computer",
                             "definition":{
 
@@ -2312,7 +2438,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2320,7 +2447,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":48,
+                            "index":49,
                             "text":"learning",
                             "definition":{
 
@@ -2330,7 +2457,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2338,7 +2466,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":49,
+                            "index":50,
                             "text":"lessons",
                             "definition":{
 
@@ -2348,7 +2476,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2356,7 +2485,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":50,
+                            "index":51,
                             "text":"from",
                             "definition":{
 
@@ -2366,7 +2495,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2374,7 +2504,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":51,
+                            "index":52,
                             "text":"programs",
                             "definition":{
 
@@ -2384,7 +2514,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2392,7 +2523,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":52,
+                            "index":53,
                             "text":"never",
                             "definition":{
 
@@ -2402,7 +2533,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2410,7 +2542,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":53,
+                            "index":54,
                             "text":"materialized.",
                             "definition":{
 
@@ -2429,7 +2561,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":54,
+                            "index":55,
                             "text":"Whether",
                             "definition":{
 
@@ -2439,7 +2571,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2447,7 +2580,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":55,
+                            "index":56,
                             "text":"that’s",
                             "definition":{
 
@@ -2457,7 +2590,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2465,7 +2599,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":56,
+                            "index":57,
                             "text":"a",
                             "definition":{
 
@@ -2475,7 +2609,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2483,7 +2618,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":57,
+                            "index":58,
                             "text":"positive",
                             "definition":{
 
@@ -2493,7 +2628,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2501,7 +2637,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":58,
+                            "index":59,
                             "text":"or",
                             "definition":{
 
@@ -2520,7 +2656,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":59,
+                            "index":60,
                             "text":"a",
                             "definition":{
 
@@ -2530,7 +2666,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2538,7 +2675,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":60,
+                            "index":61,
                             "text":"negative",
                             "definition":{
 
@@ -2548,7 +2685,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2556,7 +2694,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":61,
+                            "index":62,
                             "text":"can",
                             "definition":{
 
@@ -2566,7 +2704,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2574,7 +2713,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":62,
+                            "index":63,
                             "text":"be",
                             "definition":{
 
@@ -2584,7 +2723,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2592,7 +2732,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":63,
+                            "index":64,
                             "text":"debated",
                             "definition":{
 
@@ -2602,7 +2742,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2610,7 +2751,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":64,
+                            "index":65,
                             "text":"ad",
                             "definition":{
 
@@ -2620,7 +2761,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2628,7 +2770,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":65,
+                            "index":66,
                             "text":"nauseum,",
                             "definition":{
 
@@ -2647,7 +2789,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":66,
+                            "index":67,
                             "text":"but",
                             "definition":{
 
@@ -2666,7 +2808,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":67,
+                            "index":68,
                             "text":"the",
                             "definition":{
 
@@ -2676,7 +2818,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2684,7 +2827,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":68,
+                            "index":69,
                             "text":"fact",
                             "definition":{
 
@@ -2694,7 +2837,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2702,7 +2846,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":69,
+                            "index":70,
                             "text":"is",
                             "definition":{
 
@@ -2712,7 +2856,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2720,7 +2865,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":70,
+                            "index":71,
                             "text":"that",
                             "definition":{
 
@@ -2730,7 +2875,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2738,7 +2884,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":71,
+                            "index":72,
                             "text":"adoption",
                             "definition":{
 
@@ -2748,7 +2894,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2756,7 +2903,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":72,
+                            "index":73,
                             "text":"was",
                             "definition":{
 
@@ -2766,7 +2913,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2774,7 +2922,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":73,
+                            "index":74,
                             "text":"hampered",
                             "definition":{
 
@@ -2784,7 +2932,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2792,7 +2941,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":74,
+                            "index":75,
                             "text":"by",
                             "definition":{
 
@@ -2802,7 +2951,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2810,7 +2960,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":75,
+                            "index":76,
                             "text":"cost.",
                             "definition":{
 
@@ -2829,7 +2979,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":76,
+                            "index":77,
                             "text":"Most",
                             "definition":{
 
@@ -2839,7 +2989,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2847,7 +2998,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":77,
+                            "index":78,
                             "text":"schools",
                             "definition":{
 
@@ -2857,7 +3008,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2865,7 +3017,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":78,
+                            "index":79,
                             "text":"have",
                             "definition":{
 
@@ -2875,7 +3027,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2883,7 +3036,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":79,
+                            "index":80,
                             "text":"a",
                             "definition":{
 
@@ -2893,7 +3046,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2901,7 +3055,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":80,
+                            "index":81,
                             "text":"single",
                             "definition":{
 
@@ -2911,7 +3065,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2919,7 +3074,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":81,
+                            "index":82,
                             "text":"computer",
                             "definition":{
 
@@ -2929,7 +3084,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2937,7 +3093,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":82,
+                            "index":83,
                             "text":"lab",
                             "definition":{
 
@@ -2947,7 +3103,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2955,7 +3112,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":83,
+                            "index":84,
                             "text":"where",
                             "definition":{
 
@@ -2965,7 +3122,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2973,7 +3131,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":84,
+                            "index":85,
                             "text":"students",
                             "definition":{
 
@@ -2983,7 +3141,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -2991,7 +3150,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":85,
+                            "index":86,
                             "text":"take",
                             "definition":{
 
@@ -3001,7 +3160,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3009,7 +3169,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":86,
+                            "index":87,
                             "text":"turns",
                             "definition":{
 
@@ -3019,7 +3179,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3027,7 +3188,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":87,
+                            "index":88,
                             "text":"studying",
                             "definition":{
 
@@ -3037,7 +3198,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3045,7 +3207,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":88,
+                            "index":89,
                             "text":"computers",
                             "definition":{
 
@@ -3055,25 +3217,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
-                            },
-                            "highlight":{
-                                "active":false,
-                                "color":null
-                            }
-                        },
-                        {
-                            "index":89,
-                            "text":"specifically — they",
-                            "definition":{
-
-                            },
-                            "hasBookmark":false,
-                            "attachments":{
-
-                            },
-                            "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3082,6 +3227,43 @@ export default class Viewport extends React.Component {
                         },
                         {
                             "index":90,
+                            "text":"specifically —",
+                            "definition":{
+
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
+                            },
+                            "hasBookmark":false,
+                            "attachments":{
+
+                            },
+                            "delay":{
+                                "type":"pause",
+                                "factor":1
+                            }
+                        },
+                        {
+                            "index":91,
+                            "text":"they",
+                            "definition":{
+
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
+                            },
+                            "hasBookmark":false,
+                            "attachments":{
+
+                            },
+                            "delay":{
+
+                            }
+                        },
+                        {
+                            "index":92,
                             "text":"aren’t",
                             "definition":{
 
@@ -3091,7 +3273,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3099,7 +3282,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":91,
+                            "index":93,
                             "text":"using",
                             "definition":{
 
@@ -3109,7 +3292,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3117,7 +3301,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":92,
+                            "index":94,
                             "text":"data",
                             "definition":{
 
@@ -3127,7 +3311,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3135,7 +3320,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":93,
+                            "index":95,
                             "text":"modeling",
                             "definition":{
 
@@ -3145,7 +3330,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3153,7 +3339,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":94,
+                            "index":96,
                             "text":"in",
                             "definition":{
 
@@ -3163,7 +3349,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3171,7 +3358,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":95,
+                            "index":97,
                             "text":"their",
                             "definition":{
 
@@ -3181,7 +3368,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3189,7 +3377,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":96,
+                            "index":98,
                             "text":"stats",
                             "definition":{
 
@@ -3199,7 +3387,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3207,7 +3396,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":97,
+                            "index":99,
                             "text":"class,",
                             "definition":{
 
@@ -3226,7 +3415,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":98,
+                            "index":100,
                             "text":"or",
                             "definition":{
 
@@ -3245,7 +3434,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":99,
+                            "index":101,
                             "text":"testing",
                             "definition":{
 
@@ -3255,7 +3444,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3263,7 +3453,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":100,
+                            "index":102,
                             "text":"components",
                             "definition":{
 
@@ -3273,7 +3463,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3281,7 +3472,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":101,
+                            "index":103,
                             "text":"for",
                             "definition":{
 
@@ -3291,7 +3482,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3299,7 +3491,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":102,
+                            "index":104,
                             "text":"chemistry.",
                             "definition":{
 
@@ -3318,7 +3510,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":103,
+                            "index":105,
                             "text":"Computers",
                             "definition":{
 
@@ -3328,7 +3520,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3336,7 +3529,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":104,
+                            "index":106,
                             "text":"have",
                             "definition":{
 
@@ -3346,7 +3539,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3354,7 +3548,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":105,
+                            "index":107,
                             "text":"been",
                             "definition":{
 
@@ -3364,7 +3558,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3372,7 +3567,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":106,
+                            "index":108,
                             "text":"relegated",
                             "definition":{
 
@@ -3382,7 +3577,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3390,7 +3586,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":107,
+                            "index":109,
                             "text":"to",
                             "definition":{
 
@@ -3400,7 +3596,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3408,7 +3605,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":108,
+                            "index":110,
                             "text":"something",
                             "definition":{
 
@@ -3418,7 +3615,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3426,7 +3624,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":109,
+                            "index":111,
                             "text":"you",
                             "definition":{
 
@@ -3436,7 +3634,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3444,7 +3643,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":110,
+                            "index":112,
                             "text":"learn",
                             "definition":{
 
@@ -3454,7 +3653,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3462,7 +3662,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":111,
+                            "index":113,
                             "text":"about",
                             "definition":{
 
@@ -3472,7 +3672,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3480,7 +3681,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":112,
+                            "index":114,
                             "text":"rather",
                             "definition":{
 
@@ -3490,7 +3691,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3498,7 +3700,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":113,
+                            "index":115,
                             "text":"than",
                             "definition":{
 
@@ -3508,7 +3710,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3516,7 +3719,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":114,
+                            "index":116,
                             "text":"something",
                             "definition":{
 
@@ -3526,7 +3729,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3534,7 +3738,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":115,
+                            "index":117,
                             "text":"you",
                             "definition":{
 
@@ -3544,7 +3748,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3552,7 +3757,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":116,
+                            "index":118,
                             "text":"learn",
                             "definition":{
 
@@ -3562,7 +3767,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3570,7 +3776,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":117,
+                            "index":119,
                             "text":"from,",
                             "definition":{
 
@@ -3589,7 +3795,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":118,
+                            "index":120,
                             "text":"and",
                             "definition":{
 
@@ -3608,7 +3814,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":119,
+                            "index":121,
                             "text":"there",
                             "definition":{
 
@@ -3618,7 +3824,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3626,7 +3833,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":120,
+                            "index":122,
                             "text":"are",
                             "definition":{
 
@@ -3636,7 +3843,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3644,7 +3852,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":121,
+                            "index":123,
                             "text":"a",
                             "definition":{
 
@@ -3654,7 +3862,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3662,7 +3871,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":122,
+                            "index":124,
                             "text":"lot",
                             "definition":{
 
@@ -3672,7 +3881,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3680,7 +3890,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":123,
+                            "index":125,
                             "text":"of",
                             "definition":{
 
@@ -3690,7 +3900,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3698,7 +3909,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":124,
+                            "index":126,
                             "text":"opportunities",
                             "definition":{
 
@@ -3708,7 +3919,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3716,7 +3928,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":125,
+                            "index":127,
                             "text":"we’ve",
                             "definition":{
 
@@ -3726,7 +3938,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3734,7 +3947,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":126,
+                            "index":128,
                             "text":"missed",
                             "definition":{
 
@@ -3744,7 +3957,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3752,7 +3966,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":127,
+                            "index":129,
                             "text":"because",
                             "definition":{
 
@@ -3771,7 +3985,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":128,
+                            "index":130,
                             "text":"of",
                             "definition":{
 
@@ -3781,7 +3995,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3789,7 +4004,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":129,
+                            "index":131,
                             "text":"that.",
                             "definition":{
 
@@ -3810,7 +4025,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":1,
                     "delay":24,
-                    "length":130
+                    "wordCount":130,
+                    "sentenceCount":6
                 },
                 {
                     "type":"paragraph",
@@ -3832,7 +4048,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3850,7 +4067,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3868,7 +4086,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3886,7 +4105,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3904,7 +4124,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3922,7 +4143,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3940,7 +4162,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3958,7 +4181,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3976,7 +4200,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -3994,7 +4219,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4012,7 +4238,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4030,7 +4257,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4048,7 +4276,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4066,7 +4295,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4084,7 +4314,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4102,7 +4333,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4120,7 +4352,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4157,7 +4390,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4175,7 +4409,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4193,7 +4428,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4211,7 +4447,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4229,7 +4466,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4247,7 +4485,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4265,7 +4504,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4283,7 +4523,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4301,7 +4542,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4319,7 +4561,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4337,7 +4580,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4355,7 +4599,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4392,7 +4637,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4410,7 +4656,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4428,7 +4675,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4446,7 +4694,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4464,7 +4713,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4482,7 +4732,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4500,7 +4751,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4518,7 +4770,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4536,7 +4789,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4573,7 +4827,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4591,7 +4846,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4609,7 +4865,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4627,7 +4884,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4645,7 +4903,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4663,7 +4922,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4681,7 +4941,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4699,7 +4960,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4774,7 +5036,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4792,7 +5055,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4810,7 +5074,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4828,7 +5093,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4846,7 +5112,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4864,7 +5131,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4882,7 +5150,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4900,7 +5169,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4918,7 +5188,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4936,7 +5207,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4973,7 +5245,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -4991,7 +5264,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5009,7 +5283,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5027,7 +5302,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5045,7 +5321,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5063,7 +5340,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5100,7 +5378,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5156,7 +5435,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5174,7 +5454,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5192,7 +5473,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5210,7 +5492,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5228,7 +5511,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5246,7 +5530,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5264,7 +5549,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5282,7 +5568,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5300,7 +5587,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5318,7 +5606,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5347,7 +5636,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":2,
                     "delay":15,
-                    "length":84
+                    "wordCount":84,
+                    "sentenceCount":4
                 },
                 {
                     "type":"paragraph",
@@ -5369,7 +5659,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5387,7 +5678,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5405,7 +5697,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5423,7 +5716,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5441,7 +5735,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5459,7 +5754,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5477,7 +5773,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5495,7 +5792,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5532,7 +5830,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5550,7 +5849,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5568,7 +5868,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5586,7 +5887,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5604,7 +5906,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5622,7 +5925,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5640,7 +5944,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5658,7 +5963,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5676,7 +5982,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5694,7 +6001,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5712,7 +6020,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5730,7 +6039,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5748,7 +6058,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5766,7 +6077,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5784,7 +6096,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5821,7 +6134,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5839,7 +6153,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5857,7 +6172,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5875,7 +6191,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5893,7 +6210,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5911,7 +6229,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5929,7 +6248,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5947,7 +6267,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5965,7 +6286,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -5983,7 +6305,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6001,7 +6324,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6019,7 +6343,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6037,7 +6362,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6055,7 +6381,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6073,7 +6400,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6129,7 +6457,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6147,7 +6476,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6165,7 +6495,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6183,7 +6514,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6201,7 +6533,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6219,7 +6552,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6237,7 +6571,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6255,7 +6590,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6273,7 +6609,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6291,7 +6628,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6309,7 +6647,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6327,7 +6666,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6345,7 +6685,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6363,7 +6704,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6381,7 +6723,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6399,7 +6742,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6417,7 +6761,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6435,7 +6780,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6453,7 +6799,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6471,7 +6818,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6489,7 +6837,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6507,7 +6856,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6525,7 +6875,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6543,7 +6894,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6580,7 +6932,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6617,7 +6970,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6635,7 +6989,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6653,7 +7008,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6671,7 +7027,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6689,7 +7046,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6707,7 +7065,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6725,7 +7084,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6743,7 +7103,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6752,9 +7113,32 @@ export default class Viewport extends React.Component {
                         },
                         {
                             "index":77,
-                            "text":"student — it",
+                            "text":"student —",
                             "definition":{
 
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
+                            },
+                            "hasBookmark":false,
+                            "attachments":{
+
+                            },
+                            "delay":{
+                                "type":"pause",
+                                "factor":1
+                            }
+                        },
+                        {
+                            "index":78,
+                            "text":"it",
+                            "definition":{
+
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
                             },
                             "hasBookmark":false,
                             "attachments":{
@@ -6762,14 +7146,10 @@ export default class Viewport extends React.Component {
                             },
                             "delay":{
 
-                            },
-                            "highlight":{
-                                "active":false,
-                                "color":null
                             }
                         },
                         {
-                            "index":78,
+                            "index":79,
                             "text":"requires",
                             "definition":{
 
@@ -6779,7 +7159,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6787,7 +7168,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":79,
+                            "index":80,
                             "text":"a",
                             "definition":{
 
@@ -6797,7 +7178,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6805,7 +7187,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":80,
+                            "index":81,
                             "text":"top",
                             "definition":{
 
@@ -6815,7 +7197,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6823,7 +7206,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":81,
+                            "index":82,
                             "text":"of",
                             "definition":{
 
@@ -6833,7 +7216,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6841,7 +7225,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":82,
+                            "index":83,
                             "text":"the",
                             "definition":{
 
@@ -6851,7 +7235,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6859,7 +7244,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":83,
+                            "index":84,
                             "text":"line",
                             "definition":{
 
@@ -6869,7 +7254,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6877,7 +7263,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":84,
+                            "index":85,
                             "text":"computer.",
                             "definition":{
 
@@ -6896,7 +7282,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":85,
+                            "index":86,
                             "text":"Given",
                             "definition":{
 
@@ -6906,7 +7292,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6914,7 +7301,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":86,
+                            "index":87,
                             "text":"that",
                             "definition":{
 
@@ -6924,7 +7311,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6932,7 +7320,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":87,
+                            "index":88,
                             "text":"most",
                             "definition":{
 
@@ -6942,7 +7330,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6950,7 +7339,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":88,
+                            "index":89,
                             "text":"schools",
                             "definition":{
 
@@ -6960,7 +7349,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6968,7 +7358,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":89,
+                            "index":90,
                             "text":"are",
                             "definition":{
 
@@ -6978,7 +7368,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -6986,7 +7377,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":90,
+                            "index":91,
                             "text":"still",
                             "definition":{
 
@@ -6996,7 +7387,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7004,7 +7396,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":91,
+                            "index":92,
                             "text":"running",
                             "definition":{
 
@@ -7014,7 +7406,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7022,7 +7415,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":92,
+                            "index":93,
                             "text":"computers",
                             "definition":{
 
@@ -7032,7 +7425,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7040,7 +7434,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":93,
+                            "index":94,
                             "text":"that",
                             "definition":{
 
@@ -7050,7 +7444,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7058,7 +7453,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":94,
+                            "index":95,
                             "text":"are",
                             "definition":{
 
@@ -7068,7 +7463,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7076,7 +7472,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":95,
+                            "index":96,
                             "text":"ten",
                             "definition":{
 
@@ -7086,7 +7482,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7094,7 +7491,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":96,
+                            "index":97,
                             "text":"years",
                             "definition":{
 
@@ -7104,7 +7501,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7112,7 +7510,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":97,
+                            "index":98,
                             "text":"old",
                             "definition":{
 
@@ -7122,7 +7520,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7130,7 +7529,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":98,
+                            "index":99,
                             "text":"or",
                             "definition":{
 
@@ -7149,7 +7548,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":99,
+                            "index":100,
                             "text":"more,",
                             "definition":{
 
@@ -7168,7 +7567,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":100,
+                            "index":101,
                             "text":"that’s",
                             "definition":{
 
@@ -7178,7 +7577,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7186,7 +7586,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":101,
+                            "index":102,
                             "text":"a",
                             "definition":{
 
@@ -7196,7 +7596,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7204,7 +7605,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":102,
+                            "index":103,
                             "text":"hurdle.",
                             "definition":{
 
@@ -7225,7 +7626,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":3,
                     "delay":14,
-                    "length":103
+                    "wordCount":103,
+                    "sentenceCount":4
                 },
                 {
                     "type":"paragraph",
@@ -7266,7 +7668,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7284,7 +7687,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7302,7 +7706,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7320,7 +7725,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7338,7 +7744,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7356,7 +7763,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7374,7 +7782,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7392,7 +7801,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7410,7 +7820,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7466,7 +7877,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7484,7 +7896,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7502,7 +7915,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7520,7 +7934,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7538,7 +7953,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7556,7 +7972,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7574,7 +7991,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7592,7 +8010,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7610,7 +8029,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7666,7 +8086,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7684,7 +8105,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7702,7 +8124,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7720,7 +8143,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7738,7 +8162,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7813,7 +8238,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7850,7 +8276,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7868,7 +8295,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7905,7 +8333,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7923,7 +8352,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7941,7 +8371,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7959,7 +8390,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7977,7 +8409,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -7995,7 +8428,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8013,7 +8447,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8031,7 +8466,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8049,7 +8485,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8086,7 +8523,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8104,7 +8542,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8122,7 +8561,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8159,7 +8599,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8177,7 +8618,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8214,7 +8656,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8232,7 +8675,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8250,7 +8694,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8268,7 +8713,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8286,7 +8732,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8342,7 +8789,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8360,7 +8808,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8378,7 +8827,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8396,7 +8846,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8414,7 +8865,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8432,7 +8884,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8450,7 +8903,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8468,7 +8922,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8486,7 +8941,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8504,7 +8960,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8522,7 +8979,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8540,7 +8998,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8577,7 +9036,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8595,7 +9055,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8613,7 +9074,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8631,7 +9093,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8668,7 +9131,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8686,7 +9150,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8704,7 +9169,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8722,7 +9188,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8778,7 +9245,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8796,7 +9264,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8814,7 +9283,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8832,7 +9302,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8850,7 +9321,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8868,7 +9340,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8886,7 +9359,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8904,7 +9378,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8922,7 +9397,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8940,7 +9416,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8977,7 +9454,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -8995,7 +9473,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9013,7 +9492,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9031,7 +9511,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9087,7 +9568,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9105,7 +9587,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9123,7 +9606,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9141,7 +9625,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9159,7 +9644,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9177,7 +9663,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9195,7 +9682,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9213,7 +9701,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9231,7 +9720,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9249,7 +9739,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9267,7 +9758,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9285,7 +9777,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9303,7 +9796,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9321,7 +9815,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9330,9 +9825,32 @@ export default class Viewport extends React.Component {
                         },
                         {
                             "index":115,
-                            "text":"documentaries — give",
+                            "text":"documentaries —",
                             "definition":{
 
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
+                            },
+                            "hasBookmark":false,
+                            "attachments":{
+
+                            },
+                            "delay":{
+                                "type":"pause",
+                                "factor":1
+                            }
+                        },
+                        {
+                            "index":116,
+                            "text":"give",
+                            "definition":{
+
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
                             },
                             "hasBookmark":false,
                             "attachments":{
@@ -9340,14 +9858,10 @@ export default class Viewport extends React.Component {
                             },
                             "delay":{
 
-                            },
-                            "highlight":{
-                                "active":false,
-                                "color":null
                             }
                         },
                         {
-                            "index":116,
+                            "index":117,
                             "text":"the",
                             "definition":{
 
@@ -9357,7 +9871,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9365,7 +9880,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":117,
+                            "index":118,
                             "text":"teacher",
                             "definition":{
 
@@ -9375,7 +9890,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9383,7 +9899,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":118,
+                            "index":119,
                             "text":"a",
                             "definition":{
 
@@ -9393,7 +9909,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9401,7 +9918,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":119,
+                            "index":120,
                             "text":"break",
                             "definition":{
 
@@ -9411,7 +9928,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9419,7 +9937,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":120,
+                            "index":121,
                             "text":"from",
                             "definition":{
 
@@ -9429,7 +9947,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9437,7 +9956,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":121,
+                            "index":122,
                             "text":"the",
                             "definition":{
 
@@ -9447,7 +9966,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9455,7 +9975,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":122,
+                            "index":123,
                             "text":"classroom,",
                             "definition":{
 
@@ -9474,7 +9994,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":123,
+                            "index":124,
                             "text":"let",
                             "definition":{
 
@@ -9484,7 +10004,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9492,7 +10013,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":124,
+                            "index":125,
                             "text":"the",
                             "definition":{
 
@@ -9502,7 +10023,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9510,7 +10032,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":125,
+                            "index":126,
                             "text":"students",
                             "definition":{
 
@@ -9520,7 +10042,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9528,7 +10051,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":126,
+                            "index":127,
                             "text":"have",
                             "definition":{
 
@@ -9538,7 +10061,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9546,7 +10070,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":127,
+                            "index":128,
                             "text":"some",
                             "definition":{
 
@@ -9556,7 +10080,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9564,7 +10089,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":128,
+                            "index":129,
                             "text":"fun,",
                             "definition":{
 
@@ -9583,7 +10108,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":129,
+                            "index":130,
                             "text":"and",
                             "definition":{
 
@@ -9602,7 +10127,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":130,
+                            "index":131,
                             "text":"then",
                             "definition":{
 
@@ -9621,7 +10146,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":131,
+                            "index":132,
                             "text":"get",
                             "definition":{
 
@@ -9631,7 +10156,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9639,7 +10165,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":132,
+                            "index":133,
                             "text":"back",
                             "definition":{
 
@@ -9649,7 +10175,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9657,7 +10184,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":133,
+                            "index":134,
                             "text":"to",
                             "definition":{
 
@@ -9667,7 +10194,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9675,7 +10203,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":134,
+                            "index":135,
                             "text":"the",
                             "definition":{
 
@@ -9685,7 +10213,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9693,7 +10222,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":135,
+                            "index":136,
                             "text":"real",
                             "definition":{
 
@@ -9703,7 +10232,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9711,7 +10241,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":136,
+                            "index":137,
                             "text":"learning.",
                             "definition":{
 
@@ -9732,7 +10262,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":4,
                     "delay":32,
-                    "length":137
+                    "wordCount":137,
+                    "sentenceCount":5
                 },
                 {
                     "type":"paragraph",
@@ -9754,7 +10285,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9772,7 +10304,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9790,7 +10323,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9808,7 +10342,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9826,7 +10361,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9844,7 +10380,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9862,7 +10399,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9880,7 +10418,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9898,7 +10437,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9916,7 +10456,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9953,7 +10494,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9971,7 +10513,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -9989,7 +10532,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10007,7 +10551,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10025,7 +10570,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10043,7 +10589,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10061,7 +10608,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10079,7 +10627,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10097,7 +10646,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10115,7 +10665,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10171,7 +10722,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10189,7 +10741,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10207,7 +10760,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10225,7 +10779,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10243,7 +10798,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10261,7 +10817,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10279,7 +10836,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10297,7 +10855,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10315,7 +10874,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10333,7 +10893,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10351,7 +10912,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10369,7 +10931,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10387,7 +10950,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10443,7 +11007,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10461,7 +11026,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10479,7 +11045,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10497,7 +11064,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10515,7 +11083,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10533,7 +11102,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10551,7 +11121,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10569,7 +11140,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10587,7 +11159,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10643,7 +11216,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10661,7 +11235,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10679,7 +11254,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10697,7 +11273,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10715,7 +11292,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10733,7 +11311,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10751,7 +11330,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10769,7 +11349,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10787,7 +11368,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10805,7 +11387,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10823,7 +11406,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10841,7 +11425,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10859,7 +11444,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10877,7 +11463,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10895,7 +11482,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10913,7 +11501,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10931,7 +11520,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10968,7 +11558,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -10986,7 +11577,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11004,7 +11596,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11022,7 +11615,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11040,7 +11634,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11096,7 +11691,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11114,7 +11710,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11132,7 +11729,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11150,7 +11748,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11168,7 +11767,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11186,7 +11786,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11204,7 +11805,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11222,7 +11824,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11240,7 +11843,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11258,7 +11862,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11276,7 +11881,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11294,7 +11900,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11312,7 +11919,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11330,7 +11938,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11348,7 +11957,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11366,7 +11976,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11384,7 +11995,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11402,7 +12014,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11420,7 +12033,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11438,7 +12052,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11456,7 +12071,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11474,7 +12090,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11492,7 +12109,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11529,7 +12147,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11547,7 +12166,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11584,7 +12204,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11621,7 +12242,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11639,7 +12261,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11657,7 +12280,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11675,7 +12299,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11693,7 +12318,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11711,7 +12337,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11729,7 +12356,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11747,7 +12375,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11765,7 +12394,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11783,7 +12413,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11801,7 +12432,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11819,7 +12451,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11837,7 +12470,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11855,7 +12489,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11892,7 +12527,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11929,7 +12565,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11947,7 +12584,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11965,7 +12603,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -11983,7 +12622,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12001,7 +12641,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12019,7 +12660,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12037,7 +12679,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12055,7 +12698,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12073,7 +12717,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12091,7 +12736,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12109,7 +12755,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12165,7 +12812,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12183,7 +12831,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12201,7 +12850,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12219,7 +12869,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12237,7 +12888,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12255,7 +12907,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12284,7 +12937,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":5,
                     "delay":24,
-                    "length":140
+                    "wordCount":140,
+                    "sentenceCount":6
                 },
                 {
                     "type":"paragraph",
@@ -12325,7 +12979,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12343,7 +12998,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12361,7 +13017,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12379,7 +13036,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12397,7 +13055,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12415,7 +13074,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12452,7 +13112,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12470,7 +13131,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12488,7 +13150,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12506,7 +13169,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12524,7 +13188,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12542,7 +13207,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12560,7 +13226,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12578,7 +13245,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12596,7 +13264,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12614,7 +13283,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12632,7 +13302,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12669,7 +13340,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12706,7 +13378,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12724,7 +13397,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12742,7 +13416,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12760,7 +13435,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12778,7 +13454,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12796,7 +13473,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12833,7 +13511,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12851,7 +13530,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12907,7 +13587,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12925,7 +13606,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12943,7 +13625,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12961,7 +13644,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12979,7 +13663,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -12997,7 +13682,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13015,7 +13701,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13033,7 +13720,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13051,7 +13739,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13060,9 +13749,32 @@ export default class Viewport extends React.Component {
                         },
                         {
                             "index":42,
-                            "text":"scenario — so",
+                            "text":"scenario —",
                             "definition":{
 
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
+                            },
+                            "hasBookmark":false,
+                            "attachments":{
+
+                            },
+                            "delay":{
+                                "type":"pause",
+                                "factor":1
+                            }
+                        },
+                        {
+                            "index":43,
+                            "text":"so",
+                            "definition":{
+
+                            },
+                            "highlight":{
+                                "active":false,
+                                "color":null
                             },
                             "hasBookmark":false,
                             "attachments":{
@@ -13070,14 +13782,10 @@ export default class Viewport extends React.Component {
                             },
                             "delay":{
 
-                            },
-                            "highlight":{
-                                "active":false,
-                                "color":null
                             }
                         },
                         {
-                            "index":43,
+                            "index":44,
                             "text":"AR",
                             "definition":{
 
@@ -13087,7 +13795,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13095,7 +13804,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":44,
+                            "index":45,
                             "text":"is",
                             "definition":{
 
@@ -13105,7 +13814,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13113,7 +13823,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":45,
+                            "index":46,
                             "text":"pressing",
                             "definition":{
 
@@ -13123,7 +13833,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13131,7 +13842,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":46,
+                            "index":47,
                             "text":"forward",
                             "definition":{
 
@@ -13141,7 +13852,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13149,7 +13861,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":47,
+                            "index":48,
                             "text":"using",
                             "definition":{
 
@@ -13159,7 +13871,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13167,7 +13880,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":48,
+                            "index":49,
                             "text":"other",
                             "definition":{
 
@@ -13177,7 +13890,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13185,7 +13899,7 @@ export default class Viewport extends React.Component {
                             }
                         },
                         {
-                            "index":49,
+                            "index":50,
                             "text":"avenues.",
                             "definition":{
 
@@ -13206,7 +13920,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":6,
                     "delay":11,
-                    "length":50
+                    "wordCount":50,
+                    "sentenceCount":3
                 },
                 {
                     "type":"paragraph",
@@ -13228,7 +13943,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13246,7 +13962,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13264,7 +13981,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13282,7 +14000,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13319,7 +14038,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13337,7 +14057,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13355,7 +14076,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13373,7 +14095,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13391,7 +14114,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13409,7 +14133,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13427,7 +14152,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13445,7 +14171,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13463,7 +14190,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13481,7 +14209,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13499,7 +14228,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13517,7 +14247,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13535,7 +14266,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13591,7 +14323,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13609,7 +14342,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13627,7 +14361,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13645,7 +14380,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13663,7 +14399,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13700,7 +14437,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13718,7 +14456,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13774,7 +14513,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13792,7 +14532,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13829,7 +14570,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13847,7 +14589,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13865,7 +14608,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13883,7 +14627,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13901,7 +14646,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13919,7 +14665,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13937,7 +14684,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13955,7 +14703,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13973,7 +14722,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -13991,7 +14741,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14009,7 +14760,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14027,7 +14779,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14045,7 +14798,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14063,7 +14817,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14100,7 +14855,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14118,7 +14874,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14136,7 +14893,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14154,7 +14912,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14172,7 +14931,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14190,7 +14950,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14208,7 +14969,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14226,7 +14988,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14244,7 +15007,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14262,7 +15026,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14280,7 +15045,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14298,7 +15064,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14316,7 +15083,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14334,7 +15102,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14352,7 +15121,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14370,7 +15140,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14388,7 +15159,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14417,7 +15189,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":7,
                     "delay":13,
-                    "length":66
+                    "wordCount":66,
+                    "sentenceCount":4
                 },
                 {
                     "type":"paragraph",
@@ -14439,7 +15212,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14476,7 +15250,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14513,7 +15288,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14531,7 +15307,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14549,7 +15326,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14567,7 +15345,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14585,7 +15364,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14641,7 +15421,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14659,7 +15440,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14677,7 +15459,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14695,7 +15478,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14713,7 +15497,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14731,7 +15516,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14768,7 +15554,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14786,7 +15573,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14804,7 +15592,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14822,7 +15611,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14840,7 +15630,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14858,7 +15649,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14876,7 +15668,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14894,7 +15687,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14912,7 +15706,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14930,7 +15725,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14948,7 +15744,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14966,7 +15763,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -14984,7 +15782,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15040,7 +15839,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15058,7 +15858,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15076,7 +15877,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15094,7 +15896,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15112,7 +15915,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15130,7 +15934,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15148,7 +15953,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15185,7 +15991,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15203,7 +16010,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15221,7 +16029,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15239,7 +16048,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15257,7 +16067,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15275,7 +16086,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15293,7 +16105,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15311,7 +16124,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15329,7 +16143,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15347,7 +16162,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15365,7 +16181,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15383,7 +16200,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15401,7 +16219,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15419,7 +16238,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15437,7 +16257,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15455,7 +16276,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15473,7 +16295,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15491,7 +16314,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15547,7 +16371,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15565,7 +16390,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15583,7 +16409,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15601,7 +16428,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15638,7 +16466,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15656,7 +16485,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15674,7 +16504,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15692,7 +16523,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15710,7 +16542,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15728,7 +16561,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15746,7 +16580,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15783,7 +16618,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15801,7 +16637,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15819,7 +16656,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15837,7 +16675,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15855,7 +16694,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15873,7 +16713,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15891,7 +16732,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15909,7 +16751,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15927,7 +16770,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15945,7 +16789,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -15963,7 +16808,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16019,7 +16865,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16037,7 +16884,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16055,7 +16903,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16073,7 +16922,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16102,7 +16952,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":8,
                     "delay":18,
-                    "length":92
+                    "wordCount":92,
+                    "sentenceCount":3
                 },
                 {
                     "type":"paragraph",
@@ -16124,7 +16975,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16142,7 +16994,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16160,7 +17013,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16178,7 +17032,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16196,7 +17051,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16214,7 +17070,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16232,7 +17089,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16250,7 +17108,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16268,7 +17127,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16286,7 +17146,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16304,7 +17165,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16322,7 +17184,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16378,7 +17241,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16396,7 +17260,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16414,7 +17279,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16451,7 +17317,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16469,7 +17336,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16487,7 +17355,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16505,7 +17374,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16523,7 +17393,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16541,7 +17412,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16559,7 +17431,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16577,7 +17450,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16595,7 +17469,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16613,7 +17488,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16631,7 +17507,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16649,7 +17526,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16667,7 +17545,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16685,7 +17564,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16703,7 +17583,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16721,7 +17602,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16739,7 +17621,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16757,7 +17640,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16794,7 +17678,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16812,7 +17697,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16830,7 +17716,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16848,7 +17735,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16866,7 +17754,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16884,7 +17773,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16902,7 +17792,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16920,7 +17811,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16938,7 +17830,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -16994,7 +17887,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17012,7 +17906,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17030,7 +17925,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17048,7 +17944,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17066,7 +17963,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17084,7 +17982,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17102,7 +18001,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17120,7 +18020,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17138,7 +18039,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17156,7 +18058,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17174,7 +18077,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17192,7 +18096,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17210,7 +18115,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17228,7 +18134,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17265,7 +18172,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17283,7 +18191,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17301,7 +18210,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17319,7 +18229,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17337,7 +18248,8 @@ export default class Viewport extends React.Component {
 
                             },
                             "delay":{
-
+                                "type":null,
+                                "factor":0
                             },
                             "highlight":{
                                 "active":false,
@@ -17366,7 +18278,8 @@ export default class Viewport extends React.Component {
                     ],
                     "index":9,
                     "delay":12,
-                    "length":69
+                    "wordCount":69,
+                    "sentenceCount":4
                 }
             ],
             "delay":188,
@@ -17387,7 +18300,7 @@ export default class Viewport extends React.Component {
 
         // let assetDelay = 0;
         // let sentenceEndingSet = new Set([".", "?", "!", "..."]);
-        // let pauseSet = new Set([",", ";", ":", "\u2014"]); // \u2014 is the em dash
+        // let pauseSet = new Set([",", ";", ":", "\u2014", "—"]); // \u2014 is the em dash
         // let transitionSet = new Set(TransitionWords);
         //
         // for (let asset in assets) {
@@ -17432,6 +18345,171 @@ export default class Viewport extends React.Component {
         //
 
         // console.log(JSON.stringify(doc));
+        //
+
+        // let assets = doc.assets;
+        // let sentenceEndingSet = new Set([".", "?", "!", "..."]);
+        // let pauseSet = new Set([",", ";", ":", "\u2014", "—"]); // \u2014 is the em dash
+        // let transitionSet = new Set(TransitionWords);
+        //
+        // for (let asset in assets) {
+        //     let words = assets[asset].future;
+        //     let refactoredWords = [];
+        //     let x = 0;
+        //     let sentenceCount = 0
+        //     for (let i in words) {
+        //         let word = words[i];
+        //         if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
+        //             sentenceCount += 1;
+        //         }
+        //         if (word.text.includes(" — ")) {
+        //             console.log("index: ", x);
+        //             let word1 = {
+        //                 index: x,
+        //                 text: word.text.split(" — ")[0] + " —",
+        //                 definition: {},
+        //                 highlight: {active: false, color: null},
+        //                 hasBookmark: false,
+        //                 attachments: {}
+        //             };
+        //             let word2 = {
+        //                 index: x+1,
+        //                 text: word.text.split(" — ")[1],
+        //                 definition: {},
+        //                 highlight: {active: false, color: null},
+        //                 hasBookmark: false,
+        //                 attachments: {}
+        //             };
+        //             word1["delay"] = {};
+        //             word2["delay"] = {};
+        //             if (sentenceEndingSet.has(word1.text.charAt(word1.text.length - 1))) {
+        //                 // Sentence Ending
+        //                 word1["delay"] = {type: "ending", factor: 2};
+        //             } else if (pauseSet.has(word1.text.charAt(word1.text.length - 1))) {
+        //                 // Punctuation Pauses
+        //                 word1["delay"] = {type: "pause", factor: 1};
+        //             } else if (transitionSet.has(word1.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //                 // Propositional Integration Word Pause
+        //                 word1["delay"] = {type: "proposition", factor: 1};
+        //             }
+        //
+        //             if (sentenceEndingSet.has(word2.text.charAt(word1.text.length - 1))) {
+        //                 // Sentence Ending
+        //                 word2["delay"] = {type: "ending", factor: 2};
+        //             } else if (pauseSet.has(word2.text.charAt(word2.text.length - 1))) {
+        //                 // Punctuation Pauses
+        //                 word2["delay"] = {type: "pause", factor: 1};
+        //             } else if (transitionSet.has(word2.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //                 // Propositional Integration Word Pause
+        //                 word2["delay"] = {type: "proposition", factor: 1};
+        //             }
+        //             refactoredWords.push(word1);
+        //             refactoredWords.push(word2);
+        //             x += 2;
+        //         } if (word.text.includes(" — ")) {
+        //             console.log("index: ", x);
+        //             let word1 = {
+        //                 index: x,
+        //                 text: word.text.split(" — ")[0] + " —",
+        //                 definition: {},
+        //                 highlight: {active: false, color: null},
+        //                 hasBookmark: false,
+        //                 attachments: {}
+        //             };
+        //             let word2 = {
+        //                 index: x+1,
+        //                 text: word.text.split(" — ")[1],
+        //                 definition: {},
+        //                 highlight: {active: false, color: null},
+        //                 hasBookmark: false,
+        //                 attachments: {}
+        //             };
+        //             word1["delay"] = {};
+        //             word2["delay"] = {};
+        //             if (sentenceEndingSet.has(word1.text.charAt(word1.text.length - 1))) {
+        //                 // Sentence Ending
+        //                 word1["delay"] = {type: "ending", factor: 2};
+        //             } else if (pauseSet.has(word1.text.charAt(word1.text.length - 1))) {
+        //                 // Punctuation Pauses
+        //                 word1["delay"] = {type: "pause", factor: 1};
+        //             } else if (transitionSet.has(word1.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //                 // Propositional Integration Word Pause
+        //                 word1["delay"] = {type: "proposition", factor: 1};
+        //             }
+        //
+        //             if (sentenceEndingSet.has(word2.text.charAt(word1.text.length - 1))) {
+        //                 // Sentence Ending
+        //                 word2["delay"] = {type: "ending", factor: 2};
+        //             } else if (pauseSet.has(word2.text.charAt(word2.text.length - 1))) {
+        //                 // Punctuation Pauses
+        //                 word2["delay"] = {type: "pause", factor: 1};
+        //             } else if (transitionSet.has(word2.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //                 // Propositional Integration Word Pause
+        //                 word2["delay"] = {type: "proposition", factor: 1};
+        //             }
+        //             refactoredWords.push(word1);
+        //             refactoredWords.push(word2);
+        //             x += 2;
+        //         } else if (word.text.includes(" - ")) {
+        //             let word1 = {
+        //                 index: x,
+        //                 text: word.text.split(" - ")[0] + " -",
+        //                 definition: {},
+        //                 highlight: {active: false, color: null},
+        //                 hasBookmark: false,
+        //                 attachments: {}
+        //             };
+        //             let word2 = {
+        //                 index: x+1,
+        //                 text: word.text.split(" - ")[1],
+        //                 definition: {},
+        //                 highlight: {active: false, color: null},
+        //                 hasBookmark: false,
+        //                 attachments: {}
+        //             };
+        //             word1["delay"] = {};
+        //             word2["delay"] = {};
+        //             if (sentenceEndingSet.has(word1.text.charAt(word1.text.length - 1))) {
+        //                 // Sentence Ending
+        //                 word1["delay"] = {type: "ending", factor: 2};
+        //             } else if (pauseSet.has(word1.text.charAt(word1.text.length - 1))) {
+        //                 // Punctuation Pauses
+        //                 word1["delay"] = {type: "pause", factor: 1};
+        //             } else if (transitionSet.has(word1.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //                 // Propositional Integration Word Pause
+        //                 word1["delay"] = {type: "proposition", factor: 1};
+        //             }
+        //
+        //             if (sentenceEndingSet.has(word2.text.charAt(word2.text.length - 1))) {
+        //                 // Sentence Ending
+        //                 word2["delay"] = {type: "ending", factor: 2};
+        //             } else if (pauseSet.has(word2.text.charAt(word2.text.length - 1))) {
+        //                 // Punctuation Pauses
+        //                 word2["delay"] = {type: "pause", factor: 1};
+        //             } else if (transitionSet.has(word2.text.replace(/[,.?!;:]/, '').toLowerCase())) {
+        //                 // Propositional Integration Word Pause
+        //                 word2["delay"] = {type: "proposition", factor: 1};
+        //             }
+        //             refactoredWords.push(word1);
+        //             refactoredWords.push(word2);
+        //             x += 2;
+        //         } else {
+        //             word.index = x;
+        //             refactoredWords.push(word);
+        //             x+=1;
+        //         }
+        //     }
+        //     assets[asset].future = refactoredWords;
+        //     assets[asset].wordCount = assets[asset].length;
+        //     delete assets[asset].length;
+        //     assets[asset].sentenceCount = sentenceCount;
+        // }
+        //
+        // doc.assets = assets;
+        //
+        // console.log(JSON.stringify(doc));
+
+        // Count number of sentences in a paragraph
 
         this.setState({
             doc        : doc
@@ -17616,7 +18694,7 @@ export default class Viewport extends React.Component {
         if (nextProps.readingSpeed != this.props.readingSpeed) {
             let currentAsset = this.state.doc.assets[this.state.assetCurrentIndex];
             let millisecondsInMinute = 60000;
-            let readMinutes = currentAsset.length/nextProps.readingSpeed;
+            let readMinutes = currentAsset.wordCount/nextProps.readingSpeed;
             let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
             let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(3*readMinutes*numFixations));
             let timePerFixation = effectiveMillisecondsInMinute/numFixations; // measured in ms
@@ -17683,7 +18761,7 @@ export default class Viewport extends React.Component {
             if (e.keyCode == 37 || e.keyCode == 38) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.changeReadingSpeed(ScrollDirectionTypes.UP);
+                    this.props.changeReadingSpeed(ScrollDirectionTypes.DOWN);
                 } else {
                     this.updateViewport(ScrollDirectionTypes.UP);
                 }
@@ -17692,7 +18770,7 @@ export default class Viewport extends React.Component {
             } else if (e.keyCode == 39 || e.keyCode == 40) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.changeReadingSpeed(ScrollDirectionTypes.DOWN);
+                    this.props.changeReadingSpeed(ScrollDirectionTypes.UP);
                 } else {
                     this.updateViewport(ScrollDirectionTypes.DOWN);
                 }
@@ -17717,8 +18795,9 @@ export default class Viewport extends React.Component {
             });
         } else if (this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
+            let inverseDirection = direction == ScrollDirectionTypes.UP ? ScrollDirectionTypes.DOWN : ScrollDirectionTypes.UP;
             window.clearTimeout(this.isScrolling);
-            this.props.changeReadingSpeed(direction);
+            this.props.changeReadingSpeed(inverseDirection);
         }
 
         this.setState({
@@ -18092,7 +19171,7 @@ export default class Viewport extends React.Component {
 
         let currentAsset = this.state.doc.assets[this.state.assetCurrentIndex];
         let millisecondsInMinute = 60000;
-        let readMinutes = currentAsset.length/this.props.readingSpeed;
+        let readMinutes = currentAsset.wordCount/this.props.readingSpeed;
         let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
         let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
         let timePerFixation = effectiveMillisecondsInMinute/numFixations + addDelay; // measured in ms
@@ -18202,11 +19281,11 @@ export default class Viewport extends React.Component {
         let completed = this.state.doc.assets[this.state.assetCurrentIndex].history.length +
                             this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow.length +
                             this.state.doc.assets.slice(0, this.state.assetCurrentIndex).reduce((total, asset) => {
-                                return total + asset.length;
+                                return total + asset.wordCount;
                             }, 0);
 
         let totalWords = this.state.doc.assets.reduce((total, asset) => {
-            return total + asset.length;
+            return total + asset.wordCount;
         }, 0);
 
         let progress = completed/totalWords * 100;
