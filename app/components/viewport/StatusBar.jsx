@@ -37,7 +37,7 @@ export default class FunctionBar extends React.Component {
                 <FunctionSystem>
                     <FunctionIcon
                         title={`Words per Minute`}
-                        icon={this.props.skin == SkinTypes.WHITE ?
+                        icon={this.props.skin == SkinTypes.LIGHT ?
                                     `url(${SpeedPurple})`
                                 :
                                     this.props.skin == SkinTypes.CREAM ?
@@ -51,7 +51,7 @@ export default class FunctionBar extends React.Component {
                 <FunctionIcon
                     title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
                     icon={!this.props.showAnnotations ?
-                        this.props.skin == SkinTypes.WHITE ?
+                        this.props.skin == SkinTypes.LIGHT ?
                             `url(${NoAnnotationsPurple})`
                         :
                             this.props.skin == SkinTypes.CREAM ?
@@ -59,7 +59,7 @@ export default class FunctionBar extends React.Component {
                                 :
                                     `url(${NoAnnotationsLightPurple})`
                     :
-                        this.props.skin == SkinTypes.WHITE ?
+                        this.props.skin == SkinTypes.LIGHT ?
                                 `url(${NoAnnotationsGray})`
                             :
                                 this.props.skin == SkinTypes.CREAM ?
@@ -69,7 +69,7 @@ export default class FunctionBar extends React.Component {
                 <FunctionIcon
                     title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.cruiseControlHaltIsActive ?
-                            this.props.skin == SkinTypes.WHITE ?
+                            this.props.skin == SkinTypes.LIGHT ?
                                         `url(${PausePurple})`
                                     :
                                         this.props.skin == SkinTypes.CREAM ?
@@ -77,7 +77,7 @@ export default class FunctionBar extends React.Component {
                                             :
                                                 `url(${PauseLightPurple})`
                         :
-                            this.props.skin == SkinTypes.WHITE ?
+                            this.props.skin == SkinTypes.LIGHT ?
                                         `url(${PauseGray})`
                                     :
                                         this.props.skin == SkinTypes.CREAM ?
@@ -145,7 +145,7 @@ const FunctionText = styled.h3`
     display: inline-block;
     font-size: 0.9em;
     margin: 0;
-    color: ${props => props.skin == SkinTypes.WHITE ?
+    color: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.darkGray
             :
                 props.skin == SkinTypes.CREAM ?

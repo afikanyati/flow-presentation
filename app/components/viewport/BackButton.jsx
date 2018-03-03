@@ -5,6 +5,7 @@ import styled           from 'styled-components';
 
 // Components
 import FeatureTypes     from '../../constants/featureTypes';
+import SkinTypes        from '../../constants/skinTypes';
 import BackRed          from '../../assets/images/icons/back-red.svg';
 import BackPurple       from '../../assets/images/icons/back-purple.svg'
 import BackBlue         from '../../assets/images/icons/back-blue.svg'
@@ -29,6 +30,7 @@ export default class BackButton extends React.Component {
     render() {
         return (
             <BackButtonContainer
+                skin={this.props.skin}
                 onClick={this.props.backFunction.bind({}, this.props.activeFeature)}
                 active={this.props.activeFeature == FeatureTypes.BOOKMARK}>
                 <BackButtonIcon
@@ -51,6 +53,7 @@ export default class BackButton extends React.Component {
 // ============= PropTypes ==============
 
 BackButton.propTypes = {
+    skin: PropTypes.string.isRequired,
     activeFeature: PropTypes.string,
     backFunction: PropTypes.func
 };
@@ -66,7 +69,11 @@ const BackButtonContainer = styled.div`
     height: 60px;
     border-radius: 30px;
     background: ${props => props.theme.black};
-    box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: ${props => props.skin == SkinTypes.DARK ?
+            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+        :
+            "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
+    };
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
 
     @media (max-width: 480px) and (max-height: 480px) {
@@ -76,7 +83,11 @@ const BackButtonContainer = styled.div`
     }
 
     &:hover {
-        box-shadow: 0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12);
+        box-shadow: ${props => props.skin == SkinTypes.DARK ?
+                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+            :
+                "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
+        };
     }
 `;
 

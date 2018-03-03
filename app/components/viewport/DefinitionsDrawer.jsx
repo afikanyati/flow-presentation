@@ -2,6 +2,7 @@
 import React        from 'react';
 import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
+import uuid         from 'uuid';
 
 // Components
 import FontTypes                from '../../constants/fontTypes';
@@ -15,9 +16,6 @@ export default class DefinitionsDrawer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            open: false
-        }
     }
 
     componentWillMount() {
@@ -25,100 +23,60 @@ export default class DefinitionsDrawer extends React.Component {
     }
 
     render() {
+        let numColumns = Math.ceil(this.props.fixationWords.length/2);
+
         return (
             <DefinitionsContainer
-                open={this.state.open}
+                open={this.props.drawerIsOpen}
                 skin={this.props.skin}
-                fontFamily={FontTypes.ADOBE_GARAMOND}>
+                fontFamily={FontTypes.ADOBE_GARAMOND}
+                columns={`repeat(${numColumns}, 1fr)`}>
                 <DefinitionsStub
                     skin={this.props.skin}
                     icon={`url(${DefinitionsWhite})`}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                    customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple}
-                    onClick={this.toggleDrawer}/>
-                <Definition>
-                    <Term>
-                        most
-                    </Term>
-                    <PartOfSpeech
-                        fontFamily={FontTypes.ADOBE_GARAMOND}>
-                        pronoun
-                    </PartOfSpeech>
-                    <Description>
-                        1. superlative of many, much.
-                    </Description>
-                    <More
-                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                        customCursor={this.props.skin == SkinTypes.NIGHT ?
-                                PauseLightPurple
-                            :
-                                PausePurple}>
-                        more
-                    </More>
-                </Definition>
-                <Definition>
-                    <Term>
-                        going
-                    </Term>
-                    <PartOfSpeech
-                        fontFamily={FontTypes.ADOBE_GARAMOND}>
-                        noun
-                    </PartOfSpeech>
-                    <Description>
-                        1. an act or instance of leaving a place; a departure.
-                    </Description>
-                    <More
-                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                        customCursor={this.props.skin == SkinTypes.NIGHT ?
-                                PauseLightPurple
-                            :
-                                PausePurple}>
-                        more
-                    </More>
-                </Definition>
-                <Definition>
-                    <Term>
-                        likely
-                    </Term>
-                    <PartOfSpeech
-                        fontFamily={FontTypes.ADOBE_GARAMOND}>
-                        adjective
-                    </PartOfSpeech>
-                    <Description>
-                        1. such as well might happen or be true; probable.
-                    </Description>
-                    <More
-                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                        customCursor={this.props.skin == SkinTypes.NIGHT ?
-                                PauseLightPurple
-                            :
-                                PausePurple}>
-                        more
-                    </More>
-                </Definition>
-                <Definition>
-                    <Term>
-                        to
-                    </Term>
-                    <PartOfSpeech
-                        fontFamily={FontTypes.ADOBE_GARAMOND}>
-                        preposition
-                    </PartOfSpeech>
-                    <Description>
-                        1.expressing motion in the direction of (a particular location).
-                    </Description>
-                    <More
-                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                        customCursor={this.props.skin == SkinTypes.NIGHT ?
-                                PauseLightPurple
-                            :
-                                PausePurple}>
-                        more
-                    </More>
-                </Definition>
+                    onClick={this.props.toggleDrawer}/>
+                    {this.props.fixationWords.map(word => {
+                        return (
+                            <Definition key={uuid.v4()}>
+                                <Term>
+                                    {word.definition.word ?
+                                            word.definition.word
+                                        :
+                                            word.text.toLowerCase()}
+                                </Term>
+                                <PartOfSpeech
+                                    fontFamily={FontTypes.ADOBE_GARAMOND}>
+                                    {word.definition.results ?
+                                            word.definition.results[0].partOfSpeech
+                                        :
+                                            ""}
+                                </PartOfSpeech>
+                                <Description>
+                                    {word.definition.results ?
+                                            `1. ${word.definition.results[0].definition.length > 170 ? word.definition.results[0].definition.slice(0, 170) + "..." : word.definition.results[0].definition}.`
+                                        :
+                                            "unavailable"}
+                                </Description>
+                                {word.definition.results && word.definition.results.length > 1 ?
+                                    <More
+                                        cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                                        customCursor={this.props.skin == SkinTypes.DARK ?
+                                                PauseLightPurple
+                                            :
+                                                PausePurple}>
+                                        more
+                                    </More>
+                                    :
+                                    null
+                                }
+                            </Definition>
+                        );
+                    })}
             </DefinitionsContainer>
         );
     }
@@ -128,13 +86,6 @@ export default class DefinitionsDrawer extends React.Component {
     }
 
     // ========== Methods ===========
-
-    toggleDrawer = (e) => {
-        e.stopPropagation();
-        this.setState({
-            open: !this.state.open
-        });
-    }
 }
 
 // ============= PropTypes ==============
@@ -142,12 +93,18 @@ export default class DefinitionsDrawer extends React.Component {
 DefinitionsDrawer.propTypes = {
     fixationWords: PropTypes.array.isRequired,
     skin: PropTypes.string.isRequired,
-    cruiseControlHaltIsActive: PropTypes.bool.isRequired
+    cruiseControlHaltIsActive: PropTypes.bool.isRequired,
+    toggleDrawer: PropTypes.func.isRequired,
+    drawerIsOpen: PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============
 
 const DefinitionsContainer = styled.section`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: ${props => props.columns};
+	grid-gap: 0px 0px;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -155,7 +112,7 @@ const DefinitionsContainer = styled.section`
     padding: 20px 110px;
     padding-top: 50px;
     font-family: ${props => props.fontFamily.regular};
-    background: ${props => props.skin == SkinTypes.WHITE ?
+    background: ${props => props.skin == SkinTypes.LIGHT ?
                 "#ffffff"
             :
                 props.skin == SkinTypes.CREAM ?
@@ -163,7 +120,11 @@ const DefinitionsContainer = styled.section`
                     :
                         "#171717"
             };
-    box-shadow: 0px -10px 20px 1px rgba(0,0,0,.15);
+    box-shadow: ${props => props.skin == SkinTypes.DARK ?
+            "0px -10px 20px 1px rgba(181,210,236,.15)"
+        :
+            "0px -10px 20px 1px rgba(0,0,0,.15)"
+    };
     z-index: 5;
     transition: all 0.2s ease-in-out;
     transform: ${props => props.open ? "translateY(0%)" : "translateY(calc(100% - 3vh - 30px))"};
@@ -177,7 +138,7 @@ const DefinitionsStub = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background-color: ${props => props.skin == SkinTypes.NIGHT ?
+    background-color: ${props => props.skin == SkinTypes.DARK ?
                 props.theme.darkGray
             :
                 props.theme.lightGray
@@ -188,7 +149,11 @@ const DefinitionsStub = styled.div`
     background-size: 35px 35px;
     background-repeat: no-repeat;
     transition: background-image 0.3s;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.20);
+    box-shadow: ${props => props.skin == SkinTypes.DARK ?
+            "0 1px 5px 0 rgba(181,210,236,.20)"
+        :
+            "0 1px 5px 0 rgba(0,0,0,.20)"
+    };
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     transition        : all 0.3s;
     -webkit-transition: all 0.3s;
@@ -197,12 +162,12 @@ const DefinitionsStub = styled.div`
 
     &:hover {
         background-color: ${props => !props.cruiseControlHaltIsActive ?
-                props => props.skin == SkinTypes.WHITE ?
+                props => props.skin == SkinTypes.LIGHT ?
                         props.theme.lightBlue
                     :
                         props.theme.darkBlue
             :
-                props => props.skin == SkinTypes.NIGHT ?
+                props => props.skin == SkinTypes.DARK ?
                             props.theme.darkGray
                         :
                             props.theme.lightGray};
@@ -213,7 +178,7 @@ const Definition = styled.div`
     display: inline-block;
     padding: 10px 25px;
     margin-bottom: 0;
-    width: 50%;
+    width: 100%;
 `;
 
 const Term = styled.h3`

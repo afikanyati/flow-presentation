@@ -60,7 +60,7 @@ const Meter = styled.div`
     height: 6px;
     border-radius: 3px;
     margin: 0;
-    background: ${props => props.skin == SkinTypes.WHITE ?
+    background: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.lightGray
             :
                 props.skin == SkinTypes.CREAM ?
@@ -74,7 +74,7 @@ const Meter = styled.div`
 const Indicator = styled.div`
     margin: 0;
     padding: 0;
-    background: ${props => props.skin == SkinTypes.WHITE ?
+    background: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.blue
             :
                 props.theme.darkBlue

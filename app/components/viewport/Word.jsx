@@ -28,32 +28,32 @@ export default class Word extends React.Component {
         return (
             <TextContainer
                 hasBookmark={this.props.word.hasBookmark}
-                hasAttachment={Object.keys(this.props.word.attachments).length != 0}
+                hasAttachment={this.props.word.attachments && Object.keys(this.props.word.attachments).length != 0}
                 inFixationWindow={this.props.inFixationWindow}
                 showAnnotations={this.props.showAnnotations}
             >
                 <AttachmentIcon
                     src={AttachmentFilled}
-                    hasAttachment={Object.keys(this.props.word.attachments).length != 0}
+                    hasAttachment={this.props.word.attachments && Object.keys(this.props.word.attachments).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     showAnnotations={this.props.showAnnotations}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                    customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple} />
                 <Text
                     skin={this.props.skin}
-                    italic        ={this.props.italic}
-                    bold          ={this.props.bold}
+                    italic        ={this.props.word.italic}
+                    bold          ={this.props.word.bold}
                     highlight ={this.props.word.highlight}
                     hasBookmark={this.props.word.hasBookmark}
-                    hasAttachment={Object.keys(this.props.word.attachments).length != 0}
+                    hasAttachment={this.props.word.attachments && Object.keys(this.props.word.attachments).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
                     showAnnotations={this.props.showAnnotations}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                    customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple}
@@ -66,7 +66,7 @@ export default class Word extends React.Component {
                     inFixationWindow={this.props.inFixationWindow}
                     showAnnotations={this.props.showAnnotations}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                    customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple} />
@@ -87,8 +87,6 @@ export default class Word extends React.Component {
 Word.propTypes = {
     paragraph          : PropTypes.number.isRequired,
     word               : PropTypes.object.isRequired,
-    italic             : PropTypes.bool,
-    bold               : PropTypes.bool,
     skipToWord         : PropTypes.func.isRequired,
     fontFamily         : PropTypes.object.isRequired,
     inFixationWindow   : PropTypes.bool.isRequired,
@@ -137,7 +135,7 @@ const Text = styled.span`
             :
                 400
     };
-    color: ${props => props.showAnnotations && props.highlight.active && props.skin == SkinTypes.NIGHT ? props.theme.white : "inherit"};
+    color: ${props => props.showAnnotations && props.highlight.active && props.skin == SkinTypes.DARK ? props.theme.white : "inherit"};
     margin     : 0;
     cursor     : ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     display    : inline-block;
@@ -150,7 +148,7 @@ const Text = styled.span`
 
     &:hover {
         color: ${props => !props.cruiseControlHaltIsActive ?
-                    props.skin == SkinTypes.WHITE ?
+                    props.skin == SkinTypes.LIGHT ?
                             props.highlight.color == HighlightTypes.PURPLE ?
                                 props.theme.yellow
                             :

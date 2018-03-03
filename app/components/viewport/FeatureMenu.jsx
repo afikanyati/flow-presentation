@@ -274,7 +274,7 @@ export default class FeatureMenu extends React.Component {
                         :
                             this.state.features[this.state.activeFeature].color}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                    customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple}
@@ -315,7 +315,7 @@ export default class FeatureMenu extends React.Component {
                                   skin={this.props.skin}
                                   icon={`url(${feature.icon.color})`}
                                   cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                                  customCursor={this.props.skin == SkinTypes.NIGHT ?
+                                  customCursor={this.props.skin == SkinTypes.DARK ?
                                           PauseLightPurple
                                       :
                                           PausePurple} />
@@ -324,6 +324,7 @@ export default class FeatureMenu extends React.Component {
                   })}
               </MenuItems>
                 <BackButton
+                    skin={this.props.skin}
                     activeFeature={this.state.activeFeature}
                     backFunction={this.deactivateFeature}/>
             </Menu>
@@ -621,7 +622,7 @@ const InnerMenuItem = styled.button`
     width: 60px;
     height: 60px;
     background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT || props.activeFeature == FeatureTypes.HIGHLIGHT ?
-            props => props.skin == SkinTypes.WHITE ?
+            props => props.skin == SkinTypes.LIGHT ?
                         props.theme[props.color.white]
                     :
                         props.skin == SkinTypes.CREAM ?
@@ -629,13 +630,17 @@ const InnerMenuItem = styled.button`
                             :
                                 props.theme[props.color.night]
         :
-            props => props.skin == SkinTypes.NIGHT ?
+            props => props.skin == SkinTypes.DARK ?
                         props.theme.darkGray
                     :
                         props.theme.lightGray};
     border-radius: 30px;
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
-    box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: ${props => props.skin == SkinTypes.DARK ?
+            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+        :
+            "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
+    };
     transition: box-shadow 0.15s;
     background-image: ${props => props.icon};
     background-position: 50%;
@@ -647,7 +652,11 @@ const InnerMenuItem = styled.button`
     }
 
     &:hover {
-        box-shadow: 0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12);
+        box-shadow: ${props => props.skin == SkinTypes.DARK ?
+                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+            :
+                "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
+        };
     }
 `;
 
@@ -659,7 +668,7 @@ const MenuToggle = styled.button`
     padding: 0;
     width: 60px;
     height: 60px;
-    background-color: ${props => props.skin == SkinTypes.WHITE ?
+    background-color: ${props => props.skin == SkinTypes.LIGHT ?
                             props.activeFeature == FeatureTypes.HIGHLIGHT ?
                                 props.highlightIsActive ?
                                     props.theme[props.highlightColor]
@@ -703,7 +712,11 @@ const MenuToggle = styled.button`
                                     :
                                         props.theme[props.color.night]
     };
-    box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: ${props => props.skin == SkinTypes.DARK ?
+            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+        :
+            "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
+    };
     border-radius: 30px;
     transition: box-shadow 0.15s, background-color 0.3s;
     /* reset some browser defaults */
@@ -712,7 +725,11 @@ const MenuToggle = styled.button`
     appearance: none;
 
     &:hover {
-        box-shadow: 0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12);
+        box-shadow: ${props => props.skin == SkinTypes.DARK ?
+                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+            :
+                "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
+        };
     }
 
     @media (max-width: 480px) and (max-height: 480px) {
@@ -736,12 +753,12 @@ const ToggleIcon = styled.div`
 const Tooltip = styled.h2`
     text-align: center;
     padding: 10px 15px;
-    background: ${props => props.skin == SkinTypes.NIGHT ?
+    background: ${props => props.skin == SkinTypes.DARK ?
                 props.theme.lightGray
             :
                 props.theme.darkGray};
     border-radius: 18px;
-    color: ${props => props.skin == SkinTypes.NIGHT ?
+    color: ${props => props.skin == SkinTypes.DARK ?
                 props.theme.black
             :
                 props.theme.white};

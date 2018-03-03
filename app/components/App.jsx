@@ -43,9 +43,10 @@ export default class Root extends React.Component {
             fontFamily     : FontTypes.ADOBE_GARAMOND,
             fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
             trackingSpeed  : 12,
-            skin           : SkinTypes.WHITE,
+            skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
-            readingSpeed   : 220, //WPM --> Method to save reading speed if edited
+            readingSpeed   : 250, //WPM --> Method to save reading speed if edited
+            doc: {}
         };
     }
 
@@ -61,7 +62,7 @@ export default class Root extends React.Component {
 
         if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
             this.setState({
-                skin: SkinTypes.NIGHT
+                skin: SkinTypes.DARK
             });
         }
     }
@@ -69,6 +70,7 @@ export default class Root extends React.Component {
     render() {
         return(
             <Viewport
+                doc                ={this.state.doc}
                 fontSize             ={this.state.fontSize}
                 fontFamily           ={this.state.fontFamily}
                 fixationWidth        ={this.state.fixationWidth}
@@ -85,6 +87,18 @@ export default class Root extends React.Component {
     componentDidMount() {
         // console.log("++++++Root");
         window.addEventListener("resize", this.rerender);
+        firebase.database().ref('/document').once('value', (snapshot) => {
+            let doc = snapshot.val();
+            doc.assets.forEach((ele) => {
+                ele["history"] = [];
+                ele["fixationWindow"] = [];
+            });
+
+            // Set feed to state
+            this.setState({
+                doc: doc
+            });
+        });
     }
 
     componentWillUnmount() {

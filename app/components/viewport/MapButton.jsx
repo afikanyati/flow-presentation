@@ -33,7 +33,7 @@ export default class MapButton extends React.Component {
                 <MapButtonIcon
                     icon={`url(${MapWhite})`}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                    customCursor={this.props.skin == SkinTypes.NIGHT ?
+                    customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple}/>
@@ -71,12 +71,16 @@ const MapButtonContainer = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 30px;
-    background: ${props => props.skin == SkinTypes.NIGHT ?
+    background: ${props => props.skin == SkinTypes.DARK ?
                 props.theme.darkGray
             :
                 props.theme.lightGray
             };
-    box-shadow: 0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: ${props => props.skin == SkinTypes.DARK ?
+            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+        :
+            "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
+    };
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
     z-index: 10;
 
@@ -87,7 +91,11 @@ const MapButtonContainer = styled.div`
     }
 
     &:hover {
-        box-shadow: 0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12);
+        box-shadow: ${props => props.skin == SkinTypes.DARK ?
+                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+            :
+                "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
+        };
     }
 `;
 
