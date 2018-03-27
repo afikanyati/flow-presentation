@@ -43,7 +43,8 @@ export default class Viewport extends React.Component {
             highlightColor           : null,
             drawerIsOpen             : false,
             docLoaded                : false,
-            numLineChars               : 30
+            numLineChars             : 30,
+            numPageParagraphs        : 3
         }
     }
 
@@ -420,7 +421,6 @@ export default class Viewport extends React.Component {
             && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount) {
             // We have hit end of current asset
             // Load next one
-
             if (this.state.highlightIsActive) {
                 let start = {
                     asset: this.state.docPosition.asset,
@@ -467,8 +467,10 @@ export default class Viewport extends React.Component {
             nextSentence = this.state.docPosition.fixation[0] == 0 ? this.state.docPosition.sentence - 1 : this.state.docPosition.sentence;
 
             // Constrain Fixation Words to Window
-            while (this.countChars(nextSentence, nextFixation) > this.state.numLineChars) {
-                nextFixation[0] += 1;
+            while (this.countChars(nextSentence, nextFixation) >= this.state.numLineChars) {
+                nextFixation = update(nextFixation, {
+                    0: {$set: nextFixation[1] + 1}
+                });
             }
         } else {
             // Scroll Direction Down
@@ -488,12 +490,14 @@ export default class Viewport extends React.Component {
                 this.toggleWordHighlight(start, end);
             }
 
-            nextFixation = this.state.docPosition.fixation[1] == currentSentence.wordCount ? [0, this.props.fixationWidth] : [this.state.docPosition.fixation[0] + this.props.fixationWidth, Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
+            nextFixation = this.state.docPosition.fixation[1] == currentSentence.wordCount ? [0, this.props.fixationWidth] : [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
             nextSentence = this.state.docPosition.fixation[1] == currentSentence.wordCount ? this.state.docPosition.sentence + 1 : this.state.docPosition.sentence;
 
             // Constrain Fixation Words to Window
-            while (this.countChars(nextSentence, nextFixation) > this.state.numLineChars) {
-                nextFixation[1] -= 1;
+            while (this.countChars(nextSentence, nextFixation) >= this.state.numLineChars) {
+                nextFixation = update(nextFixation, {
+                    1: {$set: nextFixation[1] - 1}
+                });
             }
         }
 
@@ -769,11 +773,13 @@ export default class Viewport extends React.Component {
             this.toggleWordHighlight(start, end);
         }
 
-        const nextFixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
+        let nextFixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
 
         // Constrain Fixation Words to Window
-        while (this.countChars(word.index.sentence, nextFixation) > this.state.numLineChars) {
-            nextFixation[1] -= 1;
+        while (this.countChars(word.index.sentence, nextFixation) >= this.state.numLineChars) {
+            nextFixation = update(nextFixation, {
+                1: {$set: nextFixation[1] - 1}
+            });
         }
 
         const docPosition = update(this.state.docPosition, {

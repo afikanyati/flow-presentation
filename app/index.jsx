@@ -33,7 +33,7 @@ const theme = {
     lightGray: '#f0f0f0',
     gray: '#e0e1e0',
     darkGray: '#252625',
-    black: '#000000',
+    black: '#252625',
     textColor: 'rgba(35,31,32, 0.87)'
 }
 
