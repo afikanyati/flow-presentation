@@ -124,7 +124,6 @@ export default class Viewport extends React.Component {
         let progress = this.getProgress();
         let history = this.getCurrentAssetHistory();
         let fixationWindow = this.getFixationWindow();
-        //console.log("Fixation Window: ", fixationWindow);
         let future = this.getCurrentAssetFuture();
         let doc = {...this.state.doc};
         return (
@@ -402,7 +401,7 @@ export default class Viewport extends React.Component {
                 this.toggleWordHighlight(start, end);
             }
 
-            this.loadEndAsset(this.state.docPosition.asset - 1);
+            this.loadAsset("end", this.state.docPosition.asset - 1);
             return;
         } else if (direction == ScrollDirectionTypes.UP
             && this.state.docPosition.sentence == 0
@@ -434,7 +433,7 @@ export default class Viewport extends React.Component {
                 this.toggleWordHighlight(start, end);
             }
 
-            this.loadStartAsset(this.state.docPosition.asset + 1);
+            this.loadAsset("start", this.state.docPosition.asset + 1);
             return;
         }
 
@@ -489,8 +488,6 @@ export default class Viewport extends React.Component {
             fixation: {$set: nextFixation}
         });
 
-        //console.log("Doc Position: ", docPosition);
-
         this.setState({
             scroll: 0,
             docPosition: docPosition
@@ -544,27 +541,25 @@ export default class Viewport extends React.Component {
      */
     getCurrentAssetHistory = () => {
         const sentences = [...this.state.doc.assets[this.state.docPosition.asset].sentences];
-        //console.log("sentences: ", sentences);
         const completedSentences = sentences.slice(0, Math.max(0, this.state.docPosition.sentence));
-        //console.log("Complete Sentences: ", completedSentences);
+
         let wordCount = completedSentences.reduce((total, sentence)=> {
             return total + sentence.wordCount;
         }, 0);
-        //console.log("wordCount: ", wordCount);
+
         const incompleteSentence = {...sentences[this.state.docPosition.sentence]};
         const incompleteSentenceWords = incompleteSentence.words.filter((word) => {
             return word.index.word < this.state.docPosition.fixation[0];
         });
-        //console.log("IncompleteSentenceWords: ", incompleteSentenceWords);
+
         wordCount += incompleteSentenceWords.length;
-        //console.log("wordCount: ", wordCount);
+
         const currentSentenceHistory = update(incompleteSentence, {
             words: {$set: incompleteSentenceWords}
         });
-        //console.log("currentSentenceHistory: ", currentSentenceCompleted);
+
         const sentenceHistory = completedSentences.concat(currentSentenceHistory);
-        //console.log("sentenceCount: ", sentenceHistory.length);
-        //console.log("sentenceHistory: ", sentenceHistory);
+
         return update(this.state.doc.assets[this.state.docPosition.asset], {
             sentences: {$set: sentenceHistory},
             sentenceCount: {$set: sentenceHistory.length},
@@ -575,7 +570,6 @@ export default class Viewport extends React.Component {
     getFixationWindow = () => {
         const currentSentence = {...this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence]};
         const fixationWords = currentSentence.words.slice(this.state.docPosition.fixation[0], this.state.docPosition.fixation[this.state.docPosition.fixation.length - 1]);
-        //console.log("Fixation Words: ", fixationWords);
         return fixationWords;
     }
 
@@ -584,27 +578,20 @@ export default class Viewport extends React.Component {
      */
     getCurrentAssetFuture = () => {
         const sentences = [...this.state.doc.assets[this.state.docPosition.asset].sentences];
-        //console.log("sentences: ", sentences);
         const currentSentence = {...sentences[this.state.docPosition.sentence]};
         const currentSentenceWords = currentSentence.words.filter((word) => {
             return word.index.word >= this.state.docPosition.fixation[1];
         });
-        //console.log("currentSentenceWords: ", currentSentenceWords);
         let wordCount = currentSentenceWords.length;
-        //console.log("wordCount: ", wordCount);
         const currentSentenceFuture = update(currentSentence, {
             words: {$set: currentSentenceWords}
         });
-        //console.log("currentSentenceFuture: ", currentSentenceFuture);
         const futureSentences = sentences.slice(this.state.docPosition.sentence + 1, Math.max(this.state.docPosition.sentence + 1, this.state.doc.assets[this.state.docPosition.asset].sentenceCount));
-        //console.log("Future Sentences: ", futureSentences);
         wordCount += futureSentences.reduce((total, sentence)=> {
             return total + sentence.wordCount;
         }, 0);
-        //console.log("wordCount: ", wordCount);
         const sentenceFuture = [currentSentenceFuture].concat(futureSentences);
-        //console.log("sentenceCount: ", sentenceFuture.length);
-        //console.log("sentenceFuture: ", sentenceFuture);
+
         return update(this.state.doc.assets[this.state.docPosition.asset], {
             sentences: {$set: sentenceFuture},
             sentenceCount: {$set: sentenceFuture.length},
@@ -622,7 +609,6 @@ export default class Viewport extends React.Component {
 
         if (word.index.paragraph > this.state.docPosition.asset) {
             // Skip ahead
-            console.log("Skip Ahead Paragraph");
             // Highlight if active, toggle highlight
             if (this.state.highlightIsActive) {
                 let start = {
@@ -645,7 +631,6 @@ export default class Viewport extends React.Component {
                 let numIntermediateAssets = word.index.paragraph - this.state.docPosition.asset;
 
                 if (numIntermediateAssets > 1) {
-                    console.log("Intermediates: ", numIntermediateAssets);
                     for (let i = this.state.docPosition.asset; i < word.index.paragraph; i++) {
                         asset = this.state.doc.assets[i];
                         start = {
@@ -665,7 +650,6 @@ export default class Viewport extends React.Component {
             }
         } else if (word.index.paragraph < this.state.docPosition.asset) {
             // Skip back
-            console.log("Skip Back Paragraph");
             // Highlight if active, toggle highlight
             if (this.state.highlightIsActive) {
                 let start = {
@@ -687,7 +671,6 @@ export default class Viewport extends React.Component {
                 let numIntermediateAssets = this.state.docPosition.asset - word.index.paragraph;
 
                 if (numIntermediateAssets > 1) {
-                    console.log("Intermediates: ", numIntermediateAssets);
                     for (let i = word.index.paragraph; i < this.state.docPosition.asset; i++) {
                         asset = this.state.doc.assets[i];
                         start = {
@@ -709,7 +692,6 @@ export default class Viewport extends React.Component {
 
         // Highlight remaining words in new asset or currentAsset
         if (this.state.highlightIsActive && word.index.paragraph > this.state.docPosition.asset) {
-            console.log("Progression Continued");
             // Progression
             let start = {
                 asset: word.index.paragraph,
@@ -725,7 +707,6 @@ export default class Viewport extends React.Component {
 
             this.toggleWordHighlight(start, end);
         } else if (this.state.highlightIsActive && word.index.paragraph < this.state.docPosition.asset) {
-            console.log("Regression Continued");
             // Regression
             let start = {
                 asset: word.index.paragraph,
@@ -744,7 +725,6 @@ export default class Viewport extends React.Component {
 
             this.toggleWordHighlight(start, end);
         } else if (this.state.highlightIsActive) {
-            console.log("Same Asset");
             // Same Asset
             let startWord, endWord;
 
@@ -788,32 +768,25 @@ export default class Viewport extends React.Component {
         });
     }
 
-    loadStartAsset = (index) => {
-        console.log("Load Start Asset");
-        let fixation = [0, this.props.fixationWidth];
+    loadAsset = (type, index) => {
+        let fixation, docPosition;
 
-        const docPosition = update(this.state.docPosition, {
-            asset: {$set: index},
-            sentence: {$set: 0},
-            fixation: {$set: fixation}
-        });
-
-        this.setState({
-            scroll : 0,
-            docPosition: docPosition
-        });
-    }
-
-    loadEndAsset = (index) => {
-        console.log("Load End Asset");
-        let lastSentence = this.state.doc.assets[index].sentences[this.state.doc.assets[index].sentenceCount - 1];
-        let fixation = [lastSentence.wordCount - this.props.fixationWidth, lastSentence.wordCount];
-
-        const docPosition = update(this.state.docPosition, {
-            asset: {$set: index},
-            sentence: {$set: lastSentence.index.sentence},
-            fixation: {$set: fixation}
-        });
+        if (type === "start") {
+            fixation = [0, this.props.fixationWidth];
+            docPosition = update(this.state.docPosition, {
+                asset: {$set: index},
+                sentence: {$set: 0},
+                fixation: {$set: fixation}
+            });
+        } else {
+            let lastSentence = this.state.doc.assets[index].sentences[this.state.doc.assets[index].sentenceCount - 1];
+            fixation = [lastSentence.wordCount - this.props.fixationWidth, lastSentence.wordCount];
+            docPosition = update(this.state.docPosition, {
+                asset: {$set: index},
+                sentence: {$set: lastSentence.index.sentence},
+                fixation: {$set: fixation}
+            });
+        }
 
         this.setState({
             scroll : 0,
@@ -822,8 +795,6 @@ export default class Viewport extends React.Component {
     }
 
     toggleWordHighlight = (start, end) => {
-        console.log("Start: ", start);
-        console.log("End: ", end);
         let toggle = (sentence, i) => {
             if (!sentence.words[i].highlight.active) {
                 sentence.words[i].highlight.active = true;
@@ -838,14 +809,12 @@ export default class Viewport extends React.Component {
 
         if (start.sentence == end.sentence) {
             // Highlight: Single Sentence
-            console.log("Highlight: Single Sentence");
             let sentence = sentences[start.sentence];
             for (let i = start.word; i < end.word; i++) {
                 toggle(sentence, i);
             }
         } else if (end.sentence > start.sentence && end.sentence - start.sentence > 1) {
             // Highlight: Partial start, full middle, partial end
-            console.log("Highlight: Partial start, full middle ones, partial end");
             let initialSentence = sentences[start.sentence];
             for (let i = start.word; i < initialSentence.wordCount; i++) {
                 toggle(initialSentence, i);
@@ -865,7 +834,6 @@ export default class Viewport extends React.Component {
             }
         } else if (end.sentence > start.sentence && end.sentence - start.sentence == 1) {
             // Highlight: Partial Start, Partial End
-            console.log("Highlight: Partial Start, Partial End");
             let initialSentence = sentences[start.sentence];
             for (let i = start.word; i < initialSentence.wordCount; i++) {
                 toggle(initialSentence, i);
@@ -875,9 +843,6 @@ export default class Viewport extends React.Component {
             for (let i = 0; i < end.word; i++) {
                 toggle(finalSentence, i);
             }
-        } else {
-            // Highlight: Something went wrong
-            console.log("Highlight: Something went wrong");
         }
     }
 
@@ -946,14 +911,12 @@ export default class Viewport extends React.Component {
      * @param {[type]} addDelay in milliseconds
      */
     setTimePerFixation = (addDelay) => {
-        //console.log("setTimePerFixation Delay: ", addDelay);
         let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
         let millisecondsInMinute = 60000;
         let readMinutes = currentAsset.wordCount/this.props.readingSpeed;
         let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
         let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
         let timePerFixation = effectiveMillisecondsInMinute/numFixations + addDelay; // measured in ms
-        //console.log("setTimePerFixation Length: ", timePerFixation);
         this.setState({
             timePerFixation: timePerFixation
         });
@@ -967,7 +930,6 @@ export default class Viewport extends React.Component {
      * @param  {[type]} oncomplete [description]
      */
     doTimer = (length, resolution, oninstance, oncomplete) => {
-        //console.log("doTimer");
         let steps = (length / 100) * (resolution / 10),
             speed = length / steps,
             count = 0,
@@ -996,7 +958,6 @@ export default class Viewport extends React.Component {
         // Runs fully once per doTimer
         // Only checks end of sentence for punctiation currently
         if (this.state.checkAddDelay) {
-            //console.log("CheckAddDelay");
             let currentSentence = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
             let futureFixationAssetIndex = futureFixationSentenceIndex = this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
                 && this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
@@ -1014,20 +975,17 @@ export default class Viewport extends React.Component {
                 [0, this.props.fixationWidth]
             :
                 [Math.min(this.state.docPosition.fixation[0] + this.props.fixationWidth, currentSentence.wordCount), Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
-            //console.log("futureFixation: ", futureFixationWords);
-            //console.log("range: ", this.range(futureFixationWords[0], futureFixationWords[1]));
+
             // Determine if need to add time
             this.range(futureFixationWords[0], futureFixationWords[1]).forEach((index) => {
                 let word = this.state.doc.assets[futureFixationAssetIndex].sentences[futureFixationSentenceIndex].words[index];
                 if (word.delay && Object.keys(word.delay).length > 0) {
-                    console.log("Delay Type: ", word.delay.type);
                     addDelay += word.delay.factor * this.state.timePerFixation/3;
                 }
             });
 
             if (this.state.docPosition.sentence + 1 == this.state.doc.assets[futureFixationAssetIndex].sentenceCount
                 && futureFixationWords[1] == this.state.doc.assets[futureFixationAssetIndex].sentences[futureFixationSentenceIndex].wordCount) {
-                //console.log("Last sentence!!!!!!");
                 addDelay += this.state.timePerFixation;
             }
 
@@ -1035,8 +993,6 @@ export default class Viewport extends React.Component {
             this.setState({
                 checkAddDelay: false
             });
-
-            //console.log("Delay: ", addDelay);
 
             // Update FixationTime
             this.setTimePerFixation(addDelay);
@@ -1048,11 +1004,10 @@ export default class Viewport extends React.Component {
      * @param  {[type]} timestamp time of method call
      */
     moveText = (timestamp) => {
-        //console.log("MoveText: ", this.state.timePerFixation);
         // Apply first transition
         // Avoid waiting for timePerFixation to elapse
         let diff = new Date().getTime() - timestamp;
-        //console.log("moveText diff: ", diff);
+
         this.doTimer(
             this.state.timePerFixation - diff,
             20,
