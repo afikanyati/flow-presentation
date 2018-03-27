@@ -876,21 +876,30 @@ export default class Viewport extends React.Component {
 
     toggleWordBookmark = (e) => {
         e.stopPropagation();
-        let doc = this.state.doc;
-        let assets = doc.assets;
-        let wordParagraph = assets[this.state.docPosition.asset];
+        let wordSentence = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
+        let hasBookmark = !wordSentence.words[this.state.docPosition.fixation[0]].hasBookmark;
 
-        wordParagraph.fixationWindow[0].hasBookmark = !wordParagraph.fixationWindow[0].hasBookmark;
-
-        assets[this.state.docPosition.asset] = wordParagraph;
-
-        doc.assets = assets;
+        const doc = update(this.state.doc, {
+            assets: {
+                [this.state.docPosition.asset]:
+                    {sentences: {
+                        [this.state.docPosition.sentence]: {
+                            words: {
+                                [this.state.docPosition.fixation[0]]: {
+                                    hasBookmark: {
+                                        $set: hasBookmark
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
         this.setState({
-            doc : doc
-        }, () => {
-            return;
-        });
+            doc: doc
+        })
     }
 
     toggleCruiseControl = (e) => {
