@@ -8,8 +8,7 @@ import FontTypes                from '../../constants/fontTypes';
 import SkinTypes                from '../../constants/skinTypes';
 import HighlightTypes           from '../../constants/highlightColorTypes';
 import BookmarkFilled           from '../../assets/images/icons/bookmark-red-fill.svg';
-import AttachmentFilled         from '../../assets/images/icons/attachment-purple.svg';
-import { CSSTransitionGroup }   from 'react-transition-group';
+import AnnotationFilled         from '../../assets/images/icons/annotation-purple.svg';
 
 /**
  * The Word component is a component used to
@@ -28,13 +27,13 @@ export default class Word extends React.Component {
         return (
             <TextContainer
                 hasBookmark={this.props.word.hasBookmark}
-                hasAttachment={this.props.word.attachments && Object.keys(this.props.word.attachments).length != 0}
+                hasAnnotation={this.props.word.annotations && Object.keys(this.props.word.annotations).length != 0}
                 inFixationWindow={this.props.inFixationWindow}
                 showAnnotations={this.props.showAnnotations}
             >
-                <AttachmentIcon
-                    src={AttachmentFilled}
-                    hasAttachment={this.props.word.attachments && Object.keys(this.props.word.attachments).length != 0}
+                <AnnotationIcon
+                    src={AnnotationFilled}
+                    hasAnnotation={this.props.word.annotations && Object.keys(this.props.word.annotations).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     showAnnotations={this.props.showAnnotations}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
@@ -48,7 +47,7 @@ export default class Word extends React.Component {
                     bold          ={this.props.word.bold}
                     highlight ={this.props.word.highlight}
                     hasBookmark={this.props.word.hasBookmark}
-                    hasAttachment={this.props.word.attachments && Object.keys(this.props.word.attachments).length != 0}
+                    hasAnnotation={this.props.word.annotations && Object.keys(this.props.word.annotations).length != 0}
                     inFixationWindow={this.props.inFixationWindow}
                     fontFamily    ={this.props.fontFamily}
                     showAnnotations={this.props.showAnnotations}
@@ -57,7 +56,7 @@ export default class Word extends React.Component {
                             PauseLightPurple
                         :
                             PausePurple}
-                    onClick       ={this.props.skipToWord.bind({}, this.props.word.text, this.props.paragraph, this.props.word.index)}>
+                    onClick       ={this.props.skipToWord.bind({}, this.props.word)}>
                     {`${this.props.word.text} `}
                 </Text>
                 <BookmarkIcon
@@ -85,7 +84,6 @@ export default class Word extends React.Component {
 // ============= PropTypes ==============
 
 Word.propTypes = {
-    paragraph          : PropTypes.number.isRequired,
     word               : PropTypes.object.isRequired,
     skipToWord         : PropTypes.func.isRequired,
     fontFamily         : PropTypes.object.isRequired,
@@ -101,7 +99,7 @@ const TextContainer = styled.span`
     display: inline-flex;
     flex-direction: column;
     margin: 0;
-    margin-top: ${props => props.showAnnotations && props.hasBookmark && !props.hasAttachment && props.inFixationWindow ? "50px" : "0px"};
+    margin-top: ${props => props.showAnnotations && props.hasBookmark && !props.hasAnnotation && props.inFixationWindow ? "50px" : "0px"};
     padding: 0;
 `;
 
@@ -110,16 +108,16 @@ const Text = styled.span`
             props.theme[props.highlight.color]
         :
             "transparent"};
-    border-bottom-width: ${props =>  props.showAnnotations && !props.inFixationWindow && (props.hasBookmark || props.hasAttachment) ? "3px" : "0px"};
+    border-bottom-width: ${props =>  props.showAnnotations && !props.inFixationWindow && (props.hasBookmark || props.hasAnnotation) ? "3px" : "0px"};
     border-bottom-color: transparent;
     border-bottom-style: solid;
-    border-image: ${props => props.showAnnotations && props.hasBookmark && props.hasAttachment ?
+    border-image: ${props => props.showAnnotations && props.hasBookmark && props.hasAnnotation ?
             "linear-gradient(to right, #d3224f 0%, #65266d 100%)"
         :
             props.hasBookmark ?
                     "linear-gradient(to right, #d3224f 0%, #d3224f 100%)"
                 :
-                    props.hasAttachment ?
+                    props.hasAnnotation ?
                         "linear-gradient(to right, #65266d 0%, #65266d 100%)"
                     :
                         "none 100% 1 0 stretch"
@@ -185,8 +183,8 @@ const BookmarkIcon = styled.img`
     animation: .2s fadeIn;
 `;
 
-const AttachmentIcon = styled.img`
-    display: ${props => props.showAnnotations && props.hasAttachment && props.inFixationWindow ? "static" : "none"};
+const AnnotationIcon = styled.img`
+    display: ${props => props.showAnnotations && props.hasAnnotation && props.inFixationWindow ? "static" : "none"};
     position: relative;
     left: -8px;
     bottom: 5px;

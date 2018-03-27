@@ -8,16 +8,16 @@ import ReactHintFactory         from 'react-hint';
 import BackButton               from './BackButton';
 import HandTypes                from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import FeatureTypes             from '../../constants/featureTypes';
-import AttachmentTypes          from '../../constants/attachmentOperationTypes';
+import ToolTypes             from '../../constants/toolTypes';
+import AnnotationTypes          from '../../constants/annotationOperationTypes';
 import HighlightTypes          from '../../constants/highlightColorTypes';
 
 import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
 import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
 import BookmarkWhite            from '../../assets/images/icons/bookmark-white.svg';
 import BookmarkColor            from '../../assets/images/icons/bookmark-red.svg';
-import AttachmentWhite          from '../../assets/images/icons/attachment-white.svg';
-import AttachmentColor          from '../../assets/images/icons/attachment-purple.svg';
+import AnnotationWhite          from '../../assets/images/icons/annotation-white.svg';
+import AnnotationColor          from '../../assets/images/icons/annotation-purple.svg';
 import HighlightWhite           from '../../assets/images/icons/highlight-white.svg';
 import HighlightRed             from '../../assets/images/icons/highlight-red.svg'
 import HighlightPurple          from '../../assets/images/icons/highlight-purple.svg'
@@ -32,7 +32,7 @@ import BackPurple               from '../../assets/images/icons/back-purple.svg'
 import BackWhite               from '../../assets/images/icons/back-white.svg';
 
 /**
- * The FeatureMenu component is a component used to
+ * The ToolMenu component is a component used to
  *
  * It consists of a menu element with an
  * unordered list inside, and also a button to toggle the actual menu.
@@ -42,7 +42,7 @@ import BackWhite               from '../../assets/images/icons/back-white.svg';
  * this number, you'll need to edit it accordingly depending on how many items
  ``* you decide to put in the markup.
  */
-export default class FeatureMenu extends React.Component {
+export default class ToolMenu extends React.Component {
 
     constructor(props) {
         super(props);
@@ -50,9 +50,9 @@ export default class FeatureMenu extends React.Component {
         this.state = {
             menuIsOpen: false,
             activeFeature: null,
-            features: {
+            tools: {
                 bookmark: {
-                    name: FeatureTypes.BOOKMARK,
+                    name: ToolTypes.BOOKMARK,
                     icon: {
                         color: BookmarkColor,
                         white: BookmarkWhite
@@ -66,13 +66,13 @@ export default class FeatureMenu extends React.Component {
                         transition: ""
                     }
                 },
-                attachment: {
-                    name: FeatureTypes.ATTACHMENT,
+                annotation: {
+                    name: ToolTypes.ATTACHMENT,
                     icon: {
-                        color: AttachmentColor,
-                        white: AttachmentWhite
+                        color: AnnotationColor,
+                        white: AnnotationWhite
                     },
-                    description: "Create Attachment",
+                    description: "Add Annotation",
                     color: {white: "purple", cream: "purple", night: "purple"},
                     isActive: false,
                     cssTranslate: {
@@ -82,7 +82,7 @@ export default class FeatureMenu extends React.Component {
                     },
                     operations: {
                         write: {
-                                name: AttachmentTypes.WRITE,
+                                name: AnnotationTypes.WRITE,
                                 icon: {color: WriteIcon},
                                 description: "Write Note",
                                 color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
@@ -94,7 +94,7 @@ export default class FeatureMenu extends React.Component {
                                 func: this.props.performWriteOperation
                             },
                         image: {
-                                name: AttachmentTypes.IMAGE,
+                                name: AnnotationTypes.IMAGE,
                                 icon: {color: ImageIcon},
                                 description: "Attach Image",
                                 color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
@@ -106,7 +106,7 @@ export default class FeatureMenu extends React.Component {
                                 func: this.props.performImageOperation
                             },
                         record: {
-                                name: AttachmentTypes.RECORD,
+                                name: AnnotationTypes.RECORD,
                                 icon: {color: RecordIcon},
                                 description: "Record Voicenote",
                                 color:{white: "lightGray", cream: "lightGray", night: "darkGray"},
@@ -118,7 +118,7 @@ export default class FeatureMenu extends React.Component {
                                 func: this.props.performRecordOperation
                             },
                         draw: {
-                                name: AttachmentTypes.DRAW,
+                                name: AnnotationTypes.DRAW,
                                 icon: {color: DrawIcon},
                                 description: "Draw Sketch",
                                 color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
@@ -139,12 +139,12 @@ export default class FeatureMenu extends React.Component {
                                     activeTransitionDelay: 0,
                                     transition: ""
                                 },
-                                func: this.handleBack.bind({}, FeatureTypes.ATTACHMENT)
+                                func: this.handleBack.bind({}, ToolTypes.ATTACHMENT)
                             }
                     }
                 },
                 highlight: {
-                    name: FeatureTypes.HIGHLIGHT,
+                    name: ToolTypes.HIGHLIGHT,
                     icon: {
                         color: HighlightGreen,
                         white: HighlightWhite
@@ -228,7 +228,7 @@ export default class FeatureMenu extends React.Component {
                                     activeTransitionDelay: 0,
                                     transition: ""
                                 },
-                                func: this.handleBack.bind({}, FeatureTypes.HIGHLIGHT)
+                                func: this.handleBack.bind({}, ToolTypes.HIGHLIGHT)
                             }
                     }
                 }
@@ -237,10 +237,10 @@ export default class FeatureMenu extends React.Component {
     }
 
     componentWillMount() {
-        //console.log("-----FeatureMenu");
-        Object.keys(this.state.features).forEach(this.calcTranslate);
-        Object.keys(this.state.features.attachment.operations).forEach(this.calcTranslate);
-        Object.keys(this.state.features.highlight.types).forEach(this.calcTranslate);
+        //console.log("-----ToolMenu");
+        Object.keys(this.state.tools).forEach(this.calcTranslate);
+        Object.keys(this.state.tools.annotation.operations).forEach(this.calcTranslate);
+        Object.keys(this.state.tools.highlight.types).forEach(this.calcTranslate);
     }
 
     render() {
@@ -248,7 +248,7 @@ export default class FeatureMenu extends React.Component {
             <Menu
                 hand={this.props.hand}
                 menuIsOpen={this.state.menuIsOpen}>
-                {this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
+                {this.state.activeFeature == ToolTypes.HIGHLIGHT ?
                         null
                     :
                         <ReactHint
@@ -272,13 +272,13 @@ export default class FeatureMenu extends React.Component {
                         this.state.activeFeature == null ?
                             {white: "lightGray", cream: "lightGray", night: "darkGray"}
                         :
-                            this.state.features[this.state.activeFeature].color}
+                            this.state.tools[this.state.activeFeature].color}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                     customCursor={this.props.skin == SkinTypes.DARK ?
                             PauseLightPurple
                         :
                             PausePurple}
-                    onClick={this.state.activeFeature == FeatureTypes.BOOKMARK ?
+                    onClick={this.state.activeFeature == ToolTypes.BOOKMARK ?
                                     this.props.toggleWordBookmark
                                 :
                                     this.toggleMenu}>
@@ -290,30 +290,30 @@ export default class FeatureMenu extends React.Component {
                                 :
                                     `url(${FlowIconWhite})`
                             :
-                                `url(${this.state.features[this.state.activeFeature].icon.white})`} />
+                                `url(${this.state.tools[this.state.activeFeature].icon.white})`} />
                 </MenuToggle>
                 <MenuItems>
-                    {Object.values(this.state.activeFeature == FeatureTypes.ATTACHMENT ?
-                                        this.state.features.attachment.operations
+                    {Object.values(this.state.activeFeature == ToolTypes.ATTACHMENT ?
+                                        this.state.tools.annotation.operations
                                     :
-                                        this.state.activeFeature == FeatureTypes.HIGHLIGHT ?
-                                            this.state.features.highlight.types
+                                        this.state.activeFeature == ToolTypes.HIGHLIGHT ?
+                                            this.state.tools.highlight.types
                                         :
-                                            this.state.features).map((feature, index) => {
+                                            this.state.tools).map((tool, index) => {
                       return (
                           <OuterMenuItem
                               key={index}
-                              cssTranslate={feature.cssTranslate}
+                              cssTranslate={tool.cssTranslate}
                               menuIsOpen={this.state.menuIsOpen}
-                              onClick={this.state.activeFeature == FeatureTypes.ATTACHMENT || this.state.activeFeature == FeatureTypes.HIGHLIGHT ? feature.func : this.activateFeature.bind({}, feature.name)}
+                              onClick={this.state.activeFeature == ToolTypes.ATTACHMENT || this.state.activeFeature == ToolTypes.HIGHLIGHT ? tool.func : this.activateFeature.bind({}, tool.name)}
                               data-custom
                               data-custom-at={this.props.hand == HandTypes.RIGHT ? "left" : "right"}
-                              data-description={feature.description}>
+                              data-description={tool.description}>
                               <InnerMenuItem
                                   activeFeature={this.state.activeFeature}
-                                  color={feature.color}
+                                  color={tool.color}
                                   skin={this.props.skin}
-                                  icon={`url(${feature.icon.color})`}
+                                  icon={`url(${tool.icon.color})`}
                                   cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                                   customCursor={this.props.skin == SkinTypes.DARK ?
                                           PauseLightPurple
@@ -326,13 +326,13 @@ export default class FeatureMenu extends React.Component {
                 <BackButton
                     skin={this.props.skin}
                     activeFeature={this.state.activeFeature}
-                    backFunction={this.deactivateFeature}/>
+                    backFunction={this.handleBack}/>
             </Menu>
         );
     }
 
     componentDidMount() {
-        // console.log("+++++FeatureMenu");
+        // console.log("+++++ToolMenu");
     }
 
     // ========== Methods ===========
@@ -340,7 +340,7 @@ export default class FeatureMenu extends React.Component {
     toggleMenu = (e) => {
         e.stopPropagation();
 
-        if (this.state.activeFeature == FeatureTypes.HIGHLIGHT) {
+        if (this.state.activeFeature == ToolTypes.HIGHLIGHT) {
             this.setState({
                 menuIsOpen: !this.state.menuIsOpen
             }, () => {
@@ -394,18 +394,18 @@ export default class FeatureMenu extends React.Component {
                 translateInfo["transition"] = `translate(${handMultiplier * Math.floor(spreadRadius * Math.sin(Math.PI/180*angle))}px, ${-Math.floor(spreadRadius * Math.cos(Math.PI/180*angle))}px)`;
         }
 
-        let features = this.state.features;
+        let tools = this.state.tools;
 
         if (arr.length == 3) {
-            features[value].cssTranslate = translateInfo;
+            tools[value].cssTranslate = translateInfo;
         } else if (arr.length == 5) {
-            features.attachment.operations[value].cssTranslate = translateInfo;
+            tools.annotation.operations[value].cssTranslate = translateInfo;
         } else if (arr.length == 6) {
-            features.highlight.types[value].cssTranslate = translateInfo;
+            tools.highlight.types[value].cssTranslate = translateInfo;
         }
 
         this.setState({
-            features: features
+            tools: tools
         });
 
     }
@@ -420,25 +420,25 @@ export default class FeatureMenu extends React.Component {
         );
     }
 
-    activateFeature = (feature, e) => {
+    activateFeature = (tool, e) => {
         e.stopPropagation();
 
-        let features = this.state.features;
-        features[feature].isActive = true;
+        let tools = this.state.tools;
+        tools[tool].isActive = true;
 
-        // switch (feature) {
-        //     case FeatureTypes.BOOKMARK:
+        // switch (tool) {
+        //     case ToolTypes.BOOKMARK:
         //         break;
-        //     case FeatureTypes.HIGHLIGHT:
+        //     case ToolTypes.HIGHLIGHT:
         //         break;
-        //     case FeatureTypes.ATTACHMENT:
+        //     case ToolTypes.ATTACHMENT:
         //         break;
         // }
 
-        if (feature == FeatureTypes.ATTACHMENT || feature == FeatureTypes.HIGHLIGHT) {
+        if (tool == ToolTypes.ATTACHMENT || tool == ToolTypes.HIGHLIGHT) {
             this.setState({
-                activeFeature: feature,
-                features: features,
+                activeFeature: tool,
+                tools: tools,
                 menuIsOpen : false
             }, () => {
                 setTimeout(() => {
@@ -453,48 +453,43 @@ export default class FeatureMenu extends React.Component {
             }, () => {
                 setTimeout(() => {
                     this.setState({
-                        activeFeature: feature,
-                        features: features
+                        activeFeature: tool,
+                        tools: tools
                     });
                 }, 125);
             });
         }
     }
 
-    deactivateFeature = (feature, e) => {
-        let features = this.state.features;
-        features[feature].isActive = false;
+    deactivateFeature = (tool, e) => {
+        let tools = this.state.tools;
+        tools[tool].isActive = false;
 
         this.setState({
+            menuIsOpen: true,
             activeFeature: null,
-            features: features
+            tools: tools
         });
 
-        switch (feature) {
-            case FeatureTypes.BOOKMARK:
+        switch (tool) {
+            case ToolTypes.BOOKMARK:
                 break;
-            case FeatureTypes.HIGHLIGHT:
+            case ToolTypes.HIGHLIGHT:
                 this.props.deactivateHighlight();
                 break;
-            case FeatureTypes.ATTACHMENT:
+            case ToolTypes.ATTACHMENT:
                 break;
         }
     }
 
-    handleBack = (feature, e) => {
-        this.setState({
-            menuIsOpen : !this.state.menuIsOpen
-        }, () => {
-            setTimeout(() => {
-                this.deactivateFeature(feature);
-            }, 300);
-        });
+    handleBack = (tool, e) => {
+        this.deactivateFeature(tool);
     }
 }
 
 // ============= PropTypes ==============
 
-FeatureMenu.propTypes = {
+ToolMenu.propTypes = {
     hand                  : PropTypes.string.isRequired,
     handleHighlight       : PropTypes.func.isRequired,
     toggleWordBookmark    : PropTypes.func.isRequired,
@@ -621,7 +616,7 @@ const InnerMenuItem = styled.button`
     padding: 0;
     width: 60px;
     height: 60px;
-    background: ${props => props.activeFeature == FeatureTypes.ATTACHMENT || props.activeFeature == FeatureTypes.HIGHLIGHT ?
+    background: ${props => props.activeFeature == ToolTypes.ATTACHMENT || props.activeFeature == ToolTypes.HIGHLIGHT ?
             props => props.skin == SkinTypes.LIGHT ?
                         props.theme[props.color.white]
                     :
@@ -637,7 +632,7 @@ const InnerMenuItem = styled.button`
     border-radius: 30px;
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
-            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+            "0 4px 8px -2px rgba(181,210,236,.25), 0 3px 1px -2px rgba(181,210,236,.1), 0 1px 5px 0 rgba(181,210,236,.06)"
         :
             "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
     };
@@ -653,7 +648,7 @@ const InnerMenuItem = styled.button`
 
     &:hover {
         box-shadow: ${props => props.skin == SkinTypes.DARK ?
-                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+                "0 8px 16px -4px rgba(181,210,236,.25), 0 6px 2px -4px rgba(181,210,236,.1), 0 2px 10px 0 rgba(181,210,236,.06)"
             :
                 "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
         };
@@ -669,13 +664,13 @@ const MenuToggle = styled.button`
     width: 60px;
     height: 60px;
     background-color: ${props => props.skin == SkinTypes.LIGHT ?
-                            props.activeFeature == FeatureTypes.HIGHLIGHT ?
+                            props.activeFeature == ToolTypes.HIGHLIGHT ?
                                 props.highlightIsActive ?
                                     props.theme[props.highlightColor]
                                 :
                                     props.theme.lightGray
                             :
-                                props.activeFeature == FeatureTypes.BOOKMARK ?
+                                props.activeFeature == ToolTypes.BOOKMARK ?
                                     props.currentWordHasBookmark ?
                                         props.theme[props.color.white]
                                     :
@@ -684,13 +679,13 @@ const MenuToggle = styled.button`
                                     props.theme[props.color.white]
                         :
                             props.skin == SkinTypes.CREAM ?
-                                props.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                props.activeFeature == ToolTypes.HIGHLIGHT ?
                                     props.highlightIsActive ?
                                         props.theme[props.highlightColor]
                                     :
                                         props.theme.lightGray
                                 :
-                                    props.activeFeature == FeatureTypes.BOOKMARK ?
+                                    props.activeFeature == ToolTypes.BOOKMARK ?
                                         props.currentWordHasBookmark ?
                                             props.theme[props.color.cream]
                                         :
@@ -698,13 +693,13 @@ const MenuToggle = styled.button`
                                     :
                                         props.theme[props.color.cream]
                             :
-                                props.activeFeature == FeatureTypes.HIGHLIGHT ?
+                                props.activeFeature == ToolTypes.HIGHLIGHT ?
                                     props.highlightIsActive ?
                                         props.theme[props.highlightColor]
                                     :
                                         props.theme.darkGray
                                 :
-                                    props.activeFeature == FeatureTypes.BOOKMARK ?
+                                    props.activeFeature == ToolTypes.BOOKMARK ?
                                         props.currentWordHasBookmark ?
                                             props.theme[props.color.night]
                                         :
@@ -713,7 +708,7 @@ const MenuToggle = styled.button`
                                         props.theme[props.color.night]
     };
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
-            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+            "0 4px 8px -2px rgba(181,210,236,.25), 0 3px 1px -2px rgba(181,210,236,.1), 0 1px 5px 0 rgba(181,210,236,.06)"
         :
             "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
     };
@@ -726,7 +721,7 @@ const MenuToggle = styled.button`
 
     &:hover {
         box-shadow: ${props => props.skin == SkinTypes.DARK ?
-                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+                "0 8px 16px -4px rgba(181,210,236,.25), 0 6px 2px -4px rgba(181,210,236,.1), 0 2px 10px 0 rgba(181,210,236,.06)"
             :
                 "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
         };

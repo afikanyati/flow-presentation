@@ -4,7 +4,7 @@ import PropTypes        from 'prop-types';
 import styled           from 'styled-components';
 
 // Components
-import FeatureTypes     from '../../constants/featureTypes';
+import ToolTypes     from '../../constants/toolTypes';
 import SkinTypes        from '../../constants/skinTypes';
 import BackRed          from '../../assets/images/icons/back-red.svg';
 import BackPurple       from '../../assets/images/icons/back-purple.svg'
@@ -32,7 +32,7 @@ export default class BackButton extends React.Component {
             <BackButtonContainer
                 skin={this.props.skin}
                 onClick={this.props.backFunction.bind({}, this.props.activeFeature)}
-                active={this.props.activeFeature == FeatureTypes.BOOKMARK}>
+                active={this.props.activeFeature == ToolTypes.BOOKMARK}>
                 <BackButtonIcon
                     icon={`url(${BackRed})`}/>
             </BackButtonContainer>

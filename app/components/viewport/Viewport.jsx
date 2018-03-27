@@ -4,13 +4,13 @@ import firebase                 from 'firebase';
 import PropTypes                from 'prop-types';
 import styled                   from 'styled-components';
 import { CSSTransitionGroup }   from 'react-transition-group';
-import equal                    from 'deep-equal';
+import update                   from 'immutability-helper';
 
 // Components
 import ScrollDirectionTypes     from '../../constants/scrollDirectionTypes';
 import HighlightTypes          from '../../constants/highlightColorTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import FeatureMenu              from './FeatureMenu';
+import ToolMenu              from './ToolMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
 import StatusBar              from './StatusBar';
@@ -27,257 +27,106 @@ export default class Viewport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scroll            : 0,
-            assetCurrentIndex : 0,
-            doc            : {},
-            highlightIsActive: false,
-            cruiseControlIsActive: false,
+            scroll                   : 0,
+            docPosition              : {
+                asset                : 0,
+                sentence             : 0,
+                fixation             : [0, this.props.fixationWidth] // end: one index ahead because of split
+            },
+            doc                      : {},
+            highlightIsActive        : false,
+            cruiseControlIsActive    : false,
             cruiseControlHaltIsActive: false,
-            timePerFixation: 0, // In milliseconds,
-            checkAddDelay: false, // checked once every fixation cycle
-            showAnnotations: true,
-            highlightColor : null,
-            drawerIsOpen: false
+            timePerFixation          : 0, // In milliseconds,
+            checkAddDelay            : true, // checked once every fixation cycle
+            showAnnotations          : true,
+            highlightColor           : null,
+            drawerIsOpen             : false,
+            docLoaded                : false
         }
     }
 
     componentWillMount() {
         // console.log("-----Viewport");
-
-        // let assets = doc.assets;
-        // for (let asset in assets) {
-        //     let words = assets[asset].future;
-        //     let refactoredWords = [];
-        //     for (let i in words) {
-        //         let word = words[i];
-        //         word["italic"] = false;
-        //         word["bold"] = false;
-        //         refactoredWords.push(word);
-        //     }
-        //     assets[asset].future = refactoredWords;
-        // }
-        //
-        // doc["assets"] = assets;
-        // console.log(JSON.stringify(doc));
-
-        // let assetDelay = 0;
-        // let sentenceEndingSet = new Set([".", "?", "!", "..."]);
-        // let pauseSet = new Set([",", ";", ":", "\u2014", "—"]); // \u2014 is the em dash
-        // let transitionSet = new Set(TransitionWords);
-        //
-        // for (let asset in assets) {
-        //     let words = assets[asset].future;
-        //     let refactoredWords = [];
-        //     let paragraphDelay = 0;
-        //     for (let i in words) {
-        //         let word = words[i];
-        //         word["attachments"] = {};
-        //         word["delay"] = {};
-        //         if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
-        //             // Sentence Ending
-        //             word["delay"] = {type: "ending", factor: 2};
-        //             paragraphDelay += 2;
-        //         } else if (pauseSet.has(word.text.charAt(word.text.length - 1))) {
-        //             // Punctuation Pauses
-        //             word["delay"] = {type: "pause", factor: 1};
-        //             paragraphDelay += 1;
-        //         } else if (transitionSet.has(word.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //             // Propositional Integration Word Pause
-        //             word["delay"] = {type: "proposition", factor: 1};
-        //             paragraphDelay += 1;
-        //         }
-        //         refactoredWords.push(word);
-        //     }
-        //     assets[asset].future = refactoredWords;
-        //     assets[asset]["delay"] = paragraphDelay;
-        //     assetDelay += paragraphDelay;
-        // }
-        //
-        // doc = {
-        //     assets: assets,
-        //     delay: assetDelay + assets.length,
-        //     title: "Virtual Reality and Augmented Reality in Education",
-        //     author: "Hammer & Tusk",
-        //     date: new Date().toISOString(),
-        //     subtitle: "",
-        //     cover: "",
-        //     tags: ["Virtual Reality", "Augmented Reality", "Education", "Immersive", "VR"],
-        //     genre: "Science"
-        // };
-        //
-
-        // console.log(JSON.stringify(doc));
-        //
-
-        // let assets = doc.assets;
-        // let sentenceEndingSet = new Set([".", "?", "!", "..."]);
-        // let pauseSet = new Set([",", ";", ":", "\u2014", "—"]); // \u2014 is the em dash
-        // let transitionSet = new Set(TransitionWords);
-        //
-        // for (let asset in assets) {
-        //     let words = assets[asset].future;
-        //     let refactoredWords = [];
-        //     let x = 0;
-        //     let sentenceCount = 0
-        //     for (let i in words) {
-        //         let word = words[i];
-        //         if (sentenceEndingSet.has(word.text.charAt(word.text.length - 1))) {
-        //             sentenceCount += 1;
-        //         }
-        //         if (word.text.includes(" — ")) {
-        //             console.log("index: ", x);
-        //             let word1 = {
-        //                 index: x,
-        //                 text: word.text.split(" — ")[0] + " —",
-        //                 definition: {},
-        //                 highlight: {active: false, color: null},
-        //                 hasBookmark: false,
-        //                 attachments: {}
-        //             };
-        //             let word2 = {
-        //                 index: x+1,
-        //                 text: word.text.split(" — ")[1],
-        //                 definition: {},
-        //                 highlight: {active: false, color: null},
-        //                 hasBookmark: false,
-        //                 attachments: {}
-        //             };
-        //             word1["delay"] = {};
-        //             word2["delay"] = {};
-        //             if (sentenceEndingSet.has(word1.text.charAt(word1.text.length - 1))) {
-        //                 // Sentence Ending
-        //                 word1["delay"] = {type: "ending", factor: 2};
-        //             } else if (pauseSet.has(word1.text.charAt(word1.text.length - 1))) {
-        //                 // Punctuation Pauses
-        //                 word1["delay"] = {type: "pause", factor: 1};
-        //             } else if (transitionSet.has(word1.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //                 // Propositional Integration Word Pause
-        //                 word1["delay"] = {type: "proposition", factor: 1};
-        //             }
-        //
-        //             if (sentenceEndingSet.has(word2.text.charAt(word1.text.length - 1))) {
-        //                 // Sentence Ending
-        //                 word2["delay"] = {type: "ending", factor: 2};
-        //             } else if (pauseSet.has(word2.text.charAt(word2.text.length - 1))) {
-        //                 // Punctuation Pauses
-        //                 word2["delay"] = {type: "pause", factor: 1};
-        //             } else if (transitionSet.has(word2.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //                 // Propositional Integration Word Pause
-        //                 word2["delay"] = {type: "proposition", factor: 1};
-        //             }
-        //             refactoredWords.push(word1);
-        //             refactoredWords.push(word2);
-        //             x += 2;
-        //         } if (word.text.includes(" — ")) {
-        //             console.log("index: ", x);
-        //             let word1 = {
-        //                 index: x,
-        //                 text: word.text.split(" — ")[0] + " —",
-        //                 definition: {},
-        //                 highlight: {active: false, color: null},
-        //                 hasBookmark: false,
-        //                 attachments: {}
-        //             };
-        //             let word2 = {
-        //                 index: x+1,
-        //                 text: word.text.split(" — ")[1],
-        //                 definition: {},
-        //                 highlight: {active: false, color: null},
-        //                 hasBookmark: false,
-        //                 attachments: {}
-        //             };
-        //             word1["delay"] = {};
-        //             word2["delay"] = {};
-        //             if (sentenceEndingSet.has(word1.text.charAt(word1.text.length - 1))) {
-        //                 // Sentence Ending
-        //                 word1["delay"] = {type: "ending", factor: 2};
-        //             } else if (pauseSet.has(word1.text.charAt(word1.text.length - 1))) {
-        //                 // Punctuation Pauses
-        //                 word1["delay"] = {type: "pause", factor: 1};
-        //             } else if (transitionSet.has(word1.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //                 // Propositional Integration Word Pause
-        //                 word1["delay"] = {type: "proposition", factor: 1};
-        //             }
-        //
-        //             if (sentenceEndingSet.has(word2.text.charAt(word1.text.length - 1))) {
-        //                 // Sentence Ending
-        //                 word2["delay"] = {type: "ending", factor: 2};
-        //             } else if (pauseSet.has(word2.text.charAt(word2.text.length - 1))) {
-        //                 // Punctuation Pauses
-        //                 word2["delay"] = {type: "pause", factor: 1};
-        //             } else if (transitionSet.has(word2.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //                 // Propositional Integration Word Pause
-        //                 word2["delay"] = {type: "proposition", factor: 1};
-        //             }
-        //             refactoredWords.push(word1);
-        //             refactoredWords.push(word2);
-        //             x += 2;
-        //         } else if (word.text.includes(" - ")) {
-        //             let word1 = {
-        //                 index: x,
-        //                 text: word.text.split(" - ")[0] + " -",
-        //                 definition: {},
-        //                 highlight: {active: false, color: null},
-        //                 hasBookmark: false,
-        //                 attachments: {}
-        //             };
-        //             let word2 = {
-        //                 index: x+1,
-        //                 text: word.text.split(" - ")[1],
-        //                 definition: {},
-        //                 highlight: {active: false, color: null},
-        //                 hasBookmark: false,
-        //                 attachments: {}
-        //             };
-        //             word1["delay"] = {};
-        //             word2["delay"] = {};
-        //             if (sentenceEndingSet.has(word1.text.charAt(word1.text.length - 1))) {
-        //                 // Sentence Ending
-        //                 word1["delay"] = {type: "ending", factor: 2};
-        //             } else if (pauseSet.has(word1.text.charAt(word1.text.length - 1))) {
-        //                 // Punctuation Pauses
-        //                 word1["delay"] = {type: "pause", factor: 1};
-        //             } else if (transitionSet.has(word1.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //                 // Propositional Integration Word Pause
-        //                 word1["delay"] = {type: "proposition", factor: 1};
-        //             }
-        //
-        //             if (sentenceEndingSet.has(word2.text.charAt(word2.text.length - 1))) {
-        //                 // Sentence Ending
-        //                 word2["delay"] = {type: "ending", factor: 2};
-        //             } else if (pauseSet.has(word2.text.charAt(word2.text.length - 1))) {
-        //                 // Punctuation Pauses
-        //                 word2["delay"] = {type: "pause", factor: 1};
-        //             } else if (transitionSet.has(word2.text.replace(/[,.?!;:]/, '').toLowerCase())) {
-        //                 // Propositional Integration Word Pause
-        //                 word2["delay"] = {type: "proposition", factor: 1};
-        //             }
-        //             refactoredWords.push(word1);
-        //             refactoredWords.push(word2);
-        //             x += 2;
-        //         } else {
-        //             word.index = x;
-        //             refactoredWords.push(word);
-        //             x+=1;
-        //         }
-        //     }
-        //     assets[asset].future = refactoredWords;
-        //     assets[asset].wordCount = assets[asset].length;
-        //     delete assets[asset].length;
-        //     assets[asset].sentenceCount = sentenceCount;
-        // }
-        //
-        // doc.assets = assets;
-        //
-        // console.log(JSON.stringify(doc));
-
-        // Count number of sentences in a paragraph
-
-
     }
 
     render() {
-        let progress = this.state.doc.assets ? this.getProgress() : 0;
+        if (this.state.docLoaded) {
+            return this.viewportView();
+        } else {
+            return this.loadingView();
+        }
+    }
+
+    componentDidMount() {
+        // console.log("+++++Viewport");
+        window.addEventListener('DOMMouseScroll', this.handleScroll, false);
+        window.onwheel      = this.handleScroll; // modern standard
+        window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE
+        window.ontouchmove  = this.handleScroll; // mobile
+        document.onkeydown  = this.handleKeys;
+        //document.onkeypress = this.handleKeys;
+        window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
+        window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
+        // Web App Visibility
+        document.addEventListener('visibilitychange', this.handleWindowFocusState);
+
+        firebase.database().ref(this.props.docURL).once('value', (snapshot) => {
+            let doc = snapshot.val();
+
+            // Set feed to state
+            this.setState({
+                doc: doc,
+                docLoaded: true
+            }, () => {
+                // Set timePerFixation
+                this.setTimePerFixation(0);
+            });
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.readingSpeed != this.props.readingSpeed) {
+            let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
+            let millisecondsInMinute = 60000;
+            let readMinutes = currentAsset.wordCount/nextProps.readingSpeed;
+            let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
+            let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(3*readMinutes*numFixations));
+            let timePerFixation = effectiveMillisecondsInMinute/numFixations; // measured in ms
+
+            this.setState({
+                timePerFixation: timePerFixation
+            }, () => {
+                this.isScrolling = setTimeout(() => {
+                    clearTimeout(this.timer);
+                    this.moveText(new Date().getTime());
+                }, 200);
+            });
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+        window.removeEventListener('mousedown', this.handleCruiseMouseDown, false);
+        window.removeEventListener('mouseup', this.handleCruiseMouseUp, false);
+        clearTimeout(this.timer);
+    }
+
+    // ======== Flow Control =========
+
+    loadingView = () => {
+        return (
+            <h1>LOADING</h1>
+        );
+    }
+
+    viewportView = () => {
+        let progress = this.getProgress();
+        let history = this.getCurrentAssetHistory();
+        let fixationWindow = this.getFixationWindow();
+        //console.log("Fixation Window: ", fixationWindow);
+        let future = this.getCurrentAssetFuture();
+        let doc = {...this.state.doc};
         return (
             <Container
                 skin={this.props.skin}
@@ -297,16 +146,18 @@ export default class Viewport extends React.Component {
                 <CompletionBar
                     skin={this.props.skin}
                     progress={progress}/>
-                <TitleBar>{this.state.doc.title}</TitleBar>
+                <TitleBar>{doc.title}</TitleBar>
+                {/* History Container is Reverse Order
+                    The first Paragraph mapping belongs to the current reading asset
+                    */}
                 <HistoryContainer
                     skin={this.props.skin}
                     fontSize={this.props.fontSize}>
-                    {this.state.doc.assets ? [this.state.doc.assets[this.state.assetCurrentIndex]].map((asset) => {
+                    {[history].map((asset) => {
                       return (
                           <Paragraph
-                              key           ={`parent =[null], this =[type ='${asset.type}-history', index ='${this.state.assetCurrentIndex}']`}
-                              type          ={"history"}
-                              asset         ={asset}
+                              key           ={`parent =[null], this =[type ='${asset.type}-history', index ='${this.state.docPosition.asset}']`}
+                              asset     ={asset}
                               fontSize      ={this.props.fontSize}
                               fontFamily    ={this.props.fontFamily}
                               skipToWord    ={this.skipToWord}
@@ -315,13 +166,12 @@ export default class Viewport extends React.Component {
                               cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                               />
                       );
-                  }) : null}
-                  {this.state.doc.assets ? this.state.doc.assets.slice(Math.max(0, this.state.assetCurrentIndex - 2), this.state.assetCurrentIndex).map((asset, index) => {
+                  })}
+                  {doc.assets.slice(Math.max(0, this.state.docPosition.asset - 2), this.state.docPosition.asset).reverse().map((asset, index) => {
                     return (
                         <Paragraph
-                            key           ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index}']`}
-                            type          ={"history"}
-                            asset         ={asset}
+                            key           ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index.asset}']`}
+                            asset     ={asset}
                             fontSize     ={this.props.fontSize}
                             fontFamily   ={this.props.fontFamily}
                             skipToWord   ={this.skipToWord}
@@ -330,7 +180,7 @@ export default class Viewport extends React.Component {
                             cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                             />
                     );
-                }) : null}
+                })}
                 </HistoryContainer>
                 <FixationWindowContainer
                     fontSize={this.props.fontSize}>
@@ -341,13 +191,13 @@ export default class Viewport extends React.Component {
                         fontFamily={this.props.fontFamily}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
-                              transitionEnterTimeout ={400}
+                              transitionEnterTimeout ={200}
                               transitionLeave        ={false}>
-                            {this.state.doc.assets ? this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow.map((word, index) => {
+                            {fixationWindow.map((word) => {
                                 return (
                                     <Word
-                                        key        ={`parent=[type='paragraph', index='${this.state.assetCurrentIndex}'], this=[type='word', index='${word.index}']`}
-                                        paragraph  ={this.state.assetCurrentIndex}
+                                        key        ={`parent=[type='paragraph', index='${this.state.docPosition.asset}'], this=[type='word', index='${word.index.word}']`}
+                                        paragraph  ={this.state.docPosition.asset}
                                         word       ={word}
                                         inFixationWindow={true}
                                         fontFamily ={this.props.fontFamily}
@@ -357,19 +207,18 @@ export default class Viewport extends React.Component {
                                         cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                                     />
                                 );
-                            }) : null}
+                            })}
                         </CSSTransitionGroup>
                     </FixationWindow>
                 </FixationWindowContainer>
                 <FutureContainer
                     skin={this.props.skin}
                     fontSize={this.props.fontSize}>
-                    {this.state.doc.assets ? [this.state.doc.assets[this.state.assetCurrentIndex]].map((asset) => {
+                    {[future].map((asset) => {
                         return (
                             <Paragraph
-                                key          ={`parent =[null], this =[type ='${asset.type}-future', index ='${this.state.assetCurrentIndex}']`}
-                                type         ={"future"}
-                                asset        ={asset}
+                                key          ={`parent =[null], this =[type ='${asset.type}-future', index ='${this.state.docPosition.asset}']`}
+                                asset    ={asset}
                                 fontSize     ={this.props.fontSize}
                                 fontFamily   ={this.props.fontFamily}
                                 skipToWord   ={this.skipToWord}
@@ -378,13 +227,12 @@ export default class Viewport extends React.Component {
                                 cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                                 />
                         );
-                    }) : null}
-                    {this.state.doc.assets ? this.state.doc.assets.slice(this.state.assetCurrentIndex + 1, Math.min(this.state.assetCurrentIndex + 3, this.state.doc.assets.length)).map((asset, index) => {
+                    })}
+                    {doc.assets.slice(this.state.docPosition.asset + 1, Math.min(this.state.docPosition.asset + 3, this.state.doc.assets.length)).map((asset, index) => {
                         return (
                             <Paragraph
-                                key                 ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index}']`}
-                                type                ={"future"}
-                                asset               ={asset}
+                                key                 ={`parent =[null], this =[type ='paragraph', index ='${asset.index.asset}']`}
+                                asset           ={asset}
                                 fontSize            ={this.props.fontSize}
                                 fontFamily          ={this.props.fontFamily}
                                 skipToWord          ={this.skipToWord}
@@ -393,21 +241,21 @@ export default class Viewport extends React.Component {
                                 cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                                 />
                         );
-                }) : null}
+                    })}
                 </FutureContainer>
                 <DefinitionsDrawer
                     skin={this.props.skin}
                     drawerIsOpen={this.state.drawerIsOpen}
                     toggleDrawer={this.toggleDrawer}
-                    fixationWords={this.state.doc.assets ? this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow : []}
+                    fixationWords={fixationWindow}
                     cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                 />
-                <FeatureMenu
+                <ToolMenu
                     hand                  ={this.props.hand}
                     skin={this.props.skin}
                     handleHighlight={this.handleHighlight}
                     toggleWordBookmark={this.toggleWordBookmark}
-                    fixationWindow={this.state.doc.assets ? this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow : []}
+                    fixationWindow={fixationWindow}
                     highlightIsActive={this.state.highlightIsActive}
                     highlightColor={this.state.highlightColor}
                     deactivateHighlight={this.deactivateHighlight}
@@ -432,58 +280,6 @@ export default class Viewport extends React.Component {
                 />
             </Container>
         );
-    }
-
-    componentDidMount() {
-        // console.log("+++++Viewport");
-        window.addEventListener('DOMMouseScroll', this.handleScroll, false);
-        window.onwheel      = this.handleScroll; // modern standard
-        window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE
-        window.ontouchmove  = this.handleScroll; // mobile
-        document.onkeydown  = this.handleKeys;
-        //document.onkeypress = this.handleKeys;
-        window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
-        window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
-        // Web App Visibility
-        document.addEventListener('visibilitychange', this.handleWindowFocusState);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.readingSpeed != this.props.readingSpeed) {
-            let currentAsset = this.state.doc.assets[this.state.assetCurrentIndex];
-            let millisecondsInMinute = 60000;
-            let readMinutes = currentAsset.wordCount/nextProps.readingSpeed;
-            let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
-            let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(3*readMinutes*numFixations));
-            let timePerFixation = effectiveMillisecondsInMinute/numFixations; // measured in ms
-
-            this.setState({
-                timePerFixation: timePerFixation
-            }, () => {
-                this.isScrolling = setTimeout(() => {
-                    clearTimeout(this.timer);
-                    this.moveText(new Date().getTime());
-                }, 200);
-            });
-        } else if (!equal(this.props.doc, nextProps.doc)) {
-            this.setState({
-                doc: nextProps.doc
-            }, () => {
-                if (this.state.doc.assets) {
-                    // Load first asset
-                    this.loadAsset(this.state.assetCurrentIndex);
-                    // Set timePerFixation
-                    this.setTimePerFixation(0);
-                }
-            });
-        }
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
-        window.removeEventListener('mousedown', this.handleCruiseMouseDown, false);
-        window.removeEventListener('mouseup', this.handleCruiseMouseUp, false);
-        clearTimeout(this.timer);
     }
 
     // ========== Methods ===========
@@ -561,9 +357,6 @@ export default class Viewport extends React.Component {
             && !this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             this.updateViewport(direction);
-            this.setState({
-                scroll: 0
-            });
         } else if (this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
             let inverseDirection = direction == ScrollDirectionTypes.UP ? ScrollDirectionTypes.DOWN : ScrollDirectionTypes.UP;
@@ -577,128 +370,144 @@ export default class Viewport extends React.Component {
     }
 
     updateViewport = (direction) => {
-        let doc = this.state.doc;
-        let assets = doc.assets;
-        let history = assets[this.state.assetCurrentIndex].history,
-            fixationWindow = assets[this.state.assetCurrentIndex].fixationWindow,
-            future = assets[this.state.assetCurrentIndex].future;
-
+        let doc = {...this.state.doc};
+        let assets = [...doc.assets];
+        let currentSentence = {...doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence]}
+        let nextFixation, nextSentence;
 
         if (direction == ScrollDirectionTypes.UP
-            && assets[this.state.assetCurrentIndex].history.length == 0
-            && this.state.assetCurrentIndex > 0) {
+            && this.state.docPosition.asset > 0
+            && this.state.docPosition.sentence == 0
+            && this.state.docPosition.fixation[0] == 0) {
             // We have hit beginning of current asset
             // Load previous one
             if (this.state.highlightIsActive) {
-                let start, end;
-                start = 0;
-                end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                let previousAsset = this.state.doc.assets[this.state.docPosition.asset - 1];
+                let previousSentence = previousAsset.sentences[previousAsset.sentenceCount - 1];
+                let startWord = Math.max(0, previousSentence.wordCount - this.props.fixationWidth);
+                let endWord = previousSentence.wordCount;
 
-                assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                doc.assets = assets;
+                let start = {
+                    asset: previousAsset.index.asset,
+                    sentence: previousSentence.index.sentence,
+                    word: startWord
+                };
 
-                this.setState({
-                    doc : doc
-                });
+                let end = {
+                    asset: previousAsset.index.asset,
+                    sentence: previousSentence.index.sentence,
+                    word: endWord
+                };
+
+                this.toggleWordHighlight(start, end);
             }
 
-            this.loadAsset(this.state.assetCurrentIndex - 1);
+            this.loadEndAsset(this.state.docPosition.asset - 1);
+            return;
         } else if (direction == ScrollDirectionTypes.UP
-            && assets[this.state.assetCurrentIndex].history.length == 0
-            && this.state.assetCurrentIndex == 0) {
+            && this.state.docPosition.sentence == 0
+            && this.state.docPosition.fixation[0] == 0
+            && this.state.docPosition.asset == 0) {
             // We have hit beginning of document
             // Exit function
+            return;
+        } else if (direction == ScrollDirectionTypes.DOWN
+            && this.state.docPosition.asset + 1 < this.state.doc.assets.length
+            && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+            && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount) {
+            // We have hit end of current asset
+            // Load next one
+
+            if (this.state.highlightIsActive) {
+                let start = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: this.state.docPosition.fixation[0]
+                };
+
+                let end = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: this.state.docPosition.fixation[1]
+                }
+
+                this.toggleWordHighlight(start, end);
+            }
+
+            this.loadStartAsset(this.state.docPosition.asset + 1);
             return;
         }
 
         if (direction == ScrollDirectionTypes.UP) {
-            if (assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth > 0) {
-                if (this.state.highlightIsActive) {
-                    let start, end;
+            // Scroll Direction Up
+            if (this.state.highlightIsActive) {
+                let startWord = this.state.docPosition.fixation[0] == 0 ? Math.max(0, this.state.doc.assets[this.state.docPosition.asset].sentences[Math.max(0, this.state.docPosition.sentence - 1)].wordCount - this.props.fixationWidth) : Math.max(0, this.state.docPosition.fixation[0] - this.props.fixationWidth);
+                let endWord = this.state.docPosition.fixation[0] == 0 ? this.state.doc.assets[this.state.docPosition.asset].sentences[Math.max(0, this.state.docPosition.sentence - 1)].wordCount : this.state.docPosition.fixation[0];
+                let sentence = this.state.docPosition.fixation[0] == 0 ? Math.max(0, this.state.docPosition.sentence - 1) : this.state.docPosition.sentence;
 
-                    if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                        start = assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth].index;
-                        end = assets[this.state.assetCurrentIndex].history.length;
-                    } else {
-                        start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                    }
+                let start = {
+                    asset: this.state.docPosition.asset,
+                    sentence: sentence,
+                    word: startWord
+                };
 
-                    assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
+                let end = {
+                    asset: this.state.docPosition.asset,
+                    sentence: sentence,
+                    word: endWord
                 }
 
-
-                future         = assets[this.state.assetCurrentIndex].fixationWindow.concat(assets[this.state.assetCurrentIndex].future);
-                fixationWindow = assets[this.state.assetCurrentIndex].history.slice(assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth, assets[this.state.assetCurrentIndex].history.length);
-                history        = assets[this.state.assetCurrentIndex].history.slice(0, assets[this.state.assetCurrentIndex].history.length - this.props.fixationWidth);
-            } else {
-                // Edge Case that causes wrong fixation window
-                if (this.state.highlightIsActive) {
-                    let start, end;
-
-                    if (assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].isHighlighted) {
-                        start = 0;
-                        end = assets[this.state.assetCurrentIndex].history.length;
-                    } else {
-                        let diff = assets[this.state.assetCurrentIndex].history.length;
-                        start = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - diff].index;
-                        end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                    }
-
-                    assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-                }
-
-                future         = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future); // proxy future to re-establish fixationWindow
-                history       = [];
-                fixationWindow = future.slice(0, this.props.fixationWidth);
-                future         = future.slice(this.props.fixationWidth);
+                this.toggleWordHighlight(start, end);
             }
+
+            nextFixation = this.state.docPosition.fixation[0] == 0 ? [this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence - 1].wordCount - this.props.fixationWidth, this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence - 1].wordCount] : [Math.max(0, this.state.docPosition.fixation[0] - this.props.fixationWidth), this.state.docPosition.fixation[0]];
+            nextSentence = this.state.docPosition.fixation[0] == 0 ? this.state.docPosition.sentence - 1 : this.state.docPosition.sentence;
         } else {
             // Scroll Direction Down
             if (this.state.highlightIsActive) {
-                let start, end;
+                let start = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: this.state.docPosition.fixation[0]
+                };
 
-                start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                end = assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
+                let end = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: this.state.docPosition.fixation[1]
+                }
 
-                assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
+                this.toggleWordHighlight(start, end);
             }
-            history        = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow);
-            fixationWindow = assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
-            future         = assets[this.state.assetCurrentIndex].future.slice(this.props.fixationWidth, assets[this.state.assetCurrentIndex].future.length);
+
+            nextFixation = this.state.docPosition.fixation[1] == currentSentence.wordCount ? [0, this.props.fixationWidth] : [this.state.docPosition.fixation[0] + this.props.fixationWidth, Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
+            nextSentence = this.state.docPosition.fixation[1] == currentSentence.wordCount ? this.state.docPosition.sentence + 1 : this.state.docPosition.sentence;
         }
 
-        assets[this.state.assetCurrentIndex].history        = history;
-        assets[this.state.assetCurrentIndex].fixationWindow = fixationWindow;
-        assets[this.state.assetCurrentIndex].future         = future;
+        let docPosition = update(this.state.docPosition, {
+            sentence: {$set: nextSentence},
+            fixation: {$set: nextFixation}
+        });
 
-        doc.assets = assets;
+        //console.log("Doc Position: ", docPosition);
 
         this.setState({
-            doc : doc
+            scroll: 0,
+            docPosition: docPosition
         }, () => {
-            if (direction == ScrollDirectionTypes.DOWN
-                && fixationWindow.length == 0
-                && future.length == 0
-                && this.state.assetCurrentIndex + 1 < this.state.doc.assets.length) {
-                // End of paragraph, have pause
-                this.setTimePerFixation(this.state.timePerFixation);
-                // We have hit end of current asset
-                // Load next one
-                this.loadAsset(this.state.assetCurrentIndex + 1);
-            } else if (direction == ScrollDirectionTypes.DOWN
-                && fixationWindow.length == 0
-                && future.length == 0
-                && this.state.assetCurrentIndex + 1 == this.state.doc.assets.length
+             if (direction == ScrollDirectionTypes.DOWN
+                && this.state.docPosition.asset + 1 == this.state.doc.assets.length
+                && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+                && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount
                 && this.state.cruiseControlIsActive) {
                 // We have hit end of document
                 // and Cruise Control is active
                 // We deactivate it
                 this.toggleCruiseControl();
             } else if (direction == ScrollDirectionTypes.DOWN
-                && fixationWindow.length == 0
-                && future.length == 0
-                && this.state.assetCurrentIndex + 1 == this.state.doc.assets.length) {
+                && this.state.docPosition.asset + 1 == this.state.doc.assets.length
+                && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+                && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount) {
                     // We have hit end of document
                     // Cruise Control is not Active
                     return;
@@ -730,145 +539,346 @@ export default class Viewport extends React.Component {
         }
     }
 
-    skipToWord = (word, paragraphIndex, wordIndex, e) => {
+    /**
+     * [getCurrentAssetHistory description]
+     */
+    getCurrentAssetHistory = () => {
+        const sentences = [...this.state.doc.assets[this.state.docPosition.asset].sentences];
+        //console.log("sentences: ", sentences);
+        const completedSentences = sentences.slice(0, Math.max(0, this.state.docPosition.sentence));
+        //console.log("Complete Sentences: ", completedSentences);
+        let wordCount = completedSentences.reduce((total, sentence)=> {
+            return total + sentence.wordCount;
+        }, 0);
+        //console.log("wordCount: ", wordCount);
+        const incompleteSentence = {...sentences[this.state.docPosition.sentence]};
+        const incompleteSentenceWords = incompleteSentence.words.filter((word) => {
+            return word.index.word < this.state.docPosition.fixation[0];
+        });
+        //console.log("IncompleteSentenceWords: ", incompleteSentenceWords);
+        wordCount += incompleteSentenceWords.length;
+        //console.log("wordCount: ", wordCount);
+        const currentSentenceHistory = update(incompleteSentence, {
+            words: {$set: incompleteSentenceWords}
+        });
+        //console.log("currentSentenceHistory: ", currentSentenceCompleted);
+        const sentenceHistory = completedSentences.concat(currentSentenceHistory);
+        //console.log("sentenceCount: ", sentenceHistory.length);
+        //console.log("sentenceHistory: ", sentenceHistory);
+        return update(this.state.doc.assets[this.state.docPosition.asset], {
+            sentences: {$set: sentenceHistory},
+            sentenceCount: {$set: sentenceHistory.length},
+            wordCount: {$set: wordCount}
+        });
+    }
+
+    getFixationWindow = () => {
+        const currentSentence = {...this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence]};
+        const fixationWords = currentSentence.words.slice(this.state.docPosition.fixation[0], this.state.docPosition.fixation[this.state.docPosition.fixation.length - 1]);
+        //console.log("Fixation Words: ", fixationWords);
+        return fixationWords;
+    }
+
+    /**
+     * [getCurrentAssetFuture description]
+     */
+    getCurrentAssetFuture = () => {
+        const sentences = [...this.state.doc.assets[this.state.docPosition.asset].sentences];
+        //console.log("sentences: ", sentences);
+        const currentSentence = {...sentences[this.state.docPosition.sentence]};
+        const currentSentenceWords = currentSentence.words.filter((word) => {
+            return word.index.word >= this.state.docPosition.fixation[1];
+        });
+        //console.log("currentSentenceWords: ", currentSentenceWords);
+        let wordCount = currentSentenceWords.length;
+        //console.log("wordCount: ", wordCount);
+        const currentSentenceFuture = update(currentSentence, {
+            words: {$set: currentSentenceWords}
+        });
+        //console.log("currentSentenceFuture: ", currentSentenceFuture);
+        const futureSentences = sentences.slice(this.state.docPosition.sentence + 1, Math.max(this.state.docPosition.sentence + 1, this.state.doc.assets[this.state.docPosition.asset].sentenceCount));
+        //console.log("Future Sentences: ", futureSentences);
+        wordCount += futureSentences.reduce((total, sentence)=> {
+            return total + sentence.wordCount;
+        }, 0);
+        //console.log("wordCount: ", wordCount);
+        const sentenceFuture = [currentSentenceFuture].concat(futureSentences);
+        //console.log("sentenceCount: ", sentenceFuture.length);
+        //console.log("sentenceFuture: ", sentenceFuture);
+        return update(this.state.doc.assets[this.state.docPosition.asset], {
+            sentences: {$set: sentenceFuture},
+            sentenceCount: {$set: sentenceFuture.length},
+            wordCount: {$set: wordCount}
+        });
+    }
+
+    /**
+     * [skipToWord description]
+     * @param  {[type]} word           [description]
+     * @param  {[type]} e              [description]
+     */
+    skipToWord = (word, e) => {
         e.stopPropagation();
-        let doc = this.state.doc;
-        let assets           = doc.assets;
 
-        // reset current paragraph if skipping to a new one
-        if (paragraphIndex > this.state.assetCurrentIndex) {
+        if (word.index.paragraph > this.state.docPosition.asset) {
             // Skip ahead
-            // Make current asset history
-
-            // Highlight if active
+            console.log("Skip Ahead Paragraph");
+            // Highlight if active, toggle highlight
             if (this.state.highlightIsActive) {
-                let start = assets[this.state.assetCurrentIndex].fixationWindow[0].index;
-                let end = assets[this.state.assetCurrentIndex].future.length > 0 ? assets[this.state.assetCurrentIndex].future[assets[this.state.assetCurrentIndex].future.length - 1].index + 1 : assets[this.state.assetCurrentIndex].fixationWindow[assets[this.state.assetCurrentIndex].fixationWindow.length - 1].index + 1;
-                assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-            }
+                let start = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: this.state.docPosition.fixation[0]
+                };
 
-            let currentAsset = assets[this.state.assetCurrentIndex];
-            assets[this.state.assetCurrentIndex].history = currentAsset.history.concat(currentAsset.fixationWindow, currentAsset.future);
-            assets[this.state.assetCurrentIndex].fixationWindow = [];
-            assets[this.state.assetCurrentIndex].future = [];
-        } else if (paragraphIndex < this.state.assetCurrentIndex) {
+                let asset = this.state.doc.assets[this.state.docPosition.asset];
+                let lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
+
+                let end = {
+                    asset: this.state.docPosition.asset,
+                    sentence: asset.sentenceCount - 1,
+                    word: lastAssetSentence.wordCount
+                };
+
+                this.toggleWordHighlight(start, end); // Handles first asset skip
+
+                let numIntermediateAssets = word.index.paragraph - this.state.docPosition.asset;
+
+                if (numIntermediateAssets > 1) {
+                    console.log("Intermediates: ", numIntermediateAssets);
+                    for (let i = this.state.docPosition.asset; i < word.index.paragraph; i++) {
+                        asset = this.state.doc.assets[i];
+                        start = {
+                            asset: i,
+                            sentence: 0,
+                            word: 0
+                        };
+                        lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
+                        end = {
+                            asset: i,
+                            sentence: asset.sentenceCount - 1,
+                            word: lastAssetSentence.wordCount
+                        };
+                        this.toggleWordHighlight(start, end);
+                    }
+                }
+            }
+        } else if (word.index.paragraph < this.state.docPosition.asset) {
             // Skip back
-            // Make current asset future
-
-            // Highlight if active
+            console.log("Skip Back Paragraph");
+            // Highlight if active, toggle highlight
             if (this.state.highlightIsActive) {
-                let start = 0;
-                let end = assets[this.state.assetCurrentIndex].history[assets[this.state.assetCurrentIndex].history.length - 1].index + 1;
-                assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-            }
+                let start = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: 0
+                };
 
-            let currentAsset = assets[this.state.assetCurrentIndex];
-            assets[this.state.assetCurrentIndex].future = currentAsset.history.concat(currentAsset.fixationWindow, currentAsset.future);
-            assets[this.state.assetCurrentIndex].history = [];
-            assets[this.state.assetCurrentIndex].fixationWindow = [];
+                let endWord = this.state.docPosition.fixation[0] - 1 > 0 ? this.state.docPosition.fixation[0] - 1 : 0;
+
+                let end = {
+                    asset: this.state.docPosition.asset,
+                    sentence: this.state.docPosition.sentence,
+                    word: endWord + 1
+                }
+
+                this.toggleWordHighlight(start, end);
+
+                let numIntermediateAssets = this.state.docPosition.asset - word.index.paragraph;
+
+                if (numIntermediateAssets > 1) {
+                    console.log("Intermediates: ", numIntermediateAssets);
+                    for (let i = word.index.paragraph; i < this.state.docPosition.asset; i++) {
+                        asset = this.state.doc.assets[i];
+                        start = {
+                            asset: i,
+                            sentence: 0,
+                            word: 0
+                        };
+                        lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
+                        end = {
+                            asset: i,
+                            sentence: asset.sentenceCount - 1,
+                            word: lastAssetSentence.wordCount
+                        };
+                        this.toggleWordHighlight(start, end);
+                    }
+                }
+            }
         }
 
         // Highlight remaining words in new asset or currentAsset
-        if (this.state.highlightIsActive && paragraphIndex > this.state.assetCurrentIndex) {
+        if (this.state.highlightIsActive && word.index.paragraph > this.state.docPosition.asset) {
+            console.log("Progression Continued");
             // Progression
-            let nextAssetWords = assets[paragraphIndex].history.concat(assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
-            let start = 0;
-            let end = nextAssetWords[wordIndex].index;
-            assets = this.toggleWordHighlight(paragraphIndex, start, end);
-        } else if (this.state.highlightIsActive && paragraphIndex < this.state.assetCurrentIndex) {
+            let start = {
+                asset: word.index.paragraph,
+                sentence: 0,
+                word: 0
+            };
+
+            let end = {
+                asset: word.index.paragraph,
+                sentence: word.index.sentence,
+                word: word.index.word
+            };
+
+            this.toggleWordHighlight(start, end);
+        } else if (this.state.highlightIsActive && word.index.paragraph < this.state.docPosition.asset) {
+            console.log("Regression Continued");
             // Regression
-            let previousAssetWords = assets[paragraphIndex].history.concat(assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
-            let start = previousAssetWords[wordIndex].index;
-            let end = previousAssetWords.length;
-            assets = this.toggleWordHighlight(paragraphIndex, start, end);
+            let start = {
+                asset: word.index.paragraph,
+                sentence: word.index.sentence,
+                word: word.index.word
+            };
+
+            let previousAsset = this.state.doc.assets[word.index.paragraph];
+            let previousLastSentence = previousAsset.sentences[previousAsset.sentenceCount - 1];
+
+            let end = {
+                asset: word.index.paragraph,
+                sentence: previousAsset.sentenceCount - 1,
+                word: previousLastSentence.words[previousLastSentence.wordCount - 1].index.word + 1
+            };
+
+            this.toggleWordHighlight(start, end);
         } else if (this.state.highlightIsActive) {
+            console.log("Same Asset");
             // Same Asset
-            let currentAssetWords = assets[this.state.assetCurrentIndex].history.concat(assets[this.state.assetCurrentIndex].fixationWindow, assets[this.state.assetCurrentIndex].future);
-            let start = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? assets[this.state.assetCurrentIndex].history.length: wordIndex;
-            let end = wordIndex >= assets[this.state.assetCurrentIndex].history.length ? wordIndex : assets[this.state.assetCurrentIndex].history.length;
-            assets = this.toggleWordHighlight(this.state.assetCurrentIndex, start, end);
-        }
+            let startWord, endWord;
 
-        let words = assets[paragraphIndex].history.concat(assets[paragraphIndex].fixationWindow, assets[paragraphIndex].future);
-        let history = words.slice(0, wordIndex);
-        let fixationWindow = words.slice(wordIndex, wordIndex + this.props.fixationWidth);
-        let future = words.slice(wordIndex + this.props.fixationWidth);
-
-        assets[paragraphIndex].history        = history;
-        assets[paragraphIndex].fixationWindow = fixationWindow;
-        assets[paragraphIndex].future         = future;
-
-        doc.assets = assets;
-
-        this.setState({
-            assetCurrentIndex : paragraphIndex,
-            doc            : doc
-        });
-    }
-
-    loadAsset = (index) => {
-        let doc = this.state.doc;
-        let assets                   = doc.assets;
-        let direction = index >= this.state.assetCurrentIndex ? ScrollDirectionTypes.DOWN : ScrollDirectionTypes.UP;
-
-        if (direction == ScrollDirectionTypes.DOWN) {
-            // Place first words of next asset into fixation window
-            assets[index].fixationWindow = assets[index].future.slice(0, this.props.fixationWidth);
-            assets[index].future         = assets[index].future.slice(this.props.fixationWidth);
-        } else {
-            // === Read from bottom to top to understand logic ===
-            //
-            // Reset last current asset to have all words in future
-            assets[index + 1].future = assets[index + 1].history.concat(assets[index + 1].fixationWindow, assets[index + 1].future);
-            assets[index + 1].fixationWindow = [];
-            assets[index + 1].history = [];
-
-            // Place last words of last asset into fixation window
-            assets[index].fixationWindow = assets[index].history.slice(assets[index].history.length - this.props.fixationWidth);
-            assets[index].history         = assets[index].history.slice(0, assets[index].history.length - this.props.fixationWidth);
-        }
-
-        doc.assets = assets;
-
-        this.setState({
-            scroll            : 0,
-            doc: doc,
-            assetCurrentIndex : index
-        }, () => {
-            return;
-        });
-    }
-
-    toggleWordHighlight = (paragraphIndex, start, end) => {
-
-        let history    = [],
-        fixationWindow = [],
-        future         = [];
-
-        let lastWordIndexHistory = this.state.doc.assets[paragraphIndex].history.length > 0 ? this.state.doc.assets[paragraphIndex].history[this.state.doc.assets[paragraphIndex].history.length - 1].index : 0;
-        let lastWordIndexFixationWindow = this.state.doc.assets[paragraphIndex].fixationWindow.length > 0 ? this.state.doc.assets[paragraphIndex].fixationWindow[this.state.doc.assets[paragraphIndex].fixationWindow.length - 1].index : 0;
-        let words = this.state.doc.assets[paragraphIndex].history.concat(this.state.doc.assets[paragraphIndex].fixationWindow, this.state.doc.assets[paragraphIndex].future);
-
-        for (let i = start; i < end; i++) {
-            if (!words[i].highlight.active) {
-                words[i].highlight.active = true;
-                words[i].highlight.color = this.state.highlightColor;
+            if (word.index.sentence == this.state.docPosition.sentence && word.index.word > this.state.docPosition.fixation[0]
+                || word.index.sentence > this.state.docPosition.sentence) {
+                startWord = this.state.docPosition.fixation[0];
+                endWord = word.index.word;
             } else {
-                words[i].highlight.active = false;
-                words[i].highlight.color = null;
+                startWord = word.index.word;
+                endWord = this.state.docPosition.fixation[0];
+            }
+
+            let startSentence =  word.index.sentence > this.state.docPosition.sentence ? this.state.docPosition.sentence : word.index.sentence;
+            let endSentence = word.index.sentence > this.state.docPosition.sentence ? word.index.sentence : this.state.docPosition.sentence;
+
+            let start = {
+                asset: this.state.docPosition.asset,
+                sentence: startSentence,
+                word: startWord,
+            };
+
+            let end = {
+                asset: this.state.docPosition.asset,
+                sentence: endSentence,
+                word: endWord,
+            };
+
+            this.toggleWordHighlight(start, end);
+        }
+
+        const fixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
+
+        const docPosition = update(this.state.docPosition, {
+            asset: {$set: word.index.paragraph},
+            sentence: {$set: word.index.sentence},
+            fixation: {$set: fixation}
+        });
+
+        this.setState({
+            docPosition : docPosition
+        });
+    }
+
+    loadStartAsset = (index) => {
+        console.log("Load Start Asset");
+        let fixation = [0, this.props.fixationWidth];
+
+        const docPosition = update(this.state.docPosition, {
+            asset: {$set: index},
+            sentence: {$set: 0},
+            fixation: {$set: fixation}
+        });
+
+        this.setState({
+            scroll : 0,
+            docPosition: docPosition
+        });
+    }
+
+    loadEndAsset = (index) => {
+        console.log("Load End Asset");
+        let lastSentence = this.state.doc.assets[index].sentences[this.state.doc.assets[index].sentenceCount - 1];
+        let fixation = [lastSentence.wordCount - this.props.fixationWidth, lastSentence.wordCount];
+
+        const docPosition = update(this.state.docPosition, {
+            asset: {$set: index},
+            sentence: {$set: lastSentence.index.sentence},
+            fixation: {$set: fixation}
+        });
+
+        this.setState({
+            scroll : 0,
+            docPosition: docPosition
+        });
+    }
+
+    toggleWordHighlight = (start, end) => {
+        console.log("Start: ", start);
+        console.log("End: ", end);
+        let toggle = (sentence, i) => {
+            if (!sentence.words[i].highlight.active) {
+                sentence.words[i].highlight.active = true;
+                sentence.words[i].highlight.color = this.state.highlightColor;
+            } else {
+                sentence.words[i].highlight.active = false;
+                sentence.words[i].highlight.color = null;
             }
         }
 
-        history        = words.slice(0, lastWordIndexHistory + 1),
-        fixationWindow = this.state.doc.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? words.slice(lastWordIndexHistory + 1) : words.slice(lastWordIndexHistory + 1, lastWordIndexFixationWindow + 1),
-        future         = this.state.doc.assets[paragraphIndex].fixationWindow.length < this.props.fixationWidth ? [] : words.slice(lastWordIndexFixationWindow + 1);
+        let sentences = this.state.doc.assets[start.asset].sentences;
 
-        let assets = this.state.doc.assets;
-        assets[paragraphIndex].history = history;
-        assets[paragraphIndex].fixationWindow = fixationWindow;
-        assets[paragraphIndex].future = future;
+        if (start.sentence == end.sentence) {
+            // Highlight: Single Sentence
+            console.log("Highlight: Single Sentence");
+            let sentence = sentences[start.sentence];
+            for (let i = start.word; i < end.word; i++) {
+                toggle(sentence, i);
+            }
+        } else if (end.sentence > start.sentence && end.sentence - start.sentence > 1) {
+            // Highlight: Partial start, full middle, partial end
+            console.log("Highlight: Partial start, full middle ones, partial end");
+            let initialSentence = sentences[start.sentence];
+            for (let i = start.word; i < initialSentence.wordCount; i++) {
+                toggle(initialSentence, i);
+            }
 
-        return assets;
+            let finalSentence = sentences[end.sentence];
+            for (let i = 0; i < end.word; i++) {
+                toggle(finalSentence, i);
+            }
+
+            // Sentences with all words highlight toggled
+            for (let i = start.sentence + 1; i <= end.sentence - 1; i++) {
+                let sentence = sentences[i];
+                for (let j = 0; j < sentence.wordCount; j++) {
+                    toggle(sentence, j);
+                }
+            }
+        } else if (end.sentence > start.sentence && end.sentence - start.sentence == 1) {
+            // Highlight: Partial Start, Partial End
+            console.log("Highlight: Partial Start, Partial End");
+            let initialSentence = sentences[start.sentence];
+            for (let i = start.word; i < initialSentence.wordCount; i++) {
+                toggle(initialSentence, i);
+            }
+
+            let finalSentence = sentences[end.sentence];
+            for (let i = 0; i < end.word; i++) {
+                toggle(finalSentence, i);
+            }
+        } else {
+            // Highlight: Something went wrong
+            console.log("Highlight: Something went wrong");
+        }
     }
 
     handleHighlight = (color) => {
@@ -903,11 +913,11 @@ export default class Viewport extends React.Component {
         e.stopPropagation();
         let doc = this.state.doc;
         let assets = doc.assets;
-        let wordParagraph = assets[this.state.assetCurrentIndex];
+        let wordParagraph = assets[this.state.docPosition.asset];
 
         wordParagraph.fixationWindow[0].hasBookmark = !wordParagraph.fixationWindow[0].hasBookmark;
 
-        assets[this.state.assetCurrentIndex] = wordParagraph;
+        assets[this.state.docPosition.asset] = wordParagraph;
 
         doc.assets = assets;
 
@@ -936,16 +946,14 @@ export default class Viewport extends React.Component {
      * @param {[type]} addDelay in milliseconds
      */
     setTimePerFixation = (addDelay) => {
-        // We model the number of fixations as displacement
-        // We want to determine the fixations/s (velocity)
-        // We use the following equation of motion: x_f = x_0 + v_0*t + 0.5*a*t^2
-
-        let currentAsset = this.state.doc.assets[this.state.assetCurrentIndex];
+        //console.log("setTimePerFixation Delay: ", addDelay);
+        let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
         let millisecondsInMinute = 60000;
         let readMinutes = currentAsset.wordCount/this.props.readingSpeed;
         let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
         let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
         let timePerFixation = effectiveMillisecondsInMinute/numFixations + addDelay; // measured in ms
+        //console.log("setTimePerFixation Length: ", timePerFixation);
         this.setState({
             timePerFixation: timePerFixation
         });
@@ -959,6 +967,7 @@ export default class Viewport extends React.Component {
      * @param  {[type]} oncomplete [description]
      */
     doTimer = (length, resolution, oninstance, oncomplete) => {
+        //console.log("doTimer");
         let steps = (length / 100) * (resolution / 10),
             speed = length / steps,
             count = 0,
@@ -966,13 +975,13 @@ export default class Viewport extends React.Component {
 
         let instance = () => {
             if(count++ < steps) {
-                oninstance(steps, count);
+                oninstance();
                 let diff = (new Date().getTime() - start) - (count * speed);
                 this.timer = window.setTimeout(instance, (speed - diff));
             } else {
                 let timestamp = new Date().getTime();
                 this.setState({
-                    checkAddDelay: false
+                    checkAddDelay: true
                 });
                 oncomplete();
                 this.moveText(timestamp);
@@ -986,20 +995,48 @@ export default class Viewport extends React.Component {
         let addDelay = 0;
         // Runs fully once per doTimer
         // Only checks end of sentence for punctiation currently
-        if (!this.state.checkAddDelay) {
-            let futureFixationWindow = this.state.doc.assets[this.state.assetCurrentIndex].future.slice(0, this.props.fixationWidth);
+        if (this.state.checkAddDelay) {
+            //console.log("CheckAddDelay");
+            let currentSentence = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
+            let futureFixationAssetIndex = futureFixationSentenceIndex = this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+                && this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
+                this.state.docPosition.asset + 1
+            :
+                this.state.docPosition.asset;
 
+            let futureFixationSentenceIndex = this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+                && this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
+                0
+            :
+                this.state.docPosition.sentence;
+
+            let futureFixationWords = this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
+                [0, this.props.fixationWidth]
+            :
+                [Math.min(this.state.docPosition.fixation[0] + this.props.fixationWidth, currentSentence.wordCount), Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
+            //console.log("futureFixation: ", futureFixationWords);
+            //console.log("range: ", this.range(futureFixationWords[0], futureFixationWords[1]));
             // Determine if need to add time
-            futureFixationWindow.forEach((word) => {
+            this.range(futureFixationWords[0], futureFixationWords[1]).forEach((index) => {
+                let word = this.state.doc.assets[futureFixationAssetIndex].sentences[futureFixationSentenceIndex].words[index];
                 if (word.delay && Object.keys(word.delay).length > 0) {
+                    console.log("Delay Type: ", word.delay.type);
                     addDelay += word.delay.factor * this.state.timePerFixation/3;
                 }
             });
 
+            if (this.state.docPosition.sentence + 1 == this.state.doc.assets[futureFixationAssetIndex].sentenceCount
+                && futureFixationWords[1] == this.state.doc.assets[futureFixationAssetIndex].sentences[futureFixationSentenceIndex].wordCount) {
+                //console.log("Last sentence!!!!!!");
+                addDelay += this.state.timePerFixation;
+            }
+
             // Set state as checked
             this.setState({
-                checkAddDelay: true
+                checkAddDelay: false
             });
+
+            //console.log("Delay: ", addDelay);
 
             // Update FixationTime
             this.setTimePerFixation(addDelay);
@@ -1011,6 +1048,7 @@ export default class Viewport extends React.Component {
      * @param  {[type]} timestamp time of method call
      */
     moveText = (timestamp) => {
+        //console.log("MoveText: ", this.state.timePerFixation);
         // Apply first transition
         // Avoid waiting for timePerFixation to elapse
         let diff = new Date().getTime() - timestamp;
@@ -1018,8 +1056,7 @@ export default class Viewport extends React.Component {
         this.doTimer(
             this.state.timePerFixation - diff,
             20,
-            this.checkAddDelay
-            ,
+            this.checkAddDelay,
             this.updateViewport.bind({}, ScrollDirectionTypes.DOWN));
     }
 
@@ -1048,12 +1085,11 @@ export default class Viewport extends React.Component {
         alert("Still To Implement: Will open up interface to draw a sketch to attach.");
     }
 
-    getProgress = (total, asset) => {
-        let completed = this.state.doc.assets[this.state.assetCurrentIndex].history.length +
-                            this.state.doc.assets[this.state.assetCurrentIndex].fixationWindow.length +
-                            this.state.doc.assets.slice(0, this.state.assetCurrentIndex).reduce((total, asset) => {
-                                return total + asset.wordCount;
-                            }, 0);
+    getProgress = () => {
+        let completed = this.getCurrentAssetHistory().wordCount +
+                        this.state.doc.assets.slice(0, this.state.docPosition.asset).reduce((total, asset) => {
+                            return total + asset.wordCount;
+                        }, 0);
 
         let totalWords = this.state.doc.assets.reduce((total, asset) => {
             return total + asset.wordCount;
@@ -1080,12 +1116,18 @@ export default class Viewport extends React.Component {
             drawerIsOpen: !this.state.drawerIsOpen
         });
     }
+
+    range = (start, end, step = 1) => {
+        end -= 1; // Makes range end exclusive
+        const len = Math.floor((end - start) / step) + 1;
+        return Array(len).fill().map((_, idx) => start + (idx * step));
+    }
 }
 
 // ============= PropTypes ==============
 
 Viewport.propTypes = {
-    doc                : PropTypes.object.isRequired,
+    docURL             : PropTypes.string.isRequired,
     fontSize           : PropTypes.number.isRequired,
     fontFamily         : PropTypes.object.isRequired,
     fixationWidth      : PropTypes.number.isRequired,
@@ -1215,6 +1257,15 @@ const FixationWindow = styled.p`
 
 const FutureContainer = styled.section`
     position : relative;
+    display               : -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display               : -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display               : -ms-flexbox; /* TWEENER - IE 10 */
+    display               : -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display               : flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction    : column;
+    -moz-flex-direction   : column;
+    flex-direction        : column;
     width    : 100%;
     max-width: ${props => 30*props.fontSize + 'px'};
     height   : 35vh;

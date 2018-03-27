@@ -2,6 +2,7 @@
 import React        from 'react';
 import PropTypes    from 'prop-types';
 import styled       from 'styled-components';
+import { CSSTransitionGroup }   from 'react-transition-group';
 import uuid         from 'uuid';
 
 // Components
@@ -40,29 +41,33 @@ export default class DefinitionsDrawer extends React.Component {
                         :
                             PausePurple}
                     onClick={this.props.toggleDrawer}/>
+                    <CSSTransitionGroup
+                          transitionName         ="definition"
+                          transitionEnterTimeout ={200}
+                          transitionLeave        ={false}>
                     {this.props.fixationWords.map(word => {
                         return (
                             <Definition key={uuid.v4()}>
                                 <Term>
-                                    {word.definition.word ?
+                                    {word.definition && word.definition.word ?
                                             word.definition.word
                                         :
                                             word.text.toLowerCase()}
                                 </Term>
                                 <PartOfSpeech
                                     fontFamily={FontTypes.ADOBE_GARAMOND}>
-                                    {word.definition.results ?
+                                    {word.definition && word.definition.results ?
                                             word.definition.results[0].partOfSpeech
                                         :
                                             ""}
                                 </PartOfSpeech>
                                 <Description>
-                                    {word.definition.results ?
+                                    {word.definition && word.definition.results ?
                                             `1. ${word.definition.results[0].definition.length > 170 ? word.definition.results[0].definition.slice(0, 170) + "..." : word.definition.results[0].definition}.`
                                         :
-                                            "unavailable"}
+                                            "Definition Unavailable"}
                                 </Description>
-                                {word.definition.results && word.definition.results.length > 1 ?
+                                {word.definition && word.definition.results && word.definition.results.length > 1 ?
                                     <More
                                         cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                                         customCursor={this.props.skin == SkinTypes.DARK ?
@@ -77,6 +82,7 @@ export default class DefinitionsDrawer extends React.Component {
                             </Definition>
                         );
                     })}
+                </CSSTransitionGroup>
             </DefinitionsContainer>
         );
     }
@@ -101,10 +107,6 @@ DefinitionsDrawer.propTypes = {
 // ============= Styled Components ==============
 
 const DefinitionsContainer = styled.section`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: ${props => props.columns};
-	grid-gap: 0px 0px;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -121,13 +123,20 @@ const DefinitionsContainer = styled.section`
                         "#171717"
             };
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
-            "0px -10px 20px 1px rgba(181,210,236,.15)"
+            "0px -6px 12px 1px rgba(181,210,236,.08)"
         :
             "0px -10px 20px 1px rgba(0,0,0,.15)"
     };
     z-index: 5;
     transition: all 0.2s ease-in-out;
     transform: ${props => props.open ? "translateY(0%)" : "translateY(calc(100% - 3vh - 30px))"};
+
+    & span {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    	grid-template-rows: ${props => props.columns};
+    	grid-gap: 0px 0px;
+    }
 `;
 
 const DefinitionsStub = styled.div`
@@ -150,7 +159,7 @@ const DefinitionsStub = styled.div`
     background-repeat: no-repeat;
     transition: background-image 0.3s;
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
-            "0 1px 5px 0 rgba(181,210,236,.20)"
+            "0 1px 5px 0 rgba(181,210,236,.1)"
         :
             "0 1px 5px 0 rgba(0,0,0,.20)"
     };

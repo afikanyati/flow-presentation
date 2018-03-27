@@ -1,10 +1,10 @@
 /**
  * Used by the Viewport component as a list of permissible enum
- * values that represent the permissible features for user interface
+ * values that represent the permissible tools for user interface
  */
 
 export default {
     BOOKMARK: "bookmark",
-    ATTACHMENT: "attachment",
+    ATTACHMENT: "annotation",
     HIGHLIGHT: "highlight"
 };

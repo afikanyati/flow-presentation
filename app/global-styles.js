@@ -34,7 +34,7 @@ injectGlobal`
     	border: none;
     }
 
-    /* CSS Stylesheet for Flow */
+    /* CSS Stylesheet for Flowheap */
 
     .paragraph-enter {
       opacity: 0.5;
@@ -60,15 +60,6 @@ injectGlobal`
 
     .word-enter.word-enter-active {
       opacity: 1;
-      transition: opacity 300ms ease-in;
-    }
-
-    .word-leave {
-      opacity: 0.5;
-    }
-
-    .word-leave.word-leave-active {
-      opacity: 0;
       transition: opacity 200ms ease-in;
     }
 
@@ -96,7 +87,16 @@ injectGlobal`
 
     .fixation-enter.fixation-enter-active {
       opacity: 1;
-      transition: opacity 400ms ease-in;
+      transition: opacity 200ms ease-in;
+    }
+
+    .definition-enter {
+      opacity: 0.7;
+    }
+
+    .definition-enter.definition-enter-active {
+      opacity: 1;
+      transition: opacity 200ms ease-in;
     }
 
     /* Adobe Garamond */

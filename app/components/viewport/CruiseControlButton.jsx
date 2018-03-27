@@ -88,7 +88,7 @@ const ControlButton = styled.div`
                     :
                         props.theme.lightGray};
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
-            "0 4px 8px -2px rgba(181,210,236,.5), 0 3px 1px -2px rgba(181,210,236,.2), 0 1px 5px 0 rgba(181,210,236,.12)"
+            "0 4px 8px -2px rgba(181,210,236,.25), 0 3px 1px -2px rgba(181,210,236,.1), 0 1px 5px 0 rgba(181,210,236,.06)"
         :
             "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
     };
@@ -103,7 +103,7 @@ const ControlButton = styled.div`
 
     &:hover {
         box-shadow: ${props => props.skin == SkinTypes.DARK ?
-                "0 8px 16px -4px rgba(181,210,236,.5), 0 6px 2px -4px rgba(181,210,236,.2), 0 2px 10px 0 rgba(181,210,236,.12)"
+                "0 8px 16px -4px rgba(181,210,236,.25), 0 6px 2px -4px rgba(181,210,236,.1), 0 2px 10px 0 rgba(181,210,236,.06)"
             :
                 "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
         };
@@ -128,5 +128,5 @@ const ControlButtonIcon = styled.div`
     }
 `;
 
-const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
-const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";
+const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flowheap-app.appspot.com/o/app-resources%2Fpause-lightpurple.png?alt=media&token=9a569e16-f717-4113-952a-61b99d2b6380), auto";
+const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flowheap-app.appspot.com/o/app-resources%2Fpause-purple.png?alt=media&token=77722db7-7da0-4c8d-ad61-e46b1fec293b), auto";

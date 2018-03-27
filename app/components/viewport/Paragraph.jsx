@@ -21,47 +21,29 @@ export default class Paragraph extends React.Component {
     }
 
     render() {
+        let words = this.props.asset.sentences.reduce((words, sentence) => {return words.concat(sentence.words)},[]);
         return (
             <ParagraphContainer
                 fontSize     ={this.props.fontSize}>
-                {this.props.type == "history" ?
-                    <CSSTransitionGroup
-                          transitionName         ={"word"}
-                          transitionEnterTimeout ={400}
-                          transitionLeaveTimeout ={200}>
-                          {this.props.asset.history.map((word) => {
-                              return (
-                                  <Word
-                                      key        ={`parent=[type='${this.props.asset.type}', index='${this.props.asset.index}'], this=[type='word', index='${word.index}']`}
-                                      paragraph  ={this.props.asset.index}
-                                      word      ={word}
-                                      inFixationWindow={false}
-                                      fontFamily ={this.props.fontFamily}
-                                      skipToWord ={this.props.skipToWord}
-                                      skin={this.props.skin}
-                                      showAnnotations={this.props.showAnnotations}
-                                      cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                                  />
-                                  );
-                              })}
-                    </CSSTransitionGroup>
-                :
-                    this.props.asset.future.map((word) => {
-                        return (
-                            <Word
-                                key        ={`parent =[type ='${this.props.asset.type}', index ='${this.props.asset.index}'], this =[type ='word', index ='${word.index}']`}
-                                paragraph  ={this.props.asset.index}
-                                word       ={word}
-                                inFixationWindow={false}
-                                fontFamily ={this.props.fontFamily}
-                                skipToWord ={this.props.skipToWord}
-                                skin={this.props.skin}
-                                showAnnotations={this.props.showAnnotations}
-                                cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
-                            />
-                            );
-                        })
-                }
+                <CSSTransitionGroup
+                      transitionName         ={"word"}
+                      transitionEnterTimeout ={200}
+                      transitionLeave        ={false}>
+                      {words.map((word) => {
+                          return (
+                              <Word
+                                  key        ={`parent=[parent=[type='paragraph', index='${word.index.paragraph}'], this=[type='sentence', index='${word.index.sentence}']], this=[type='word', index='${word.index.word}']`}
+                                  word      ={word}
+                                  inFixationWindow={false}
+                                  fontFamily ={this.props.fontFamily}
+                                  skipToWord ={this.props.skipToWord}
+                                  skin={this.props.skin}
+                                  showAnnotations={this.props.showAnnotations}
+                                  cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
+                              />
+                              );
+                          })}
+                </CSSTransitionGroup>
             </ParagraphContainer>
         );
     }
@@ -71,22 +53,17 @@ export default class Paragraph extends React.Component {
     }
 
     // ========== Methods ===========
-
-    /*
-
-     */
 }
 
 // ============= PropTypes ==============
 
 Paragraph.propTypes = {
-    type               : PropTypes.string.isRequired,
-    asset              : PropTypes.object.isRequired,
+    asset          : PropTypes.object.isRequired,
     skipToWord         : PropTypes.func.isRequired,
     fontSize           : PropTypes.number.isRequired,
     fontFamily         : PropTypes.object.isRequired,
     skin               : PropTypes.string.isRequired,
-    showAnnotations: PropTypes.bool.isRequired,
+    showAnnotations    : PropTypes.bool.isRequired,
     cruiseControlHaltIsActive: PropTypes.bool.isRequired
 };
 
@@ -95,7 +72,7 @@ Paragraph.propTypes = {
 const ParagraphContainer = styled.p`
     width             : 100%;
     line-height       : 1.5em;
-    margin            : 29px 0;
+    margin            : 15px 0;
     max-width         : ${props => 30*props.fontSize + 'px'};
     font-size         : ${props => props.fontSize + 'px' || '16px'};
     line-height       : ${props => 1.5*props.fontSize + 'px' || '40px'};

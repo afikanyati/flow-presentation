@@ -10,11 +10,15 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "contractions": "0.0.7",
     "eslint-plugin-async-await": "0.0.0",
     "firebase-admin": "~5.8.1",
     "firebase-functions": "^0.8.1",
     "lemmer": "^0.3.0",
-    "rapidapi-connect": "0.0.6",
+    "natural": "^0.5.6",
+    "pos": "^0.4.2",
+    "sbd": "^1.0.12",
+    "scrape-it": "^5.0.2",
     "unirest": "^0.5.1"
   },
   "devDependencies": {
