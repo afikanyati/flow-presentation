@@ -39,7 +39,7 @@ export default class Root extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fontSize       : 20,
+            fontSize       : 22,
             fontFamily     : FontTypes.ADOBE_GARAMOND,
             fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
             trackingSpeed  : 12,

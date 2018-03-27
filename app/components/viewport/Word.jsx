@@ -140,9 +140,6 @@ const Text = styled.span`
     white-space: pre;
     user-select: none;
     transition        : all 0.2s;
-    -webkit-transition: all 0.2s;
-    -moz-transition   : all 0.2s;
-    -ms-transition    : all 0.2s;
 
     &:hover {
         color: ${props => !props.cruiseControlHaltIsActive ?
@@ -165,9 +162,6 @@ const Text = styled.span`
                 :
                     "inherit"};
         transition        : all 0.2s;
-        -webkit-transition: all 0.2s;
-        -moz-transition   : all 0.2s;
-        -ms-transition    : all 0.2s;
     }
 `;
 
@@ -195,16 +189,10 @@ const AnnotationIcon = styled.img`
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     animation: .2s fadeIn;
     transition        : all 0.2s;
-    -webkit-transition: all 0.2s;
-    -moz-transition   : all 0.2s;
-    -ms-transition    : all 0.2s;
 
     &:hover {
         opacity: 1;
         transition        : all 0.2s;
-        -webkit-transition: all 0.2s;
-        -moz-transition   : all 0.2s;
-        -ms-transition    : all 0.2s;
     }
 `;
 

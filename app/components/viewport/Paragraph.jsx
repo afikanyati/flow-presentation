@@ -73,11 +73,7 @@ const ParagraphContainer = styled.p`
     width             : 100%;
     line-height       : 1.5em;
     margin            : 15px 0;
-    max-width         : ${props => 30*props.fontSize + 'px'};
     font-size         : ${props => props.fontSize + 'px' || '16px'};
     line-height       : ${props => 1.5*props.fontSize + 'px' || '40px'};
     transition        : all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition   : all 0.3s;
-    -ms-transition    : all 0.3s;
 `;

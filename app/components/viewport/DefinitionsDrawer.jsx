@@ -65,7 +65,7 @@ export default class DefinitionsDrawer extends React.Component {
                                     {word.definition && word.definition.results ?
                                             `1. ${word.definition.results[0].definition.length > 170 ? word.definition.results[0].definition.slice(0, 170) + "..." : word.definition.results[0].definition}.`
                                         :
-                                            "Definition Unavailable"}
+                                            "definition unavailable"}
                                 </Description>
                                 {word.definition && word.definition.results && word.definition.results.length > 1 ?
                                     <More
@@ -165,9 +165,6 @@ const DefinitionsStub = styled.div`
     };
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     transition        : all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition   : all 0.3s;
-    -ms-transition    : all 0.3s;
 
     &:hover {
         background-color: ${props => !props.cruiseControlHaltIsActive ?
@@ -219,9 +216,6 @@ const More = styled.h5`
     margin: 0;
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     transition        : all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition   : all 0.3s;
-    -ms-transition    : all 0.3s;
 
     &:hover {
         color: ${props => props.theme.darkBlue};

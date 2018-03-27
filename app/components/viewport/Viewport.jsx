@@ -42,7 +42,8 @@ export default class Viewport extends React.Component {
             showAnnotations          : true,
             highlightColor           : null,
             drawerIsOpen             : false,
-            docLoaded                : false
+            docLoaded                : false,
+            numLineChars               : 30
         }
     }
 
@@ -151,7 +152,8 @@ export default class Viewport extends React.Component {
                     */}
                 <HistoryContainer
                     skin={this.props.skin}
-                    fontSize={this.props.fontSize}>
+                    fontSize={this.props.fontSize}
+                    numLineChars={this.state.numLineChars}>
                     {[history].map((asset) => {
                       return (
                           <Paragraph
@@ -182,7 +184,8 @@ export default class Viewport extends React.Component {
                 })}
                 </HistoryContainer>
                 <FixationWindowContainer
-                    fontSize={this.props.fontSize}>
+                    fontSize={this.props.fontSize}
+                    numLineChars={this.state.numLineChars}>
                     <FixationWindow
                         highlightIsActive={this.state.highlightIsActive}
                         highlightColor={this.state.highlightColor}
@@ -212,7 +215,8 @@ export default class Viewport extends React.Component {
                 </FixationWindowContainer>
                 <FutureContainer
                     skin={this.props.skin}
-                    fontSize={this.props.fontSize}>
+                    fontSize={this.props.fontSize}
+                    numLineChars={this.state.numLineChars}>
                     {[future].map((asset) => {
                         return (
                             <Paragraph
@@ -461,6 +465,11 @@ export default class Viewport extends React.Component {
 
             nextFixation = this.state.docPosition.fixation[0] == 0 ? [this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence - 1].wordCount - this.props.fixationWidth, this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence - 1].wordCount] : [Math.max(0, this.state.docPosition.fixation[0] - this.props.fixationWidth), this.state.docPosition.fixation[0]];
             nextSentence = this.state.docPosition.fixation[0] == 0 ? this.state.docPosition.sentence - 1 : this.state.docPosition.sentence;
+
+            // Constrain Fixation Words to Window
+            while (this.countChars(nextSentence, nextFixation) > this.state.numLineChars) {
+                nextFixation[0] += 1;
+            }
         } else {
             // Scroll Direction Down
             if (this.state.highlightIsActive) {
@@ -481,6 +490,11 @@ export default class Viewport extends React.Component {
 
             nextFixation = this.state.docPosition.fixation[1] == currentSentence.wordCount ? [0, this.props.fixationWidth] : [this.state.docPosition.fixation[0] + this.props.fixationWidth, Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
             nextSentence = this.state.docPosition.fixation[1] == currentSentence.wordCount ? this.state.docPosition.sentence + 1 : this.state.docPosition.sentence;
+
+            // Constrain Fixation Words to Window
+            while (this.countChars(nextSentence, nextFixation) > this.state.numLineChars) {
+                nextFixation[1] -= 1;
+            }
         }
 
         let docPosition = update(this.state.docPosition, {
@@ -569,7 +583,7 @@ export default class Viewport extends React.Component {
 
     getFixationWindow = () => {
         const currentSentence = {...this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence]};
-        const fixationWords = currentSentence.words.slice(this.state.docPosition.fixation[0], this.state.docPosition.fixation[this.state.docPosition.fixation.length - 1]);
+        const fixationWords = currentSentence.words.slice(this.state.docPosition.fixation[0], this.state.docPosition.fixation[1]);
         return fixationWords;
     }
 
@@ -755,12 +769,17 @@ export default class Viewport extends React.Component {
             this.toggleWordHighlight(start, end);
         }
 
-        const fixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
+        const nextFixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
+
+        // Constrain Fixation Words to Window
+        while (this.countChars(word.index.sentence, nextFixation) > this.state.numLineChars) {
+            nextFixation[1] -= 1;
+        }
 
         const docPosition = update(this.state.docPosition, {
             asset: {$set: word.index.paragraph},
             sentence: {$set: word.index.sentence},
-            fixation: {$set: fixation}
+            fixation: {$set: nextFixation}
         });
 
         this.setState({
@@ -931,37 +950,6 @@ export default class Viewport extends React.Component {
         });
     }
 
-    /**
-     * [doTimer description]
-     * @param  {[type]} length     [description]
-     * @param  {[type]} resolution in frames/s
-     * @param  {[type]} oninstance [description]
-     * @param  {[type]} oncomplete [description]
-     */
-    doTimer = (length, resolution, oninstance, oncomplete) => {
-        let steps = (length / 100) * (resolution / 10),
-            speed = length / steps,
-            count = 0,
-            start = new Date().getTime();
-
-        let instance = () => {
-            if(count++ < steps) {
-                oninstance();
-                let diff = (new Date().getTime() - start) - (count * speed);
-                this.timer = window.setTimeout(instance, (speed - diff));
-            } else {
-                let timestamp = new Date().getTime();
-                this.setState({
-                    checkAddDelay: true
-                });
-                oncomplete();
-                this.moveText(timestamp);
-            }
-        }
-
-        this.timer = window.setTimeout(instance, speed);
-    }
-
     checkAddDelay = () => {
         let addDelay = 0;
         // Runs fully once per doTimer
@@ -1081,10 +1069,63 @@ export default class Viewport extends React.Component {
         });
     }
 
+    // ========== Helper Functions ==========
+
+    /**
+     * Helper Function
+     * @param  {[type]} length     [description]
+     * @param  {[type]} resolution in frames/s
+     * @param  {[type]} oninstance [description]
+     * @param  {[type]} oncomplete [description]
+     */
+    doTimer = (length, resolution, oninstance, oncomplete) => {
+        let steps = (length / 100) * (resolution / 10),
+            speed = length / steps,
+            count = 0,
+            start = new Date().getTime();
+
+        let instance = () => {
+            if(count++ < steps) {
+                oninstance();
+                let diff = (new Date().getTime() - start) - (count * speed);
+                this.timer = window.setTimeout(instance, (speed - diff));
+            } else {
+                let timestamp = new Date().getTime();
+                this.setState({
+                    checkAddDelay: true
+                });
+                oncomplete();
+                this.moveText(timestamp);
+            }
+        }
+
+        this.timer = window.setTimeout(instance, speed);
+    }
+
+    /**
+     * Helper Function
+     * @param  {[type]} start    [description]
+     * @param  {[type]} end      [description]
+     * @param  {Number} [step=1] [description]
+     * @return {[type]}          [description]
+     */
     range = (start, end, step = 1) => {
         end -= 1; // Makes range end exclusive
         const len = Math.floor((end - start) / step) + 1;
         return Array(len).fill().map((_, idx) => start + (idx * step));
+    }
+
+    /**
+     * Helper Function
+     * @param  {[type]} words [description]
+     * @return {[type]}       [description]
+     */
+    countChars = (sentenceIndex, fixation) => {
+        const sentence = {...this.state.doc.assets[this.state.docPosition.asset].sentences[sentenceIndex]};
+        const words = sentence.words.slice(fixation[0], fixation[1]);
+        return words.reduce((total, word) => {
+            return total + word.text.length
+        }, 0);
     }
 }
 
@@ -1107,18 +1148,8 @@ Viewport.propTypes = {
 const Container = styled.div`
     height                : 100vh;
     width                 : 100vw;
-    display               : -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display               : -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display               : -ms-flexbox; /* TWEENER - IE 10 */
-    display               : -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display               : flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction    : column;
-    -moz-flex-direction   : column;
     flex-direction        : column;
-    -webkit-align-items   : center;
-	-ms-align-items       : center;
-	-moz-align-items      : center;
 	align-items           : center;
     overflow              : hidden;
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor : "auto"};
@@ -1142,21 +1173,11 @@ const Container = styled.div`
 
 const HistoryContainer = styled.section`
     position : relative;
-    display               : -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display               : -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display               : -ms-flexbox; /* TWEENER - IE 10 */
-    display               : -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display               : flex;
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction    : column-reverse;
-    -moz-flex-direction   : column-reverse;
     flex-direction        : column-reverse;
-    -webkit-align-items   : flex-end;
-	-ms-align-items       : flex-end;
-	-moz-align-items      : flex-end;
 	align-items           : flex-end;
     width    : 100%;
-    max-width: ${props => 30*props.fontSize + 'px'};
+    max-width: ${props => props.numLineChars*props.fontSize + 'px'};
     height   : 35vh;
     margin   : 0;
     opacity  : 0.8;
@@ -1181,25 +1202,12 @@ const HistoryContainer = styled.section`
 
 const FixationWindowContainer = styled.section`
     position                 : relative;
-    display                  : -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display                  : -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display                  : -ms-flexbox; /* TWEENER - IE 10 */
-    display                  : -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display                  : flex;
-    -webkit-flex-direction   : row;
-    -ms-flex-direction       : row;
-    -moz-flex-direction      : row;
     flex-direction           : row;
-    -webkit-align-items      : center;
-	-ms-align-items          : center;
-	-moz-align-items         : center;
 	align-items              : center;
-    -webkit-justify-content  : center;
-    -ms-align-justify-content: center;
-    -moz-justify-content     : center;
     justify-content          : center;
-    width                    : 100vw;
-    max-width                : ${window.innerWidth - 200};
+    width                    : 100%;
+    max-width: ${props => props.numLineChars*props.fontSize + 'px'};
     height                   : 30vh;
     margin                   : 0;
 `;
@@ -1214,24 +1222,14 @@ const FixationWindow = styled.p`
     border-left-style: solid;
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
     transition        : all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition   : all 0.3s;
-    -ms-transition    : all 0.3s;
 `;
 
 const FutureContainer = styled.section`
     position : relative;
-    display               : -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display               : -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display               : -ms-flexbox; /* TWEENER - IE 10 */
-    display               : -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display               : flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction    : column;
-    -moz-flex-direction   : column;
     flex-direction        : column;
     width    : 100%;
-    max-width: ${props => 30*props.fontSize + 'px'};
+    max-width: ${props => props.numLineChars*props.fontSize + 'px'};
     height   : 35vh;
     margin   : 0;
     opacity  : 0.2;
@@ -1269,7 +1267,3 @@ const TitleBar = styled.h3`
 
 const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
 const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";
-const TransitionWords = ["and", "also", "then", "moreoever", "likewise", "comparatively", "correspondingly", "similarly", "furthermore", "additionally",
-    "notably", "including", "namely", "chiefly", "indeed", "surely", "markedly", "especially", "specifically", "expressively", "surprisingly", "frequently", "significantly",
-    "hence", "suddenly", "shortly", "henceforth", "meanwhile", "presently", "occasionally", "thus", "because", "but", "unlike", "or", "yet", "while", "albeit", "besides",
-    "if", "unless", "lest", "lastly", "finally", "too", "although"];

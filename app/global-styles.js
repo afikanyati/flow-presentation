@@ -3,9 +3,6 @@ import { injectGlobal } from 'styled-components';
 injectGlobal`
     * {
         box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
     }
 
     body {
@@ -18,7 +15,6 @@ injectGlobal`
     }
 
     textarea, input {
-    	-webkit-transition: border .5s ease-in-out;
       transition: border .5s ease-in-out;
     }
 
