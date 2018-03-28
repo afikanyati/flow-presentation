@@ -5,6 +5,7 @@ import PropTypes                from 'prop-types';
 import styled                   from 'styled-components';
 import { CSSTransitionGroup }   from 'react-transition-group';
 import update                   from 'immutability-helper';
+import uuid         from 'uuid';
 
 // Components
 import ScrollDirectionTypes     from '../../constants/scrollDirectionTypes';
@@ -43,7 +44,7 @@ export default class Viewport extends React.Component {
             highlightColor           : null,
             drawerIsOpen             : false,
             docLoaded                : false,
-            numLineChars             : 30,
+            numLineChars             : 28,
             numPageParagraphs        : 3
         }
     }
@@ -160,30 +161,61 @@ export default class Viewport extends React.Component {
                     numLineChars={this.state.numLineChars}>
                     {[history].map((asset) => {
                       return (
-                          <Paragraph
-                              key           ={`parent =[null], this =[type ='${asset.type}-history', index ='${this.state.docPosition.asset}']`}
-                              asset     ={asset}
-                              fontSize      ={this.props.fontSize}
-                              fontFamily    ={this.props.fontFamily}
-                              skipToWord    ={this.skipToWord}
-                              skin={this.props.skin}
-                              showAnnotations={this.state.showAnnotations}
-                              cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                              />
+                          <ParagraphContainer
+                              key={`parent =[null], this =[type ='${asset.type}-history', index ='${this.state.docPosition.asset}']`}
+                              fontSize={this.props.fontSize}
+                              numLineChars={this.state.numLineChars}>
+                              {asset.index.asset % this.state.numPageParagraphs == 0 ?
+                                      <PageDelimiter
+                                          skin={this.props.skin}>
+                                          <PageNumber
+                                              skin={this.props.skin}>
+                                              {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
+                                          </PageNumber>
+                                      </PageDelimiter>
+                                  :
+                                    null
+                              }
+                              <Paragraph
+                                  asset     ={asset}
+                                  fontSize      ={this.props.fontSize}
+                                  fontFamily    ={this.props.fontFamily}
+                                  skipToWord    ={this.skipToWord}
+                                  skin={this.props.skin}
+                                  showAnnotations={this.state.showAnnotations}
+                                  cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                                  />
+                          </ParagraphContainer>
+
                       );
                   })}
                   {doc.assets.slice(Math.max(0, this.state.docPosition.asset - 2), this.state.docPosition.asset).reverse().map((asset, index) => {
                     return (
-                        <Paragraph
-                            key           ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index.asset}']`}
-                            asset     ={asset}
-                            fontSize     ={this.props.fontSize}
-                            fontFamily   ={this.props.fontFamily}
-                            skipToWord   ={this.skipToWord}
-                            skin={this.props.skin}
-                            showAnnotations={this.state.showAnnotations}
-                            cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                            />
+                        <ParagraphContainer
+                            key={`parent =[null], this =[type ='${asset.type}', index ='${asset.index.asset}']`}
+                            fontSize={this.props.fontSize}
+                            numLineChars={this.state.numLineChars}>
+                            {asset.index.asset % this.state.numPageParagraphs == 0 ?
+                                    <PageDelimiter
+                                        skin={this.props.skin}>
+                                        <PageNumber
+                                            skin={this.props.skin}>
+                                            {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
+                                        </PageNumber>
+                                    </PageDelimiter>
+                                :
+                                  null
+                            }
+                            <Paragraph
+                                asset     ={asset}
+                                fontSize     ={this.props.fontSize}
+                                fontFamily   ={this.props.fontFamily}
+                                skipToWord   ={this.skipToWord}
+                                skin={this.props.skin}
+                                showAnnotations={this.state.showAnnotations}
+                                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                                />
+                        </ParagraphContainer>
                     );
                 })}
                 </HistoryContainer>
@@ -237,16 +269,31 @@ export default class Viewport extends React.Component {
                     })}
                     {doc.assets.slice(this.state.docPosition.asset + 1, Math.min(this.state.docPosition.asset + 3, this.state.doc.assets.length)).map((asset, index) => {
                         return (
-                            <Paragraph
-                                key                 ={`parent =[null], this =[type ='paragraph', index ='${asset.index.asset}']`}
-                                asset           ={asset}
-                                fontSize            ={this.props.fontSize}
-                                fontFamily          ={this.props.fontFamily}
-                                skipToWord          ={this.skipToWord}
-                                skin={this.props.skin}
-                                showAnnotations={this.state.showAnnotations}
-                                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                                />
+                            <ParagraphContainer
+                                key={`parent =[null], this =[type ='paragraph', index ='${asset.index.asset}']`}
+                                fontSize={this.props.fontSize}
+                                numLineChars={this.state.numLineChars}>
+                                {asset.index.asset % this.state.numPageParagraphs == 0 ?
+                                        <PageDelimiter
+                                            skin={this.props.skin}>
+                                            <PageNumber
+                                                skin={this.props.skin}>
+                                                {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
+                                            </PageNumber>
+                                        </PageDelimiter>
+                                    :
+                                      null
+                                }
+                                <Paragraph
+                                    asset           ={asset}
+                                    fontSize            ={this.props.fontSize}
+                                    fontFamily          ={this.props.fontFamily}
+                                    skipToWord          ={this.skipToWord}
+                                    skin={this.props.skin}
+                                    showAnnotations={this.state.showAnnotations}
+                                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
+                                    />
+                            </ParagraphContainer>
                         );
                     })}
                 </FutureContainer>
@@ -470,7 +517,7 @@ export default class Viewport extends React.Component {
             nextSentence = this.state.docPosition.fixation[0] == 0 ? this.state.docPosition.sentence - 1 : this.state.docPosition.sentence;
 
             // Constrain Fixation Words to Window
-            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars - 5) {
+            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars) {
                 nextFixation = update(nextFixation, {
                     0: {$set: nextFixation[1] + 1}
                 });
@@ -497,7 +544,7 @@ export default class Viewport extends React.Component {
             nextSentence = this.state.docPosition.fixation[1] == currentSentence.wordCount ? this.state.docPosition.sentence + 1 : this.state.docPosition.sentence;
 
             // Constrain Fixation Words to Window
-            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars - 5) {
+            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars) {
                 nextFixation = update(nextFixation, {
                     1: {$set: nextFixation[1] - 1}
                 });
@@ -779,7 +826,7 @@ export default class Viewport extends React.Component {
         let nextFixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
 
         // Constrain Fixation Words to Window
-        while (this.countChars(word.index.paragraph, word.index.sentence, nextFixation) >= this.state.numLineChars - 5) {
+        while (this.countChars(word.index.paragraph, word.index.sentence, nextFixation) >= this.state.numLineChars) {
             nextFixation = update(nextFixation, {
                 1: {$set: nextFixation[1] - 1}
             });
@@ -801,6 +848,12 @@ export default class Viewport extends React.Component {
 
         if (type === "start") {
             fixation = [0, this.props.fixationWidth];
+            while (this.countChars(index, 0, fixation) >= this.state.numLineChars) {
+                fixation = update(fixation, {
+                    1: {$set: fixation[1] - 1}
+                });
+            }
+
             docPosition = update(this.state.docPosition, {
                 asset: {$set: index},
                 sentence: {$set: 0},
@@ -981,6 +1034,12 @@ export default class Viewport extends React.Component {
                 [0, this.props.fixationWidth]
             :
                 [Math.min(this.state.docPosition.fixation[0] + this.props.fixationWidth, currentSentence.wordCount), Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
+
+            while (this.countChars(futureFixationAssetIndex, futureFixationSentenceIndex, futureFixationWords) >= this.state.numLineChars) {
+                futureFixationWords = update(futureFixationWords, {
+                    1: {$set: futureFixationWords[1] - 1}
+                });
+            }
 
             // Determine if need to add time
             this.range(futureFixationWords[0], futureFixationWords[1]).forEach((index) => {
@@ -1163,12 +1222,12 @@ const Container = styled.div`
                         "#bebebe"
             };
     background: ${props => props.skin == SkinTypes.LIGHT ?
-                "#ffffff"
+                props.theme.white
             :
                 props.skin == SkinTypes.CREAM ?
                         "#f9f3e9"
                     :
-                        "#171717"
+                        props.theme.pitchBlack
             };
 `;
 
@@ -1177,8 +1236,7 @@ const HistoryContainer = styled.section`
     display               : flex;
     flex-direction        : column-reverse;
 	align-items           : flex-end;
-    width    : 100%;
-    max-width: ${props => props.numLineChars*props.fontSize + 'px'};
+    width: ${props => props.numLineChars * props.fontSize + 'px'};
     height   : 35vh;
     margin   : 0;
     opacity  : 0.8;
@@ -1208,7 +1266,7 @@ const FixationWindowContainer = styled.section`
 	align-items              : center;
     justify-content          : center;
     width                    : 100%;
-    max-width: ${props => props.numLineChars*props.fontSize + 'px'};
+    max-width: ${props => props.numLineChars * props.fontSize + 'px'};
     height                   : 30vh;
     margin                   : 0;
 `;
@@ -1229,8 +1287,7 @@ const FutureContainer = styled.section`
     position : relative;
     display               : flex;
     flex-direction        : column;
-    width    : 100%;
-    max-width: ${props => props.numLineChars*props.fontSize + 'px'};
+    width: ${props => props.numLineChars * props.fontSize + 'px'};
     height   : 35vh;
     margin   : 0;
     opacity  : 0.2;
@@ -1251,6 +1308,51 @@ const FutureContainer = styled.section`
                 };
         pointer-events: none; /* so the text is still selectable */
     }
+`;
+
+const PageDelimiter = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1px;
+    width: 100%;
+    background: ${props => props.skin == SkinTypes.LIGHT ?
+                props.theme.black
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#5f3e24"
+                    :
+                        props.theme.gray
+            };
+    margin: 30px 0;
+`;
+
+const PageNumber = styled.h3`
+    color: ${props => props.skin == SkinTypes.LIGHT ?
+                props.theme.black
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#5f3e24"
+                    :
+                        props.theme.gray
+            };
+    font-weight: 300;
+    font-size: 1em;
+    background: ${props => props.skin == SkinTypes.LIGHT ?
+                props.theme.white
+            :
+                props.skin == SkinTypes.CREAM ?
+                        "#f9f3e9"
+                    :
+                        props.theme.pitchBlack
+            };
+    margin: 0;
+    padding: 5px 15px;
+    user-select: none;
+`;
+
+const ParagraphContainer = styled.div`
+    width: ${props => props.numLineChars * props.fontSize + 'px'};
 `;
 
 const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";

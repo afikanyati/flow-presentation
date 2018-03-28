@@ -45,7 +45,7 @@ export default class CompletionMeter extends React.Component {
                     onClick={this.props.selectPage.bind({}, currentPage - 1)} />
                 <PageIndicator
                     skin={this.props.skin}>
-                    {0}
+                    {1}
                 </PageIndicator>
                 <CompleteMeter
                     skin={this.props.skin}
@@ -55,7 +55,7 @@ export default class CompletionMeter extends React.Component {
                     skin={this.props.skin}>
                     <CurrentPageIndicator
                         skin={this.props.skin}>
-                        {currentPage}
+                        {currentPage + 1}
                     </CurrentPageIndicator>
                     {pageProgress.map((paragraphCompletion) => {
                         return (
@@ -73,7 +73,7 @@ export default class CompletionMeter extends React.Component {
                     onClick={this.handleMeterClick.bind({}, "incomplete")} />
                 <PageIndicator
                     skin={this.props.skin}>
-                    {this.state.lastPage}
+                    {this.state.lastPage + 1}
                 </PageIndicator>
                 <ForwardArrow
                     skin={this.props.skin}

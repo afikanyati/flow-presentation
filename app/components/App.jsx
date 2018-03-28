@@ -60,11 +60,11 @@ export default class Root extends React.Component {
             offset = new Date().getTimezoneOffset()/minInHour,
             hour = new Date().getUTCHours();
 
-        // if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
-        //     this.setState({
-        //         skin: SkinTypes.DARK
-        //     });
-        // }
+        if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
+            this.setState({
+                skin: SkinTypes.DARK
+            });
+        }
     }
 
     render() {

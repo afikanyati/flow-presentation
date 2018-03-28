@@ -202,7 +202,6 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
         let paragraph = {
             type: "paragraph",
             index: {asset: i},
-            page: Math.floor(i/numPageParagraphs),
             sentences: sentences,
             delay: sentences.reduce((total, sentence) => {return total + sentence.delay}, 0),
             sentenceCount: sentences.length,

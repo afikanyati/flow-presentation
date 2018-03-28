@@ -34,6 +34,7 @@ const theme = {
     gray: '#e0e1e0',
     darkGray: '#7F7F7F',
     black: '#252625',
+    pitchBlack: '#171717',
     textColor: 'rgba(35,31,32, 0.87)'
 }
 

@@ -95,6 +95,24 @@ injectGlobal`
       transition: opacity 200ms ease-in;
     }
 
+    .delimiter-enter {
+      opacity: 0.5;
+    }
+
+    .delimiter-enter.delimiter-enter-active {
+      opacity: 1;
+      transition: opacity 200ms ease-in;
+    }
+
+    .delimiter-leave {
+      opacity: 0.5;
+    }
+
+    .delimiter-leave.delimiter-leave-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
+
     /* Adobe Garamond */
     @font-face {
     font-family: 'AdobeGaramond';
