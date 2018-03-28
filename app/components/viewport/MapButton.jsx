@@ -72,7 +72,7 @@ const MapButtonContainer = styled.div`
     height: 60px;
     border-radius: 30px;
     background: ${props => props.skin == SkinTypes.DARK ?
-                props.theme.darkGray
+                props.theme.black
             :
                 props.theme.lightGray
             };
@@ -82,7 +82,7 @@ const MapButtonContainer = styled.div`
             "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
     };
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
-    z-index: 10;
+    z-index: 2;
 
     @media (max-width: 480px) and (max-height: 480px) {
         width: 30px;

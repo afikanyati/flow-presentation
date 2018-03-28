@@ -127,7 +127,7 @@ const DefinitionsContainer = styled.section`
         :
             "0px -10px 20px 1px rgba(0,0,0,.15)"
     };
-    z-index: 5;
+    z-index: 1;
     transition: all 0.2s ease-in-out;
     transform: ${props => props.open ? "translateY(0%)" : "translateY(calc(100% - 3vh - 30px))"};
 
@@ -148,7 +148,7 @@ const DefinitionsStub = styled.div`
     height: 60px;
     border-radius: 30px;
     background-color: ${props => props.skin == SkinTypes.DARK ?
-                props.theme.darkGray
+                props.theme.black
             :
                 props.theme.lightGray
 
@@ -157,7 +157,6 @@ const DefinitionsStub = styled.div`
     background-position: 50%;
     background-size: 35px 35px;
     background-repeat: no-repeat;
-    transition: background-image 0.3s;
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
             "0 1px 5px 0 rgba(181,210,236,.1)"
         :
@@ -174,7 +173,7 @@ const DefinitionsStub = styled.div`
                         props.theme.darkBlue
             :
                 props => props.skin == SkinTypes.DARK ?
-                            props.theme.darkGray
+                            props.theme.black
                         :
                             props.theme.lightGray};
     }

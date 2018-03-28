@@ -116,7 +116,7 @@ const FunctionBarContainer = styled.div`
     top: 5px;
     left: ${props => props.hand == HandTypes.RIGHT ? "10px" : "auto"};
     right: ${props => props.hand == HandTypes.LEFT ? "10px" : "auto"};
-    z-index: 5;
+    z-index: 1;
 `;
 
 const FunctionIcon = styled.div`
@@ -146,7 +146,7 @@ const FunctionText = styled.h3`
     font-size: 0.9em;
     margin: 0;
     color: ${props => props.skin == SkinTypes.LIGHT ?
-                props.theme.darkGray
+                props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
                         "#5f3e24"

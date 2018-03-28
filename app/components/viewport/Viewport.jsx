@@ -123,7 +123,6 @@ export default class Viewport extends React.Component {
     }
 
     viewportView = () => {
-        let progress = this.getProgress();
         let history = this.getCurrentAssetHistory();
         let fixationWindow = this.getFixationWindow();
         let future = this.getCurrentAssetFuture();
@@ -145,9 +144,13 @@ export default class Viewport extends React.Component {
                     showAnnotations={this.state.showAnnotations}
                 />
                 <CompletionBar
+                    doc={this.state.doc}
+                    docPosition={this.state.docPosition}
+                    numPageParagraphs={this.state.numPageParagraphs}
+                    fontSize={this.props.fontSize}
                     skin={this.props.skin}
-                    progress={progress}/>
-                <TitleBar>{doc.title}</TitleBar>
+                    getCurrentAssetHistory={this.getCurrentAssetHistory}
+                    selectPage={this.selectPage} />
                 {/* History Container is Reverse Order
                     The first Paragraph mapping belongs to the current reading asset
                     */}
@@ -467,7 +470,7 @@ export default class Viewport extends React.Component {
             nextSentence = this.state.docPosition.fixation[0] == 0 ? this.state.docPosition.sentence - 1 : this.state.docPosition.sentence;
 
             // Constrain Fixation Words to Window
-            while (this.countChars(nextSentence, nextFixation) >= this.state.numLineChars) {
+            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars - 5) {
                 nextFixation = update(nextFixation, {
                     0: {$set: nextFixation[1] + 1}
                 });
@@ -494,7 +497,7 @@ export default class Viewport extends React.Component {
             nextSentence = this.state.docPosition.fixation[1] == currentSentence.wordCount ? this.state.docPosition.sentence + 1 : this.state.docPosition.sentence;
 
             // Constrain Fixation Words to Window
-            while (this.countChars(nextSentence, nextFixation) >= this.state.numLineChars) {
+            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars - 5) {
                 nextFixation = update(nextFixation, {
                     1: {$set: nextFixation[1] - 1}
                 });
@@ -776,7 +779,7 @@ export default class Viewport extends React.Component {
         let nextFixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
 
         // Constrain Fixation Words to Window
-        while (this.countChars(word.index.sentence, nextFixation) >= this.state.numLineChars) {
+        while (this.countChars(word.index.paragraph, word.index.sentence, nextFixation) >= this.state.numLineChars - 5) {
             nextFixation = update(nextFixation, {
                 1: {$set: nextFixation[1] - 1}
             });
@@ -1043,21 +1046,6 @@ export default class Viewport extends React.Component {
         alert("Still To Implement: Will open up interface to draw a sketch to attach.");
     }
 
-    getProgress = () => {
-        let completed = this.getCurrentAssetHistory().wordCount +
-                        this.state.doc.assets.slice(0, this.state.docPosition.asset).reduce((total, asset) => {
-                            return total + asset.wordCount;
-                        }, 0);
-
-        let totalWords = this.state.doc.assets.reduce((total, asset) => {
-            return total + asset.wordCount;
-        }, 0);
-
-        let progress = completed/totalWords * 100;
-
-        return progress;
-    }
-
     handleWindowFocusState = (e) => {
         if (!document.hidden && this.state.cruiseControlIsActive) {
             // Stop cruise control if leave web app tab
@@ -1073,6 +1061,12 @@ export default class Viewport extends React.Component {
         this.setState({
             drawerIsOpen: !this.state.drawerIsOpen
         });
+    }
+
+    selectPage = (pageNumber) => {
+        let assetIndex = pageNumber * this.state.numPageParagraphs;
+        let finalAssetIndex = this.state.doc.assets[this.state.doc.assets.length - 1].index.asset;
+        if (0 <= assetIndex && assetIndex <= finalAssetIndex) this.loadAsset("start", assetIndex);
     }
 
     // ========== Helper Functions ==========
@@ -1126,10 +1120,11 @@ export default class Viewport extends React.Component {
      * @param  {[type]} words [description]
      * @return {[type]}       [description]
      */
-    countChars = (sentenceIndex, fixation) => {
-        const sentence = {...this.state.doc.assets[this.state.docPosition.asset].sentences[sentenceIndex]};
+    countChars = (assetIndex, sentenceIndex, fixation) => {
+        const sentence = {...this.state.doc.assets[assetIndex].sentences[sentenceIndex]};
         const words = sentence.words.slice(fixation[0], fixation[1]);
-        return words.reduce((total, word) => {
+        const spaces = words.length - 1;
+        return spaces + words.reduce((total, word) => {
             return total + word.text.length
         }, 0);
     }
@@ -1195,12 +1190,12 @@ const HistoryContainer = styled.section`
         width         : 100%;
         content       : "";
         background: ${props => props.skin == SkinTypes.LIGHT ?
-                    "linear-gradient(to bottom,rgba(255,255,255, 1) 20%,rgba(255,255,255, 0) 70%)"
+                    "linear-gradient(to bottom,rgba(255,255,255, 1) 18%,rgba(255,255,255, 0) 70%)"
                 :
                     props.skin == SkinTypes.CREAM ?
-                            "linear-gradient(to bottom,rgba(249,243,233, 1) 20%,rgba(249,243,233, 0) 70%)"
+                            "linear-gradient(to bottom,rgba(249,243,233, 1) 18%,rgba(249,243,233, 0) 70%)"
                         :
-                            "linear-gradient(to bottom,rgba(23,23,23, 1) 20%, rgba(23,23,23, 0) 70%)"
+                            "linear-gradient(to bottom,rgba(23,23,23, 1) 18%, rgba(23,23,23, 0) 70%)"
                 };
         pointer-events: none; /* so the text is still selectable */
     }
@@ -1256,19 +1251,6 @@ const FutureContainer = styled.section`
                 };
         pointer-events: none; /* so the text is still selectable */
     }
-`;
-
-const TitleBar = styled.h3`
-    position: fixed;
-    top: 0px;
-    left: 50%;
-    margin: 15px 0px;
-    transform: translateX(-50%);
-    color: ${props => props.theme.gray};
-    z-index: 5;
-    font-weight: 200;
-    font-size: 0.9em;
-    user-select: none;
 `;
 
 const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";

@@ -84,7 +84,7 @@ const ControlButton = styled.div`
                         props.theme.lightPurple
         :
             props.skin == SkinTypes.DARK ?
-                        props.theme.darkGray
+                        props.theme.black
                     :
                         props.theme.lightGray};
     box-shadow: ${props => props.skin == SkinTypes.DARK ?
@@ -93,7 +93,7 @@ const ControlButton = styled.div`
             "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
     };
     transition: box-shadow 0.15s, background 0.15s;
-    z-index: 10;
+    z-index: 2;
 
     @media (max-width: 480px) and (max-height: 480px) {
         width: 30px;

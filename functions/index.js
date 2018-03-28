@@ -179,6 +179,8 @@ exports.getDefinition = functions.database.ref('/documents/{docIndex}/assets/{as
 });
 
 exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((event) => {
+    const numPageParagraphs = 3;
+
     // If Data is not New
     if (event.data.previous.exists()) {return Promise.resolve()}
     // Exit when the data is deleted; After deleting the node, this function runs once more.
@@ -200,6 +202,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
         let paragraph = {
             type: "paragraph",
             index: {asset: i},
+            page: Math.floor(i/numPageParagraphs),
             sentences: sentences,
             delay: sentences.reduce((total, sentence) => {return total + sentence.delay}, 0),
             sentenceCount: sentences.length,
@@ -351,9 +354,9 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
 const TransitionWords = ["and", "also", "then", "moreoever", "likewise", "comparatively", "correspondingly", "similarly", "furthermore", "additionally",
     "notably", "including", "namely", "chiefly", "indeed", "surely", "markedly", "especially", "specifically", "expressively", "surprisingly", "frequently", "significantly",
     "hence", "suddenly", "shortly", "henceforth", "meanwhile", "presently", "occasionally", "thus", "because", "but", "unlike", "or", "yet", "while", "albeit", "besides",
-    "if", "unless", "lest", "lastly", "finally", "too", "although"];
+    "if", "unless", "lest", "lastly", "finally", "although"];
 
-const CommonWords = ["he", "she", "it", "you", "the", "a", "to", "of", "and", "in"];
+const CommonWords = ["he", "she", "it", "you", "the", "a", "to", "of", "and", "in", "too"];
 
 const sentenceTokenizerOptions = {
     "newline_boundaries" : true,

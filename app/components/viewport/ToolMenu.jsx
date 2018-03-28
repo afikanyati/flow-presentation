@@ -85,7 +85,7 @@ export default class ToolMenu extends React.Component {
                                 name: AnnotationTypes.WRITE,
                                 icon: {color: WriteIcon},
                                 description: "Write Note",
-                                color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
+                                color: {white: "lightGray", cream: "lightGray", night: "black"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -97,7 +97,7 @@ export default class ToolMenu extends React.Component {
                                 name: AnnotationTypes.IMAGE,
                                 icon: {color: ImageIcon},
                                 description: "Attach Image",
-                                color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
+                                color: {white: "lightGray", cream: "lightGray", night: "black"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -109,7 +109,7 @@ export default class ToolMenu extends React.Component {
                                 name: AnnotationTypes.RECORD,
                                 icon: {color: RecordIcon},
                                 description: "Record Voicenote",
-                                color:{white: "lightGray", cream: "lightGray", night: "darkGray"},
+                                color:{white: "lightGray", cream: "lightGray", night: "black"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -121,7 +121,7 @@ export default class ToolMenu extends React.Component {
                                 name: AnnotationTypes.DRAW,
                                 icon: {color: DrawIcon},
                                 description: "Draw Sketch",
-                                color: {white: "lightGray", cream: "lightGray", night: "darkGray"},
+                                color: {white: "lightGray", cream: "lightGray", night: "black"},
                                 cssTranslate: {
                                     inactiveTransitionDelay: 0,
                                     activeTransitionDelay: 0,
@@ -270,7 +270,7 @@ export default class ToolMenu extends React.Component {
                                                 false}
                     color={
                         this.state.activeFeature == null ?
-                            {white: "lightGray", cream: "lightGray", night: "darkGray"}
+                            {white: "lightGray", cream: "lightGray", night: "black"}
                         :
                             this.state.tools[this.state.activeFeature].color}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
@@ -518,7 +518,7 @@ const Menu = styled.div`
     right: ${props => props.hand == HandTypes.RIGHT ? "30px" : "auto"};
     width: 60px;
     height: 60px;
-    z-index: 1000;
+    z-index: 1;
     border-radius: 30px;
     transition: top 0.2s;
 
@@ -533,7 +533,6 @@ const MenuItems = styled.ul`
     display: block;
     list-style: none;
     position: absolute;
-    z-index: 2;
     margin: 0;
     padding: 0;
 `;
@@ -626,7 +625,7 @@ const InnerMenuItem = styled.button`
                                 props.theme[props.color.night]
         :
             props => props.skin == SkinTypes.DARK ?
-                        props.theme.darkGray
+                        props.theme.black
                     :
                         props.theme.lightGray};
     border-radius: 30px;
@@ -658,7 +657,7 @@ const InnerMenuItem = styled.button`
 const MenuToggle = styled.button`
     display: block;
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     margin: 0;
     padding: 0;
     width: 60px;
@@ -697,13 +696,13 @@ const MenuToggle = styled.button`
                                     props.highlightIsActive ?
                                         props.theme[props.highlightColor]
                                     :
-                                        props.theme.darkGray
+                                        props.theme.black
                                 :
                                     props.activeFeature == ToolTypes.BOOKMARK ?
                                         props.currentWordHasBookmark ?
                                             props.theme[props.color.night]
                                         :
-                                            props.theme.darkGray
+                                            props.theme.black
                                     :
                                         props.theme[props.color.night]
     };
@@ -761,7 +760,7 @@ const Tooltip = styled.h2`
     font-weight: 200;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.4), 0 2px 10px 0 rgba(0,0,0,.12);
     transition: all 0.15s;
-    z-index: 3;
+    z-index: 1;
 `;
 
 const highlight = {

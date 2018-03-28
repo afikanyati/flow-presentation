@@ -32,7 +32,7 @@ const theme = {
     white: '#ffffff',
     lightGray: '#f0f0f0',
     gray: '#e0e1e0',
-    darkGray: '#252625',
+    darkGray: '#7F7F7F',
     black: '#252625',
     textColor: 'rgba(35,31,32, 0.87)'
 }
