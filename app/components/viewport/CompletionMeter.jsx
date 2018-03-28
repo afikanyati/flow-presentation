@@ -12,9 +12,9 @@ import arrowDarkGray            from '../../assets/images/icons/arrow-darkGray.s
 import arrowBlack               from '../../assets/images/icons/arrow-black.svg';
 
 /**
- * The CompletionBar component is a component used to
+ * The CompletionMeter component is a component used to
  */
-export default class CompletionBar extends React.Component {
+export default class CompletionMeter extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ export default class CompletionBar extends React.Component {
     }
 
     componentWillMount() {
-        // console.log("-----CompletionBar");
+        // console.log("-----CompletionMeter");
     }
 
     render() {
@@ -33,7 +33,7 @@ export default class CompletionBar extends React.Component {
         const docProgress = this.getDocProgress();
         const currentPage = Math.floor(this.props.doc.assets[this.props.docPosition.asset].index.asset/this.props.numPageParagraphs);
         return (
-            <Bar
+            <MeterContainer
                 offset={`${this.state.lastPage > 19 ? 1*this.props.fontSize : 0}px`}>
                 <BackArrow
                     skin={this.props.skin}
@@ -83,12 +83,12 @@ export default class CompletionBar extends React.Component {
                     blackIcon={`url(${arrowBlack})`}
                     active={currentPage != this.state.lastPage}
                     onClick={this.props.selectPage.bind({}, currentPage + 1)} />
-            </Bar>
+            </MeterContainer>
         );
     }
 
     componentDidMount() {
-        // console.log("+++++CompletionBar");
+        // console.log("+++++CompletionMeter");
         let lastPage = Math.floor(this.props.doc.assets[this.props.doc.assets.length - 1].index.asset/this.props.numPageParagraphs);
         this.setState({
             lastPage: lastPage
@@ -145,7 +145,7 @@ export default class CompletionBar extends React.Component {
 
 // ============= PropTypes ==============
 
-CompletionBar.propTypes = {
+CompletionMeter.propTypes = {
     doc: PropTypes.object.isRequired,
     docPosition: PropTypes.object.isRequired,
     skin: PropTypes.string.isRequired,
@@ -156,7 +156,7 @@ CompletionBar.propTypes = {
 
 // ============= Styled Components ==============
 
-const Bar = styled.div`
+const MeterContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;

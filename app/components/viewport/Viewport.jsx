@@ -17,7 +17,7 @@ import StatusBar              from './StatusBar';
 import CruiseControlButton      from './CruiseControlButton';
 import MapButton                from './MapButton';
 import DefinitionsDrawer        from './DefinitionsDrawer';
-import CompletionBar            from './CompletionBar';
+import CompletionMeter            from './CompletionMeter';
 
 /**
  * The Viewport component is a component used to
@@ -143,7 +143,7 @@ export default class Viewport extends React.Component {
                     cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
                     showAnnotations={this.state.showAnnotations}
                 />
-                <CompletionBar
+                <CompletionMeter
                     doc={this.state.doc}
                     docPosition={this.state.docPosition}
                     numPageParagraphs={this.state.numPageParagraphs}
