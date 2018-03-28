@@ -130,103 +130,111 @@ export default class Viewport extends React.Component {
         let doc = {...this.state.doc};
         return (
             <Container
-                skin={this.props.skin}
-                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                customCursor={this.props.skin == SkinTypes.DARK ?
+                skin                      ={this.props.skin}
+                cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive}
+                customCursor              ={this.props.skin == SkinTypes.DARK ?
                         PauseLightPurple
                     :
                         PausePurple}
-                onClick={this.handleClick}>
+                onClick                   ={this.handleClick}>
                 <StatusBar
-                    hand                  ={this.props.hand}
-                    skin={this.props.skin}
-                    readingSpeed={this.props.readingSpeed}
-                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                    showAnnotations={this.state.showAnnotations}
-                />
+                    hand                      ={this.props.hand}
+                    skin                      ={this.props.skin}
+                    readingSpeed              ={this.props.readingSpeed}
+                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive}
+                    showAnnotations           ={this.state.showAnnotations} />
                 <CompletionMeter
-                    doc={this.state.doc}
-                    docPosition={this.state.docPosition}
-                    numPageParagraphs={this.state.numPageParagraphs}
-                    fontSize={this.props.fontSize}
-                    skin={this.props.skin}
-                    getCurrentAssetHistory={this.getCurrentAssetHistory}
-                    selectPage={this.selectPage} />
+                    doc                    ={this.state.doc}
+                    docPosition            ={this.state.docPosition}
+                    numPageParagraphs      ={this.state.numPageParagraphs}
+                    fontSize               ={this.props.fontSize}
+                    skin                   ={this.props.skin}
+                    getCurrentAssetHistory ={this.getCurrentAssetHistory}
+                    selectPage             ={this.selectPage} />
                 {/* History Container is Reverse Order
                     The first Paragraph mapping belongs to the current reading asset
                     */}
                 <HistoryContainer
-                    skin={this.props.skin}
-                    fontSize={this.props.fontSize}
-                    numLineChars={this.state.numLineChars}>
-                    {[history].map((asset) => {
-                      return (
-                          <ParagraphContainer
-                              key={`parent =[null], this =[type ='${asset.type}-history', index ='${this.state.docPosition.asset}']`}
-                              fontSize={this.props.fontSize}
-                              numLineChars={this.state.numLineChars}>
-                              {asset.index.asset % this.state.numPageParagraphs == 0 ?
-                                      <PageDelimiter
-                                          skin={this.props.skin}>
-                                          <PageNumber
-                                              skin={this.props.skin}>
-                                              {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
-                                          </PageNumber>
-                                      </PageDelimiter>
-                                  :
-                                    null
-                              }
-                              <Paragraph
-                                  asset     ={asset}
-                                  fontSize      ={this.props.fontSize}
-                                  fontFamily    ={this.props.fontFamily}
-                                  skipToWord    ={this.skipToWord}
-                                  skin={this.props.skin}
-                                  showAnnotations={this.state.showAnnotations}
-                                  cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                                  />
-                          </ParagraphContainer>
-
-                      );
-                  })}
-                  {doc.assets.slice(Math.max(0, this.state.docPosition.asset - 2), this.state.docPosition.asset).reverse().map((asset, index) => {
-                    return (
-                        <ParagraphContainer
-                            key={`parent =[null], this =[type ='${asset.type}', index ='${asset.index.asset}']`}
-                            fontSize={this.props.fontSize}
-                            numLineChars={this.state.numLineChars}>
-                            {asset.index.asset % this.state.numPageParagraphs == 0 ?
-                                    <PageDelimiter
-                                        skin={this.props.skin}>
+                    skin         ={this.props.skin}
+                    fontSize     ={this.props.fontSize}
+                    numLineChars ={this.state.numLineChars}>
+                    <ParagraphContainer
+                        key          ={`parent =[null], this =[type ='${history.type}-history', index ='${this.state.docPosition.asset}']`}
+                        fontSize     ={this.props.fontSize}
+                        numLineChars ={this.state.numLineChars}>
+                        <CSSTransitionGroup
+                              transitionName          ={"delimiter"}
+                              transitionEnter         ={false}
+                              transitionLeave         ={false}
+                              transitionAppear        ={true}
+                              transitionAppearTimeout ={500}>
+                                {history.index.asset % this.state.numPageParagraphs == 0 ?
+                                    [<PageDelimiter
+                                        key  ={`delimiter-history asset-index =${history.index.asset} page-number =${Math.floor(history.index.asset/this.state.numPageParagraphs)}`}
+                                        skin ={this.props.skin}>
                                         <PageNumber
                                             skin={this.props.skin}>
-                                            {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
+                                            {`${Math.floor(history.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
                                         </PageNumber>
-                                    </PageDelimiter>
+                                    </PageDelimiter>]
                                 :
-                                  null
-                            }
-                            <Paragraph
-                                asset     ={asset}
+                                    []
+                                }
+                        </CSSTransitionGroup>
+                        <Paragraph
+                            asset                     ={history}
+                            fontSize                  ={this.props.fontSize}
+                            fontFamily                ={this.props.fontFamily}
+                            skipToWord                ={this.skipToWord}
+                            skin                      ={this.props.skin}
+                            showAnnotations           ={this.state.showAnnotations}
+                            cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                    </ParagraphContainer>
+                      {doc.assets.slice(Math.max(0, this.state.docPosition.asset - 2), this.state.docPosition.asset).reverse().map((asset, index) => {
+                        return (
+                            <ParagraphContainer
+                                key          ={`parent =[null], this =[type ='${asset.type}', index ='${asset.index.asset}']`}
                                 fontSize     ={this.props.fontSize}
-                                fontFamily   ={this.props.fontFamily}
-                                skipToWord   ={this.skipToWord}
-                                skin={this.props.skin}
-                                showAnnotations={this.state.showAnnotations}
-                                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                                />
-                        </ParagraphContainer>
-                    );
-                })}
+                                numLineChars ={this.state.numLineChars}>
+                                <CSSTransitionGroup
+                                      transitionName          ={"delimiter"}
+                                      transitionEnter         ={false}
+                                      transitionLeave         ={false}
+                                      transitionAppear        ={true}
+                                      transitionAppearTimeout ={500}>
+                                    {asset.index.asset % this.state.numPageParagraphs == 0 ?
+                                        [<PageDelimiter
+                                            key  ={`delimiter-future asset-index =${asset.index.asset} page-number =${Math.floor(asset.index.asset/this.state.numPageParagraphs)}`}
+                                            skin ={this.props.skin}>
+                                            <PageNumber
+                                                skin={this.props.skin}>
+                                                {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
+                                            </PageNumber>
+                                        </PageDelimiter>]
+                                    :
+                                        []
+                                    }
+                                </CSSTransitionGroup>
+                                <Paragraph
+                                    asset                     ={asset}
+                                    fontSize                  ={this.props.fontSize}
+                                    fontFamily                ={this.props.fontFamily}
+                                    skipToWord                ={this.skipToWord}
+                                    skin                      ={this.props.skin}
+                                    showAnnotations           ={this.state.showAnnotations}
+                                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                            </ParagraphContainer>
+                        );
+                    })}
                 </HistoryContainer>
                 <FixationWindowContainer
-                    fontSize={this.props.fontSize}
-                    numLineChars={this.state.numLineChars}>
+                    fontSize     ={this.props.fontSize}
+                    numLineChars ={this.state.numLineChars}>
                     <FixationWindow
-                        highlightIsActive={this.state.highlightIsActive}
-                        highlightColor={this.state.highlightColor}
-                        fontSize={this.props.fontSize}
-                        fontFamily={this.props.fontFamily}>
+                        highlightIsActive ={this.state.highlightIsActive}
+                        highlightColor    ={this.state.highlightColor}
+                        fontSize          ={this.props.fontSize}
+                        fontFamily        ={this.props.fontFamily}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
                               transitionEnterTimeout ={200}
@@ -234,104 +242,101 @@ export default class Viewport extends React.Component {
                             {fixationWindow.map((word) => {
                                 return (
                                     <Word
-                                        key        ={`parent=[type='paragraph', index='${this.state.docPosition.asset}'], this=[type='word', index='${word.index.word}']`}
-                                        paragraph  ={this.state.docPosition.asset}
-                                        word       ={word}
-                                        inFixationWindow={true}
-                                        fontFamily ={this.props.fontFamily}
-                                        skipToWord ={this.skipToWord}
-                                        skin={this.props.skin}
-                                        showAnnotations={this.state.showAnnotations}
-                                        cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                                    />
+                                        key                       ={`parent =[type ='paragraph', index ='${this.state.docPosition.asset}'], this =[type ='word', index ='${word.index.word}']`}
+                                        paragraph                 ={this.state.docPosition.asset}
+                                        word                      ={word}
+                                        inFixationWindow          ={true}
+                                        fontFamily                ={this.props.fontFamily}
+                                        skipToWord                ={this.skipToWord}
+                                        skin                      ={this.props.skin}
+                                        showAnnotations           ={this.state.showAnnotations}
+                                        cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
                                 );
                             })}
                         </CSSTransitionGroup>
                     </FixationWindow>
                 </FixationWindowContainer>
                 <FutureContainer
-                    skin={this.props.skin}
-                    fontSize={this.props.fontSize}
-                    numLineChars={this.state.numLineChars}>
-                    {[future].map((asset) => {
-                        return (
-                            <Paragraph
-                                key          ={`parent =[null], this =[type ='${asset.type}-future', index ='${this.state.docPosition.asset}']`}
-                                asset    ={asset}
-                                fontSize     ={this.props.fontSize}
-                                fontFamily   ={this.props.fontFamily}
-                                skipToWord   ={this.skipToWord}
-                                skin={this.props.skin}
-                                showAnnotations={this.state.showAnnotations}
-                                cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                                />
-                        );
-                    })}
-                    {doc.assets.slice(this.state.docPosition.asset + 1, Math.min(this.state.docPosition.asset + 3, this.state.doc.assets.length)).map((asset, index) => {
-                        return (
-                            <ParagraphContainer
-                                key={`parent =[null], this =[type ='paragraph', index ='${asset.index.asset}']`}
-                                fontSize={this.props.fontSize}
-                                numLineChars={this.state.numLineChars}>
-                                {asset.index.asset % this.state.numPageParagraphs == 0 ?
-                                        <PageDelimiter
-                                            skin={this.props.skin}>
-                                            <PageNumber
-                                                skin={this.props.skin}>
-                                                {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
-                                            </PageNumber>
-                                        </PageDelimiter>
-                                    :
-                                      null
-                                }
-                                <Paragraph
-                                    asset           ={asset}
-                                    fontSize            ={this.props.fontSize}
-                                    fontFamily          ={this.props.fontFamily}
-                                    skipToWord          ={this.skipToWord}
-                                    skin={this.props.skin}
-                                    showAnnotations={this.state.showAnnotations}
-                                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                                    />
-                            </ParagraphContainer>
-                        );
-                    })}
+                    skin         ={this.props.skin}
+                    fontSize     ={this.props.fontSize}
+                    numLineChars ={this.state.numLineChars}>
+                    <Paragraph
+                        key                       ={`parent =[null], this =[type ='${future.type}-future', index ='${this.state.docPosition.asset}']`}
+                        asset                     ={future}
+                        fontSize                  ={this.props.fontSize}
+                        fontFamily                ={this.props.fontFamily}
+                        skipToWord                ={this.skipToWord}
+                        skin                      ={this.props.skin}
+                        showAnnotations           ={this.state.showAnnotations}
+                        cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                        {doc.assets.slice(this.state.docPosition.asset + 1, Math.min(this.state.docPosition.asset + 3, this.state.doc.assets.length)).map((asset, index) => {
+                            return (
+                                <ParagraphContainer
+                                    key          ={`parent =[null], this =[type ='paragraph', index ='${asset.index.asset}']`}
+                                    fontSize     ={this.props.fontSize}
+                                    numLineChars ={this.state.numLineChars}>
+                                    <CSSTransitionGroup
+                                          transitionName          ={"delimiter"}
+                                          transitionEnter         ={false}
+                                          transitionLeave         ={false}
+                                          transitionAppear        ={true}
+                                          transitionAppearTimeout ={500}>
+                                        {asset.index.asset % this.state.numPageParagraphs == 0 ?
+                                            [<PageDelimiter
+                                                key  ={`delimiter-future asset-index =${asset.index.asset} page-number =${Math.floor(asset.index.asset/this.state.numPageParagraphs)}`}
+                                                skin ={this.props.skin}>
+                                                <PageNumber
+                                                    skin={this.props.skin}>
+                                                    {`${Math.floor(asset.index.asset/this.state.numPageParagraphs) + 1} of ${Math.floor(this.state.doc.assets[this.state.doc.assets.length - 1].index.asset/this.state.numPageParagraphs) + 1}`}
+                                                </PageNumber>
+                                            </PageDelimiter>]
+                                        :
+                                            []
+                                        }
+                                    </CSSTransitionGroup>
+                                    <Paragraph
+                                        asset                     ={asset}
+                                        fontSize                  ={this.props.fontSize}
+                                        fontFamily                ={this.props.fontFamily}
+                                        skipToWord                ={this.skipToWord}
+                                        skin                      ={this.props.skin}
+                                        showAnnotations           ={this.state.showAnnotations}
+                                        cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                                </ParagraphContainer>
+                            );
+                        })}
                 </FutureContainer>
                 <DefinitionsDrawer
-                    skin={this.props.skin}
-                    drawerIsOpen={this.state.drawerIsOpen}
-                    toggleDrawer={this.toggleDrawer}
-                    fixationWords={fixationWindow}
-                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                />
+                    skin                      ={this.props.skin}
+                    drawerIsOpen              ={this.state.drawerIsOpen}
+                    toggleDrawer              ={this.toggleDrawer}
+                    fixationWords             ={fixationWindow}
+                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
                 <ToolMenu
-                    hand                  ={this.props.hand}
-                    skin={this.props.skin}
-                    handleHighlight={this.handleHighlight}
-                    toggleWordBookmark={this.toggleWordBookmark}
-                    fixationWindow={fixationWindow}
-                    highlightIsActive={this.state.highlightIsActive}
-                    highlightColor={this.state.highlightColor}
-                    deactivateHighlight={this.deactivateHighlight}
-                    performWriteOperation={this.performWriteOperation}
-                    performImageOperation={this.performImageOperation}
-                    performRecordOperation={this.performRecordOperation}
-                    performDrawOperation={this.performDrawOperation}
-                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                />
+                    hand                      ={this.props.hand}
+                    skin                      ={this.props.skin}
+                    handleHighlight           ={this.handleHighlight}
+                    toggleWordBookmark        ={this.toggleWordBookmark}
+                    fixationWindow            ={fixationWindow}
+                    highlightIsActive         ={this.state.highlightIsActive}
+                    highlightColor            ={this.state.highlightColor}
+                    deactivateHighlight       ={this.deactivateHighlight}
+                    performWriteOperation     ={this.performWriteOperation}
+                    performImageOperation     ={this.performImageOperation}
+                    performRecordOperation    ={this.performRecordOperation}
+                    performDrawOperation      ={this.performDrawOperation}
+                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
                 <CruiseControlButton
-                    hand                  ={this.props.hand}
-                    skin={this.props.skin}
-                    cruiseControlIsActive ={this.state.cruiseControlIsActive}
-                    toggleCruiseControl   ={this.toggleCruiseControl}
-                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                />
+                    hand                      ={this.props.hand}
+                    skin                      ={this.props.skin}
+                    cruiseControlIsActive     ={this.state.cruiseControlIsActive}
+                    toggleCruiseControl       ={this.toggleCruiseControl}
+                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
                 <MapButton
-                    hand={this.props.hand}
-                    skin={this.props.skin}
-                    toggleMap={this.toggleMap}
-                    cruiseControlHaltIsActive={this.state.cruiseControlHaltIsActive}
-                />
+                    hand                      ={this.props.hand}
+                    skin                      ={this.props.skin}
+                    toggleMap                 ={this.toggleMap}
+                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
             </Container>
         );
     }

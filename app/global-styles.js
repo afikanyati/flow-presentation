@@ -95,22 +95,13 @@ injectGlobal`
       transition: opacity 200ms ease-in;
     }
 
-    .delimiter-enter {
-      opacity: 0.5;
-    }
-
-    .delimiter-enter.delimiter-enter-active {
-      opacity: 1;
-      transition: opacity 200ms ease-in;
-    }
-
-    .delimiter-leave {
-      opacity: 0.5;
-    }
-
-    .delimiter-leave.delimiter-leave-active {
+    .delimiter-appear {
       opacity: 0;
-      transition: opacity 200ms ease-in;
+    }
+
+    .delimiter-appear.delimiter-appear-active {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
     }
 
     /* Adobe Garamond */
