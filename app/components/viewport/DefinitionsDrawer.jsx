@@ -1,9 +1,9 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
+import React                    from 'react';
+import PropTypes                from 'prop-types';
+import styled                   from 'styled-components';
 import { CSSTransitionGroup }   from 'react-transition-group';
-import uuid         from 'uuid';
+import uuid                     from 'uuid';
 
 // Components
 import FontTypes                from '../../constants/fontTypes';

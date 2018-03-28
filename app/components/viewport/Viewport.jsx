@@ -5,20 +5,20 @@ import PropTypes                from 'prop-types';
 import styled                   from 'styled-components';
 import { CSSTransitionGroup }   from 'react-transition-group';
 import update                   from 'immutability-helper';
-import uuid         from 'uuid';
+import uuid                     from 'uuid';
 
 // Components
 import ScrollDirectionTypes     from '../../constants/scrollDirectionTypes';
-import HighlightTypes          from '../../constants/highlightColorTypes';
+import HighlightTypes           from '../../constants/highlightColorTypes';
 import SkinTypes                from '../../constants/skinTypes';
-import ToolMenu              from './ToolMenu';
+import ToolMenu                 from './ToolMenu';
 import Paragraph                from './Paragraph';
 import Word                     from './Word';
-import StatusBar              from './StatusBar';
+import StatusBar                from './StatusBar';
 import CruiseControlButton      from './CruiseControlButton';
 import MapButton                from './MapButton';
 import DefinitionsDrawer        from './DefinitionsDrawer';
-import CompletionMeter            from './CompletionMeter';
+import CompletionMeter          from './CompletionMeter';
 
 /**
  * The Viewport component is a component used to
@@ -44,7 +44,7 @@ export default class Viewport extends React.Component {
             highlightColor           : null,
             drawerIsOpen             : false,
             docLoaded                : false,
-            numLineChars             : 28,
+            numLineChars             : 25,
             numPageParagraphs        : 3
         }
     }
@@ -142,7 +142,8 @@ export default class Viewport extends React.Component {
                     skin                      ={this.props.skin}
                     readingSpeed              ={this.props.readingSpeed}
                     cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive}
-                    showAnnotations           ={this.state.showAnnotations} />
+                    showAnnotations           ={this.state.showAnnotations}
+                    isScrolling               ={this.isScrolling}/>
                 <CompletionMeter
                     doc                    ={this.state.doc}
                     docPosition            ={this.state.docPosition}
@@ -1222,7 +1223,7 @@ const Container = styled.div`
                 "rgba(0,0,0,0.87)"
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
+                        props.theme.creamBrown
                     :
                         "#bebebe"
             };
@@ -1325,7 +1326,7 @@ const PageDelimiter = styled.div`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
+                        props.theme.creamBrown
                     :
                         props.theme.gray
             };
@@ -1337,7 +1338,7 @@ const PageNumber = styled.h3`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
+                        props.theme.creamBrown
                     :
                         props.theme.gray
             };

@@ -20,6 +20,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "assets": "^3.0.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-survivejs-kanban": "^0.3.3",
     "firebase": "^3.2.1",

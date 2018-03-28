@@ -1,5 +1,50 @@
 import { injectGlobal } from 'styled-components';
 
+// Adobe Garamond
+import garamondBold from './assets/fonts/adobe_garamond/AGaramondPro-Bold.otf';
+import garamondRegular from './assets/fonts/adobe_garamond/AGaramondPro-Regular.otf';
+import garamondBoldItalic from './assets/fonts/adobe_garamond/AGaramondPro-BoldItalic.otf';
+import garamondItalic from './assets/fonts/adobe_garamond/AGaramondPro-Italic.otf';
+
+// Avenir
+import avenirBlack from './assets/fonts/avenir/Avenir-Black.ttf';
+import avenirHeavy from './assets/fonts/avenir/Avenir-Heavy.ttf';
+import avenirMedium from './assets/fonts/Avenir/Avenir-Medium.ttf';
+import avenirRoman from './assets/fonts/avenir/Avenir-Roman.ttf';
+import avenirBook from './assets/fonts/avenir/Avenir-Book.ttf';
+import avenirLight from './assets/fonts/avenir/Avenir-Light.ttf';
+import avenirItalicBlack from './assets/fonts/avenir/Avenir-BlackOblique.ttf';
+import avenirItalicHeavy from './assets/fonts/avenir/Avenir-HeavyOblique.ttf';
+import avenirItalicMedium from './assets/fonts/avenir/Avenir-MediumOblique.ttf';
+import avenirItalic from './assets/fonts/Avenir/avenir-Oblique.ttf';
+import avenirItalicBook from './assets/fonts/avenir/Avenir-BookOblique.ttf';
+import avenirItalicLight from './assets/fonts/avenir/Avenir-LightOblique.ttf';
+
+// Averta
+import avertaBlack from './assets/fonts/averta/Averta-Black.otf';
+import avertaExtraBold from './assets/fonts/averta/Averta-ExtraBold.otf';
+import avertaBold from './assets/fonts/averta/Averta-Bold.otf';
+import avertaSemiBold from './assets/fonts/averta/Averta-SemiBold.otf';
+import avertaRegular from './assets/fonts/averta/Averta-Regular.otf';
+import avertaLight from './assets/fonts/averta/Averta-Light.otf';
+import avertaThin from './assets/fonts/averta/Averta-Thin.otf';
+import avertaExtraThin from './assets/fonts/averta/Averta-ExtraThin.otf';
+import avertaItalicBlack from './assets/fonts/averta/Averta-BlackItalic.otf';
+import avertaItalicExtraBold from './assets/fonts/averta/Averta-ExtraBoldItalic.otf';
+import avertaItalicBold from './assets/fonts/averta/Averta-BoldItalic.otf';
+import avertaItalicSemiBold from './assets/fonts/averta/Averta-SemiBoldItalic.otf';
+import avertaItalicRegular from './assets/fonts/averta/Averta-RegularItalic.otf';
+import avertaItalicLight from './assets/fonts/averta/Averta-LightItalic.otf';
+import avertaItalicThin from './assets/fonts/averta/Averta-ThinItalic.otf';
+import avertaItalicExtraThin from './assets/fonts/averta/Averta-ExtraThinItalic.otf';
+
+// Palatino
+import palatinoBold from './assets/fonts/palatino/Palatino-Bold.ttf';
+import palatinoRoman from './assets/fonts/palatino/Palatino-Roman.ttf';
+import palatinoItalicBold from './assets/fonts/palatino/Palatino-BoldItalic.ttf';
+import palatinoItalic from './assets/fonts/palatino/Palatino-Italic.ttf';
+
+
 injectGlobal`
     * {
         box-sizing: border-box;
@@ -8,6 +53,7 @@ injectGlobal`
     body {
         font-family: 'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         margin: 0;
+        overflow: hidden;
     }
 
     a, a:visited, a:hover {
@@ -107,220 +153,220 @@ injectGlobal`
     /* Adobe Garamond */
     @font-face {
     font-family: 'AdobeGaramond';
-    src: url(assets/fonts/adobe_garamond/AGaramondPro-Bold.otf);
+    src: url(${garamondBold}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
     font-family: 'AdobeGaramond';
-    src: url(assets/fonts/adobe_garamond/AGaramondPro-Regular.otf);
+    src: url(${garamondRegular}) format('truetype');
     font-weight: 400;
     }
 
     @font-face {
     font-family: 'AdobeGaramondItalic';
-    src: url(assets/fonts/adobe_garamond/AGaramondPro-BoldItalic.otf);
+    src: url(${garamondBoldItalic}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
     font-family: 'AdobeGaramondItalic';
-    src: url(assets/fonts/adobe_garamond/AGaramondPro-Italic.otf);
+    src: url(${garamondItalic}) format('truetype');
     font-weight: 400;
     }
 
     /* Avenir */
     @font-face {
     font-family: 'Avenir';
-    src: url(assets/fonts/Avenir/Avenir-Black.ttf);
+    src: url(${avenirBlack}) format('truetype');
     font-weight: 900;
     }
 
     @font-face {
     font-family: 'Avenir';
-    src: url(assets/fonts/Avenir/Avenir-Heavy.ttf);
+    src: url(${avenirHeavy}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
     font-family: 'Avenir';
-    src: url(assets/fonts/Avenir/Avenir-Medium.ttf);
+    src: url(${avenirMedium}) format('truetype');
     font-weight: 500;
     }
 
     @font-face {
     font-family: 'Avenir';
-    src: url(assets/fonts/Avenir/Avenir-Roman.ttf);
+    src: url(${avenirRoman}) format('truetype');
     font-weight: 400;
     }
 
     @font-face {
     font-family: 'Avenir';
-    src: url(assets/fonts/Avenir/Avenir-Book.ttf);
+    src: url(${avenirBook}) format('truetype');
     font-weight: 300;
     }
 
     @font-face {
     font-family: 'Avenir';
-    src: url(assets/fonts/Avenir/Avenir-Light.ttf);
+    src: url(${avenirLight}) format('truetype');
     font-weight: 200;
     }
 
     @font-face {
     font-family: 'AvenirItalic';
-    src: url(assets/fonts/Avenir/Avenir-BlackOblique.ttf);
+    src: url(${avenirItalicBlack}) format('truetype');
     font-weight: 900;
     }
 
     @font-face {
     font-family: 'AvenirItalic';
-    src: url(assets/fonts/Avenir/Avenir-HeavyOblique.ttf);
+    src: url(${avenirItalicHeavy}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
     font-family: 'AvenirItalic';
-    src: url(assets/fonts/Avenir/Avenir-MediumOblique.ttf);
+    src: url(${avenirItalicMedium}) format('truetype');
     font-weight: 500;
     }
 
     @font-face {
     font-family: 'AvenirItalic';
-    src: url(assets/fonts/Avenir/Avenir-Oblique.ttf);
+    src: url(${avenirItalic}) format('truetype');
     font-weight: 400;
     }
 
     @font-face {
     font-family: 'AvenirItalic';
-    src: url(assets/fonts/Avenir/Avenir-BookOblique.ttf);
+    src: url(${avenirItalicBook}) format('truetype');
     font-weight: 300;
     }
 
     @font-face {
     font-family: 'AvenirItalic';
-    src: url(assets/fonts/Avenir/Avenir-LightOblique.ttf);
+    src: url(${avenirItalicLight}) format('truetype');
     font-weight: 200;
     }
 
     /* 'Averta' */
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-Black.otf);
+    src: url(${avertaBlack}) format('truetype');
     font-weight: 900;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-ExtraBold.otf);
+    src: url(${avertaExtraBold}) format('truetype');
     font-weight: 800;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-Bold.otf);
+    src: url(${avertaBold}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-SemiBold.otf);
+    src: url(${avertaSemiBold}) format('truetype');
     font-weight: 600;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-Regular.otf);
+    src: url(${avertaRegular}) format('truetype');
     font-weight: 400;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-Light.otf);
+    src: url(${avertaLight}) format('truetype');
     font-weight: 300;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-Thin.otf);
+    src: url(${avertaThin}) format('truetype');
     font-weight: 200;
     }
 
     @font-face {
     font-family: 'Averta';
-    src: url(assets/fonts/Averta/Averta-ExtraThin.otf);
+    src: url(${avertaExtraThin}) format('truetype');
     font-weight: 100;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-BlackItalic.otf);
+    src: url(${avertaItalicBlack}) format('truetype');
     font-weight: 900;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-ExtraBoldItalic.otf);
+    src: url(${avertaItalicExtraBold}) format('truetype');
     font-weight: 800;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-BoldItalic.otf);
+    src: url(${avertaItalicBold}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-SemiBoldItalic.otf);
+    src: url(${avertaItalicSemiBold}) format('truetype');
     font-weight: 600;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-RegularItalic.otf);
+    src: url(${avertaItalicRegular}) format('truetype');
     font-weight: 400;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-LightItalic.otf);
+    src: url(${avertaItalicLight}) format('truetype');
     font-weight: 300;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-ThinItalic.otf);
+    src: url(${avertaItalicThin}) format('truetype');
     font-weight: 200;
     }
 
     @font-face {
     font-family: 'AvertaItalic';
-    src: url(assets/fonts/Averta/Averta-ExtraThinItalic.otf);
+    src: url(${avertaItalicExtraThin}) format('truetype');
     font-weight: 100;
     }
 
-    /* 'Palantino' */
+    /* 'Palatino' */
     @font-face {
-    font-family: 'Palantino';
-    src: url(assets/fonts/Palantino/Palantino-Bold.ttf);
+    font-family: 'Palatino';
+    src: url(${palatinoBold}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
-    font-family: 'Palantino';
-    src: url(assets/fonts/Palantino/Palantino-Roman.ttf);
+    font-family: 'Palatino';
+    src: url(${palatinoRoman}) format('truetype');
     font-weight: 400;
     }
 
     @font-face {
-    font-family: 'PalantinoItalic';
-    src: url(assets/fonts/Palantino/Palantino-BoldItalic.ttf);
+    font-family: 'PalatinoItalic';
+    src: url(${palatinoItalicBold}) format('truetype');
     font-weight: 700;
     }
 
     @font-face {
-    font-family: 'PalantinoItalic';
-    src: url(assets/fonts/Palantino/Palantino-Italic.ttf);
+    font-family: 'PalatinoItalic';
+    src: url(${palatinoItalic}) format('truetype');
     font-weight: 400;
     }
 

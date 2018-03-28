@@ -5,7 +5,7 @@ import styled       from 'styled-components';
 
 // Components
 import HandTypes    from '../../constants/handTypes';
-import SkinTypes                from '../../constants/skinTypes';
+import SkinTypes    from '../../constants/skinTypes';
 import Play         from '../../assets/images/icons/play.svg';
 import Pause        from '../../assets/images/icons/pause-white.svg';
 

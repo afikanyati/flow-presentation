@@ -1,14 +1,14 @@
 // Libs
-import React                    from 'react';
-import PropTypes                from 'prop-types';
-import styled                   from 'styled-components';
+import React                from 'react';
+import PropTypes            from 'prop-types';
+import styled               from 'styled-components';
 
 // Components
-import FontTypes                from '../../constants/fontTypes';
-import SkinTypes                from '../../constants/skinTypes';
-import HighlightTypes           from '../../constants/highlightColorTypes';
-import BookmarkFilled           from '../../assets/images/icons/bookmark-red-fill.svg';
-import AnnotationFilled         from '../../assets/images/icons/annotation-purple.svg';
+import FontTypes            from '../../constants/fontTypes';
+import SkinTypes            from '../../constants/skinTypes';
+import HighlightTypes       from '../../constants/highlightColorTypes';
+import BookmarkFilled       from '../../assets/images/icons/bookmark-red-fill.svg';
+import AnnotationFilled     from '../../assets/images/icons/annotation-purple.svg';
 
 /**
  * The Word component is a component used to

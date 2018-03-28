@@ -1,15 +1,15 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
-import uuid         from 'uuid';
+import React            from 'react';
+import PropTypes        from 'prop-types';
+import styled           from 'styled-components';
+import uuid             from 'uuid';
 
 // Components
-import SkinTypes                from '../../constants/skinTypes';
-import arrowLightGray           from '../../assets/images/icons/arrow-lightgray.svg';
-import arrowGray                from '../../assets/images/icons/arrow-gray.svg';
-import arrowDarkGray            from '../../assets/images/icons/arrow-darkGray.svg';
-import arrowBlack               from '../../assets/images/icons/arrow-black.svg';
+import SkinTypes        from '../../constants/skinTypes';
+import arrowLightGray   from '../../assets/images/icons/arrow-lightgray.svg';
+import arrowGray        from '../../assets/images/icons/arrow-gray.svg';
+import arrowDarkGray    from '../../assets/images/icons/arrow-darkGray.svg';
+import arrowBlack       from '../../assets/images/icons/arrow-black.svg';
 
 /**
  * The CompletionMeter component is a component used to
@@ -43,20 +43,20 @@ export default class CompletionMeter extends React.Component {
                     blackIcon={`url(${arrowBlack})`}
                     active={currentPage != 0}
                     onClick={this.props.selectPage.bind({}, currentPage - 1)} />
-                <PageIndicator
+                <PageNumberIndicator
                     skin={this.props.skin}>
                     {1}
-                </PageIndicator>
+                </PageNumberIndicator>
                 <CompleteMeter
                     skin={this.props.skin}
                     complete={`${docProgress * this.state.meterLength}px`}
                     onClick={this.handleMeterClick.bind({}, "complete")} />
                 <PageMeter
                     skin={this.props.skin}>
-                    <CurrentPageIndicator
+                    <CurrentPageNumberIndicator
                         skin={this.props.skin}>
                         {currentPage + 1}
-                    </CurrentPageIndicator>
+                    </CurrentPageNumberIndicator>
                     {pageProgress.map((paragraphCompletion) => {
                         return (
                             <ParagraphMeter
@@ -71,10 +71,10 @@ export default class CompletionMeter extends React.Component {
                     skin={this.props.skin}
                     incomplete={`${(1 - docProgress) * this.state.meterLength}px`}
                     onClick={this.handleMeterClick.bind({}, "incomplete")} />
-                <PageIndicator
+                <PageNumberIndicator
                     skin={this.props.skin}>
                     {this.state.lastPage + 1}
-                </PageIndicator>
+                </PageNumberIndicator>
                 <ForwardArrow
                     skin={this.props.skin}
                     lightGrayIcon={`url(${arrowLightGray})`}
@@ -173,16 +173,22 @@ const BackArrow = styled.div`
     width: 20px;
     height: 20px;
     transform: scaleX(-1);
-    background-image: ${props => props.skin == SkinTypes.DARK ?
-            props.active ?
-                props.blackIcon
-            :
-                "none"
-        :
+    background-image: ${props => props.skin == SkinTypes.LIGHT ?
             props.active ?
                 props.lightGrayIcon
             :
                 "none"
+        :
+            props => props.skin == SkinTypes.CREAM ?
+                props.active ?
+                    props.grayIcon
+                :
+                    "none"
+            :
+                props.active ?
+                    props.blackIcon
+                :
+                    "none"
     };
     background-position: 50%;
     background-size: 100%;
@@ -192,14 +198,14 @@ const BackArrow = styled.div`
     transition: all 0.2s;
 
     &:hover {
-        background-image: ${props => props.skin == SkinTypes.DARK ?
+        background-image: ${props => props.skin == SkinTypes.LIGHT ?
                 props.active ?
-                    props.darkGrayIcon
+                    props.grayIcon
                 :
                     "none"
             :
                 props.active ?
-                    props.grayIcon
+                    props.darkGrayIcon
                 :
                     "none"
         };
@@ -209,16 +215,22 @@ const BackArrow = styled.div`
 const ForwardArrow = styled.div`
     width: 20px;
     height: 20px;
-    background-image: ${props => props.skin == SkinTypes.DARK ?
-            props.active ?
-                props.blackIcon
-            :
-                "none"
-        :
+    background-image: ${props => props.skin == SkinTypes.LIGHT ?
             props.active ?
                 props.lightGrayIcon
             :
                 "none"
+        :
+            props => props.skin == SkinTypes.CREAM ?
+                props.active ?
+                    props.grayIcon
+                :
+                    "none"
+            :
+                props.active ?
+                    props.blackIcon
+                :
+                    "none"
     };
     background-position: 50%;
     background-size: 100%;
@@ -228,26 +240,26 @@ const ForwardArrow = styled.div`
     transition: all 0.2s;
 
     &:hover {
-        background-image: ${props => props.skin == SkinTypes.DARK ?
+        background-image: ${props => props.skin == SkinTypes.LIGHT ?
                 props.active ?
-                    props.darkGrayIcon
+                    props.grayIcon
                 :
                     "none"
             :
                 props.active ?
-                    props.grayIcon
+                    props.darkGrayIcon
                 :
                     "none"
         };
     }
 `;
 
-const PageIndicator = styled.h3`
+const PageNumberIndicator = styled.h3`
     color: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
+                        props.theme.creamBrown
                     :
                         props.theme.gray
             };
@@ -257,7 +269,7 @@ const PageIndicator = styled.h3`
     margin: 0;
 `;
 
-const CurrentPageIndicator = styled.h3`
+const CurrentPageNumberIndicator = styled.h3`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -313,11 +325,8 @@ const IncompleteMeter = styled.div`
         background: ${props => props.skin == SkinTypes.LIGHT ?
                     props.theme.gray
                 :
-                    props.skin == SkinTypes.CREAM ?
-                            props.theme.gray
-                        :
-                            props.theme.darkGray
-                };
+                    props.theme.darkGray
+        };
     }
 `;
 
@@ -325,10 +334,13 @@ const PageMeter = styled.div`
     position: relative;
     width: 30px;
     height: 40px;
-    background: ${props => props.skin == SkinTypes.DARK ?
-            props.theme.black
-        :
+    background: ${props => props.skin == SkinTypes.LIGHT ?
             props.theme.lightGray
+        :
+            props => props.skin == SkinTypes.CREAM ?
+                props.theme.gray
+            :
+                props.theme.black
     };
     border-radius: 2px;
     padding: 3px;

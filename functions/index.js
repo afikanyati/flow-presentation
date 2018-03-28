@@ -251,11 +251,11 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
                 } else if (transitionSet.has(word.text.replace(/[.,#!$%^&*;:{}=_`~()\s\u0022\u0027\u2018\u2019\u201C\u201D]/g,"").toLowerCase())) {
                     // Propositional Integration Word Pause
                     word.delay = {type: "proposition", factor: 0.5};
-                    sentence.delay += 1;
+                    sentence.delay += 0.5;
                 } else if (commonSet.has(word.text.replace(/[.,#!$%^&*;:{}=_`~()\s\u0022\u0027\u2018\u2019\u201C\u201D]/g,"").toLowerCase())) {
                     // Common Word Accelerator
-                    word.delay = {type: "common", factor: -0.25};
-                    sentence.delay += -0.25;
+                    word.delay = {type: "common", factor: -0.1};
+                    sentence.delay += -0.1;
                 }
 
                 // Find out type of sentence (if last word in sentence)

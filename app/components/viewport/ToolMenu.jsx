@@ -1,35 +1,36 @@
 // Libs
-import React                    from 'react';
-import PropTypes                from 'prop-types';
-import styled                   from 'styled-components';
-import ReactHintFactory         from 'react-hint';
+import React                from 'react';
+import PropTypes            from 'prop-types';
+import styled               from 'styled-components';
+import ReactHintFactory     from 'react-hint';
 
 // Components
-import BackButton               from './BackButton';
-import HandTypes                from '../../constants/handTypes';
-import SkinTypes                from '../../constants/skinTypes';
-import ToolTypes             from '../../constants/toolTypes';
-import AnnotationTypes          from '../../constants/annotationOperationTypes';
-import HighlightTypes          from '../../constants/highlightColorTypes';
+import BackButton           from './BackButton';
+import HandTypes            from '../../constants/handTypes';
+import SkinTypes            from '../../constants/skinTypes';
+import ToolTypes            from '../../constants/toolTypes';
+import AnnotationTypes      from '../../constants/annotationOperationTypes';
+import HighlightTypes       from '../../constants/highlightColorTypes';
 
-import FlowIconColor            from '../../assets/images/icons/flow-icon-color.svg';
-import FlowIconWhite            from '../../assets/images/icons/flow-icon-white.svg';
-import BookmarkWhite            from '../../assets/images/icons/bookmark-white.svg';
-import BookmarkColor            from '../../assets/images/icons/bookmark-red.svg';
-import AnnotationWhite          from '../../assets/images/icons/annotation-white.svg';
-import AnnotationColor          from '../../assets/images/icons/annotation-purple.svg';
-import HighlightWhite           from '../../assets/images/icons/highlight-white.svg';
-import HighlightRed             from '../../assets/images/icons/highlight-red.svg'
-import HighlightPurple          from '../../assets/images/icons/highlight-purple.svg'
-import HighlightBlue            from '../../assets/images/icons/highlight-blue.svg'
-import HighlightGreen           from '../../assets/images/icons/highlight-green.svg'
-import HighlightYellow          from '../../assets/images/icons/highlight-yellow.svg';
-import WriteIcon                from '../../assets/images/icons/write-purple.svg';
-import ImageIcon                from '../../assets/images/icons/picture-purple.svg';
-import RecordIcon               from '../../assets/images/icons/microphone-purple.svg';
-import DrawIcon                 from '../../assets/images/icons/draw-purple.svg';
-import BackPurple               from '../../assets/images/icons/back-purple.svg';
-import BackWhite               from '../../assets/images/icons/back-white.svg';
+// Icons
+import FlowIconColor        from '../../assets/images/icons/flow-icon-color.svg';
+import FlowIconWhite        from '../../assets/images/icons/flow-icon-white.svg';
+import BookmarkWhite        from '../../assets/images/icons/bookmark-white.svg';
+import BookmarkColor        from '../../assets/images/icons/bookmark-red.svg';
+import AnnotationWhite      from '../../assets/images/icons/annotation-white.svg';
+import AnnotationColor      from '../../assets/images/icons/annotation-purple.svg';
+import HighlightWhite       from '../../assets/images/icons/highlight-white.svg';
+import HighlightRed         from '../../assets/images/icons/highlight-red.svg'
+import HighlightPurple      from '../../assets/images/icons/highlight-purple.svg'
+import HighlightBlue        from '../../assets/images/icons/highlight-blue.svg'
+import HighlightGreen       from '../../assets/images/icons/highlight-green.svg'
+import HighlightYellow      from '../../assets/images/icons/highlight-yellow.svg';
+import WriteIcon            from '../../assets/images/icons/write-purple.svg';
+import ImageIcon            from '../../assets/images/icons/picture-purple.svg';
+import RecordIcon           from '../../assets/images/icons/microphone-purple.svg';
+import DrawIcon             from '../../assets/images/icons/draw-purple.svg';
+import BackPurple           from '../../assets/images/icons/back-purple.svg';
+import BackWhite            from '../../assets/images/icons/back-white.svg';
 
 /**
  * The ToolMenu component is a component used to

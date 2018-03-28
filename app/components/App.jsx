@@ -111,7 +111,7 @@ export default class Root extends React.Component {
 
    changeReadingSpeed = (direction) => {
        let delta = direction == ScrollDirectionTypes.UP ? -1 : 1;
-       let readingSpeed = this.state.readingSpeed + delta;
+       let readingSpeed = Math.max(this.state.readingSpeed + delta, 1);
        this.setState({
            readingSpeed: readingSpeed
        });

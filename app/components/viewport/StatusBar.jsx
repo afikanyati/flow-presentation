@@ -24,6 +24,9 @@ export default class FunctionBar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            changingReadingSpeed: false
+        };
     }
 
     componentWillMount() {
@@ -44,7 +47,9 @@ export default class FunctionBar extends React.Component {
                                             `url(${SpeedPurple})`
                                         :
                                             `url(${SpeedLightPurple})`}/>
-                    <FunctionText skin={this.props.skin}>
+                    <FunctionText
+                        skin={this.props.skin}
+                        changingReadingSpeed={this.state.changingReadingSpeed}>
                         {this.props.readingSpeed}
                     </FunctionText>
                 </FunctionSystem>
@@ -90,6 +95,18 @@ export default class FunctionBar extends React.Component {
 
     componentDidMount() {
         // console.log("+++++StatusBar");
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let changingReadingSpeed
+
+        if (nextProps.isScrolling != this.props.isScrolling) {
+            changingReadingSpeed = true;
+        }
+
+        this.setState({
+            changingReadingSpeed: changingReadingSpeed
+        });
     }
 
     // ========== Methods ===========
@@ -143,16 +160,17 @@ const FunctionText = styled.h3`
     position: relative;
     top: 1px;
     display: inline-block;
-    font-size: 0.9em;
+    font-size: ${props => props.changingReadingSpeed ? "1.5em" : "0.9em"};
     margin: 0;
     color: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#5f3e24"
+                        props.theme.creamBrown
                     :
                         props.theme.gray
             };
     font-weight: 400;
     user-select: none;
+    transition: all 0.3s;
 `;

@@ -4,7 +4,7 @@ import PropTypes        from 'prop-types';
 import styled           from 'styled-components';
 
 // Components
-import ToolTypes     from '../../constants/toolTypes';
+import ToolTypes        from '../../constants/toolTypes';
 import SkinTypes        from '../../constants/skinTypes';
 import BackRed          from '../../assets/images/icons/back-red.svg';
 import BackPurple       from '../../assets/images/icons/back-purple.svg'

@@ -8,7 +8,7 @@ export default {
         regular: "'AdobeGaramond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
         italic: "'AdobeGaramondItalic', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif"
     },
-    PALANTINO: {
+    PALATINO: {
         regular: "'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif",
         italic: "'PalatinoItalic', 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif"
     },
