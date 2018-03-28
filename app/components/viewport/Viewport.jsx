@@ -89,11 +89,11 @@ export default class Viewport extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.readingSpeed != this.props.readingSpeed) {
+        if (nextProps.readingPace != this.props.readingPace && this.state.cruiseControlIsActive) {
             let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
             let millisecondsInMinute = 60000;
-            let readMinutes = currentAsset.wordCount/nextProps.readingSpeed;
-            let numFixations = (nextProps.readingSpeed/this.props.fixationWidth); // in 60 seconds
+            let readMinutes = currentAsset.wordCount/nextProps.readingPace;
+            let numFixations = (nextProps.readingPace/this.props.fixationWidth); // in 60 seconds
             let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(3*readMinutes*numFixations));
             let timePerFixation = effectiveMillisecondsInMinute/numFixations; // measured in ms
 
@@ -140,10 +140,11 @@ export default class Viewport extends React.Component {
                 <StatusBar
                     hand                      ={this.props.hand}
                     skin                      ={this.props.skin}
-                    readingSpeed              ={this.props.readingSpeed}
+                    readingPace               ={this.props.readingPace}
                     cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive}
                     showAnnotations           ={this.state.showAnnotations}
-                    isScrolling               ={this.isScrolling}/>
+                    isScrolling               ={this.isScrolling}
+                    setReadingPace            ={this.props.setReadingPace} />
                 <CompletionMeter
                     doc                    ={this.state.doc}
                     docPosition            ={this.state.docPosition}
@@ -386,7 +387,7 @@ export default class Viewport extends React.Component {
             if (e.keyCode == 37 || e.keyCode == 38) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.changeReadingSpeed(ScrollDirectionTypes.DOWN);
+                    this.props.setReadingPace(this.state.readingPace + 1);
                 } else {
                     this.updateViewport(ScrollDirectionTypes.UP);
                 }
@@ -395,9 +396,9 @@ export default class Viewport extends React.Component {
             } else if (e.keyCode == 39 || e.keyCode == 40) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.changeReadingSpeed(ScrollDirectionTypes.UP);
+                    this.props.setReadingPace(this.state.readingPace - 1);
                 } else {
-                    this.updateViewport(ScrollDirectionTypes.DOWN);
+                    this.updateViewport(this.state.readingPace + 1);
                 }
             } else if (e.keyCode == 32) {
                 this.preventDefault(e);
@@ -419,9 +420,9 @@ export default class Viewport extends React.Component {
             this.updateViewport(direction);
         } else if (this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
-            let inverseDirection = direction == ScrollDirectionTypes.UP ? ScrollDirectionTypes.DOWN : ScrollDirectionTypes.UP;
+            let inverseDirection = direction == ScrollDirectionTypes.UP ? this.state.readingPace + 1 : this.state.readingPace - 1;
             window.clearTimeout(this.isScrolling);
-            this.props.changeReadingSpeed(inverseDirection);
+            this.props.setReadingPace(inverseDirection);
         }
 
         this.setState({
@@ -1009,8 +1010,8 @@ export default class Viewport extends React.Component {
     setTimePerFixation = (addDelay) => {
         let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
         let millisecondsInMinute = 60000;
-        let readMinutes = currentAsset.wordCount/this.props.readingSpeed;
-        let numFixations = (this.props.readingSpeed/this.props.fixationWidth); // in 60 seconds
+        let readMinutes = currentAsset.wordCount/this.props.readingPace;
+        let numFixations = (this.props.readingPace/this.props.fixationWidth); // in 60 seconds
         let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
         let timePerFixation = effectiveMillisecondsInMinute/numFixations + addDelay; // measured in ms
         this.setState({
@@ -1198,15 +1199,15 @@ export default class Viewport extends React.Component {
 // ============= PropTypes ==============
 
 Viewport.propTypes = {
-    docURL             : PropTypes.string.isRequired,
-    fontSize           : PropTypes.number.isRequired,
-    fontFamily         : PropTypes.object.isRequired,
-    fixationWidth      : PropTypes.number.isRequired,
-    trackingSpeed      : PropTypes.number.isRequired,
-    hand               : PropTypes.string.isRequired,
-    skin               : PropTypes.string.isRequired,
-    readingSpeed       : PropTypes.number.isRequired,
-    changeReadingSpeed : PropTypes.func.isRequired
+    docURL         : PropTypes.string.isRequired,
+    fontSize       : PropTypes.number.isRequired,
+    fontFamily     : PropTypes.object.isRequired,
+    fixationWidth  : PropTypes.number.isRequired,
+    trackingSpeed  : PropTypes.number.isRequired,
+    hand           : PropTypes.string.isRequired,
+    skin           : PropTypes.string.isRequired,
+    readingPace    : PropTypes.number.isRequired,
+    setReadingPace : PropTypes.func.isRequired
 
 };
 

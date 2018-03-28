@@ -14,8 +14,8 @@ import NoAnnotationsPurple      from '../../assets/images/icons/no-annotations-p
 import NoAnnotationsLightPurple from '../../assets/images/icons/no-annotations-lightpurple.svg';
 import NoAnnotationsGray        from '../../assets/images/icons/no-annotations-gray.svg';
 import NoAnnotationsDarkGray    from '../../assets/images/icons/no-annotations-darkgray.svg';
-import SpeedPurple              from '../../assets/images/icons/speed-purple.svg';
-import SpeedLightPurple         from '../../assets/images/icons/speed-lightpurple.svg';
+import PacePurple              from '../../assets/images/icons/pace-purple.svg';
+import PaceLightPurple         from '../../assets/images/icons/pace-lightpurple.svg';
 
 /**
  * The FunctionBar component is a component used to
@@ -25,7 +25,8 @@ export default class FunctionBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            changingReadingSpeed: false
+            changingReadingPace: false,
+            editingPace: false
         };
     }
 
@@ -41,17 +42,31 @@ export default class FunctionBar extends React.Component {
                     <FunctionIcon
                         title={`Words per Minute`}
                         icon={this.props.skin == SkinTypes.LIGHT ?
-                                    `url(${SpeedPurple})`
+                                    `url(${PacePurple})`
                                 :
                                     this.props.skin == SkinTypes.CREAM ?
-                                            `url(${SpeedPurple})`
+                                            `url(${PacePurple})`
                                         :
-                                            `url(${SpeedLightPurple})`}/>
-                    <FunctionText
-                        skin={this.props.skin}
-                        changingReadingSpeed={this.state.changingReadingSpeed}>
-                        {this.props.readingSpeed}
-                    </FunctionText>
+                                            `url(${PaceLightPurple})`}/>
+                    {this.state.editingPace ?
+                        <PaceInput
+                            type="text"
+                            innerRef={comp => this.pace = comp}
+                            autoFocus={true}
+                            maxLength="3"
+                            defaultValue={this.props.readingPace}
+                            onBlur={this.finishEdit}
+                            onKeyPress={this.checkEnter}
+                            placeholder="wpm"
+                            skin={this.props.skin} />
+                    :
+                        <FunctionText
+                            skin={this.props.skin}
+                            changingReadingPace={this.state.changingReadingPace}
+                            onClick={this.edit}>
+                            {this.props.readingPace}
+                        </FunctionText>
+                    }
                 </FunctionSystem>
                 <FunctionIcon
                     title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
@@ -98,32 +113,57 @@ export default class FunctionBar extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        let changingReadingSpeed
+        let changingReadingPace;
 
         if (nextProps.isScrolling != this.props.isScrolling) {
-            changingReadingSpeed = true;
+            changingReadingPace = true;
         }
 
         this.setState({
-            changingReadingSpeed: changingReadingSpeed
+            changingReadingPace: changingReadingPace
         });
     }
 
     // ========== Methods ===========
 
-    /*
+    edit = (e) => {
+        // Enter edit mode.
+        this.setState({
+            editingPace: true
+        });
+    };
 
-     */
+    checkEnter = (e) => {
+        // The user hit *enter*, let's finish up.
+        if(e.key === 'Enter') {
+            this.finishEdit(e);
+        }
+    };
+
+    finishEdit = (e) => {
+        // Exit edit mode.
+        e.stopPropagation();
+        let newPace = parseInt(this.pace.value);
+        if (newPace && 0 < newPace && newPace < 1000) {
+            this.props.setReadingPace(newPace);
+        }
+
+        this.setState({
+            editingPace: false
+        });
+    }
 }
 
 // ============= PropTypes ==============
 
 FunctionBar.propTypes = {
     cruiseControlHaltIsActive: PropTypes.bool.isRequired,
-    hand              : PropTypes.string.isRequired,
-    readingSpeed: PropTypes.number.isRequired,
-    skin: PropTypes.string.isRequired,
-    showAnnotations: PropTypes.bool.isRequired
+    hand                     : PropTypes.string.isRequired,
+    readingPace              : PropTypes.number.isRequired,
+    setReadingPace           : PropTypes.func.isRequired,
+    skin                     : PropTypes.string.isRequired,
+    showAnnotations          : PropTypes.bool.isRequired,
+    isScrolling              : PropTypes.number
 };
 
 // ============= Styled Components ==============
@@ -160,7 +200,7 @@ const FunctionText = styled.h3`
     position: relative;
     top: 1px;
     display: inline-block;
-    font-size: ${props => props.changingReadingSpeed ? "1.5em" : "0.9em"};
+    font-size: ${props => props.changingReadingPace ? "1.5em" : "0.9em"};
     margin: 0;
     color: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.black
@@ -173,4 +213,33 @@ const FunctionText = styled.h3`
     font-weight: 400;
     user-select: none;
     transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        font-weight: 700;
+    }
+`;
+
+const PaceInput = styled.input`
+    border-radius: 3px;
+    appearance: none;
+    padding: 0.6em 0.6em;
+    margin: 0;
+    width: 70px;
+    height: 40px;
+    background-color: ${props => props.theme.lightGray};
+    border: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: ${props => props.skin == SkinTypes.LIGHT ?
+                props.theme.black
+            :
+                props.skin == SkinTypes.CREAM ?
+                        props.theme.creamBrown
+                    :
+                        props.theme.gray
+            };
+    line-height: normal;
+    text-align: center;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.22);
 `;

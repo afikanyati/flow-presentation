@@ -45,7 +45,7 @@ export default class Root extends React.Component {
             trackingSpeed  : 12,
             skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
-            readingSpeed   : 250, //WPM --> Method to save reading speed if edited
+            readingPace   : 250, //WPM --> Method to save reading pace if edited
             docURL: "/documents/-L8dAIHvgKHZQwAoL2tN"
         };
     }
@@ -77,10 +77,10 @@ export default class Root extends React.Component {
                 trackingSpeed        ={this.state.trackingSpeed}
                 hand                 ={this.state.hand}
                 skin                 ={this.state.skin}
-                readingSpeed         ={this.state.readingSpeed}
+                readingPace         ={this.state.readingPace}
                 highlightColor       ={this.state.highlightColor}
                 showAnnotations={this.state.showAnnotations}
-                changeReadingSpeed   ={this.changeReadingSpeed}/>
+                setReadingPace   ={this.setReadingPace}/>
         );
     }
 
@@ -109,11 +109,10 @@ export default class Root extends React.Component {
        this.setState({});
    }
 
-   changeReadingSpeed = (direction) => {
-       let delta = direction == ScrollDirectionTypes.UP ? -1 : 1;
-       let readingSpeed = Math.max(this.state.readingSpeed + delta, 1);
+   setReadingPace = (pace) => {
+       let readingPace = Math.max(pace, 1);
        this.setState({
-           readingSpeed: readingSpeed
+           readingPace: readingPace
        });
    }
 }
