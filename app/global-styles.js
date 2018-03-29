@@ -132,15 +132,6 @@ injectGlobal`
       transition: opacity 200ms ease-in;
     }
 
-    .periphery-enter {
-      opacity: 0.8;
-    }
-
-    .periphery-enter.periphery-enter-active {
-      opacity: 1;
-      transition: opacity 200ms ease-in;
-    }
-
     .definition-enter {
       opacity: 0.7;
     }

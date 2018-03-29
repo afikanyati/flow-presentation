@@ -126,9 +126,7 @@ export default class Viewport extends React.Component {
 
     viewportView = () => {
         let history = this.getCurrentAssetHistory();
-        let peripheralHistory = this.getPeripheralHistory();
         let fixationWindow = this.getFixationWindow();
-        let peripheralFuture = this.getPeripheralFuture();
         let future = this.getCurrentAssetFuture();
         let doc = {...this.state.doc};
         return (
@@ -235,26 +233,6 @@ export default class Viewport extends React.Component {
                     })}
                 </HistoryContainer>
                 <FixationWindowContainer>
-                    <PeripheralHistoryContainer
-                        fontSize     ={this.props.fontSize}
-                        numLineChars ={this.state.numLineChars}>
-                        <PeripheralHistory
-                            fontSize                  ={this.props.fontSize}
-                            fontFamily                ={this.props.fontFamily}>
-                            <CSSTransitionGroup
-                                  transitionName         ="periphery"
-                                  transitionEnterTimeout ={200}
-                                  transitionLeave        ={false}>
-                                {peripheralHistory.map((word) => {
-                                    return (
-                                        <PeripheralText key={`parent =[type ='paragraph', index ='${this.state.docPosition.asset}'], this =[type ='periphery-text', index ='${word.index.word}']`}>
-                                            {`${word.text} `}
-                                        </PeripheralText>
-                                    );
-                                })}
-                            </CSSTransitionGroup>
-                        </PeripheralHistory>
-                    </PeripheralHistoryContainer>
                     <FixationWindow
                         highlightIsActive ={this.state.highlightIsActive}
                         highlightColor    ={this.state.highlightColor}
@@ -281,26 +259,6 @@ export default class Viewport extends React.Component {
                             })}
                         </CSSTransitionGroup>
                     </FixationWindow>
-                    <PeripheralFutureContainer
-                        fontSize     ={this.props.fontSize}
-                        numLineChars ={this.state.numLineChars}>
-                        <PeripheralFuture
-                            fontSize                  ={this.props.fontSize}
-                            fontFamily                ={this.props.fontFamily}>
-                            <CSSTransitionGroup
-                                  transitionName         ="periphery"
-                                  transitionEnterTimeout ={200}
-                                  transitionLeave        ={false}>
-                                {peripheralFuture.map((word) => {
-                                    return (
-                                        <PeripheralText key={`parent =[type ='paragraph', index ='${this.state.docPosition.asset}'], this =[type ='periphery-text', index ='${word.index.word}']`}>
-                                            {`${word.text} `}
-                                        </PeripheralText>
-                                    );
-                                })}
-                            </CSSTransitionGroup>
-                        </PeripheralFuture>
-                    </PeripheralFutureContainer>
                 </FixationWindowContainer>
                 <FutureContainer
                     skin         ={this.props.skin}
@@ -774,29 +732,6 @@ export default class Viewport extends React.Component {
         }
 
         return [nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords];
-    }
-
-    getPeripheralFuture = () => {
-        let futureWords = [];
-        let nextFixation = this.getNextFixation();
-        this.range(nextFixation[2][0], nextFixation[2][1]).forEach((index) => {
-            let word = this.state.doc.assets[nextFixation[0]].sentences[nextFixation[1]].words[index];
-            futureWords.push(word);
-        });
-
-        return futureWords;
-    }
-
-    getPeripheralHistory = () => {
-        let historyWords = [];
-        let lastFixation = this.getPreviousFixation();
-
-        this.range(lastFixation[2][0], lastFixation[2][1]).forEach((index) => {
-            let word = this.state.doc.assets[lastFixation[0]].sentences[lastFixation[1]].words[index];
-            historyWords.push(word);
-        });
-
-        return historyWords;
     }
 
     /**
@@ -1406,54 +1341,6 @@ const FixationWindow = styled.p`
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
     text-align: center;
     transition        : all 0.3s;
-`;
-
-const PeripheralHistoryContainer = styled.div`
-    position                 : relative;
-    display                  : flex;
-    flex-direction           : row;
-	align-items              : center;
-    justify-content          : flex-end;
-    height                   : 30vh;
-    width: ${props => 'calc((100vw - ' + props.numLineChars * props.fontSize + 'px - 30px)/2)'};
-    margin                   : 0;
-    margin-right: 15px;
-    opacity: 0.6;
-`;
-
-const PeripheralFutureContainer = styled.div`
-    position                 : relative;
-    display                  : flex;
-    flex-direction           : row;
-	align-items              : center;
-    justify-content          : flex-start;
-    height                   : 30vh;
-    width: ${props => 'calc((100vw - ' + props.numLineChars * props.fontSize + 'px - 30px)/2)'};
-    margin                   : 0;
-    margin-left: 15px;
-    opacity: 0.6;
-`;
-
-const PeripheralHistory = styled.p`
-    font-family       : ${props => props.fontFamily.regular || serif};
-    font-size         : ${props => props.fontSize + 'px' || '40px'};
-    line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
-    margin            : 0;
-    transition        : all 0.3s;
-`;
-
-const PeripheralFuture = styled.p`
-    font-family       : ${props => props.fontFamily.regular || serif};
-    font-size         : ${props => props.fontSize + 'px' || '40px'};
-    line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
-    margin            : 0;
-    transition        : all 0.3s;
-`;
-
-const PeripheralText = styled.span`
-    display    : inline-block;
-    white-space: pre;
-    user-select: none;
 `;
 
 const FutureContainer = styled.section`

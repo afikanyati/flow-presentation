@@ -43,7 +43,7 @@ export default class Root extends React.Component {
             fontFamily     : FontTypes.ADOBE_GARAMOND,
             fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
             trackingSpeed  : 12,
-            skin           : SkinTypes.CREAM,
+            skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
             readingPace   : 250, //WPM --> Method to save reading pace if edited
             docURL: "/documents/-L8jrSqtnQhg27zUmvjL"
