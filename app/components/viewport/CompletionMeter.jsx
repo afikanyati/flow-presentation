@@ -2,7 +2,6 @@
 import React            from 'react';
 import PropTypes        from 'prop-types';
 import styled           from 'styled-components';
-import uuid             from 'uuid';
 
 // Components
 import SkinTypes        from '../../constants/skinTypes';
@@ -57,10 +56,10 @@ export default class CompletionMeter extends React.Component {
                         skin={this.props.skin}>
                         {currentPage + 1}
                     </CurrentPageNumberIndicator>
-                    {pageProgress.map((paragraphCompletion) => {
+                    {pageProgress.map((paragraphCompletion, i) => {
                         return (
                             <ParagraphMeter
-                                key={uuid.v4()}
+                                key={i}
                                 skin={this.props.skin}
                                 height={`${100/this.props.numPageParagraphs}%`}
                                 progress={`${paragraphCompletion}%`} />

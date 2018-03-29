@@ -3,7 +3,6 @@ import React                    from 'react';
 import PropTypes                from 'prop-types';
 import styled                   from 'styled-components';
 import { CSSTransitionGroup }   from 'react-transition-group';
-import uuid                     from 'uuid';
 
 // Components
 import FontTypes                from '../../constants/fontTypes';
@@ -45,9 +44,9 @@ export default class DefinitionsDrawer extends React.Component {
                           transitionName         ="definition"
                           transitionEnterTimeout ={200}
                           transitionLeave        ={false}>
-                    {this.props.fixationWords.map(word => {
+                    {this.props.fixationWords.map((word, i) => {
                         return (
-                            <Definition key={uuid.v4()}>
+                            <Definition key={i}>
                                 <Term>
                                     {word.definition && word.definition.word ?
                                             word.definition.word

@@ -9,8 +9,6 @@
 import React                    from 'react';
 import firebase                 from 'firebase';
 import config                   from '../../firebase_config.json';
-import getMuiTheme              from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
 import uuid                     from 'uuid';
 import initReactFastclick       from 'react-fastclick';
 
