@@ -43,10 +43,10 @@ export default class Root extends React.Component {
             fontFamily     : FontTypes.ADOBE_GARAMOND,
             fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
             trackingSpeed  : 12,
-            skin           : SkinTypes.LIGHT,
+            skin           : SkinTypes.CREAM,
             hand           : HandTypes.RIGHT,
             readingPace   : 250, //WPM --> Method to save reading pace if edited
-            docURL: "/documents/-L8dAIHvgKHZQwAoL2tN"
+            docURL: "/documents/-L8jrSqtnQhg27zUmvjL"
         };
     }
 
@@ -60,11 +60,11 @@ export default class Root extends React.Component {
             offset = new Date().getTimezoneOffset()/minInHour,
             hour = new Date().getUTCHours();
 
-        if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
-            this.setState({
-                skin: SkinTypes.DARK
-            });
-        }
+        // if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
+        //     this.setState({
+        //         skin: SkinTypes.DARK
+        //     });
+        // }
     }
 
     render() {

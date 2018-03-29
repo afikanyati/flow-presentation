@@ -45,7 +45,8 @@ export default class Viewport extends React.Component {
             drawerIsOpen             : false,
             docLoaded                : false,
             numLineChars             : 25,
-            numPageParagraphs        : 3
+            numPageParagraphs        : 3,
+            editingPace: false,
         }
     }
 
@@ -125,7 +126,9 @@ export default class Viewport extends React.Component {
 
     viewportView = () => {
         let history = this.getCurrentAssetHistory();
+        let peripheralHistory = this.getPeripheralHistory();
         let fixationWindow = this.getFixationWindow();
+        let peripheralFuture = this.getPeripheralFuture();
         let future = this.getCurrentAssetFuture();
         let doc = {...this.state.doc};
         return (
@@ -144,7 +147,9 @@ export default class Viewport extends React.Component {
                     cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive}
                     showAnnotations           ={this.state.showAnnotations}
                     isScrolling               ={this.isScrolling}
-                    setReadingPace            ={this.props.setReadingPace} />
+                    setReadingPace            ={this.props.setReadingPace}
+                    editingPace={this.state.editingPace}
+                    toggleEditingPace={this.toggleEditingPace}/>
                 <CompletionMeter
                     doc                    ={this.state.doc}
                     docPosition            ={this.state.docPosition}
@@ -229,14 +234,33 @@ export default class Viewport extends React.Component {
                         );
                     })}
                 </HistoryContainer>
-                <FixationWindowContainer
-                    fontSize     ={this.props.fontSize}
-                    numLineChars ={this.state.numLineChars}>
+                <FixationWindowContainer>
+                    <PeripheralHistoryContainer
+                        fontSize     ={this.props.fontSize}
+                        numLineChars ={this.state.numLineChars}>
+                        <PeripheralHistory
+                            fontSize                  ={this.props.fontSize}
+                            fontFamily                ={this.props.fontFamily}>
+                            <CSSTransitionGroup
+                                  transitionName         ="periphery"
+                                  transitionEnterTimeout ={200}
+                                  transitionLeave        ={false}>
+                                {peripheralHistory.map((word) => {
+                                    return (
+                                        <PeripheralText key={`parent =[type ='paragraph', index ='${this.state.docPosition.asset}'], this =[type ='periphery-text', index ='${word.index.word}']`}>
+                                            {`${word.text} `}
+                                        </PeripheralText>
+                                    );
+                                })}
+                            </CSSTransitionGroup>
+                        </PeripheralHistory>
+                    </PeripheralHistoryContainer>
                     <FixationWindow
                         highlightIsActive ={this.state.highlightIsActive}
                         highlightColor    ={this.state.highlightColor}
                         fontSize          ={this.props.fontSize}
-                        fontFamily        ={this.props.fontFamily}>
+                        fontFamily        ={this.props.fontFamily}
+                        numLineChars ={this.state.numLineChars}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
                               transitionEnterTimeout ={200}
@@ -257,6 +281,26 @@ export default class Viewport extends React.Component {
                             })}
                         </CSSTransitionGroup>
                     </FixationWindow>
+                    <PeripheralFutureContainer
+                        fontSize     ={this.props.fontSize}
+                        numLineChars ={this.state.numLineChars}>
+                        <PeripheralFuture
+                            fontSize                  ={this.props.fontSize}
+                            fontFamily                ={this.props.fontFamily}>
+                            <CSSTransitionGroup
+                                  transitionName         ="periphery"
+                                  transitionEnterTimeout ={200}
+                                  transitionLeave        ={false}>
+                                {peripheralFuture.map((word) => {
+                                    return (
+                                        <PeripheralText key={`parent =[type ='paragraph', index ='${this.state.docPosition.asset}'], this =[type ='periphery-text', index ='${word.index.word}']`}>
+                                            {`${word.text} `}
+                                        </PeripheralText>
+                                    );
+                                })}
+                            </CSSTransitionGroup>
+                        </PeripheralFuture>
+                    </PeripheralFutureContainer>
                 </FixationWindowContainer>
                 <FutureContainer
                     skin         ={this.props.skin}
@@ -380,7 +424,7 @@ export default class Viewport extends React.Component {
             32: true   // Enter
         };
 
-        if (keys[e.keyCode]) {
+        if (keys[e.keyCode] && !this.state.editingPace) {
             this.preventDefault(e);
 
             // Up or Left
@@ -520,15 +564,9 @@ export default class Viewport extends React.Component {
                 this.toggleWordHighlight(start, end);
             }
 
-            nextFixation = this.state.docPosition.fixation[0] == 0 ? [this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence - 1].wordCount - this.props.fixationWidth, this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence - 1].wordCount] : [Math.max(0, this.state.docPosition.fixation[0] - this.props.fixationWidth), this.state.docPosition.fixation[0]];
-            nextSentence = this.state.docPosition.fixation[0] == 0 ? this.state.docPosition.sentence - 1 : this.state.docPosition.sentence;
-
-            // Constrain Fixation Words to Window
-            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars) {
-                nextFixation = update(nextFixation, {
-                    0: {$set: nextFixation[1] + 1}
-                });
-            }
+            let historyFixation = this.getPreviousFixation();
+            nextSentence = historyFixation[1];
+            nextFixation = historyFixation[2];
         } else {
             // Scroll Direction Down
             if (this.state.highlightIsActive) {
@@ -547,15 +585,10 @@ export default class Viewport extends React.Component {
                 this.toggleWordHighlight(start, end);
             }
 
-            nextFixation = this.state.docPosition.fixation[1] == currentSentence.wordCount ? [0, this.props.fixationWidth] : [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
-            nextSentence = this.state.docPosition.fixation[1] == currentSentence.wordCount ? this.state.docPosition.sentence + 1 : this.state.docPosition.sentence;
+            let futureFixation = this.getNextFixation();
 
-            // Constrain Fixation Words to Window
-            while (this.countChars(this.state.docPosition.asset, nextSentence, nextFixation) >= this.state.numLineChars) {
-                nextFixation = update(nextFixation, {
-                    1: {$set: nextFixation[1] - 1}
-                });
-            }
+            nextSentence = futureFixation[1];
+            nextFixation = futureFixation[2];
         }
 
         let docPosition = update(this.state.docPosition, {
@@ -672,6 +705,98 @@ export default class Viewport extends React.Component {
             sentenceCount: {$set: sentenceFuture.length},
             wordCount: {$set: wordCount}
         });
+    }
+
+    getPreviousFixation = () => {
+        let lastFixationAssetIndex = this.state.docPosition.asset - 1 >=0 && this.state.docPosition.sentence - 1 < 0
+            && this.state.docPosition.fixation[0] == 0 ?
+            this.state.docPosition.asset - 1
+        :
+            this.state.docPosition.asset;
+
+        let lastFixationSentenceIndex = this.state.docPosition.fixation[0] == 0 ?   // You're at beginning of sentence
+            this.state.docPosition.sentence - 1 < 0 ?   // You're at beginning of asset
+                this.state.docPosition.asset - 1 < 0 ? // You're at beginning of document
+                    this.state.docPosition.sentence
+                :
+                    this.state.doc.assets[lastFixationAssetIndex].sentences[this.state.doc.assets[lastFixationAssetIndex].sentenceCount - 1].index.sentence
+            :
+                this.state.docPosition.sentence - 1
+        :
+            this.state.docPosition.sentence;
+
+        let lastFixationWords = this.state.docPosition.fixation[0] == 0 ? // You're at beginning of sentence
+            this.state.docPosition.sentence - 1 < 0 ? // You're at beginning of asset
+                this.state.docPosition.asset - 1 < 0 ? // You're at beginning of document
+                    [0,0]
+                :
+                    [this.state.doc.assets[lastFixationAssetIndex].sentences[lastFixationSentenceIndex].wordCount - this.props.fixationWidth, this.state.doc.assets[lastFixationAssetIndex].sentences[lastFixationSentenceIndex].wordCount]
+            :
+                [this.state.doc.assets[lastFixationAssetIndex].sentences[lastFixationSentenceIndex].wordCount - this.props.fixationWidth, this.state.doc.assets[lastFixationAssetIndex].sentences[lastFixationSentenceIndex].wordCount]
+        :
+            [Math.max(0, this.state.docPosition.fixation[0] - this.props.fixationWidth), this.state.docPosition.fixation[0]];
+
+        while (this.countChars(lastFixationAssetIndex, lastFixationSentenceIndex, lastFixationWords) >= this.state.numLineChars) {
+            lastFixationWords = update(lastFixationWords, {
+                0: {$set: lastFixationWords[0] + 1}
+            });
+        }
+
+        return [lastFixationAssetIndex, lastFixationSentenceIndex, lastFixationWords];
+    }
+
+    getNextFixation = () => {
+        let currentSentence = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
+        let nextFixationAssetIndex = this.state.docPosition.asset + 1 < this.state.doc.assets.length
+            && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+            && this.state.docPosition.fixation[1] == currentSentence.wordCount ?
+            this.state.docPosition.asset + 1
+        :
+            this.state.docPosition.asset;
+
+        let nextFixationSentenceIndex = this.state.docPosition.fixation[1] == currentSentence.wordCount && this.state.docPosition.asset + 1 < this.state.doc.assets.length ?
+            this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount ?
+                0
+            :
+                this.state.docPosition.sentence + 1
+        :
+            this.state.docPosition.sentence;
+
+        let nextFixationWords = this.state.docPosition.fixation[1] == currentSentence.wordCount && this.state.docPosition.asset + 1 < this.state.doc.assets.length ?
+            [0, this.props.fixationWidth]
+        :
+            [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
+
+        while (this.countChars(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords) >= this.state.numLineChars) {
+            nextFixationWords = update(nextFixationWords, {
+                1: {$set: nextFixationWords[1] - 1}
+            });
+        }
+
+        return [nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords];
+    }
+
+    getPeripheralFuture = () => {
+        let futureWords = [];
+        let nextFixation = this.getNextFixation();
+        this.range(nextFixation[2][0], nextFixation[2][1]).forEach((index) => {
+            let word = this.state.doc.assets[nextFixation[0]].sentences[nextFixation[1]].words[index];
+            futureWords.push(word);
+        });
+
+        return futureWords;
+    }
+
+    getPeripheralHistory = () => {
+        let historyWords = [];
+        let lastFixation = this.getPreviousFixation();
+
+        this.range(lastFixation[2][0], lastFixation[2][1]).forEach((index) => {
+            let word = this.state.doc.assets[lastFixation[0]].sentences[lastFixation[1]].words[index];
+            historyWords.push(word);
+        });
+
+        return historyWords;
     }
 
     /**
@@ -1014,6 +1139,7 @@ export default class Viewport extends React.Component {
         let numFixations = (this.props.readingPace/this.props.fixationWidth); // in 60 seconds
         let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
         let timePerFixation = effectiveMillisecondsInMinute/numFixations + addDelay; // measured in ms
+
         this.setState({
             timePerFixation: timePerFixation
         });
@@ -1024,40 +1150,25 @@ export default class Viewport extends React.Component {
         // Runs fully once per doTimer
         // Only checks end of sentence for punctiation currently
         if (this.state.checkAddDelay) {
-            let currentSentence = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
-            let futureFixationAssetIndex = futureFixationSentenceIndex = this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
-                && this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
-                this.state.docPosition.asset + 1
-            :
-                this.state.docPosition.asset;
-
-            let futureFixationSentenceIndex = this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
-                && this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
-                0
-            :
-                this.state.docPosition.sentence;
-
-            let futureFixationWords = this.state.docPosition.fixation[0] + this.props.fixationWidth > currentSentence.wordCount ?
-                [0, this.props.fixationWidth]
-            :
-                [Math.min(this.state.docPosition.fixation[0] + this.props.fixationWidth, currentSentence.wordCount), Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
-
-            while (this.countChars(futureFixationAssetIndex, futureFixationSentenceIndex, futureFixationWords) >= this.state.numLineChars) {
-                futureFixationWords = update(futureFixationWords, {
-                    1: {$set: futureFixationWords[1] - 1}
-                });
-            }
+            let futureFixation = this.getNextFixation();
 
             // Determine if need to add time
-            this.range(futureFixationWords[0], futureFixationWords[1]).forEach((index) => {
-                let word = this.state.doc.assets[futureFixationAssetIndex].sentences[futureFixationSentenceIndex].words[index];
-                if (word.delay && Object.keys(word.delay).length > 0) {
-                    addDelay += word.delay.factor * this.state.timePerFixation/3;
+            this.range(futureFixation[2][0], futureFixation[2][1]).forEach((index) => {
+                let word = this.state.doc.assets[futureFixation[0]].sentences[futureFixation[1]].words[index];
+                if (word.delay && word.delay.length > 0) {
+                    word.delay.forEach((delay) => {
+                        if (delay.type == "word-length") {
+                            addDelay += delay.factor * this.state.timePerFixation
+                        } else {
+                            addDelay += delay.factor * this.state.timePerFixation/3;
+                        }
+                    });
                 }
             });
 
-            if (this.state.docPosition.sentence + 1 == this.state.doc.assets[futureFixationAssetIndex].sentenceCount
-                && futureFixationWords[1] == this.state.doc.assets[futureFixationAssetIndex].sentences[futureFixationSentenceIndex].wordCount) {
+            // Delay Next Paragraph
+            if (this.state.docPosition.sentence + 1 == this.state.doc.assets[futureFixation[0]].sentenceCount
+                && futureFixation[2][1] == this.state.doc.assets[futureFixation[0]].sentences[futureFixation[1]].wordCount) {
                 addDelay += this.state.timePerFixation;
             }
 
@@ -1126,6 +1237,12 @@ export default class Viewport extends React.Component {
         e.stopPropagation();
         this.setState({
             drawerIsOpen: !this.state.drawerIsOpen
+        });
+    }
+
+    toggleEditingPace = () => {
+        this.setState({
+            editingPace: !this.state.editingPace
         });
     }
 
@@ -1221,18 +1338,18 @@ const Container = styled.div`
     overflow              : hidden;
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor : "auto"};
     color: ${props => props.skin == SkinTypes.LIGHT ?
-                "rgba(0,0,0,0.87)"
+                props.theme.lightTextColor
             :
                 props.skin == SkinTypes.CREAM ?
-                        props.theme.creamBrown
+                        props.theme.creamTextColor
                     :
-                        "#bebebe"
+                        props.darkTextColor
             };
     background: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.white
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#f9f3e9"
+                        props.theme.cream
                     :
                         props.theme.pitchBlack
             };
@@ -1272,13 +1389,13 @@ const FixationWindowContainer = styled.section`
     flex-direction           : row;
 	align-items              : center;
     justify-content          : center;
-    width                    : 100%;
-    max-width: ${props => props.numLineChars * props.fontSize + 'px'};
+    width                    : 100vw;
     height                   : 30vh;
     margin                   : 0;
 `;
 
 const FixationWindow = styled.p`
+    width: ${props => props.numLineChars * props.fontSize + 'px'};
     font-family       : ${props => props.fontFamily.regular || serif};
     font-size         : ${props => 2.5*props.fontSize + 'px' || '40px'};
     line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
@@ -1287,7 +1404,56 @@ const FixationWindow = styled.p`
     border-left-color: ${props => props.theme[props.highlightColor]};
     border-left-style: solid;
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
+    text-align: center;
     transition        : all 0.3s;
+`;
+
+const PeripheralHistoryContainer = styled.div`
+    position                 : relative;
+    display                  : flex;
+    flex-direction           : row;
+	align-items              : center;
+    justify-content          : flex-end;
+    height                   : 30vh;
+    width: ${props => 'calc((100vw - ' + props.numLineChars * props.fontSize + 'px - 30px)/2)'};
+    margin                   : 0;
+    margin-right: 15px;
+    opacity: 0.6;
+`;
+
+const PeripheralFutureContainer = styled.div`
+    position                 : relative;
+    display                  : flex;
+    flex-direction           : row;
+	align-items              : center;
+    justify-content          : flex-start;
+    height                   : 30vh;
+    width: ${props => 'calc((100vw - ' + props.numLineChars * props.fontSize + 'px - 30px)/2)'};
+    margin                   : 0;
+    margin-left: 15px;
+    opacity: 0.6;
+`;
+
+const PeripheralHistory = styled.p`
+    font-family       : ${props => props.fontFamily.regular || serif};
+    font-size         : ${props => props.fontSize + 'px' || '40px'};
+    line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
+    margin            : 0;
+    transition        : all 0.3s;
+`;
+
+const PeripheralFuture = styled.p`
+    font-family       : ${props => props.fontFamily.regular || serif};
+    font-size         : ${props => props.fontSize + 'px' || '40px'};
+    line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
+    margin            : 0;
+    transition        : all 0.3s;
+`;
+
+const PeripheralText = styled.span`
+    display    : inline-block;
+    white-space: pre;
+    user-select: none;
 `;
 
 const FutureContainer = styled.section`
@@ -1327,7 +1493,7 @@ const PageDelimiter = styled.div`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        props.theme.creamBrown
+                        props.theme.creamTextColor
                     :
                         props.theme.gray
             };
@@ -1339,7 +1505,7 @@ const PageNumber = styled.h3`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        props.theme.creamBrown
+                        props.theme.creamTextColor
                     :
                         props.theme.gray
             };
@@ -1349,7 +1515,7 @@ const PageNumber = styled.h3`
                 props.theme.white
             :
                 props.skin == SkinTypes.CREAM ?
-                        "#f9f3e9"
+                        props.theme.cream
                     :
                         props.theme.pitchBlack
             };

@@ -259,7 +259,7 @@ const PageNumberIndicator = styled.h3`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        props.theme.creamBrown
+                        props.theme.creamTextColor
                     :
                         props.theme.gray
             };

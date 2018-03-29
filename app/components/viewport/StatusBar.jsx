@@ -8,14 +8,16 @@ import HandTypes                from '../../constants/handTypes';
 import SkinTypes                from '../../constants/skinTypes';
 import PausePurple              from '../../assets/images/icons/pause-purple.svg';
 import PauseLightPurple         from '../../assets/images/icons/pause-lightpurple.svg';
+import PauseLightGray           from '../../assets/images/icons/pause-lightgray.svg';
 import PauseGray                from '../../assets/images/icons/pause-gray.svg';
-import PauseDarkGray            from '../../assets/images/icons/pause-darkgray.svg';
+import PauseBlack               from '../../assets/images/icons/pause-black.svg';
 import NoAnnotationsPurple      from '../../assets/images/icons/no-annotations-purple.svg';
 import NoAnnotationsLightPurple from '../../assets/images/icons/no-annotations-lightpurple.svg';
+import NoAnnotationsLightGray   from '../../assets/images/icons/no-annotations-lightgray.svg';
 import NoAnnotationsGray        from '../../assets/images/icons/no-annotations-gray.svg';
-import NoAnnotationsDarkGray    from '../../assets/images/icons/no-annotations-darkgray.svg';
-import PacePurple              from '../../assets/images/icons/pace-purple.svg';
-import PaceLightPurple         from '../../assets/images/icons/pace-lightpurple.svg';
+import NoAnnotationsBlack       from '../../assets/images/icons/no-annotations-black.svg';
+import PacePurple               from '../../assets/images/icons/pace-purple.svg';
+import PaceLightPurple          from '../../assets/images/icons/pace-lightpurple.svg';
 
 /**
  * The FunctionBar component is a component used to
@@ -25,8 +27,7 @@ export default class FunctionBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            changingReadingPace: false,
-            editingPace: false
+            changingReadingPace: false
         };
     }
 
@@ -48,7 +49,7 @@ export default class FunctionBar extends React.Component {
                                             `url(${PacePurple})`
                                         :
                                             `url(${PaceLightPurple})`}/>
-                    {this.state.editingPace ?
+                    {this.props.editingPace ?
                         <PaceInput
                             type="text"
                             innerRef={comp => this.pace = comp}
@@ -80,12 +81,12 @@ export default class FunctionBar extends React.Component {
                                     `url(${NoAnnotationsLightPurple})`
                     :
                         this.props.skin == SkinTypes.LIGHT ?
-                                `url(${NoAnnotationsGray})`
+                                `url(${NoAnnotationsLightGray})`
                             :
                                 this.props.skin == SkinTypes.CREAM ?
                                         `url(${NoAnnotationsGray})`
                                     :
-                                        `url(${NoAnnotationsDarkGray})`}/>
+                                        `url(${NoAnnotationsBlack})`}/>
                 <FunctionIcon
                     title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
                     icon={this.props.cruiseControlHaltIsActive ?
@@ -98,12 +99,12 @@ export default class FunctionBar extends React.Component {
                                                 `url(${PauseLightPurple})`
                         :
                             this.props.skin == SkinTypes.LIGHT ?
-                                        `url(${PauseGray})`
+                                        `url(${PauseLightGray})`
                                     :
                                         this.props.skin == SkinTypes.CREAM ?
                                                 `url(${PauseGray})`
                                             :
-                                                `url(${PauseDarkGray})`}/>
+                                                `url(${PauseBlack})`}/>
             </FunctionBarContainer>
         );
     }
@@ -128,9 +129,7 @@ export default class FunctionBar extends React.Component {
 
     edit = (e) => {
         // Enter edit mode.
-        this.setState({
-            editingPace: true
-        });
+        this.props.toggleEditingPace();
     };
 
     checkEnter = (e) => {
@@ -148,9 +147,7 @@ export default class FunctionBar extends React.Component {
             this.props.setReadingPace(newPace);
         }
 
-        this.setState({
-            editingPace: false
-        });
+        this.props.toggleEditingPace();
     }
 }
 
@@ -206,7 +203,7 @@ const FunctionText = styled.h3`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        props.theme.creamBrown
+                        props.theme.creamTextColor
                     :
                         props.theme.gray
             };
@@ -227,7 +224,14 @@ const PaceInput = styled.input`
     margin: 0;
     width: 70px;
     height: 40px;
-    background-color: ${props => props.theme.lightGray};
+    background-color: ${props => props.skin == SkinTypes.LIGHT ?
+                props.theme.lightGray
+            :
+                props.skin == SkinTypes.CREAM ?
+                        props.theme.gray
+                    :
+                        props.theme.black
+            };
     border: none;
     font-size: 1.2em;
     font-weight: 500;
@@ -235,7 +239,7 @@ const PaceInput = styled.input`
                 props.theme.black
             :
                 props.skin == SkinTypes.CREAM ?
-                        props.theme.creamBrown
+                        props.theme.creamTextColor
                     :
                         props.theme.gray
             };

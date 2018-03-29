@@ -210,6 +210,10 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
         return paragraph;
     }
 
+    let calcWordLengthDelay = (text) => {
+        return parseFloat((375/144 * Math.pow(text.length, 2)).toFixed(1));
+    };
+
     let constructSentences = (sentences, i) => {
         let sentenceObjects = [];
         for (let j = 0; j < sentences.length; j++) {
@@ -234,28 +238,31 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
                     },
                     hasBookmark: false,
                     annotations: {},
-                    delay: {
-                        type: null,
-                        factor: 0
-                    },
+                    delay: [],
                     bold: false,
                     italic: false,
                     underline: false
                 };
 
-                // Identify Delays and Acceleratorss
+                // Identify Delays and Accelerators
                 if (pauseSet.has(word.text.charAt(word.text.length - 1))) {
                     // Punctuation Pauses
-                    word.delay = {type: "pause", factor: 1};
+                    word.delay.push({type: "pause", factor: 1});
                     sentence.delay += 1;
                 } else if (transitionSet.has(word.text.replace(/[.,#!$%^&*;:{}=_`~()\s\u0022\u0027\u2018\u2019\u201C\u201D]/g,"").toLowerCase())) {
                     // Propositional Integration Word Pause
-                    word.delay = {type: "proposition", factor: 0.5};
+                    word.delay.push({type: "proposition", factor: 0.5});
                     sentence.delay += 0.5;
                 } else if (commonSet.has(word.text.replace(/[.,#!$%^&*;:{}=_`~()\s\u0022\u0027\u2018\u2019\u201C\u201D]/g,"").toLowerCase())) {
                     // Common Word Accelerator
-                    word.delay = {type: "common", factor: -0.1};
+                    word.delay.push({type: "common", factor: -0.1});
                     sentence.delay += -0.1;
+                } else if (sentences[j][k].length > 7) {
+                    // Word Length
+                    // 0.3 * fixation per letter over 7
+                    let factor = 0.3 * (sentences[j][k].length - 7);
+                    word.delay.push({type: "word-length", factor: factor});
+                    sentence.delay += factor;
                 }
 
                 // Find out type of sentence (if last word in sentence)
@@ -275,7 +282,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
                     }
 
                     // End of Sentence Pause
-                    word.delay = {type: "sentence-end", factor: 1};
+                    word.delay.push({type: "sentence-end", factor: 1});
                     sentence.delay += 1;
                 }
                 sentence.words.push(word);

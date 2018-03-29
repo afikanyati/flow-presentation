@@ -35,8 +35,10 @@ const theme = {
     darkGray: '#7F7F7F',
     black: '#252625',
     pitchBlack: '#171717',
-    creamBrown: '#5f3e24',
-    textColor: 'rgba(35,31,32, 0.87)'
+    creamTextColor: '#5f3e24',
+    cream: '#f9f3e9',
+    lightTextColor: 'rgba(0,0,0, 0.87)',
+    darkTextColor: '#bebebe'
 }
 
 ReactDOM.render((
