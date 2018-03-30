@@ -9,14 +9,14 @@ import garamondItalic from './assets/fonts/adobe_garamond/AGaramondPro-Italic.ot
 // Avenir
 import avenirBlack from './assets/fonts/avenir/Avenir-Black.ttf';
 import avenirHeavy from './assets/fonts/avenir/Avenir-Heavy.ttf';
-import avenirMedium from './assets/fonts/Avenir/Avenir-Medium.ttf';
+import avenirMedium from './assets/fonts/avenir/Avenir-Medium.ttf';
 import avenirRoman from './assets/fonts/avenir/Avenir-Roman.ttf';
 import avenirBook from './assets/fonts/avenir/Avenir-Book.ttf';
 import avenirLight from './assets/fonts/avenir/Avenir-Light.ttf';
 import avenirItalicBlack from './assets/fonts/avenir/Avenir-BlackOblique.ttf';
 import avenirItalicHeavy from './assets/fonts/avenir/Avenir-HeavyOblique.ttf';
 import avenirItalicMedium from './assets/fonts/avenir/Avenir-MediumOblique.ttf';
-import avenirItalic from './assets/fonts/Avenir/avenir-Oblique.ttf';
+import avenirItalic from './assets/fonts/avenir/avenir-Oblique.ttf';
 import avenirItalicBook from './assets/fonts/avenir/Avenir-BookOblique.ttf';
 import avenirItalicLight from './assets/fonts/avenir/Avenir-LightOblique.ttf';
 
