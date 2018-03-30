@@ -19,6 +19,8 @@ import CruiseControlButton      from './CruiseControlButton';
 import MapButton                from './MapButton';
 import DefinitionsDrawer        from './DefinitionsDrawer';
 import CompletionMeter          from './CompletionMeter';
+import PauseLightPurple         from '../../assets/images/icons/pause-lightpurple-cursor.png';
+import PauseLight               from '../../assets/images/icons/pause-purple-cursor.png';
 
 /**
  * The Viewport component is a component used to
@@ -38,7 +40,7 @@ export default class Viewport extends React.Component {
             highlightIsActive        : false,
             cruiseControlIsActive    : false,
             cruiseControlHaltIsActive: false,
-            timePerFixation          : 0, // In milliseconds,
+            timePerFixation          : 1, // In milliseconds,
             checkSumDelay            : true, // checked once every fixation cycle
             showAnnotations          : true,
             highlightColor           : null,
@@ -52,6 +54,7 @@ export default class Viewport extends React.Component {
 
     componentWillMount() {
         // console.log("-----Viewport");
+        document.body.style.setProperty('--fixation-transition', `opacity ${fixationTransitionDuration}ms ease-in`);
     }
 
     render() {
@@ -130,9 +133,9 @@ export default class Viewport extends React.Component {
                 skin                      ={this.props.skin}
                 cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive}
                 customCursor              ={this.props.skin == SkinTypes.DARK ?
-                        PauseLightPurple
+                        `url(${PauseLightPurple}), auto`
                     :
-                        PausePurple}
+                        `url(${PauseLight}), auto`}
                 onClick                   ={this.handleClick}>
                 <StatusBar
                     hand                      ={this.props.hand}
@@ -183,13 +186,15 @@ export default class Viewport extends React.Component {
                                 }
                         </CSSTransitionGroup>
                         <Paragraph
-                            asset                     ={history}
-                            fontSize                  ={this.props.fontSize}
-                            fontFamily                ={this.props.fontFamily}
-                            skipToWord                ={this.skipToWord}
-                            skin                      ={this.props.skin}
-                            showAnnotations           ={this.state.showAnnotations}
-                            cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                            asset                      ={history}
+                            fontSize                   ={this.props.fontSize}
+                            fontFamily                 ={this.props.fontFamily}
+                            timePerFixation            ={this.state.timePerFixation}
+                            fixationTransitionDuration ={fixationTransitionDuration}
+                            skipToWord                 ={this.skipToWord}
+                            skin                       ={this.props.skin}
+                            showAnnotations            ={this.state.showAnnotations}
+                            cruiseControlHaltIsActive  ={this.state.cruiseControlHaltIsActive} />
                     </ParagraphContainer>
                       {doc.assets.slice(Math.max(0, this.state.docPosition.asset - 2), this.state.docPosition.asset).reverse().map((asset, index) => {
                         return (
@@ -217,13 +222,15 @@ export default class Viewport extends React.Component {
                                     }
                                 </CSSTransitionGroup>
                                 <Paragraph
-                                    asset                     ={asset}
-                                    fontSize                  ={this.props.fontSize}
-                                    fontFamily                ={this.props.fontFamily}
-                                    skipToWord                ={this.skipToWord}
-                                    skin                      ={this.props.skin}
-                                    showAnnotations           ={this.state.showAnnotations}
-                                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                                    asset                      ={asset}
+                                    fontSize                   ={this.props.fontSize}
+                                    fontFamily                 ={this.props.fontFamily}
+                                    timePerFixation            ={this.state.timePerFixation}
+                                    fixationTransitionDuration ={fixationTransitionDuration}
+                                    skipToWord                 ={this.skipToWord}
+                                    skin                       ={this.props.skin}
+                                    showAnnotations            ={this.state.showAnnotations}
+                                    cruiseControlHaltIsActive  ={this.state.cruiseControlHaltIsActive} />
                             </ParagraphContainer>
                         );
                     })}
@@ -237,7 +244,7 @@ export default class Viewport extends React.Component {
                         numLineChars ={this.state.numLineChars}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
-                              transitionEnterTimeout ={200}
+                              transitionEnterTimeout ={Math.min(fixationTransitionDuration, this.state.timePerFixation)}
                               transitionLeave        ={false}>
                             {fixationWindow.map((word) => {
                                 return (
@@ -261,14 +268,16 @@ export default class Viewport extends React.Component {
                     fontSize     ={this.props.fontSize}
                     numLineChars ={this.state.numLineChars}>
                     <Paragraph
-                        key                       ={`parent =[null], this =[type ='${future.type}-future', index ='${this.state.docPosition.asset}']`}
-                        asset                     ={future}
-                        fontSize                  ={this.props.fontSize}
-                        fontFamily                ={this.props.fontFamily}
-                        skipToWord                ={this.skipToWord}
-                        skin                      ={this.props.skin}
-                        showAnnotations           ={this.state.showAnnotations}
-                        cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                        key                        ={`parent =[null], this =[type ='${future.type}-future', index ='${this.state.docPosition.asset}']`}
+                        asset                      ={future}
+                        fontSize                   ={this.props.fontSize}
+                        fontFamily                 ={this.props.fontFamily}
+                        timePerFixation            ={this.state.timePerFixation}
+                        fixationTransitionDuration ={fixationTransitionDuration}
+                        skipToWord                 ={this.skipToWord}
+                        skin                       ={this.props.skin}
+                        showAnnotations            ={this.state.showAnnotations}
+                        cruiseControlHaltIsActive  ={this.state.cruiseControlHaltIsActive} />
                         {doc.assets.slice(this.state.docPosition.asset + 1, Math.min(this.state.docPosition.asset + 3, this.state.doc.assets.length)).map((asset, index) => {
                             return (
                                 <ParagraphContainer
@@ -295,23 +304,27 @@ export default class Viewport extends React.Component {
                                         }
                                     </CSSTransitionGroup>
                                     <Paragraph
-                                        asset                     ={asset}
-                                        fontSize                  ={this.props.fontSize}
-                                        fontFamily                ={this.props.fontFamily}
-                                        skipToWord                ={this.skipToWord}
-                                        skin                      ={this.props.skin}
-                                        showAnnotations           ={this.state.showAnnotations}
-                                        cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                                        asset                      ={asset}
+                                        fontSize                   ={this.props.fontSize}
+                                        fontFamily                 ={this.props.fontFamily}
+                                        timePerFixation            ={this.state.timePerFixation}
+                                        fixationTransitionDuration ={fixationTransitionDuration}
+                                        skipToWord                 ={this.skipToWord}
+                                        skin                       ={this.props.skin}
+                                        showAnnotations            ={this.state.showAnnotations}
+                                        cruiseControlHaltIsActive  ={this.state.cruiseControlHaltIsActive} />
                                 </ParagraphContainer>
                             );
                         })}
                 </FutureContainer>
                 <DefinitionsDrawer
-                    skin                      ={this.props.skin}
-                    drawerIsOpen              ={this.state.drawerIsOpen}
-                    toggleDrawer              ={this.toggleDrawer}
-                    fixationWords             ={fixationWindow}
-                    cruiseControlHaltIsActive ={this.state.cruiseControlHaltIsActive} />
+                    skin                       ={this.props.skin}
+                    drawerIsOpen               ={this.state.drawerIsOpen}
+                    toggleDrawer               ={this.toggleDrawer}
+                    fixationWords              ={fixationWindow}
+                    timePerFixation            ={this.state.timePerFixation}
+                    fixationTransitionDuration ={fixationTransitionDuration}
+                    cruiseControlHaltIsActive  ={this.state.cruiseControlHaltIsActive} />
                 <ToolMenu
                     hand                      ={this.props.hand}
                     skin                      ={this.props.skin}
@@ -1068,11 +1081,16 @@ export default class Viewport extends React.Component {
      */
     calcTimePerFixation = (readingPace, sumDelay) => {
         const millisecondsInMinute = 60000;
-        let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
+        let currentAsset = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
         let readMinutes = currentAsset.wordCount/readingPace;
         let numFixations = (readingPace/this.props.fixationWidth); // in 60 seconds
-        let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + (currentAsset.delay/(fractionOfFixation*readMinutes*numFixations))*(1 + sumDelay/fractionOfFixation));
+        let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(fractionOfFixation*readMinutes*numFixations));
         let timePerFixation = (1 + sumDelay/fractionOfFixation) * effectiveMillisecondsInMinute/numFixations; // measured in ms
+        if (timePerFixation < fixationTransitionDuration) {
+            document.body.style.setProperty('--fixation-transition', `opacity ${timePerFixation}ms ease-in`);
+        } else if (parseInt(getComputedStyle(document.body).getPropertyValue('--fixation-transition').replace(/([A-Za-z]|\s|-)/g,'')) < fixationTransitionDuration) {
+            document.body.style.setProperty('--fixation-transition', `opacity ${fixationTransitionDuration}ms ease-in`);
+        }
         return timePerFixation;
     }
 
@@ -1121,7 +1139,7 @@ export default class Viewport extends React.Component {
 
         this.doTimer(
             this.state.timePerFixation - diff,
-            20,
+            10,
             this.checkSumDelay,
             this.updateViewport.bind({}, ScrollDirectionTypes.DOWN));
     }
@@ -1190,8 +1208,8 @@ export default class Viewport extends React.Component {
      * @param  {[type]} oncomplete [description]
      */
     doTimer = (length, resolution, oninstance, oncomplete) => {
-        let steps = (length / 100) * (resolution / 10),
-            speed = length / steps,
+        let steps = (length/100) * (resolution/10),
+            speed = length/steps,
             count = 0,
             start = new Date().getTime();
 
@@ -1409,5 +1427,4 @@ const ParagraphContainer = styled.div`
 `;
 
 const fractionOfFixation = 3;
-const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
-const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";
+const fixationTransitionDuration = 200;

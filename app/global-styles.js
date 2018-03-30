@@ -46,6 +46,10 @@ import palatinoItalic from './assets/fonts/palatino/Palatino-Italic.ttf';
 
 
 injectGlobal`
+    :root {
+        --fixation-transition: opacity 200ms ease-in;
+    }
+
     * {
         box-sizing: border-box;
     }
@@ -102,7 +106,7 @@ injectGlobal`
 
     .word-enter.word-enter-active {
       opacity: 1;
-      transition: opacity 200ms ease-in;
+      transition: var(--fixation-transition);
     }
 
     .bookmark-enter {
@@ -129,7 +133,7 @@ injectGlobal`
 
     .fixation-enter.fixation-enter-active {
       opacity: 1;
-      transition: opacity 200ms ease-in;
+      transition: var(--fixation-transition);
     }
 
     .definition-enter {
@@ -138,7 +142,7 @@ injectGlobal`
 
     .definition-enter.definition-enter-active {
       opacity: 1;
-      transition: opacity 200ms ease-in;
+      transition: var(--fixation-transition);
     }
 
     .delimiter-appear {

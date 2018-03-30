@@ -133,9 +133,9 @@ export default class CompletionMeter extends React.Component {
         let destinationPage;
         let currentPage = Math.floor(this.props.doc.assets[this.props.docPosition.asset].index.asset/this.props.numPageParagraphs);
         if (type == "complete") {
-            destinationPage = Math.ceil(percent * currentPage);
+            destinationPage = Math.round(percent * currentPage);
         } else {
-            destinationPage = Math.ceil(percent * (this.state.lastPage - currentPage) + currentPage);
+            destinationPage = Math.round(percent * (this.state.lastPage - currentPage) + currentPage);
         }
 
         this.props.selectPage(destinationPage);

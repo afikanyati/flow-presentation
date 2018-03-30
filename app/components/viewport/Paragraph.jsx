@@ -27,7 +27,7 @@ export default class Paragraph extends React.Component {
                 fontSize     ={this.props.fontSize}>
                 <CSSTransitionGroup
                       transitionName         ={"word"}
-                      transitionEnterTimeout ={200}
+                      transitionEnterTimeout ={Math.min(this.props.fixationTransitionDuration, this.props.timePerFixation)}
                       transitionLeave        ={false}>
                       {words.map((word) => {
                           return (
@@ -58,13 +58,15 @@ export default class Paragraph extends React.Component {
 // ============= PropTypes ==============
 
 Paragraph.propTypes = {
-    asset          : PropTypes.object.isRequired,
-    skipToWord         : PropTypes.func.isRequired,
-    fontSize           : PropTypes.number.isRequired,
-    fontFamily         : PropTypes.object.isRequired,
-    skin               : PropTypes.string.isRequired,
-    showAnnotations    : PropTypes.bool.isRequired,
-    cruiseControlHaltIsActive: PropTypes.bool.isRequired
+    asset                     : PropTypes.object.isRequired,
+    skipToWord                : PropTypes.func.isRequired,
+    fontSize                  : PropTypes.number.isRequired,
+    fontFamily                : PropTypes.object.isRequired,
+    skin                      : PropTypes.string.isRequired,
+    showAnnotations           : PropTypes.bool.isRequired,
+    timePerFixation           : PropTypes.number.isRequired,
+    fixationTransitionDuration: PropTypes.number.isRequired,
+    cruiseControlHaltIsActive : PropTypes.bool.isRequired
 };
 
 // ============= Styled Components ==============

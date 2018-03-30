@@ -42,7 +42,7 @@ export default class DefinitionsDrawer extends React.Component {
                     onClick={this.props.toggleDrawer}/>
                     <CSSTransitionGroup
                           transitionName         ="definition"
-                          transitionEnterTimeout ={200}
+                          transitionEnterTimeout ={Math.min(this.props.fixationTransitionDuration, this.props.timePerFixation)}
                           transitionLeave        ={false}>
                     {this.props.fixationWords.map((word, i) => {
                         return (
@@ -96,11 +96,13 @@ export default class DefinitionsDrawer extends React.Component {
 // ============= PropTypes ==============
 
 DefinitionsDrawer.propTypes = {
-    fixationWords: PropTypes.array.isRequired,
-    skin: PropTypes.string.isRequired,
-    cruiseControlHaltIsActive: PropTypes.bool.isRequired,
-    toggleDrawer: PropTypes.func.isRequired,
-    drawerIsOpen: PropTypes.bool.isRequired
+    fixationWords             : PropTypes.array.isRequired,
+    skin                      : PropTypes.string.isRequired,
+    cruiseControlHaltIsActive : PropTypes.bool.isRequired,
+    toggleDrawer              : PropTypes.func.isRequired,
+    drawerIsOpen              : PropTypes.bool.isRequired,
+    timePerFixation           : PropTypes.number.isRequired,
+    fixationTransitionDuration: PropTypes.number.isRequired
 };
 
 // ============= Styled Components ==============
