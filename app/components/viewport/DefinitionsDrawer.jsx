@@ -8,6 +8,8 @@ import { CSSTransitionGroup }   from 'react-transition-group';
 import FontTypes                from '../../constants/fontTypes';
 import SkinTypes                from '../../constants/skinTypes';
 import DefinitionsWhite         from '../../assets/images/icons/definitions-white.svg';
+import PauseLightPurple         from '../../assets/images/icons/pause-lightpurple-cursor.png';
+import PausePurple               from '../../assets/images/icons/pause-purple-cursor.png';
 
 /**
  * The DefinitionsShelf component is a component used to
@@ -36,9 +38,9 @@ export default class DefinitionsDrawer extends React.Component {
                     icon={`url(${DefinitionsWhite})`}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                     customCursor={this.props.skin == SkinTypes.DARK ?
-                            PauseLightPurple
+                            `url(${PauseLightPurple}), auto`
                         :
-                            PausePurple}
+                            `url(${PausePurple}), auto`}
                     onClick={this.props.toggleDrawer}/>
                     <CSSTransitionGroup
                           transitionName         ="definition"
@@ -221,6 +223,3 @@ const More = styled.h5`
         color: ${props => props.theme.darkBlue};
     }
 `;
-
-const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
-const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

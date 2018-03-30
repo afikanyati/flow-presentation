@@ -1,13 +1,15 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
+import React            from 'react';
+import PropTypes        from 'prop-types';
+import styled           from 'styled-components';
 
 // Components
-import HandTypes    from '../../constants/handTypes';
-import SkinTypes    from '../../constants/skinTypes';
-import Play         from '../../assets/images/icons/play.svg';
-import Pause        from '../../assets/images/icons/pause-white.svg';
+import HandTypes        from '../../constants/handTypes';
+import SkinTypes        from '../../constants/skinTypes';
+import Play             from '../../assets/images/icons/play.svg';
+import Pause            from '../../assets/images/icons/pause-white.svg';
+import PauseLightPurple from '../../assets/images/icons/pause-lightpurple-cursor.png';
+import PausePurple       from '../../assets/images/icons/pause-purple-cursor.png';
 
 /**
  * The CruiseControlButton component is a component used to
@@ -38,9 +40,9 @@ export default class CruiseControlButton extends React.Component {
                             `url(${Play})`}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                     customCursor={this.props.skin == SkinTypes.DARK ?
-                            PauseLightPurple
+                            `url(${PauseLightPurple}), auto`
                         :
-                            PausePurple}
+                            `url(${PausePurple}), auto`}
                     />
             </ControlButton>
         );
@@ -127,6 +129,3 @@ const ControlButtonIcon = styled.div`
         border-radius: 15px;
     }
 `;
-
-const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flowheap-app.appspot.com/o/app-resources%2Fpause-lightpurple.png?alt=media&token=9a569e16-f717-4113-952a-61b99d2b6380), auto";
-const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flowheap-app.appspot.com/o/app-resources%2Fpause-purple.png?alt=media&token=77722db7-7da0-4c8d-ad61-e46b1fec293b), auto";

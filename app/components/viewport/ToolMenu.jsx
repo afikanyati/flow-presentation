@@ -31,6 +31,8 @@ import RecordIcon           from '../../assets/images/icons/microphone-purple.sv
 import DrawIcon             from '../../assets/images/icons/draw-purple.svg';
 import BackPurple           from '../../assets/images/icons/back-purple.svg';
 import BackWhite            from '../../assets/images/icons/back-white.svg';
+import PauseLightPurple     from '../../assets/images/icons/pause-lightpurple-cursor.png';
+import PausePurple           from '../../assets/images/icons/pause-purple-cursor.png';
 
 /**
  * The ToolMenu component is a component used to
@@ -276,9 +278,9 @@ export default class ToolMenu extends React.Component {
                             this.state.tools[this.state.activeFeature].color}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                     customCursor={this.props.skin == SkinTypes.DARK ?
-                            PauseLightPurple
+                            `url(${PauseLightPurple}), auto`
                         :
-                            PausePurple}
+                            `url(${PausePurple}), auto`}
                     onClick={this.state.activeFeature == ToolTypes.BOOKMARK ?
                                     this.props.toggleWordBookmark
                                 :
@@ -771,6 +773,3 @@ const highlight = {
     green: HighlightGreen,
     yellow: HighlightYellow
 };
-
-const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
-const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

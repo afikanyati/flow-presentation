@@ -1,13 +1,15 @@
 // Libs
-import React        from 'react';
-import PropTypes    from 'prop-types';
-import styled       from 'styled-components';
+import React            from 'react';
+import PropTypes        from 'prop-types';
+import styled           from 'styled-components';
 
 // Components
-import HandTypes    from '../../constants/handTypes';
-import SkinTypes    from '../../constants/skinTypes';
-import MapWhite     from '../../assets/images/icons/map-white.svg';
-import MapColor     from '../../assets/images/icons/map-yellow.svg';
+import HandTypes        from '../../constants/handTypes';
+import SkinTypes        from '../../constants/skinTypes';
+import MapWhite         from '../../assets/images/icons/map-white.svg';
+import MapColor         from '../../assets/images/icons/map-yellow.svg';
+import PauseLightPurple from '../../assets/images/icons/pause-lightpurple-cursor.png';
+import PausePurple       from '../../assets/images/icons/pause-purple-cursor.png';
 
 /**
  * The MapButton component is a component used to
@@ -34,9 +36,9 @@ export default class MapButton extends React.Component {
                     icon={`url(${MapWhite})`}
                     cruiseControlHaltIsActive={this.props.cruiseControlHaltIsActive}
                     customCursor={this.props.skin == SkinTypes.DARK ?
-                            PauseLightPurple
+                            `url(${PauseLightPurple}), auto`
                         :
-                            PausePurple}/>
+                            `url(${PausePurple}), auto`}/>
             </MapButtonContainer>
         );
     }
@@ -116,6 +118,3 @@ const MapButtonIcon = styled.button`
         border-radius: 15px;
     }
 `;
-
-const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
-const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

@@ -20,7 +20,7 @@ import MapButton                from './MapButton';
 import DefinitionsDrawer        from './DefinitionsDrawer';
 import CompletionMeter          from './CompletionMeter';
 import PauseLightPurple         from '../../assets/images/icons/pause-lightpurple-cursor.png';
-import PauseLight               from '../../assets/images/icons/pause-purple-cursor.png';
+import PausePurple               from '../../assets/images/icons/pause-purple-cursor.png';
 
 /**
  * The Viewport component is a component used to
@@ -135,7 +135,7 @@ export default class Viewport extends React.Component {
                 customCursor              ={this.props.skin == SkinTypes.DARK ?
                         `url(${PauseLightPurple}), auto`
                     :
-                        `url(${PauseLight}), auto`}
+                        `url(${PausePurple}), auto`}
                 onClick                   ={this.handleClick}>
                 <StatusBar
                     hand                      ={this.props.hand}
