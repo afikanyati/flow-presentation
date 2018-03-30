@@ -39,7 +39,7 @@ export default class Viewport extends React.Component {
             cruiseControlIsActive    : false,
             cruiseControlHaltIsActive: false,
             timePerFixation          : 0, // In milliseconds,
-            checkAddDelay            : true, // checked once every fixation cycle
+            checkSumDelay            : true, // checked once every fixation cycle
             showAnnotations          : true,
             highlightColor           : null,
             drawerIsOpen             : false,
@@ -83,21 +83,17 @@ export default class Viewport extends React.Component {
                 doc: doc,
                 docLoaded: true
             }, () => {
-                // Set timePerFixation
-                this.setTimePerFixation(0);
+                let timePerFixation = this.calcTimePerFixation(this.props.readingPace, 0);
+                this.setState({
+                    timePerFixation: timePerFixation
+                });
             });
         });
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.readingPace != this.props.readingPace && this.state.cruiseControlIsActive) {
-            let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
-            let millisecondsInMinute = 60000;
-            let readMinutes = currentAsset.wordCount/nextProps.readingPace;
-            let numFixations = (nextProps.readingPace/this.props.fixationWidth); // in 60 seconds
-            let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(3*readMinutes*numFixations));
-            let timePerFixation = effectiveMillisecondsInMinute/numFixations; // measured in ms
-
+            let timePerFixation = this.calcTimePerFixation(nextProps.readingPace, 0);
             this.setState({
                 timePerFixation: timePerFixation
             }, () => {
@@ -389,7 +385,7 @@ export default class Viewport extends React.Component {
             if (e.keyCode == 37 || e.keyCode == 38) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.setReadingPace(this.state.readingPace + 1);
+                    this.props.setReadingPace(this.props.readingPace + 1);
                 } else {
                     this.updateViewport(ScrollDirectionTypes.UP);
                 }
@@ -398,9 +394,9 @@ export default class Viewport extends React.Component {
             } else if (e.keyCode == 39 || e.keyCode == 40) {
                 if (this.state.cruiseControlIsActive) {
                     window.clearTimeout(this.isScrolling);
-                    this.props.setReadingPace(this.state.readingPace - 1);
+                    this.props.setReadingPace(this.props.readingPace - 1);
                 } else {
-                    this.updateViewport(this.state.readingPace + 1);
+                    this.updateViewport(this.props.readingPace + 1);
                 }
             } else if (e.keyCode == 32) {
                 this.preventDefault(e);
@@ -422,9 +418,9 @@ export default class Viewport extends React.Component {
             this.updateViewport(direction);
         } else if (this.state.cruiseControlIsActive) {
             let direction = this.getScrollDirection(e);
-            let inverseDirection = direction == ScrollDirectionTypes.UP ? this.state.readingPace + 1 : this.state.readingPace - 1;
+            let pace = direction == ScrollDirectionTypes.UP ? this.props.readingPace + 1 : this.props.readingPace - 1;
             window.clearTimeout(this.isScrolling);
-            this.props.setReadingPace(inverseDirection);
+            this.props.setReadingPace(pace);
         }
 
         this.setState({
@@ -1064,27 +1060,27 @@ export default class Viewport extends React.Component {
         });
     }
     /**
-     * [setTimePerFixation description]
-     * @param {[type]} addDelay in milliseconds
+     * Called for every fixation
+     * Readjusts timePerFixation to factor in delay of given fixation Window
+     * Attempts to reconcile expected reading time of sentence to consider overall delay time of sentence
+     * Using a timePerFixation that includes Delay of Current Fixation
+     * @param {[type]} sumDelay in milliseconds
      */
-    setTimePerFixation = (addDelay) => {
+    calcTimePerFixation = (readingPace, sumDelay) => {
+        const millisecondsInMinute = 60000;
         let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
-        let millisecondsInMinute = 60000;
-        let readMinutes = currentAsset.wordCount/this.props.readingPace;
-        let numFixations = (this.props.readingPace/this.props.fixationWidth); // in 60 seconds
-        let effectiveMillisecondsInMinute = (millisecondsInMinute - (addDelay*currentAsset.delay)/(3*readMinutes))/(1 + currentAsset.delay/(3*readMinutes*numFixations));
-        let timePerFixation = effectiveMillisecondsInMinute/numFixations + addDelay; // measured in ms
-
-        this.setState({
-            timePerFixation: timePerFixation
-        });
+        let readMinutes = currentAsset.wordCount/readingPace;
+        let numFixations = (readingPace/this.props.fixationWidth); // in 60 seconds
+        let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + (currentAsset.delay/(fractionOfFixation*readMinutes*numFixations))*(1 + sumDelay/fractionOfFixation));
+        let timePerFixation = (1 + sumDelay/fractionOfFixation) * effectiveMillisecondsInMinute/numFixations; // measured in ms
+        return timePerFixation;
     }
 
-    checkAddDelay = () => {
-        let addDelay = 0;
+    checkSumDelay = () => {
+        let sumDelay = 0;
         // Runs fully once per doTimer
         // Only checks end of sentence for punctiation currently
-        if (this.state.checkAddDelay) {
+        if (this.state.checkSumDelay) {
             let futureFixation = this.getNextFixation();
 
             // Determine if need to add time
@@ -1092,11 +1088,7 @@ export default class Viewport extends React.Component {
                 let word = this.state.doc.assets[futureFixation[0]].sentences[futureFixation[1]].words[index];
                 if (word.delay && word.delay.length > 0) {
                     word.delay.forEach((delay) => {
-                        if (delay.type == "word-length") {
-                            addDelay += delay.factor * this.state.timePerFixation
-                        } else {
-                            addDelay += delay.factor * this.state.timePerFixation/3;
-                        }
+                        sumDelay += delay.factor;
                     });
                 }
             });
@@ -1104,16 +1096,17 @@ export default class Viewport extends React.Component {
             // Delay Next Paragraph
             if (this.state.docPosition.sentence + 1 == this.state.doc.assets[futureFixation[0]].sentenceCount
                 && futureFixation[2][1] == this.state.doc.assets[futureFixation[0]].sentences[futureFixation[1]].wordCount) {
-                addDelay += this.state.timePerFixation;
+                sumDelay += fractionOfFixation; // Should last one timePerFixation = delay.factor (fractionOfFixation) * timePerFixation/fractionOfFixation
             }
+
+            // Update FixationTime
+            let timePerFixation = this.calcTimePerFixation(this.props.readingPace, sumDelay);
 
             // Set state as checked
             this.setState({
-                checkAddDelay: false
+                checkSumDelay: false,
+                timePerFixation: timePerFixation
             });
-
-            // Update FixationTime
-            this.setTimePerFixation(addDelay);
         }
     }
 
@@ -1129,7 +1122,7 @@ export default class Viewport extends React.Component {
         this.doTimer(
             this.state.timePerFixation - diff,
             20,
-            this.checkAddDelay,
+            this.checkSumDelay,
             this.updateViewport.bind({}, ScrollDirectionTypes.DOWN));
     }
 
@@ -1210,7 +1203,7 @@ export default class Viewport extends React.Component {
             } else {
                 let timestamp = new Date().getTime();
                 this.setState({
-                    checkAddDelay: true
+                    checkSumDelay: true
                 });
                 oncomplete();
                 this.moveText(timestamp);
@@ -1278,7 +1271,7 @@ const Container = styled.div`
                 props.skin == SkinTypes.CREAM ?
                         props.theme.creamTextColor
                     :
-                        props.darkTextColor
+                        props.theme.darkTextColor
             };
     background: ${props => props.skin == SkinTypes.LIGHT ?
                 props.theme.white
@@ -1415,5 +1408,6 @@ const ParagraphContainer = styled.div`
     width: ${props => props.numLineChars * props.fontSize + 'px'};
 `;
 
+const fractionOfFixation = 3;
 const PauseLightPurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-lightpurple.png?alt=media&token=8e07a08e-ba26-4658-be64-df2e4ca2c77c), auto";
 const PausePurple = "url(https://firebasestorage.googleapis.com/v0/b/flow-3db7f.appspot.com/o/flow-app-resources%2Fpause-purple.png?alt=media&token=854021c2-d26c-4f5e-8e94-22d703564351), auto";

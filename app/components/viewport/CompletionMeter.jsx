@@ -40,8 +40,8 @@ export default class CompletionMeter extends React.Component {
                     grayIcon={`url(${arrowGray})`}
                     darkGrayIcon={`url(${arrowDarkGray})`}
                     blackIcon={`url(${arrowBlack})`}
-                    active={currentPage != 0}
-                    onClick={this.props.selectPage.bind({}, currentPage - 1)} />
+                    active={!(currentPage == 0 && pageProgress[0] == 0)}
+                    onClick={this.props.selectPage.bind({}, Math.max(0, currentPage - 1))} />
                 <PageNumberIndicator
                     skin={this.props.skin}>
                     {1}

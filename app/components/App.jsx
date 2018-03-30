@@ -44,7 +44,7 @@ export default class Root extends React.Component {
             skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
             readingPace   : 250, //WPM --> Method to save reading pace if edited
-            docURL: "/documents/-L8jrSqtnQhg27zUmvjL"
+            docURL: "/documents/-L8o4ITsG7SslbEXqMXy"
         };
     }
 
@@ -58,11 +58,11 @@ export default class Root extends React.Component {
             offset = new Date().getTimezoneOffset()/minInHour,
             hour = new Date().getUTCHours();
 
-        // if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
-        //     this.setState({
-        //         skin: SkinTypes.DARK
-        //     });
-        // }
+        if (hour - offset >= lowerBoundaryHour || upperBoundaryHour > hour - offset) {
+            this.setState({
+                skin: SkinTypes.DARK
+            });
+        }
     }
 
     render() {
