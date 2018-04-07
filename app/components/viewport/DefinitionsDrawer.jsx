@@ -154,6 +154,10 @@ const DefinitionsContainer = styled.section`
     	grid-template-rows: ${props => props.columns};
     	grid-gap: 0px 0px;
     }
+
+    @media (max-width: 600px) {
+        transform: ${props => props.open ? "translateY(0%)" : "translateY(calc(100% - 3vh - 25px))"};
+    }
 `;
 
 const DefinitionsStub = styled.div`
@@ -180,7 +184,14 @@ const DefinitionsStub = styled.div`
             "0 1px 5px 0 rgba(0,0,0,.20)"
     };
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
-    transition        : all 0.3s;
+    transition: all 0.3s;
+
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        top: -25px;
+    }
 
     &:hover {
         background-color: ${props => !props.cruiseControlHaltIsActive ?

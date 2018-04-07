@@ -78,4 +78,10 @@ const ParagraphContainer = styled.p`
     font-size         : ${props => props.fontSize + 'px' || '16px'};
     line-height       : ${props => 1.5*props.fontSize + 'px' || '40px'};
     transition        : all 0.3s;
+
+    @media (max-width: 430px) {
+        font-size         : ${props => 0.8 * props.fontSize + 'px' || '16px'};
+        line-height       : ${props => 1.5 * 0.8 * props.fontSize + 'px' || '40px'};
+        margin            : 10px 0;
+    }
 `;

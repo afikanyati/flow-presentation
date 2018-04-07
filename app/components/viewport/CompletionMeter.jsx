@@ -32,7 +32,10 @@ export default class CompletionMeter extends React.Component {
         const currentPage = Math.floor(this.props.doc.assets[this.props.docPosition.asset].index.asset/this.props.numPageParagraphs);
         return (
             <MeterContainer
-                offset={`${this.state.lastPage > 19 ? 1*this.props.fontSize : 0}px`}>
+                offset={`${this.state.lastPage > 19 && window.innerWidth > 600?
+                        this.props.fontSize
+                    :
+                        0}px`}>
                 <BackArrow
                     skin={this.props.skin}
                     lightGrayIcon={`url(${arrowLightGray})`}

@@ -20,7 +20,8 @@ import MapButton                from './MapButton';
 import DefinitionsDrawer        from './DefinitionsDrawer';
 import CompletionMeter          from './CompletionMeter';
 import PauseLightPurple         from '../../assets/images/icons/pause-lightpurple-cursor.png';
-import PausePurple               from '../../assets/images/icons/pause-purple-cursor.png';
+import PausePurple              from '../../assets/images/icons/pause-purple-cursor.png';
+import Loader                   from '../Loader.jsx';
 
 /**
  * The Viewport component is a component used to
@@ -30,27 +31,27 @@ export default class Viewport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scroll                        : 0,
-            docPosition                   : {
-                asset                     : 0,
-                sentence                  : 0,
-                fixation                  : [0, this.props.fixationWidth] // end: one index ahead because of split
+            scroll                       : 0,
+            docPosition                  : {
+                asset                    : 0,
+                sentence                 : 0,
+                fixation                 : [0, this.props.fixationWidth] // end: one index ahead because of split
             },
-            doc                           : {},
-            highlightIsActive             : false,
-            cruiseControlIsActive         : false,
-            cruiseControlHaltIsActive     : false,
-            timePerFixation               : 1, // In milliseconds,
-            checkSumDelay                 : true, // checked once every fixation cycle
-            showAnnotations               : true,
-            highlightColor                : null,
-            drawerIsOpen                  : false,
-            docLoaded                     : false,
-            numLineChars                  : 75,
-            numPageParagraphs             : 3,
+            doc                          : {},
+            highlightIsActive            : false,
+            cruiseControlIsActive        : false,
+            cruiseControlHaltIsActive    : false,
+            timePerFixation              : 500, // In milliseconds,
+            checkSumDelay                : true, // checked once every fixation cycle
+            showAnnotations              : true,
+            highlightColor               : null,
+            drawerIsOpen                 : false,
+            docLoaded                    : false,
+            numLineChars                 : 75,
+            numPageParagraphs            : 3,
             numFixationBreaksInParagraph : 0,
-            editingPace                   : false,
-            x                             : 0
+            editingPace                  : false,
+            fixationMultiplier           : 2.5,
         }
     }
 
@@ -126,7 +127,7 @@ export default class Viewport extends React.Component {
 
     loadingView = () => {
         return (
-            <h1>LOADING</h1>
+            <Loader />
         );
     }
 
@@ -251,6 +252,7 @@ export default class Viewport extends React.Component {
                         fontSize          ={this.props.fontSize}
                         fontFamily        ={this.props.fontFamily}
                         numLineChars ={this.state.numLineChars}
+                        fixationMultiplier={this.state.fixationMultiplier}
                         className={"fixation-window"}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
@@ -752,8 +754,7 @@ export default class Viewport extends React.Component {
             [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
 
         let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
-        console.log("fixationLength: ", fixationLength);
-        console.log("Current Fixation Length: ", this.calcFixationLength(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords));
+
         while (this.calcFixationLength(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords) >= fixationLength) {
             nextFixationWords = update(nextFixationWords, {
                 1: {$set: nextFixationWords[1] - 1}
@@ -1119,12 +1120,7 @@ export default class Viewport extends React.Component {
         } else if (parseInt(getComputedStyle(document.body).getPropertyValue('--fixation-transition').replace(/([A-Za-z]|\s|-)/g,'')) < fixationTransitionDuration) {
             document.body.style.setProperty('--fixation-transition', `opacity ${fixationTransitionDuration}ms ease-in`);
         }
-
-        this.setState({
-            x: this.state.x + timePerFixation
-        });
         // console.log("timePerFixation: ", timePerFixation);
-        // console.log("Accumulated timePerFixation: ", this.state.x);
         // console.log("numFixationBreaksInParagraph: ", this.state.numFixationBreaksInParagraph);
         return timePerFixation;
     }
@@ -1288,12 +1284,13 @@ export default class Viewport extends React.Component {
         const sentence = {...this.state.doc.assets[assetIndex].sentences[sentenceIndex]};
         const words = sentence.words.slice(fixation[0], fixation[1]);
 
-        if (!this.canvas) {
+        if (!this.canvasContext) {
             let canvas = document.createElement('canvas');
             this.canvasContext = canvas.getContext("2d");
-            this.canvasContext.font = `${this.props.fontSize}px ${this.props.fontFamily.regular}`;
+            this.canvasContext.font = `${this.state.fixationMultiplier * this.props.fontSize}px ${this.props.fontFamily.regular.split(', ')[0]}`;
         }
-        let width = this.canvasContext.measureText(words.join(" ") + " ");
+
+        let width = this.canvasContext.measureText(words.reduce((result, word) => {return `${result} ${word.text}`}, " "));
         this.canvasContext.clearRect(0, 0, this.canvasContext.width, this.canvasContext.height);
 
         return width.width;
@@ -1359,18 +1356,22 @@ const HistoryContainer = styled.section`
         width         : 100%;
         content       : "";
         background: ${props => props.skin == SkinTypes.LIGHT ?
-                    "linear-gradient(to bottom,rgba(255,255,255, 1) 18%,rgba(255,255,255, 0) 70%)"
+                    "linear-gradient(to bottom,rgba(255,255,255, 1) 18%,rgba(255,255,255, 0) 88%)"
                 :
                     props.skin == SkinTypes.CREAM ?
-                            "linear-gradient(to bottom,rgba(249,243,233, 1) 18%,rgba(249,243,233, 0) 70%)"
+                            "linear-gradient(to bottom,rgba(249,243,233, 1) 18%,rgba(249,243,233, 0) 88%)"
                         :
-                            "linear-gradient(to bottom,rgba(23,23,23, 1) 18%, rgba(23,23,23, 0) 70%)"
+                            "linear-gradient(to bottom,rgba(23,23,23, 1) 18%, rgba(23,23,23, 0) 88%)"
                 };
         pointer-events: none; /* so the text is still selectable */
     }
 
-    @media (max-width: ${props => props.numLineChars + 'ch'}) {
-        width: 90vw;
+    @media (max-width: ${props => (props.numLineChars + 12) + 'ch'}) {
+        width: 80vw;
+    }
+
+    @media (max-width: 430px) {
+        height: 40vh;
     }
 `;
 
@@ -1383,13 +1384,17 @@ const FixationWindowContainer = styled.section`
     width                    : 100vw;
     height                   : 30vh;
     margin                   : 0;
+
+    @media (max-width: 430px) {
+        height: 20vh;
+    }
 `;
 
 const FixationWindow = styled.p`
     width: ${props => props.numLineChars + 'ch'};
     font-family       : ${props => props.fontFamily.regular || serif};
-    font-size         : ${props => 2.5*props.fontSize + 'px' || '40px'};
-    line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
+    font-size         : ${props => props.fixationMultiplier * props.fontSize + 'px' || '16px'};
+    line-height       : ${props => props.fixationMultiplier * props.fontSize + 'px' || '40px'};
     margin            : 0;
     border-left-width: ${props => props.highlightIsActive ? "5px" : "0px"};
     border-left-color: ${props => props.theme[props.highlightColor]};
@@ -1397,6 +1402,11 @@ const FixationWindow = styled.p`
     padding-left: ${props => props.highlightIsActive ? "10px" : "0px"};
     text-align: center;
     transition        : all 0.3s;
+
+    @media (max-width: 430px) {
+        font-size         : ${props => 0.7 * props.fixationMultiplier * props.fontSize + 'px' || '16px'};
+        line-height       : ${props => 0.7 * props.fixationMultiplier * props.fontSize + 'px' || '40px'};
+    }
 `;
 
 const FutureContainer = styled.section`
@@ -1415,18 +1425,33 @@ const FutureContainer = styled.section`
         width         : 100%;
         content       : "";
         background: ${props => props.skin == SkinTypes.LIGHT ?
-                    "linear-gradient(to top, rgba(255,255,255, 1) 40%, rgba(255,255,255, 0) 80%)"
+                    "linear-gradient(to top, rgba(255,255,255, 1) 20%, rgba(255,255,255, 0) 80%)"
                 :
                     props.skin == SkinTypes.CREAM ?
-                            "linear-gradient(to top, rgba(249,243,233, 1) 40%, rgba(249,243,233, 0) 80%)"
+                            "linear-gradient(to top, rgba(249,243,233, 1) 20%, rgba(249,243,233, 0) 80%)"
                         :
-                            "linear-gradient(to top, rgba(23,23,23, 1) 40%, rgba(23,23,23, 0) 80%)"
+                            "linear-gradient(to top, rgba(23,23,23, 1) 20%, rgba(23,23,23, 0) 80%)"
                 };
         pointer-events: none; /* so the text is still selectable */
     }
 
-    @media (max-width: ${props => props.numLineChars + 'ch'}) {
-        width: 90vw;
+    @media (max-width: ${props => (props.numLineChars + 12) + 'ch'}) {
+        width: 80vw;
+    }
+
+    @media (max-width: 430px) {
+        height: 40vh;
+
+        &:after {
+            background: ${props => props.skin == SkinTypes.LIGHT ?
+                        "linear-gradient(to top, rgba(255,255,255, 1) 10%, rgba(255,255,255, 0) 90%)"
+                    :
+                        props.skin == SkinTypes.CREAM ?
+                                "linear-gradient(to top, rgba(249,243,233, 1) 20%, rgba(249,243,233, 0) 80%)"
+                            :
+                                "linear-gradient(to top, rgba(23,23,23, 1) 20%, rgba(23,23,23, 0) 80%)"
+                    };
+        }
     }
 `;
 
@@ -1474,8 +1499,8 @@ const PageNumber = styled.h3`
 const ParagraphContainer = styled.div`
     width: ${props => props.numLineChars + 'ch'};
 
-    @media (max-width: ${props => props.numLineChars + 'ch'}) {
-        width: 90vw;
+    @media (max-width: ${props => (props.numLineChars + 12) + 'ch'}) {
+        width: 80vw;
     }
 `;
 

@@ -86,10 +86,12 @@ const MapButtonContainer = styled.div`
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
     z-index: 2;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        left: ${props => props.hand == HandTypes.LEFT ? "auto" : "20px"};
+        right: ${props => props.hand == HandTypes.RIGHT ? "auto" : "20px"};
     }
 
     &:hover {
@@ -104,8 +106,8 @@ const MapButtonContainer = styled.div`
 const MapButtonIcon = styled.button`
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
     border-radius: 30px;
     background: none;
     background-image: ${props => props.icon};
@@ -114,7 +116,10 @@ const MapButtonIcon = styled.button`
     background-repeat: no-repeat;
     transition: background-image 0.3s;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-size: 29px 29px;
     }
 `;

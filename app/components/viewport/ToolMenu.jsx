@@ -365,7 +365,22 @@ export default class ToolMenu extends React.Component {
         let sweepDeg = 180,
             increment = sweepDeg/(numItems - 1),
             angle = increment,
-            spreadRadius = arr.length == 6 ? 120 : arr.length == 5 ? 100 : 80,
+            spreadRadius = arr.length == 6 ?
+                window.innerWidth > 600 ?
+                    120
+                :
+                    100
+            :
+                arr.length == 5 ?
+                    window.innerWidth > 600 ?
+                        100
+                    :
+                        80
+                :
+                    window.innerWidth > 600 ?
+                        80
+                    :
+                        60,
             delayIncrement = arr.length == 6 ? 0.02 : 0.025,
             initialDelay = delayIncrement,
             nMinus1InitialDelay = (numItems - 2) * delayIncrement,
@@ -417,7 +432,8 @@ export default class ToolMenu extends React.Component {
         const {description} = target.dataset;
 
         return (
-            <Tooltip>
+            <Tooltip
+                skin={this.props.skin}>
                 {description}
             </Tooltip>
         );
@@ -525,10 +541,12 @@ const Menu = styled.div`
     border-radius: 30px;
     transition: top 0.2s;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        left: ${props => props.hand == HandTypes.LEFT ? "20px" : "auto"};
+        right: ${props => props.hand == HandTypes.RIGHT ? "20px" : "auto"};
     }
 `;
 
@@ -553,10 +571,10 @@ const OuterMenuItem = styled.li`
     transition-duration: 0.3s, 0.3s;
     transition-timing-function: ${props => props.menuIsOpen ? "cubic-bezier(0.35, 0.03, 0.47, 1.59)" : "cubic-bezier(0.35, -0.59, 0.47, 0.97)"};
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
     }
 
     /**
@@ -644,8 +662,11 @@ const InnerMenuItem = styled.button`
     background-size: 35px 35px;
     background-repeat: no-repeat;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-size: 29px 29px;
     }
 
     &:hover {
@@ -721,18 +742,18 @@ const MenuToggle = styled.button`
     border: none;
     appearance: none;
 
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+    }
+
     &:hover {
         box-shadow: ${props => props.skin == SkinTypes.DARK ?
                 "0 8px 16px -4px rgba(181,210,236,.25), 0 6px 2px -4px rgba(181,210,236,.1), 0 2px 10px 0 rgba(181,210,236,.06)"
             :
                 "0 8px 16px -4px rgba(0,0,0,.5), 0 6px 2px -4px rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.12)"
         };
-    }
-
-    @media (max-width: 480px) and (max-height: 480px) {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
     }
 `;
 
@@ -745,15 +766,22 @@ const ToggleIcon = styled.div`
     background-size: 35px 35px;
     background-repeat: no-repeat;
     transition: all 0.15s;
+
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-size: 29px 29px;
+    }
 `;
 
 const Tooltip = styled.h2`
     text-align: center;
     padding: 10px 15px;
     background: ${props => props.skin == SkinTypes.DARK ?
-                props.theme.lightGray
+                props.theme.gray
             :
-                props.theme.darkGray};
+                props.theme.black};
     border-radius: 18px;
     color: ${props => props.skin == SkinTypes.DARK ?
                 props.theme.black

@@ -61,7 +61,7 @@ BackButton.propTypes = {
 // ============= Styled Components ==============
 
 const BackButtonContainer = styled.div`
-    visibility: : ${props => props.active ? "visible" : "hidden"};
+    visibility: ${props => props.active ? "visible" : "hidden"};
     opacity: ${props => props.active ? 1 : 0};
     position: relative;
     top: ${props => props.active ? "80px" : "0px"};
@@ -76,10 +76,11 @@ const BackButtonContainer = styled.div`
     };
     transition: box-shadow 0.15s, visibility 0.2s, opacity 0.2s, top 0.2s;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        top: ${props => props.active ? "60px" : "0px"};
     }
 
     &:hover {
@@ -94,8 +95,8 @@ const BackButtonContainer = styled.div`
 const BackButtonIcon = styled.button`
     cursor: pointer;
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
     border-radius: 30px;
     background: none;
     background-image: ${props => props.icon};
@@ -104,8 +105,11 @@ const BackButtonIcon = styled.button`
     background-repeat: no-repeat;
     transition: background-image 0.3s;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-size: 29px 29px;
     }
 `;
 

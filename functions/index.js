@@ -326,6 +326,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
         return resolve(Promise.all(data.paragraphs.map(constructAssets))
             .then((assets) => {
                 let doc = {
+                    type: 'webpage',
                     assets: assets,
                     delay: assets.reduce((total, asset) => {return total + asset.delay}, 0),
                     title: data.title,

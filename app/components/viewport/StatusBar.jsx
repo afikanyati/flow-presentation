@@ -39,72 +39,84 @@ export default class FunctionBar extends React.Component {
         return (
             <FunctionBarContainer
                 hand={this.props.hand}>
-                <FunctionSystem>
-                    <FunctionIcon
-                        title={`Words per Minute`}
-                        icon={this.props.skin == SkinTypes.LIGHT ?
-                                    `url(${PacePurple})`
-                                :
-                                    this.props.skin == SkinTypes.CREAM ?
-                                            `url(${PacePurple})`
-                                        :
-                                            `url(${PaceLightPurple})`}/>
-                    {this.props.editingPace ?
-                        <PaceInput
-                            type="text"
-                            innerRef={comp => this.pace = comp}
-                            autoFocus={true}
-                            maxLength="3"
-                            defaultValue={this.props.readingPace}
-                            onBlur={this.finishEdit}
-                            onKeyPress={this.checkEnter}
-                            placeholder="wpm"
-                            skin={this.props.skin} />
-                    :
-                        <FunctionText
-                            skin={this.props.skin}
-                            changingReadingPace={this.state.changingReadingPace}
-                            onClick={this.edit}>
-                            {this.props.readingPace}
-                        </FunctionText>
-                    }
-                </FunctionSystem>
-                <FunctionIcon
-                    title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
-                    icon={!this.props.showAnnotations ?
-                        this.props.skin == SkinTypes.LIGHT ?
-                            `url(${NoAnnotationsPurple})`
+                {window.innerWidth > 430 ?
+                    <FunctionSystem>
+                        <FunctionIcon
+                            title={`Words per Minute`}
+                            icon={this.props.skin == SkinTypes.LIGHT ?
+                                        `url(${PacePurple})`
+                                    :
+                                        this.props.skin == SkinTypes.CREAM ?
+                                                `url(${PacePurple})`
+                                            :
+                                                `url(${PaceLightPurple})`}/>
+                        {this.props.editingPace ?
+                            <PaceInput
+                                type="text"
+                                innerRef={comp => this.pace = comp}
+                                autoFocus={true}
+                                maxLength="3"
+                                defaultValue={this.props.readingPace}
+                                onBlur={this.finishEdit}
+                                onKeyPress={this.checkEnter}
+                                placeholder="wpm"
+                                skin={this.props.skin} />
                         :
-                            this.props.skin == SkinTypes.CREAM ?
-                                    `url(${NoAnnotationsPurple})`
-                                :
-                                    `url(${NoAnnotationsLightPurple})`
-                    :
-                        this.props.skin == SkinTypes.LIGHT ?
-                                `url(${NoAnnotationsLightGray})`
+                            <FunctionText
+                                skin={this.props.skin}
+                                changingReadingPace={this.state.changingReadingPace}
+                                onClick={this.edit}>
+                                {this.props.readingPace}
+                            </FunctionText>
+                        }
+                    </FunctionSystem>
+                :
+                    null
+                }
+                {window.innerWidth > 600 ?
+                    <FunctionIcon
+                        title={`Annotations ${this.props.showAnnotations ? "Visible" : "Hidden"}`}
+                        icon={!this.props.showAnnotations ?
+                            this.props.skin == SkinTypes.LIGHT ?
+                                `url(${NoAnnotationsPurple})`
                             :
                                 this.props.skin == SkinTypes.CREAM ?
-                                        `url(${NoAnnotationsGray})`
+                                        `url(${NoAnnotationsPurple})`
                                     :
-                                        `url(${NoAnnotationsBlack})`}/>
-                <FunctionIcon
-                    title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
-                    icon={this.props.cruiseControlHaltIsActive ?
-                            this.props.skin == SkinTypes.LIGHT ?
-                                        `url(${PausePurple})`
-                                    :
-                                        this.props.skin == SkinTypes.CREAM ?
-                                                `url(${PausePurple})`
-                                            :
-                                                `url(${PauseLightPurple})`
+                                        `url(${NoAnnotationsLightPurple})`
                         :
                             this.props.skin == SkinTypes.LIGHT ?
-                                        `url(${PauseLightGray})`
-                                    :
-                                        this.props.skin == SkinTypes.CREAM ?
-                                                `url(${PauseGray})`
-                                            :
-                                                `url(${PauseBlack})`}/>
+                                    `url(${NoAnnotationsLightGray})`
+                                :
+                                    this.props.skin == SkinTypes.CREAM ?
+                                            `url(${NoAnnotationsGray})`
+                                        :
+                                            `url(${NoAnnotationsBlack})`}/>
+                :
+                    null
+                }
+                {window.innerWidth > 600 ?
+                    <FunctionIcon
+                        title={`Cruise Control Halt ${this.props.cruiseControlHaltIsActive ? "Activated" : "Deactivated"}`}
+                        icon={this.props.cruiseControlHaltIsActive ?
+                                this.props.skin == SkinTypes.LIGHT ?
+                                            `url(${PausePurple})`
+                                        :
+                                            this.props.skin == SkinTypes.CREAM ?
+                                                    `url(${PausePurple})`
+                                                :
+                                                    `url(${PauseLightPurple})`
+                            :
+                                this.props.skin == SkinTypes.LIGHT ?
+                                            `url(${PauseLightGray})`
+                                        :
+                                            this.props.skin == SkinTypes.CREAM ?
+                                                    `url(${PauseGray})`
+                                                :
+                                                    `url(${PauseBlack})`}/>
+                :
+                    null
+                }
             </FunctionBarContainer>
         );
     }

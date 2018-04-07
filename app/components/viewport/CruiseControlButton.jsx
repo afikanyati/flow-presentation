@@ -62,10 +62,10 @@ export default class CruiseControlButton extends React.Component {
 // ============= PropTypes ==============
 
 CruiseControlButton.propTypes = {
-    cruiseControlIsActive: PropTypes.bool.isRequired,
-    toggleCruiseControl  : PropTypes.func.isRequired,
-    hand                 : PropTypes.string.isRequired,
-    skin: PropTypes.string.isRequired,
+    cruiseControlIsActive    : PropTypes.bool.isRequired,
+    toggleCruiseControl      : PropTypes.func.isRequired,
+    hand                     : PropTypes.string.isRequired,
+    skin                     : PropTypes.string.isRequired,
     cruiseControlHaltIsActive: PropTypes.bool.isRequired
 };
 
@@ -94,13 +94,15 @@ const ControlButton = styled.div`
         :
             "0 4px 8px -2px rgba(0,0,0,.5), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12)"
     };
-    transition: box-shadow 0.15s, background 0.15s;
+    transition: box-shadow 0.15s background 0.01s;
     z-index: 2;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        left: ${props => props.hand == HandTypes.LEFT ? "20px" : "auto"};
+        right: ${props => props.hand == HandTypes.RIGHT ? "20px" : "auto"};
     }
 
     &:hover {
@@ -115,8 +117,8 @@ const ControlButton = styled.div`
 const ControlButtonIcon = styled.div`
     cursor: ${props => props.cruiseControlHaltIsActive ? props.customCursor: "pointer"};
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
     border-radius: 30px;
     background: none;
     background-image: ${props => props.icon};
@@ -124,7 +126,10 @@ const ControlButtonIcon = styled.div`
     background-size: 35px 35px;
     background-repeat: no-repeat;
 
-    @media (max-width: 480px) and (max-height: 480px) {
-        border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-size: 29px 29px;
     }
 `;

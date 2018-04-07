@@ -401,4 +401,16 @@ injectGlobal`
     	}
     }
 
+    @keyframes scale {
+        0% {
+            transform: scale(1);
+            opacity: 1; 
+        } 45% {
+            transform: scale(0.1);
+            opacity: 0.7;
+        } 80% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 `
