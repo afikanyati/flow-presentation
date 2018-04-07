@@ -203,7 +203,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
             type: "paragraph",
             index: {asset: i},
             sentences: sentences,
-            delay: sentences.reduce((total, sentence) => {return total + sentence.delay}, 0),
+            delay: sentences.reduce((total, sentence) => {return total + sentence.delay}, 0) + fractionOfFixation,
             sentenceCount: sentences.length,
             wordCount: sentences.reduce((total, sentence) => {return total + sentence.wordCount}, 0)
         };
@@ -251,7 +251,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
                     sentence.delay += 0.3;
                 } else if (commonSet.has(word.text.replace(/[.,#!$%^&*;:{}=_`~()\s\u0022\u0027\u2018\u2019\u201C\u201D]/g,"").toLowerCase())) {
                     // Common Word Accelerator
-                    word.delay.push({type: "common", factor: -0.1});
+                    word.delay.push({type: "common", factor: -0.08});
                     sentence.delay += -0.08;
                 } else if (sentences[j][k].length > 7) {
                     // Word Length
@@ -337,9 +337,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
                     tags: data.tags,
                     genre: data.genre,
                     index: {
-                        asset: 0,
-                        sentence: 0,
-                        fixation: []
+                        asset: 0
                     }
                 };
 

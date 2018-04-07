@@ -47,6 +47,20 @@ export default class DefinitionsDrawer extends React.Component {
                           transitionEnterTimeout ={Math.min(this.props.fixationTransitionDuration, this.props.timePerFixation)}
                           transitionLeave        ={false}>
                     {this.props.fixationWords.map((word, i) => {
+                        let definition;
+                        if (word.definition && word.definition.results) {
+                            definition = word.definition.results[0];
+                            let pos = word.partOfSpeech;
+                            if (pos in posMap) {
+                                let pos = posMap[pos];
+                                for (let j = 0; j < word.definition.results.length; j++) {
+                                    if (word.definition.results[j].partOfSpeech == pos) {
+                                        definition = word.definition.results[j];
+                                        break;
+                                    }
+                                }
+                            }
+                        }
                         return (
                             <Definition key={i}>
                                 <Term>
@@ -64,7 +78,7 @@ export default class DefinitionsDrawer extends React.Component {
                                 </PartOfSpeech>
                                 <Description>
                                     {word.definition && word.definition.results ?
-                                            `1. ${word.definition.results[0].definition.length > 170 ? word.definition.results[0].definition.slice(0, 170) + "..." : word.definition.results[0].definition}.`
+                                            `1. ${definition.definition.length > 170 ? definition.definition.slice(0, 170) + "..." : definition.definition}.`
                                         :
                                             "definition unavailable"}
                                 </Description>
@@ -223,3 +237,27 @@ const More = styled.h5`
         color: ${props => props.theme.darkBlue};
     }
 `;
+
+const posMap = {
+    JJ: "adjective",
+    JJR: "adjective",
+    JJS: "adjective",
+    NN: "noun",
+    NNP: "noun",
+    NNPS: "noun",
+    NNS: "noun",
+    VB: "verb",
+    VBD: "verb",
+    VBG: "verb",
+    VBP: "verb",
+    VBZ: "verb",
+    IN: "preposition",
+    PP$: "pronoun",
+    PRP: "pronoun",
+    WP: "pronoun",
+    RB: "adverb",
+    RBR: "adverb",
+    RBS: "adverb",
+    CC: "conjuntion",
+    DT: "definite article"
+};

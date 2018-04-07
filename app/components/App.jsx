@@ -44,7 +44,7 @@ export default class Root extends React.Component {
             skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
             readingPace   : 250, //WPM --> Method to save reading pace if edited
-            docURL: "/documents/-L8o4ITsG7SslbEXqMXy"
+            docURL: "/documents/-L9TmDSOphezQ5dfftIs"
         };
     }
 
@@ -86,8 +86,8 @@ export default class Root extends React.Component {
         // console.log("++++++Root");
         window.addEventListener("resize", this.rerender);
 
-        // UPLOAD WEBSITE TO CODEX
-        // firebase.database().ref('/webpages').push("https://medium.com/age-of-awareness/why-do-we-need-to-think-and-act-more-systemically-df6082ede841").then((snapshot) => {
+        // UPLOAD WEBSITE TO FLOWHEAP
+        // firebase.database().ref('/webpages').push("https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/").then((snapshot) => {
         //   console.log("Posted Webpage!");
         // });
 

@@ -123,7 +123,6 @@ const ControlButtonIcon = styled.div`
     background-position: 50%;
     background-size: 35px 35px;
     background-repeat: no-repeat;
-    transition: background-image 0.3s;
 
     @media (max-width: 480px) and (max-height: 480px) {
         border-radius: 15px;

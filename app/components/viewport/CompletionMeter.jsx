@@ -18,7 +18,6 @@ export default class CompletionMeter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            meterLength: 200,
             lastPage: 0
         }
     }
@@ -48,7 +47,8 @@ export default class CompletionMeter extends React.Component {
                 </PageNumberIndicator>
                 <CompleteMeter
                     skin={this.props.skin}
-                    complete={`${docProgress * this.state.meterLength}px`}
+                    percent={docProgress}
+                    windowWidth={window.innerWidth}
                     onClick={this.handleMeterClick.bind({}, "complete")} />
                 <PageMeter
                     skin={this.props.skin}>
@@ -68,7 +68,8 @@ export default class CompletionMeter extends React.Component {
                 </PageMeter>
                 <IncompleteMeter
                     skin={this.props.skin}
-                    incomplete={`${(1 - docProgress) * this.state.meterLength}px`}
+                    percent={1 - docProgress}
+                    windowWidth={window.innerWidth}
                     onClick={this.handleMeterClick.bind({}, "incomplete")} />
                 <PageNumberIndicator
                     skin={this.props.skin}>
@@ -151,6 +152,7 @@ CompletionMeter.propTypes = {
     numPageParagraphs: PropTypes.number.isRequired,
     getCurrentAssetHistory: PropTypes.func.isRequired,
     selectPage: PropTypes.func.isRequired,
+    numLineChars: PropTypes.number.isRequired,
 };
 
 // ============= Styled Components ==============
@@ -288,7 +290,7 @@ const CompleteMeter = styled.div`
     position: relative;
     top: 6px;
     height: 6px;
-    width: ${props => props.complete};
+    width: ${props => props.windowWidth - 730 < 0 ? "calc(" + props.percent * 30 + "vw)" : "calc(" + props.percent * 200 + "px)"};
     border-radius: 3px;
     margin: 0 8px;
     padding: 0;
@@ -305,7 +307,7 @@ const IncompleteMeter = styled.div`
     position: relative;
     top: 6px;
     height: 6px;
-    width: ${props => props.incomplete};
+    width: ${props => props.windowWidth - 730 < 0 ? "calc(" + props.percent * 30 + "vw)" : "calc(" + props.percent * 200 + "px)"};
     border-radius: 3px;
     margin: 0 8px;
     padding: 0;

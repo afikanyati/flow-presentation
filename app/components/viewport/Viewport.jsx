@@ -30,25 +30,27 @@ export default class Viewport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scroll                   : 0,
-            docPosition              : {
-                asset                : 0,
-                sentence             : 0,
-                fixation             : [0, this.props.fixationWidth] // end: one index ahead because of split
+            scroll                        : 0,
+            docPosition                   : {
+                asset                     : 0,
+                sentence                  : 0,
+                fixation                  : [0, this.props.fixationWidth] // end: one index ahead because of split
             },
-            doc                      : {},
-            highlightIsActive        : false,
-            cruiseControlIsActive    : false,
-            cruiseControlHaltIsActive: false,
-            timePerFixation          : 1, // In milliseconds,
-            checkSumDelay            : true, // checked once every fixation cycle
-            showAnnotations          : true,
-            highlightColor           : null,
-            drawerIsOpen             : false,
-            docLoaded                : false,
-            numLineChars             : 25,
-            numPageParagraphs        : 3,
-            editingPace: false,
+            doc                           : {},
+            highlightIsActive             : false,
+            cruiseControlIsActive         : false,
+            cruiseControlHaltIsActive     : false,
+            timePerFixation               : 1, // In milliseconds,
+            checkSumDelay                 : true, // checked once every fixation cycle
+            showAnnotations               : true,
+            highlightColor                : null,
+            drawerIsOpen                  : false,
+            docLoaded                     : false,
+            numLineChars                  : 75,
+            numPageParagraphs             : 3,
+            numFixationBreaksInParagraph : 0,
+            editingPace                   : false,
+            x                             : 0
         }
     }
 
@@ -90,6 +92,11 @@ export default class Viewport extends React.Component {
                 this.setState({
                     timePerFixation: timePerFixation
                 });
+
+                // Set Title
+                if (document.title != this.state.doc.title) {
+                    document.title = this.state.doc.title;
+                }
             });
         });
     }
@@ -154,14 +161,16 @@ export default class Viewport extends React.Component {
                     fontSize               ={this.props.fontSize}
                     skin                   ={this.props.skin}
                     getCurrentAssetHistory ={this.getCurrentAssetHistory}
-                    selectPage             ={this.selectPage} />
+                    selectPage             ={this.selectPage}
+                    numLineChars           ={this.state.numLineChars} />
                 {/* History Container is Reverse Order
                     The first Paragraph mapping belongs to the current reading asset
                     */}
                 <HistoryContainer
                     skin         ={this.props.skin}
                     fontSize     ={this.props.fontSize}
-                    numLineChars ={this.state.numLineChars}>
+                    numLineChars ={this.state.numLineChars}
+                    className="history-container">
                     <ParagraphContainer
                         key          ={`parent =[null], this =[type ='${history.type}-history', index ='${this.state.docPosition.asset}']`}
                         fontSize     ={this.props.fontSize}
@@ -241,7 +250,8 @@ export default class Viewport extends React.Component {
                         highlightColor    ={this.state.highlightColor}
                         fontSize          ={this.props.fontSize}
                         fontFamily        ={this.props.fontFamily}
-                        numLineChars ={this.state.numLineChars}>
+                        numLineChars ={this.state.numLineChars}
+                        className={"fixation-window"}>
                         <CSSTransitionGroup
                               transitionName         ="fixation"
                               transitionEnterTimeout ={Math.min(fixationTransitionDuration, this.state.timePerFixation)}
@@ -266,7 +276,8 @@ export default class Viewport extends React.Component {
                 <FutureContainer
                     skin         ={this.props.skin}
                     fontSize     ={this.props.fontSize}
-                    numLineChars ={this.state.numLineChars}>
+                    numLineChars ={this.state.numLineChars}
+                    className="future-container">
                     <Paragraph
                         key                        ={`parent =[null], this =[type ='${future.type}-future', index ='${this.state.docPosition.asset}']`}
                         asset                      ={future}
@@ -394,26 +405,29 @@ export default class Viewport extends React.Component {
         if (keys[e.keyCode] && !this.state.editingPace) {
             this.preventDefault(e);
 
-            // Up or Left
-            if (e.keyCode == 37 || e.keyCode == 38) {
-                if (this.state.cruiseControlIsActive) {
-                    window.clearTimeout(this.isScrolling);
-                    this.props.setReadingPace(this.props.readingPace + 1);
-                } else {
-                    this.updateViewport(ScrollDirectionTypes.UP);
-                }
-
-            // Down or Right
-            } else if (e.keyCode == 39 || e.keyCode == 40) {
-                if (this.state.cruiseControlIsActive) {
-                    window.clearTimeout(this.isScrolling);
-                    this.props.setReadingPace(this.props.readingPace - 1);
-                } else {
-                    this.updateViewport(this.props.readingPace + 1);
-                }
-            } else if (e.keyCode == 32) {
+            if (e.keyCode == 32) {
+                // Space Key
                 this.preventDefault(e);
                 this.toggleCruiseControl(e);
+                return true;
+            } else if ((e.keyCode == 37 || e.keyCode == 38) && this.state.cruiseControlIsActive) {
+                // Up or Left and Cruise Control Active
+                window.clearTimeout(this.isScrolling);
+                this.props.setReadingPace(this.props.readingPace + 1);
+                return true;
+            } else if ((e.keyCode == 37 || e.keyCode == 38) && !this.state.cruiseControlIsActive) {
+                // Up or Left and Cruise Control Inactive
+                this.updateViewport(ScrollDirectionTypes.UP);
+                return true;
+            } else if ((e.keyCode == 39 || e.keyCode == 40) && this.state.cruiseControlIsActive) {
+                // Down or Right and Cruise Control Active
+                window.clearTimeout(this.isScrolling);
+                this.props.setReadingPace(this.props.readingPace - 1);
+                return true;
+            } else if ((e.keyCode == 39 || e.keyCode == 40) && !this.state.cruiseControlIsActive) {
+                // Down or Right and Cruise Control Inactive
+                this.updateViewport(ScrollDirectionTypes.DOWN);
+                return true;
             }
 
             return false;
@@ -703,7 +717,9 @@ export default class Viewport extends React.Component {
         :
             [Math.max(0, this.state.docPosition.fixation[0] - this.props.fixationWidth), this.state.docPosition.fixation[0]];
 
-        while (this.countChars(lastFixationAssetIndex, lastFixationSentenceIndex, lastFixationWords) >= this.state.numLineChars) {
+        let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
+
+        while (this.calcFixationLength(lastFixationAssetIndex, lastFixationSentenceIndex, lastFixationWords) >= fixationLength) {
             lastFixationWords = update(lastFixationWords, {
                 0: {$set: lastFixationWords[0] + 1}
             });
@@ -713,6 +729,7 @@ export default class Viewport extends React.Component {
     }
 
     getNextFixation = () => {
+        let fixationBreaks = 0
         let currentSentence = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
         let nextFixationAssetIndex = this.state.docPosition.asset + 1 < this.state.doc.assets.length
             && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
@@ -734,11 +751,19 @@ export default class Viewport extends React.Component {
         :
             [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
 
-        while (this.countChars(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords) >= this.state.numLineChars) {
+        let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
+        console.log("fixationLength: ", fixationLength);
+        console.log("Current Fixation Length: ", this.calcFixationLength(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords));
+        while (this.calcFixationLength(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords) >= fixationLength) {
             nextFixationWords = update(nextFixationWords, {
                 1: {$set: nextFixationWords[1] - 1}
             });
+            fixationBreaks += 1;
         }
+
+        this.setState({
+            numFixationBreaksInParagraph: this.state.numFixationBreaksInParagraph + fixationBreaks
+        });
 
         return [nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords];
     }
@@ -900,9 +925,10 @@ export default class Viewport extends React.Component {
         }
 
         let nextFixation = [word.index.word, Math.min(word.index.word + this.props.fixationWidth, this.state.doc.assets[word.index.paragraph].sentences[word.index.sentence].wordCount)];
+        let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
 
         // Constrain Fixation Words to Window
-        while (this.countChars(word.index.paragraph, word.index.sentence, nextFixation) >= this.state.numLineChars) {
+        while (this.calcFixationLength(word.index.paragraph, word.index.sentence, nextFixation) >= fixationLength) {
             nextFixation = update(nextFixation, {
                 1: {$set: nextFixation[1] - 1}
             });
@@ -924,7 +950,8 @@ export default class Viewport extends React.Component {
 
         if (type === "start") {
             fixation = [0, this.props.fixationWidth];
-            while (this.countChars(index, 0, fixation) >= this.state.numLineChars) {
+            let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
+            while (this.calcFixationLength(index, 0, fixation) >= fixationLength) {
                 fixation = update(fixation, {
                     1: {$set: fixation[1] - 1}
                 });
@@ -947,7 +974,8 @@ export default class Viewport extends React.Component {
 
         this.setState({
             scroll : 0,
-            docPosition: docPosition
+            docPosition: docPosition,
+            numFixationBreaksInParagraph: 0
         });
     }
 
@@ -1081,9 +1109,9 @@ export default class Viewport extends React.Component {
      */
     calcTimePerFixation = (readingPace, sumDelay) => {
         const millisecondsInMinute = 60000;
-        let currentAsset = this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence];
+        let currentAsset = this.state.doc.assets[this.state.docPosition.asset];
         let readMinutes = currentAsset.wordCount/readingPace;
-        let numFixations = (readingPace/this.props.fixationWidth); // in 60 seconds
+        let numFixations = (readingPace/this.props.fixationWidth) + this.state.numFixationBreaksInParagraph; // in 60 seconds
         let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(fractionOfFixation*readMinutes*numFixations));
         let timePerFixation = (1 + sumDelay/fractionOfFixation) * effectiveMillisecondsInMinute/numFixations; // measured in ms
         if (timePerFixation < fixationTransitionDuration) {
@@ -1091,6 +1119,13 @@ export default class Viewport extends React.Component {
         } else if (parseInt(getComputedStyle(document.body).getPropertyValue('--fixation-transition').replace(/([A-Za-z]|\s|-)/g,'')) < fixationTransitionDuration) {
             document.body.style.setProperty('--fixation-transition', `opacity ${fixationTransitionDuration}ms ease-in`);
         }
+
+        this.setState({
+            x: this.state.x + timePerFixation
+        });
+        // console.log("timePerFixation: ", timePerFixation);
+        // console.log("Accumulated timePerFixation: ", this.state.x);
+        // console.log("numFixationBreaksInParagraph: ", this.state.numFixationBreaksInParagraph);
         return timePerFixation;
     }
 
@@ -1104,7 +1139,7 @@ export default class Viewport extends React.Component {
             // Determine if need to add time
             this.range(futureFixation[2][0], futureFixation[2][1]).forEach((index) => {
                 let word = this.state.doc.assets[futureFixation[0]].sentences[futureFixation[1]].words[index];
-                if (word.delay && word.delay.length > 0) {
+                if (word && word.delay && word.delay.length > 0) {
                     word.delay.forEach((delay) => {
                         sumDelay += delay.factor;
                     });
@@ -1249,13 +1284,19 @@ export default class Viewport extends React.Component {
      * @param  {[type]} words [description]
      * @return {[type]}       [description]
      */
-    countChars = (assetIndex, sentenceIndex, fixation) => {
+    calcFixationLength = (assetIndex, sentenceIndex, fixation) => {
         const sentence = {...this.state.doc.assets[assetIndex].sentences[sentenceIndex]};
         const words = sentence.words.slice(fixation[0], fixation[1]);
-        const spaces = words.length - 1;
-        return spaces + words.reduce((total, word) => {
-            return total + word.text.length
-        }, 0);
+
+        if (!this.canvas) {
+            let canvas = document.createElement('canvas');
+            this.canvasContext = canvas.getContext("2d");
+            this.canvasContext.font = `${this.props.fontSize}px ${this.props.fontFamily.regular}`;
+        }
+        let width = this.canvasContext.measureText(words.join(" ") + " ");
+        this.canvasContext.clearRect(0, 0, this.canvasContext.width, this.canvasContext.height);
+
+        return width.width;
     }
 }
 
@@ -1306,7 +1347,7 @@ const HistoryContainer = styled.section`
     display               : flex;
     flex-direction        : column-reverse;
 	align-items           : flex-end;
-    width: ${props => props.numLineChars * props.fontSize + 'px'};
+    width: ${props => props.numLineChars + 'ch'};
     height   : 35vh;
     margin   : 0;
     opacity  : 0.8;
@@ -1327,6 +1368,10 @@ const HistoryContainer = styled.section`
                 };
         pointer-events: none; /* so the text is still selectable */
     }
+
+    @media (max-width: ${props => props.numLineChars + 'ch'}) {
+        width: 90vw;
+    }
 `;
 
 const FixationWindowContainer = styled.section`
@@ -1341,7 +1386,7 @@ const FixationWindowContainer = styled.section`
 `;
 
 const FixationWindow = styled.p`
-    width: ${props => props.numLineChars * props.fontSize + 'px'};
+    width: ${props => props.numLineChars + 'ch'};
     font-family       : ${props => props.fontFamily.regular || serif};
     font-size         : ${props => 2.5*props.fontSize + 'px' || '40px'};
     line-height       : ${props => 2.5*props.fontSize + 'px' || '40px'};
@@ -1358,7 +1403,7 @@ const FutureContainer = styled.section`
     position : relative;
     display               : flex;
     flex-direction        : column;
-    width: ${props => props.numLineChars * props.fontSize + 'px'};
+    width: ${props => props.numLineChars + 'ch'};
     height   : 35vh;
     margin   : 0;
     opacity  : 0.2;
@@ -1378,6 +1423,10 @@ const FutureContainer = styled.section`
                             "linear-gradient(to top, rgba(23,23,23, 1) 40%, rgba(23,23,23, 0) 80%)"
                 };
         pointer-events: none; /* so the text is still selectable */
+    }
+
+    @media (max-width: ${props => props.numLineChars + 'ch'}) {
+        width: 90vw;
     }
 `;
 
@@ -1423,7 +1472,11 @@ const PageNumber = styled.h3`
 `;
 
 const ParagraphContainer = styled.div`
-    width: ${props => props.numLineChars * props.fontSize + 'px'};
+    width: ${props => props.numLineChars + 'ch'};
+
+    @media (max-width: ${props => props.numLineChars + 'ch'}) {
+        width: 90vw;
+    }
 `;
 
 const fractionOfFixation = 3;
