@@ -58,10 +58,10 @@ const Container = styled.div`
     transform: translate(-50%, -50%);
 
     & > div {
-        width: 15px;
-        height: 15px;
-        border-radius: 7.5px;
-        margin: 3px;
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        margin: 2px;
         animation-fill-mode: both;
         display: inline-block;
     }

@@ -749,7 +749,7 @@ export default class Viewport extends React.Component {
             this.state.docPosition.sentence;
 
         let nextFixationWords = this.state.docPosition.fixation[1] == currentSentence.wordCount && this.state.docPosition.asset + 1 < this.state.doc.assets.length ?
-            [0, this.props.fixationWidth]
+            [0, Math.min(this.props.fixationWidth, this.state.doc.assets[nextFixationAssetIndex].sentences[nextFixationSentenceIndex].wordCount)]
         :
             [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
 
@@ -759,6 +759,7 @@ export default class Viewport extends React.Component {
             nextFixationWords = update(nextFixationWords, {
                 1: {$set: nextFixationWords[1] - 1}
             });
+
             fixationBreaks += 1;
         }
 
