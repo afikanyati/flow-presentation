@@ -55,7 +55,7 @@ export default class FunctionBar extends React.Component {
                                 type="text"
                                 innerRef={comp => this.pace = comp}
                                 autoFocus={true}
-                                maxLength="3"
+                                maxLength="4"
                                 defaultValue={this.props.readingPace}
                                 onBlur={this.finishEdit}
                                 onKeyPress={this.checkEnterOrEscape}
@@ -157,7 +157,7 @@ export default class FunctionBar extends React.Component {
         // Exit edit mode.
         e.stopPropagation();
         let newPace = parseInt(this.pace.value);
-        if (newPace && 0 < newPace && newPace < 1000) {
+        if (newPace && 0 < newPace && newPace < 10000) {
             this.props.setReadingPace(newPace);
         }
 

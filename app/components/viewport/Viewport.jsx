@@ -265,6 +265,7 @@ export default class Viewport extends React.Component {
                         <CSSTransitionGroup
                               transitionName         ="fixation"
                               transitionEnterTimeout ={Math.min(fixationTransitionDuration, this.state.timePerFixation)}
+                              transitionEnter        ={this.props.readingPace >= 300 ? false : true}
                               transitionLeave        ={false}>
                             {fixationWindow.map((word) => {
                                 return (
@@ -1120,9 +1121,9 @@ export default class Viewport extends React.Component {
         let numFixations = (readingPace/this.props.fixationWidth) + this.state.numFixationBreaksInParagraph; // in 60 seconds
         let effectiveMillisecondsInMinute = millisecondsInMinute/(1 + currentAsset.delay/(fractionOfFixation*readMinutes*numFixations));
         let timePerFixation = (1 + sumDelay/fractionOfFixation) * effectiveMillisecondsInMinute/numFixations; // measured in ms
-        if (timePerFixation < fixationTransitionDuration) {
+        if (this.props.readingPace < 300 && timePerFixation < fixationTransitionDuration) {
             document.body.style.setProperty('--fixation-transition', `opacity ${timePerFixation}ms ease-in`);
-        } else if (parseInt(getComputedStyle(document.body).getPropertyValue('--fixation-transition').replace(/([A-Za-z]|\s|-)/g,'')) < fixationTransitionDuration) {
+        } else if (this.props.readingPace < 300 && parseInt(getComputedStyle(document.body).getPropertyValue('--fixation-transition').replace(/([A-Za-z]|\s|-)/g,'')) < fixationTransitionDuration) {
             document.body.style.setProperty('--fixation-transition', `opacity ${fixationTransitionDuration}ms ease-in`);
         }
         // console.log("timePerFixation: ", timePerFixation);
