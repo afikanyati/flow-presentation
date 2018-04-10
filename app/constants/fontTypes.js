@@ -18,6 +18,6 @@ export default {
     },
     AVENIR: {
         regular: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-        italic: "'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        italic: "'AvenirItalic', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif"
     }
 };

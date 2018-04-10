@@ -32,10 +32,6 @@ To deploy the web application to firebase host, run the following command in the
 
 To learn more about Firebase hosting and deployment, read: https://firebase.google.com/docs/hosting/deploying
 
-## IV. Firebase Data Structure
-
-To view a sample file depicting the structure of the web application's data stored on Google Firebase, see: `firebase_data_sample.json`
-
 ## V. Helpful Links
 
 To learn more about ReactJS, visit: https://facebook.github.io/react/

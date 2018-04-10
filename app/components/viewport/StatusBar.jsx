@@ -58,7 +58,7 @@ export default class FunctionBar extends React.Component {
                                 maxLength="3"
                                 defaultValue={this.props.readingPace}
                                 onBlur={this.finishEdit}
-                                onKeyPress={this.checkEnter}
+                                onKeyPress={this.checkEnterOrEscape}
                                 placeholder="wpm"
                                 skin={this.props.skin} />
                         :
@@ -144,9 +144,11 @@ export default class FunctionBar extends React.Component {
         this.props.toggleEditingPace();
     };
 
-    checkEnter = (e) => {
+    checkEnterOrEscape = (e) => {
         // The user hit *enter*, let's finish up.
-        if(e.key === 'Enter') {
+        if (e.key === 'Enter') {
+            this.finishEdit(e);
+        } else if (e.key === "Escape") {
             this.finishEdit(e);
         }
     };

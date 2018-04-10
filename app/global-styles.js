@@ -1,48 +1,56 @@
-import { injectGlobal } from 'styled-components';
+import { injectGlobal }         from 'styled-components';
 
 // Adobe Garamond
-import garamondBold from './assets/fonts/adobe_garamond/AGaramondPro-Bold.otf';
-import garamondRegular from './assets/fonts/adobe_garamond/AGaramondPro-Regular.otf';
-import garamondBoldItalic from './assets/fonts/adobe_garamond/AGaramondPro-BoldItalic.otf';
-import garamondItalic from './assets/fonts/adobe_garamond/AGaramondPro-Italic.otf';
+import garamondBold             from './assets/fonts/adobe_garamond/AGaramondPro-Bold.otf';
+import garamondRegular          from './assets/fonts/adobe_garamond/AGaramondPro-Regular.otf';
+import garamondBoldItalic       from './assets/fonts/adobe_garamond/AGaramondPro-BoldItalic.otf';
+import garamondItalic           from './assets/fonts/adobe_garamond/AGaramondPro-Italic.otf';
 
 // Avenir
-import avenirBlack from './assets/fonts/avenir/Avenir-Black.ttf';
-import avenirHeavy from './assets/fonts/avenir/Avenir-Heavy.ttf';
-import avenirMedium from './assets/fonts/avenir/Avenir-Medium.ttf';
-import avenirRoman from './assets/fonts/avenir/Avenir-Roman.ttf';
-import avenirBook from './assets/fonts/avenir/Avenir-Book.ttf';
-import avenirLight from './assets/fonts/avenir/Avenir-Light.ttf';
-import avenirItalicBlack from './assets/fonts/avenir/Avenir-BlackOblique.ttf';
-import avenirItalicHeavy from './assets/fonts/avenir/Avenir-HeavyOblique.ttf';
-import avenirItalicMedium from './assets/fonts/avenir/Avenir-MediumOblique.ttf';
-import avenirItalic from './assets/fonts/avenir/avenir-Oblique.ttf';
-import avenirItalicBook from './assets/fonts/avenir/Avenir-BookOblique.ttf';
-import avenirItalicLight from './assets/fonts/avenir/Avenir-LightOblique.ttf';
+import avenirBlack              from './assets/fonts/avenir/Avenir-Black.ttf';
+import avenirHeavy              from './assets/fonts/avenir/Avenir-Heavy.ttf';
+import avenirMedium             from './assets/fonts/avenir/Avenir-Medium.ttf';
+import avenirRoman              from './assets/fonts/avenir/Avenir-Roman.ttf';
+import avenirBook               from './assets/fonts/avenir/Avenir-Book.ttf';
+import avenirLight              from './assets/fonts/avenir/Avenir-Light.ttf';
+import avenirItalicBlack        from './assets/fonts/avenir/Avenir-BlackOblique.ttf';
+import avenirItalicHeavy        from './assets/fonts/avenir/Avenir-HeavyOblique.ttf';
+import avenirItalicMedium       from './assets/fonts/avenir/Avenir-MediumOblique.ttf';
+import avenirItalic             from './assets/fonts/avenir/avenir-Oblique.ttf';
+import avenirItalicBook         from './assets/fonts/avenir/Avenir-BookOblique.ttf';
+import avenirItalicLight        from './assets/fonts/avenir/Avenir-LightOblique.ttf';
 
 // Averta
-import avertaBlack from './assets/fonts/averta/Averta-Black.otf';
-import avertaExtraBold from './assets/fonts/averta/Averta-ExtraBold.otf';
-import avertaBold from './assets/fonts/averta/Averta-Bold.otf';
-import avertaSemiBold from './assets/fonts/averta/Averta-SemiBold.otf';
-import avertaRegular from './assets/fonts/averta/Averta-Regular.otf';
-import avertaLight from './assets/fonts/averta/Averta-Light.otf';
-import avertaThin from './assets/fonts/averta/Averta-Thin.otf';
-import avertaExtraThin from './assets/fonts/averta/Averta-ExtraThin.otf';
-import avertaItalicBlack from './assets/fonts/averta/Averta-BlackItalic.otf';
-import avertaItalicExtraBold from './assets/fonts/averta/Averta-ExtraBoldItalic.otf';
-import avertaItalicBold from './assets/fonts/averta/Averta-BoldItalic.otf';
-import avertaItalicSemiBold from './assets/fonts/averta/Averta-SemiBoldItalic.otf';
-import avertaItalicRegular from './assets/fonts/averta/Averta-RegularItalic.otf';
-import avertaItalicLight from './assets/fonts/averta/Averta-LightItalic.otf';
-import avertaItalicThin from './assets/fonts/averta/Averta-ThinItalic.otf';
-import avertaItalicExtraThin from './assets/fonts/averta/Averta-ExtraThinItalic.otf';
+import avertaBlack              from './assets/fonts/averta/Averta-Black.otf';
+import avertaExtraBold          from './assets/fonts/averta/Averta-ExtraBold.otf';
+import avertaBold               from './assets/fonts/averta/Averta-Bold.otf';
+import avertaSemiBold           from './assets/fonts/averta/Averta-SemiBold.otf';
+import avertaRegular            from './assets/fonts/averta/Averta-Regular.otf';
+import avertaLight              from './assets/fonts/averta/Averta-Light.otf';
+import avertaThin               from './assets/fonts/averta/Averta-Thin.otf';
+import avertaExtraThin          from './assets/fonts/averta/Averta-ExtraThin.otf';
+import avertaItalicBlack        from './assets/fonts/averta/Averta-BlackItalic.otf';
+import avertaItalicExtraBold    from './assets/fonts/averta/Averta-ExtraBoldItalic.otf';
+import avertaItalicBold         from './assets/fonts/averta/Averta-BoldItalic.otf';
+import avertaItalicSemiBold     from './assets/fonts/averta/Averta-SemiBoldItalic.otf';
+import avertaItalicRegular      from './assets/fonts/averta/Averta-RegularItalic.otf';
+import avertaItalicLight        from './assets/fonts/averta/Averta-LightItalic.otf';
+import avertaItalicThin         from './assets/fonts/averta/Averta-ThinItalic.otf';
+import avertaItalicExtraThin    from './assets/fonts/averta/Averta-ExtraThinItalic.otf';
 
 // Palatino
-import palatinoBold from './assets/fonts/palatino/Palatino-Bold.ttf';
-import palatinoRoman from './assets/fonts/palatino/Palatino-Roman.ttf';
-import palatinoItalicBold from './assets/fonts/palatino/Palatino-BoldItalic.ttf';
-import palatinoItalic from './assets/fonts/palatino/Palatino-Italic.ttf';
+import palatinoBold             from './assets/fonts/palatino/Palatino-Bold.ttf';
+import palatinoRoman            from './assets/fonts/palatino/Palatino-Roman.ttf';
+import palatinoItalicBold       from './assets/fonts/palatino/Palatino-BoldItalic.ttf';
+import palatinoItalic           from './assets/fonts/palatino/Palatino-Italic.ttf';
+
+// Quicksand
+import quicksandBold            from './assets/fonts/quicksand/Quicksand-Bold.otf';
+import quicksandRegular         from './assets/fonts/quicksand/Quicksand-Regular.otf';
+import quicksandLight           from './assets/fonts/quicksand/Quicksand-Light.otf';
+import quicksandBoldItalic      from './assets/fonts/quicksand/Quicksand-BoldItalic.otf';
+import quicksandItalic          from './assets/fonts/quicksand/Quicksand-Italic.otf';
+import quicksandLightItalic     from './assets/fonts/quicksand/Quicksand-LightItalic.otf';
 
 
 injectGlobal`
@@ -57,7 +65,6 @@ injectGlobal`
     body {
         font-family: 'Avenir', 'Gill Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         margin: 0;
-        overflow: hidden;
     }
 
     a, a:visited, a:hover {
@@ -252,7 +259,7 @@ injectGlobal`
     font-weight: 200;
     }
 
-    /* 'Averta' */
+    /* Averta */
     @font-face {
     font-family: 'Averta';
     src: url(${avertaBlack}) format('truetype');
@@ -349,7 +356,7 @@ injectGlobal`
     font-weight: 100;
     }
 
-    /* 'Palatino' */
+    /* Palatino */
     @font-face {
     font-family: 'Palatino';
     src: url(${palatinoBold}) format('truetype');
@@ -372,6 +379,43 @@ injectGlobal`
     font-family: 'PalatinoItalic';
     src: url(${palatinoItalic}) format('truetype');
     font-weight: 400;
+    }
+
+    /* quicksand */
+    @font-face {
+    font-family: 'quicksand';
+    src: url(${quicksandBold}) format('truetype');
+    font-weight: 700;
+    }
+
+    @font-face {
+    font-family: 'quicksand';
+    src: url(${quicksandRegular}) format('truetype');
+    font-weight: 400;
+    }
+
+    @font-face {
+    font-family: 'quicksand';
+    src: url(${quicksandLight}) format('truetype');
+    font-weight: 200;
+    }
+
+    @font-face {
+    font-family: 'quicksandItalic';
+    src: url(${quicksandBoldItalic}) format('truetype');
+    font-weight: 700;
+    }
+
+    @font-face {
+    font-family: 'quicksandItalic';
+    src: url(${quicksandItalic}) format('truetype');
+    font-weight: 400;
+    }
+
+    @font-face {
+    font-family: 'quicksandItalic';
+    src: url(${quicksandLightItalic}) format('truetype');
+    font-weight: 200;
     }
 
     .react-hint {
@@ -404,7 +448,7 @@ injectGlobal`
     @keyframes scale {
         0% {
             transform: scale(1);
-            opacity: 1; 
+            opacity: 1;
         } 45% {
             transform: scale(0.1);
             opacity: 0.7;

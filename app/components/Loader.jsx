@@ -68,26 +68,26 @@ const Container = styled.div`
 
     & > div:nth-child(1) {
         background: ${props => props.theme.red};
-        animation: scale 1.25s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+        animation: scale 2.5s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
     }
 
     & > div:nth-child(2) {
         background: ${props => props.theme.purple};
-        animation: scale 1.25s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+        animation: scale 2.5s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
     }
 
     & > div:nth-child(3) {
         background: ${props => props.theme.blue};
-        animation: scale 1.25s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+        animation: scale 2.5s 0.48s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
     }
 
     & > div:nth-child(4) {
         background: ${props => props.theme.green};
-        animation: scale 1.25s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+        animation: scale 2.5s 0.72s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
     }
 
     & > div:nth-child(5) {
         background: ${props => props.theme.yellow};
-        animation: scale 1.25s 0.48s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+        animation: scale 2.5s 0.96s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
     }
 `;

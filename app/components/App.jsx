@@ -18,7 +18,6 @@ import FontTypes                from '../constants/fontTypes';
 import SkinTypes                from '../constants/skinTypes';
 import HandTypes                from '../constants/handTypes';
 import ScrollDirectionTypes     from '../constants/scrollDirectionTypes';
-import HighlightTypes           from '../constants/highlightTypes';
 
 // Initialize Firebase
 firebase.initializeApp(config);

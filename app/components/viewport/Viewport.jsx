@@ -47,7 +47,7 @@ export default class Viewport extends React.Component {
             highlightColor               : null,
             drawerIsOpen                 : false,
             docLoaded                    : false,
-            numLineChars                 : 75,
+            numLineChars                 : 70,
             numPageParagraphs            : 3,
             numFixationBreaksInParagraph : 0,
             editingPace                  : false,
@@ -71,13 +71,13 @@ export default class Viewport extends React.Component {
     componentDidMount() {
         // console.log("+++++Viewport");
         window.addEventListener('DOMMouseScroll', this.handleScroll, false);
-        window.onwheel      = this.handleScroll; // modern standard
-        window.onmousewheel = document.onmousewheel = this.handleScroll; // older browsers, IE
-        window.ontouchmove  = this.handleScroll; // mobile
-        document.onkeydown  = this.handleKeys;
-        //document.onkeypress = this.handleKeys;
+        window.addEventListener('wheel', this.handleScroll, false); // Modern Standard
+        window.addEventListener('touchmove', this.handleScroll, false); // Mobile
+        window.addEventListener('mousewheel', this.handleScroll, false); // older browsers, IE
+        window.addEventListener('keydown', this.handleKeys, false); // older browsers, IE
         window.addEventListener('mousedown', this.handleCruiseMouseDown, false);
         window.addEventListener('mouseup', this.handleCruiseMouseUp, false);
+
         // Web App Visibility
         document.addEventListener('visibilitychange', this.handleWindowFocusState);
 
@@ -117,9 +117,17 @@ export default class Viewport extends React.Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+        window.removeEventListener('DOMMouseScroll', this.handleScroll, false);
+        window.removeEventListener('wheel', this.handleScroll, false); // Modern Standard
+        window.removeEventListener('touchmove', this.handleScroll, false); // Mobile
+        window.removeEventListener('mousewheel', this.handleScroll, false); // older browsers, IE
+        window.removeEventListener('keydown', this.handleKeys, false); // older browsers, IE
         window.removeEventListener('mousedown', this.handleCruiseMouseDown, false);
         window.removeEventListener('mouseup', this.handleCruiseMouseUp, false);
+
+        // Web App Visibility
+        document.removeEventListener('visibilitychange', this.handleWindowFocusState);
+        // Cruise Control Timer
         clearTimeout(this.timer);
     }
 
@@ -721,7 +729,7 @@ export default class Viewport extends React.Component {
 
         let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
 
-        while (this.calcFixationLength(lastFixationAssetIndex, lastFixationSentenceIndex, lastFixationWords) >= fixationLength) {
+        while (lastFixationWords.length > 1 && this.calcFixationLength(lastFixationAssetIndex, lastFixationSentenceIndex, lastFixationWords) >= fixationLength) {
             lastFixationWords = update(lastFixationWords, {
                 0: {$set: lastFixationWords[0] + 1}
             });
@@ -755,7 +763,7 @@ export default class Viewport extends React.Component {
 
         let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
 
-        while (this.calcFixationLength(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords) >= fixationLength) {
+        while (nextFixationWords.length > 1 && this.calcFixationLength(nextFixationAssetIndex, nextFixationSentenceIndex, nextFixationWords) >= fixationLength) {
             nextFixationWords = update(nextFixationWords, {
                 1: {$set: nextFixationWords[1] - 1}
             });
@@ -778,85 +786,81 @@ export default class Viewport extends React.Component {
     skipToWord = (word, e) => {
         e.stopPropagation();
 
-        if (word.index.paragraph > this.state.docPosition.asset) {
+        if (word.index.paragraph > this.state.docPosition.asset && this.state.highlightIsActive) {
             // Skip ahead
             // Highlight if active, toggle highlight
-            if (this.state.highlightIsActive) {
-                let start = {
-                    asset: this.state.docPosition.asset,
-                    sentence: this.state.docPosition.sentence,
-                    word: this.state.docPosition.fixation[0]
-                };
+            let start = {
+                asset: this.state.docPosition.asset,
+                sentence: this.state.docPosition.sentence,
+                word: this.state.docPosition.fixation[0]
+            };
 
-                let asset = this.state.doc.assets[this.state.docPosition.asset];
-                let lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
+            let asset = this.state.doc.assets[this.state.docPosition.asset];
+            let lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
 
-                let end = {
-                    asset: this.state.docPosition.asset,
-                    sentence: asset.sentenceCount - 1,
-                    word: lastAssetSentence.wordCount
-                };
+            let end = {
+                asset: this.state.docPosition.asset,
+                sentence: asset.sentenceCount - 1,
+                word: lastAssetSentence.wordCount
+            };
 
-                this.toggleWordHighlight(start, end); // Handles first asset skip
+            this.toggleWordHighlight(start, end); // Handles first asset skip
 
-                let numIntermediateAssets = word.index.paragraph - this.state.docPosition.asset;
+            let numIntermediateAssets = word.index.paragraph - this.state.docPosition.asset;
 
-                if (numIntermediateAssets > 1) {
-                    for (let i = this.state.docPosition.asset; i < word.index.paragraph; i++) {
-                        asset = this.state.doc.assets[i];
-                        start = {
-                            asset: i,
-                            sentence: 0,
-                            word: 0
-                        };
-                        lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
-                        end = {
-                            asset: i,
-                            sentence: asset.sentenceCount - 1,
-                            word: lastAssetSentence.wordCount
-                        };
-                        this.toggleWordHighlight(start, end);
-                    }
+            if (numIntermediateAssets > 1) {
+                for (let i = this.state.docPosition.asset; i < word.index.paragraph; i++) {
+                    asset = this.state.doc.assets[i];
+                    start = {
+                        asset: i,
+                        sentence: 0,
+                        word: 0
+                    };
+                    lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
+                    end = {
+                        asset: i,
+                        sentence: asset.sentenceCount - 1,
+                        word: lastAssetSentence.wordCount
+                    };
+                    this.toggleWordHighlight(start, end);
                 }
             }
-        } else if (word.index.paragraph < this.state.docPosition.asset) {
+        } else if (word.index.paragraph < this.state.docPosition.asset && this.state.highlightIsActive) {
             // Skip back
             // Highlight if active, toggle highlight
-            if (this.state.highlightIsActive) {
-                let start = {
-                    asset: this.state.docPosition.asset,
-                    sentence: this.state.docPosition.sentence,
-                    word: 0
-                };
+            let start = {
+                asset: this.state.docPosition.asset,
+                sentence: this.state.docPosition.sentence,
+                word: 0
+            };
 
-                let endWord = this.state.docPosition.fixation[0] - 1 > 0 ? this.state.docPosition.fixation[0] - 1 : 0;
+            let endWord = this.state.docPosition.fixation[0] - 1 > 0 ? this.state.docPosition.fixation[0] - 1 : 0;
 
-                let end = {
-                    asset: this.state.docPosition.asset,
-                    sentence: this.state.docPosition.sentence,
-                    word: endWord + 1
-                }
+            let end = {
+                asset: this.state.docPosition.asset,
+                sentence: this.state.docPosition.sentence,
+                word: endWord + 1
+            }
 
-                this.toggleWordHighlight(start, end);
+            this.toggleWordHighlight(start, end);
 
-                let numIntermediateAssets = this.state.docPosition.asset - word.index.paragraph;
+            let numIntermediateAssets = this.state.docPosition.asset - word.index.paragraph;
 
-                if (numIntermediateAssets > 1) {
-                    for (let i = word.index.paragraph; i < this.state.docPosition.asset; i++) {
-                        asset = this.state.doc.assets[i];
-                        start = {
-                            asset: i,
-                            sentence: 0,
-                            word: 0
-                        };
-                        lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
-                        end = {
-                            asset: i,
-                            sentence: asset.sentenceCount - 1,
-                            word: lastAssetSentence.wordCount
-                        };
-                        this.toggleWordHighlight(start, end);
-                    }
+            if (numIntermediateAssets > 1) {
+                for (let i = word.index.paragraph; i < this.state.docPosition.asset; i++) {
+                    asset = this.state.doc.assets[i];
+                    start = {
+                        asset: i,
+                        sentence: 0,
+                        word: 0
+                    };
+                    lastAssetSentence = asset.sentences[asset.sentenceCount - 1];
+                    end = {
+                        asset: i,
+                        sentence: asset.sentenceCount - 1,
+                        word: lastAssetSentence.wordCount
+                    };
+                    this.toggleWordHighlight(start, end);
                 }
             }
         }
@@ -930,7 +934,7 @@ export default class Viewport extends React.Component {
         let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
 
         // Constrain Fixation Words to Window
-        while (this.calcFixationLength(word.index.paragraph, word.index.sentence, nextFixation) >= fixationLength) {
+        while (nextFixation.length > 1 && this.calcFixationLength(word.index.paragraph, word.index.sentence, nextFixation) >= fixationLength) {
             nextFixation = update(nextFixation, {
                 1: {$set: nextFixation[1] - 1}
             });
@@ -953,7 +957,7 @@ export default class Viewport extends React.Component {
         if (type === "start") {
             fixation = [0, this.props.fixationWidth];
             let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
-            while (this.calcFixationLength(index, 0, fixation) >= fixationLength) {
+            while (fixation.length > 1 && this.calcFixationLength(index, 0, fixation) >= fixationLength) {
                 fixation = update(fixation, {
                     1: {$set: fixation[1] - 1}
                 });
