@@ -1169,7 +1169,6 @@ export default class Viewport extends React.Component {
      * @param  {[type]} timestamp time of method call
      */
     moveText = (timestamp) => {
-        console.log("moveText");
         // Apply first transition
         // Avoid waiting for timePerFixation to elapse
         let diff = new Date().getTime() - timestamp;
@@ -1245,7 +1244,6 @@ export default class Viewport extends React.Component {
      * @param  {[type]} oncomplete [description]
      */
     doTimer = (length, resolution, oninstance, oncomplete) => {
-        console.log("doTimer");
         let steps = (length/100) * (resolution/10),
             speed = length/steps,
             count = 0,
