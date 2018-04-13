@@ -1398,7 +1398,6 @@ const FixationWindowContainer = styled.section`
 `;
 
 const FixationWindow = styled.p`
-    width: ${props => props.numLineChars + 'ch'};
     font-family       : ${props => props.fontFamily.regular || serif};
     font-size         : ${props => props.fixationMultiplier * props.fontSize + 'px' || '16px'};
     line-height       : ${props => props.fixationMultiplier * props.fontSize + 'px' || '40px'};
