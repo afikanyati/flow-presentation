@@ -532,7 +532,24 @@ export default class Viewport extends React.Component {
 
             this.loadAsset("start", this.state.docPosition.asset + 1);
             return;
-        }
+        } else if (direction == ScrollDirectionTypes.DOWN
+           && this.state.docPosition.asset + 1 == this.state.doc.assets.length
+           && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+           && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount
+           && this.state.cruiseControlIsActive) {
+           // We have hit end of document
+           // and Cruise Control is active
+           // We deactivate it
+           this.toggleCruiseControl();
+           return;
+       } else if (direction == ScrollDirectionTypes.DOWN
+           && this.state.docPosition.asset + 1 == this.state.doc.assets.length
+           && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
+           && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount) {
+               // We have hit end of document
+               // Cruise Control is not Active
+               return;
+       }
 
         if (direction == ScrollDirectionTypes.UP) {
             // Scroll Direction Up
@@ -591,24 +608,6 @@ export default class Viewport extends React.Component {
         this.setState({
             scroll: 0,
             docPosition: docPosition
-        }, () => {
-             if (direction == ScrollDirectionTypes.DOWN
-                && this.state.docPosition.asset + 1 == this.state.doc.assets.length
-                && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
-                && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount
-                && this.state.cruiseControlIsActive) {
-                // We have hit end of document
-                // and Cruise Control is active
-                // We deactivate it
-                this.toggleCruiseControl();
-            } else if (direction == ScrollDirectionTypes.DOWN
-                && this.state.docPosition.asset + 1 == this.state.doc.assets.length
-                && this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount
-                && this.state.docPosition.fixation[1] == this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence].wordCount) {
-                    // We have hit end of document
-                    // Cruise Control is not Active
-                    return;
-            }
         });
     }
 
@@ -749,7 +748,7 @@ export default class Viewport extends React.Component {
         :
             this.state.docPosition.asset;
 
-        let nextFixationSentenceIndex = this.state.docPosition.fixation[1] == currentSentence.wordCount && this.state.docPosition.asset + 1 < this.state.doc.assets.length ?
+        let nextFixationSentenceIndex = this.state.docPosition.fixation[1] == currentSentence.wordCount && this.state.docPosition.sentence + 1 <= this.state.doc.assets[this.state.docPosition.asset].sentenceCount ?
             this.state.docPosition.sentence + 1 == this.state.doc.assets[this.state.docPosition.asset].sentenceCount ?
                 0
             :
@@ -757,7 +756,7 @@ export default class Viewport extends React.Component {
         :
             this.state.docPosition.sentence;
 
-        let nextFixationWords = this.state.docPosition.fixation[1] == currentSentence.wordCount && this.state.docPosition.asset + 1 < this.state.doc.assets.length ?
+        let nextFixationWords = this.state.docPosition.fixation[1] == currentSentence.wordCount ?
             [0, Math.min(this.props.fixationWidth, this.state.doc.assets[nextFixationAssetIndex].sentences[nextFixationSentenceIndex].wordCount)]
         :
             [this.state.docPosition.fixation[1], Math.min(this.state.docPosition.fixation[1] + this.props.fixationWidth, currentSentence.wordCount)];
@@ -956,7 +955,7 @@ export default class Viewport extends React.Component {
         let fixation, docPosition;
 
         if (type === "start") {
-            fixation = [0, this.props.fixationWidth];
+            fixation = [0, Math.min(this.props.fixationWidth, this.state.doc.assets[index].sentences[0].wordCount)];
             let fixationLength = document.getElementsByClassName('history-container')[0].clientWidth;
             while (fixation.length > 1 && this.calcFixationLength(index, 0, fixation) >= fixationLength) {
                 fixation = update(fixation, {
@@ -1170,6 +1169,7 @@ export default class Viewport extends React.Component {
      * @param  {[type]} timestamp time of method call
      */
     moveText = (timestamp) => {
+        console.log("moveText");
         // Apply first transition
         // Avoid waiting for timePerFixation to elapse
         let diff = new Date().getTime() - timestamp;
@@ -1245,6 +1245,7 @@ export default class Viewport extends React.Component {
      * @param  {[type]} oncomplete [description]
      */
     doTimer = (length, resolution, oninstance, oncomplete) => {
+        console.log("doTimer");
         let steps = (length/100) * (resolution/10),
             speed = length/steps,
             count = 0,
@@ -1261,7 +1262,9 @@ export default class Viewport extends React.Component {
                     checkSumDelay: true
                 });
                 oncomplete();
-                this.moveText(timestamp);
+                if (this.state.cruiseControlIsActive) {
+                    this.moveText(timestamp);
+                }
             }
         }
 
