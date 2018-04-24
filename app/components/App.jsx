@@ -38,11 +38,11 @@ export default class Root extends React.Component {
         this.state = {
             fontSize       : 22,
             fontFamily     : FontTypes.ADOBE_GARAMOND,
-            fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
+            fixationWidth  : 5, // if they change the fixationWidth, rerender viewport
             trackingSpeed  : 12,
             skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
-            readingPace   : 250, //WPM --> Method to save reading pace if edited
+            readingPace   : 220, //WPM --> Method to save reading pace if edited
             docURL: "/documents/-L9hplsruzf-c2inSokv"
         };
     }
@@ -86,7 +86,7 @@ export default class Root extends React.Component {
         window.addEventListener("resize", this.rerender);
 
         // UPLOAD WEBSITE TO FLOWHEAP
-        // firebase.database().ref('/webpages').push("https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/").then((snapshot) => {
+        // firebase.database().ref('/webpages').push("https://flowheap.com").then((snapshot) => {
         //   console.log("Posted Webpage!");
         // });
 

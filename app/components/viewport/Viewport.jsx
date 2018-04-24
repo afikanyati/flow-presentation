@@ -265,7 +265,7 @@ export default class Viewport extends React.Component {
                         <CSSTransitionGroup
                               transitionName         ="fixation"
                               transitionEnterTimeout ={Math.min(fixationTransitionDuration, this.state.timePerFixation)}
-                              transitionEnter        ={this.props.readingPace >= 300 ? false : true}
+                              transitionEnter        ={this.props.readingPace >= 300 || !this.state.cruiseControlIsActive? false : true}
                               transitionLeave        ={false}>
                             {fixationWindow.map((word) => {
                                 return (
@@ -1354,8 +1354,6 @@ const HistoryContainer = styled.section`
     width: ${props => props.numLineChars + 'ch'};
     height   : 35vh;
     margin   : 0;
-    opacity  : 0.8;
-
     &:after {
         position      : absolute;
         bottom        : 0;
@@ -1363,12 +1361,12 @@ const HistoryContainer = styled.section`
         width         : 100%;
         content       : "";
         background: ${props => props.skin == SkinTypes.LIGHT ?
-                    "linear-gradient(to bottom,rgba(255,255,255, 1) 18%,rgba(255,255,255, 0) 88%)"
+                    "linear-gradient(to bottom,rgba(255,255,255, 1) 0%,rgba(255,255,255, 0) 50%)"
                 :
                     props.skin == SkinTypes.CREAM ?
-                            "linear-gradient(to bottom,rgba(249,243,233, 1) 18%,rgba(249,243,233, 0) 88%)"
+                            "linear-gradient(to bottom,rgba(249,243,233, 1) 0%,rgba(249,243,233, 0) 50%)"
                         :
-                            "linear-gradient(to bottom,rgba(23,23,23, 1) 18%, rgba(23,23,23, 0) 88%)"
+                            "linear-gradient(to bottom,rgba(23,23,23, 1) 0%, rgba(23,23,23, 0) 50%)"
                 };
         pointer-events: none; /* so the text is still selectable */
     }
@@ -1422,7 +1420,6 @@ const FutureContainer = styled.section`
     width: ${props => props.numLineChars + 'ch'};
     height   : 35vh;
     margin   : 0;
-    opacity  : 0.2;
 
     &:after {
         position      : absolute;
@@ -1431,12 +1428,12 @@ const FutureContainer = styled.section`
         width         : 100%;
         content       : "";
         background: ${props => props.skin == SkinTypes.LIGHT ?
-                    "linear-gradient(to top, rgba(255,255,255, 1) 20%, rgba(255,255,255, 0) 80%)"
+                    "linear-gradient(to top, rgba(255,255,255, 1) 0%, rgba(255,255,255, 0) 50%)"
                 :
                     props.skin == SkinTypes.CREAM ?
-                            "linear-gradient(to top, rgba(249,243,233, 1) 20%, rgba(249,243,233, 0) 80%)"
+                            "linear-gradient(to top, rgba(249,243,233, 1) 0%, rgba(249,243,233, 0) 50%)"
                         :
-                            "linear-gradient(to top, rgba(23,23,23, 1) 20%, rgba(23,23,23, 0) 80%)"
+                            "linear-gradient(to top, rgba(23,23,23, 1) 0%, rgba(23,23,23, 0) 50%)"
                 };
         pointer-events: none; /* so the text is still selectable */
     }
@@ -1447,17 +1444,6 @@ const FutureContainer = styled.section`
 
     @media (max-width: 430px) {
         height: 40vh;
-
-        &:after {
-            background: ${props => props.skin == SkinTypes.LIGHT ?
-                        "linear-gradient(to top, rgba(255,255,255, 1) 10%, rgba(255,255,255, 0) 90%)"
-                    :
-                        props.skin == SkinTypes.CREAM ?
-                                "linear-gradient(to top, rgba(249,243,233, 1) 20%, rgba(249,243,233, 0) 80%)"
-                            :
-                                "linear-gradient(to top, rgba(23,23,23, 1) 20%, rgba(23,23,23, 0) 80%)"
-                    };
-        }
     }
 `;
 

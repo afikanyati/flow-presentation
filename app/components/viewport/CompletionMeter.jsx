@@ -28,7 +28,7 @@ export default class CompletionMeter extends React.Component {
 
     render() {
         const pageProgress = this.getPageProgress();
-        const docProgress = this.getDocProgress();
+        const docProgress = this.getDocProgress(pageProgress);
         const currentPage = Math.floor(this.props.doc.assets[this.props.docPosition.asset].index.asset/this.props.numPageParagraphs);
         return (
             <MeterContainer
@@ -100,10 +100,14 @@ export default class CompletionMeter extends React.Component {
 
     // ========== Methods ===========
 
-    getDocProgress = () => {
+    getDocProgress = (pageProgress) => {
         let completedPages = Math.floor(this.props.doc.assets.slice(0, this.props.docPosition.asset).length / this.props.numPageParagraphs);
         let totalPages = this.state.lastPage;
-        let docProgress = completedPages/totalPages;
+        let currentPagePercent = pageProgress.reduce((total, paragraphCompletion) => {
+            return total + paragraphCompletion;
+        });
+        currentPagePercent /= pageProgress.length * 100;
+        let docProgress = (completedPages + currentPagePercent)/totalPages;
         return docProgress;
     }
 
