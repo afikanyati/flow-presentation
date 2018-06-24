@@ -1,6 +1,10 @@
 # Flow Presentation
 --------------------------
-Flow Presentation App, a Node.js web application written using ReactJS and JavaScript ES6 syntax. Web Application employs Babel for compiling ES6 syntax and Webpack for module bundling. Application data is stored and served using Google Firebase.
+Contained in this repository is an implementation of an Alternative Text Presentation, Flow Presentation, I detailed in a research paper I wrote in my fourth undergraduate year at the Massachusetts Institute of Technology.
+
+Flow Presentation an alternative text presentation that seeks to improve the reading experience by appealing to the uniques affordance set of digital devices. At a high-level, it seeks to improve the efficiency, effectiveness, and cognitive demand associated with reading using digital devices.
+
+This implementation is a Node.js web application written using ReactJS and JavaScript ES6 syntax. Web Application employs Babel for compiling ES6 syntax and Webpack for module bundling. Application data is stored and served using Google Firebase.
 
 ## I. Dependencies
 
