@@ -43,7 +43,7 @@ export default class Root extends React.Component {
             skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
             readingPace   : 220, //WPM --> Method to save reading pace if edited
-            docURL: "/documents/-L9hplsruzf-c2inSokv"
+            docURL: "/documents/-L9hplsruzf-c2inSokv" // /documents/-LA4mW9Kf43qcB5OMGzm or /documents/-LAjm0WKo_iQLKzUa9TZ or /documents/-LAjvO6fEqALyy_sI76s
         };
     }
 
