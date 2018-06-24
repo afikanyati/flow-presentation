@@ -87,7 +87,7 @@ injectGlobal`
     	border: none;
     }
 
-    /* CSS Stylesheet for Flowheap */
+    /* CSS Stylesheet for Flow Presentation */
 
     .paragraph-enter {
       opacity: 0.5;

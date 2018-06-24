@@ -1,7 +1,7 @@
 {
-  "name": "flowheap-app",
+  "name": "flow-presentation",
   "version": "1.0.0",
-  "description": "Flowheap App, a Node.js web application written using ReactJS and JavaScript ES6 syntax. Web Application employs Babel for compiling ES6 syntax and Webpack for module bundling. Application data is stored and served using Google Firebase.",
+  "description": "Flow Presentation App, a Node.js web application written using ReactJS and JavaScript ES6 syntax. Web Application employs Babel for compiling ES6 syntax and Webpack for module bundling. Application data is stored and served using Google Firebase.",
   "main": "app/index.jsx",
   "scripts": {
     "build": "webpack",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/afikanyati/flowheap.git"
+    "url": "https://github.com/afikanyati/flow-presentation.git"
   },
   "keywords": [
-    "flowheap",
-    "read"
+    "flow presentation",
+    "reading"
   ],
   "author": "Afika Nyati",
   "license": "UNLICENSED",

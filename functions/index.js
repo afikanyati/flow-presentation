@@ -1,5 +1,8 @@
 const functions = require('firebase-functions');
 
+// WordsAPI Configuration Data
+const wordsapi = require('./words_api_config.json');
+
 // Definition API
 const unirest = require('unirest');
 
@@ -159,9 +162,9 @@ exports.getDefinition = functions.database.ref('/documents/{docIndex}/assets/{as
             return words[0];
     }).then((text) => {
       let promise = new Promise ((resolve) => {
-          unirest.get("https://wordsapiv1.p.mashape.com/words/" + text)
-                  .header("X-Mashape-Key", "ArZ5J0IzQTmshWUjCqqKJXu7ipLBp1nLczBjsnYI1fMQQDsxmN")
-                  .header("X-Mashape-Host", "wordsapiv1.p.mashape.com")
+          unirest.get(wordsapi.apiURL + text)
+                  .header("X-Mashape-Key", wordsapi.appKey)
+                  .header("X-Mashape-Host", wordsapi.apiHost)
                   .end((result) => {
                       return resolve(result.body);
                   });
@@ -321,7 +324,7 @@ exports.createDocument = functions.database.ref('/uploads/{docID}').onWrite((eve
         });
     };
 
-    // Will Promise Return of Flowheap-structured Document
+    // Will Promise Return of Flow Presentation-structured Document
     return new Promise((resolve) => {
         return resolve(Promise.all(data.paragraphs.map(constructAssets))
             .then((assets) => {

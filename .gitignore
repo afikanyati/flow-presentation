@@ -14,3 +14,4 @@ selenium-debug.log
 conf
 reports
 firebase_config.json
+/functions/words_api_config.json

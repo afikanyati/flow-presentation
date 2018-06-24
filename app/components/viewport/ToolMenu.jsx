@@ -14,6 +14,7 @@ import HighlightTypes       from '../../constants/highlightColorTypes';
 
 // Icons
 import FlowIconColor        from '../../assets/images/icons/flow-icon-color.svg';
+import FlowIconColorNight   from '../../assets/images/icons/flow-icon-color-night.svg';
 import FlowIconWhite        from '../../assets/images/icons/flow-icon-white.svg';
 import BookmarkWhite        from '../../assets/images/icons/bookmark-white.svg';
 import BookmarkColor        from '../../assets/images/icons/bookmark-red.svg';
@@ -289,7 +290,10 @@ export default class ToolMenu extends React.Component {
                         icon={
                             this.state.activeFeature == null ?
                                 this.state.menuIsOpen ?
-                                    `url(${FlowIconColor})`
+                                    this.props.skin == SkinTypes.DARK ?
+                                        `url(${FlowIconColorNight})`
+                                    :
+                                        `url(${FlowIconColor})`
                                 :
                                     `url(${FlowIconWhite})`
                             :

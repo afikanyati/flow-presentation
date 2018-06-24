@@ -38,7 +38,7 @@ export default class Root extends React.Component {
         this.state = {
             fontSize       : 22,
             fontFamily     : FontTypes.ADOBE_GARAMOND,
-            fixationWidth  : 5, // if they change the fixationWidth, rerender viewport
+            fixationWidth  : 3, // if they change the fixationWidth, rerender viewport
             trackingSpeed  : 12,
             skin           : SkinTypes.LIGHT,
             hand           : HandTypes.RIGHT,
@@ -85,8 +85,9 @@ export default class Root extends React.Component {
         // console.log("++++++Root");
         window.addEventListener("resize", this.rerender);
 
-        // UPLOAD WEBSITE TO FLOWHEAP
-        // firebase.database().ref('/webpages').push("https://flowheap.com").then((snapshot) => {
+        // UPLOAD WEBSITE TO Flow Presentation
+        // let website = "https://en.wikipedia.org/wiki/Flow_(psychology)";
+        // firebase.database().ref('/webpages').push(website).then((snapshot) => {
         //   console.log("Posted Webpage!");
         // });
 

@@ -265,7 +265,7 @@ export default class Viewport extends React.Component {
                         <CSSTransitionGroup
                               transitionName         ="fixation"
                               transitionEnterTimeout ={Math.min(fixationTransitionDuration, this.state.timePerFixation)}
-                              transitionEnter        ={this.props.readingPace >= 300 || !this.state.cruiseControlIsActive? false : true}
+                              transitionEnter        ={false}
                               transitionLeave        ={false}>
                             {fixationWindow.map((word) => {
                                 return (
@@ -667,6 +667,7 @@ export default class Viewport extends React.Component {
     }
 
     getFixationWindow = () => {
+        // Transform to get first fixation
         const currentSentence = {...this.state.doc.assets[this.state.docPosition.asset].sentences[this.state.docPosition.sentence]};
         const fixationWords = currentSentence.words.slice(this.state.docPosition.fixation[0], this.state.docPosition.fixation[1]);
         return fixationWords;
@@ -1352,7 +1353,7 @@ const HistoryContainer = styled.section`
     flex-direction        : column-reverse;
 	align-items           : flex-end;
     width: ${props => props.numLineChars + 'ch'};
-    height   : 35vh;
+    height   : 45vh;
     margin   : 0;
     &:after {
         position      : absolute;
@@ -1387,7 +1388,7 @@ const FixationWindowContainer = styled.section`
 	align-items              : center;
     justify-content          : center;
     width                    : 100vw;
-    height                   : 30vh;
+    height                   : 10vh;
     margin                   : 0;
 
     @media (max-width: 430px) {
@@ -1418,7 +1419,7 @@ const FutureContainer = styled.section`
     display               : flex;
     flex-direction        : column;
     width: ${props => props.numLineChars + 'ch'};
-    height   : 35vh;
+    height   : 45vh;
     margin   : 0;
 
     &:after {
